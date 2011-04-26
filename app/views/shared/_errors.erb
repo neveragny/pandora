@@ -1,0 +1,10 @@
+<% if target.errors.any? -%>
+    <h2>
+      <%= t(:errors_occured) %>:
+    </h2>
+    <ul>
+      <% target.errors.values.map(&:first).each do |error| %>
+          <li class="error"> <%= error %> </li>
+      <% end %>
+    </ul>
+<% end %>

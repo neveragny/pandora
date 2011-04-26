@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Licemerov.net</title>
+  <%= stylesheet_link_tag :defaults %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'form', 'jquery.remotipart' %>
+  <%= csrf_meta_tag %>
+  <%= yield(:head) %>
+</head>
+<body>
+<%= render :partial => 'shared/header' %>
+<% if @user && @user.avatar.exists? %>
+    <% user_attrs = "#{@user.login},#{@user.gender},#{@user.avatar.url(:small)},#{@user.id}" %>
+<% else %>
+    <% user_attrs = nil %>
+<% end %>
+<div id="wrapper" data-user="<%= user_attrs %>" class="<%= controller_name %>">
+
+  <div id="notices">
+    <div class="notice"><%= flash[:notice] %></div>
+    <div class="alert"><%= flash[:alert] %></div>
+    <div class="warning"><%= flash[:warning] %></div>
+  </div>
+
+  <%= yield %>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<% if profile_owner? %>
+
+    <h1 id="create-album">
+      <%= t(:create_album) %>
+    </h1>
+
+<% end %>
+
+<%= render :partial => 'new_album_form' %>
+
+<div id='albums'>
+
+  <% @albums.each do |album| %>
+     <%= render :partial => 'albums/album', :locals => {:album => album} %>
+  <% end %>
+
+</div>

@@ -1,0 +1,26 @@
+<div id="entry-<%= entry.id %>" class="parent">
+
+  <%= raw author(entry) %> <%= t :said %>:
+
+  <div class="body">
+    <% if entry.image.exists? %>
+        <div><%= image_tag entry.image.url, :class => 'regular' %></div>
+    <% end %>
+    <%= entry.body %>
+    <% if current_user %>
+        <%= raw reply_button %>
+    <% end %>
+  </div>
+
+  <% if entry.children.any? -%>
+      <div class="head"></div>
+  <% else %>
+      <div class="head-hidden"></div>
+  <% end -%>
+  <ul class="responses">
+    <% entry.children.each do |entry| %>
+        <%= render :partial => 'main/entries/response', :locals => {:entry => entry} %>
+    <% end %>
+  </ul>
+
+</div>

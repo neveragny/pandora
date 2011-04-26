@@ -1,0 +1,159 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+ru:
+  hello: "Привет %{name}!"
+  first_name: Имя
+  last_name: Фамилия
+  country: Страна
+  city: Город
+  sex: Пол
+  user_login: Логин
+  password: Пароль
+  password_confirmation: Пароль еще раз
+  male: Парень
+  female: Девушка
+  phone: Телефон
+  website: Веб Сайт
+  birth_date: Дата рождения
+  update: Сохранить
+  said: Говорит
+  say: Сказать
+  image: Картинка
+  reply: Ответить
+  cancel: Отмена
+  please_wait: Подождите...
+  remember_me: Запомнить меня
+  delete: Удалить
+  change: Изменить
+  change_settings: Изменить Настройки
+  errors_occured: Произошли ошибки
+
+  # HEADER
+  main_page: На главную
+  profile: Мой профиль
+  logout: Выйти
+  login: Войти
+  register: Регистрация
+
+  # PROFILE
+  edit_details: Изменить Данные
+  avatar: Аватар
+  renew_avatar: Обновить Аватар
+  edit_main_details: Основные
+  edit_avatar: Аватар(изображение)
+  release: Отмена
+  blacklist_friend: В черный список
+  add_friend: Добавить в друзья
+  cancel_friend: Отменить приглашение
+  delete_friend: 'Удалить из друзей'
+  friends: Друзья
+  pending_friends: Заявки в друзья 
+  friends_online: Друзья Онлайн
+  blacklist: Черный Список
+  friendship_approved: Приглашение принято
+  friendship_exists: Вы не можете отправить приглашение повторно, пока Ваш друг не его не отклонит
+  confirm_friend_deletion: 'Вы действительно хотите удалить %{name} из друзей?'
+  confirm_blacklisting: 'Вы действительно хотите добавить %{name} в черный список?'
+  cancel_friendship: Отменить приглашение?
+  cancel_deletion: Отменить
+  remove_from_blacklist: Убрать из черного списка
+  added_to_blacklist: Перенесен в черный список
+  removed_from_blacklist: Удален из черного списка
+  invite_sent: Приглашение отправлено
+  really_delete_from_blacklist: Действительно убрать пользователя из черного списка?
+  really_add_friend: Действительно добавить в друзья?
+  # Friendships
+
+  your_friends_count: 'У вас %{count} друзей'
+  user_friends_count: 'У %{user} %{count} друзей'
+  friendship_canceled: '%{user} удален из друзей'
+  friendship_rejected: 'Приглашение от %{user} отменено'
+
+  # Messages
+  messages: Сообщения
+  write_message: Написать сообщение
+  messages_marked: Сообщений Отмечено
+  delete_message: Удалить
+  message_deleted: Сообщение удалено
+  message_recovered: Сообщение восстановлено
+  messages_recovered: Сообщения восстановлены
+  messages_deleted: Сообщения удалены
+  failed_to_delete_messages: Некоторые сообщения не удалось удалить, попробуйте еще раз
+  send_message: Отправить Сообщение
+  message_created: Сообщение отправлено
+  incoming_messages: Входящие
+  sent_messages: Исходящие
+  subject: Тема
+  whom_to: Кому
+  recipient: Получатель
+  new_message: Написать Сообщение
+  mark_messages_as_read: Отметить как прочитанные
+  read_messages: Прочитанные
+  unread_messages: Непрочитанные
+  all_messages: Все
+  mark_messages: Отметить
+  recover_messages: Восстановить удаленные сообщения
+
+  # Albums
+  albums: Фото альбомы
+  album_created: Альбом создан
+  album_deleted: Альбом удален
+  create_album: Создать новый альбом
+  delete_album: Удалить Альбом
+  delete_album_confirmation: Удалить Альбом? Все фотографии будут также удалены
+  submit_album: Создать
+  album_title: Название
+  album_description: Описание
+  album_updated: Обновлено
+
+  # Notices
+  welcome: Добро Пожаловать
+  succesfully_updated: 'Обновлено Успешно: %{updated}'
+
+  # Controllers
+  user_details: Данные пользователя
+
+  date:
+    formats:
+      default: "%d %M %Y"
+      long: "%e %B %Y"
+      short: "%d/%M/%y"
+    order:
+      - :year
+      - :month
+      - :day
+    month_names: [~, января, февраля, марта, апреля, мая, июня, июля, августа, сентября, октября, ноября, декабря]
+    standalone_month_names: [~, Январь, Февраль, Март, Апрель, Май, Июнь, Июль, Август, Сентябрь, Октябрь, Ноябрь, Декабрь]
+    abbr_month_names: [~, янв., февр., марта, апр., мая, июня, июля, авг., сент., окт., нояб., дек.]
+    standalone_abbr_month_names: [~, янв., февр., март, апр., май, июнь, июль, авг., сент., окт., нояб., дек.]
+
+    day_names: [воскресенье, понедельник, вторник, среда, четверг, пятница, суббота]
+    standalone_day_names: [Воскресенье, Понедельник, Вторник, Среда, Четверг, Пятница, Суббота]
+    abbr_day_names: [Вс, Пн, Вт, Ср, Чт, Пт, Сб]
+
+  time:
+    formats:
+      default: "%d %B %Y в %H:%M"
+
+    
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              too_short: Слишком короткий пароль
+            login:
+              invalid: Пожалуйста, используйте латинские буквы цифры и (. _ -)
+        album:
+          attributes:
+            description:
+              too_short: Слишком короткое описание ( должно быть от 2 до 500 символов )
+              too_long: Слишком длинное описание ( должно быть от 2 до 500 символов )
+            latinized_title:
+              blank: Название альбома не может быть пустым ( В названии должно быть хотя бы 2 буквы или цифры )
+              too_short: Название альбома не может быть пустым ( В названии должно быть хотя бы 2 буквы или цифры )
+              too_long: Слишком длинное название ( должно быть от 2 до 25 символов )
+              taken: У вас уже есть альбом с таким названием
+

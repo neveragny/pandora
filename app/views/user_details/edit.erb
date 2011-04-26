@@ -1,0 +1,36 @@
+<%= render :partial => 'shared/users/sections' %>
+<h1><%= t :hello, :name => current_user.login %></h1>
+<% @details = current_user.details %>
+
+<%= render :partial => 'shared/errors', :locals => {:target => @details} %>
+
+<%= form_for @details, :html => {:method => :put} do |f| %>
+
+    <div class="row">
+      <%= f.label(t :first_name) %>: <%= f.text_field :first_name, :value => @details.first_name  %>
+    </div>
+    <div class="row">
+      <%= f.label(t :last_name)  %>: <%= f.text_field :last_name, :value => @details.last_name %>
+    </div>
+    <div class="row">
+      <%= f.label(t :country) %> <%= f.select(:country, Countries.all.map {|c| [c.russian_name, c.name]}, :html => {
+            :selected => @details.country_origin ? @details.country_origin.russian_name : nil
+    })
+      %>
+    </div>
+    <div class="row">
+      <%= f.label(t :city) %> <%= f.text_field :city, :value => @details.city %>
+    </div>
+
+    <div class="row">
+      <%= f.label(t :phone) %>  <%= f.text_field :phone, :value => @details.phone %>
+    </div>
+    <div class="row">
+      <%= f.label(t :website) %> <%= f.text_field :website, :value => @details.website %>
+    </div>
+    <div class="row">
+      <%= f.label(t :birth_date) %> <%= f.date_select :birth_date, {:start_year => 1950, :end_year => Time.now.year - 5} %>
+    </div>
+    <%= f.submit :value => t(:update), :disable_with => t(:please_wait) %>
+
+<% end %>

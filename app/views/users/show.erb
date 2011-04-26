@@ -1,0 +1,31 @@
+<% if profile_owner? %>
+    <%= render :partial => 'shared/users/header' %>
+<% end %>
+
+<% if profile_owner? %>
+    <% pending_friends_count = User.pending_friends_of(current_user).count.to_i %>
+    <% if pending_friends_count > 0 %>
+        <%= link_to friends_path(current_user, :section => 'pending') do %>
+            <span><%= t(:friends) %>(<strong><%= pending_friends_count %></strong>)</span>
+        <% end %>
+    <% else %>
+        <%= link_to t(:friends), friends_path(current_user) %>
+    <% end %>
+    <%= link_to t(:messages), user_messages_path(current_user) %>
+<% else %>
+    <%= link_to t(:friends), friends_path(@user) %>
+<% end %>
+
+<%= link_to t(:albums), user_albums_path(@user) %>
+
+
+<% if !profile_owner? && current_user %>
+    <% if current_user.friendship_with(@user).first %>
+        <%= destroy(current_user.friendship_with(@user).first) %>
+    <% elsif current_user.friendship_with(@user, :approved => :all).first.nil? %>
+        <%= add %>
+    <% end %>
+<% end %>
+
+
+

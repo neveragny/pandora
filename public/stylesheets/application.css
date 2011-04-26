@@ -1,0 +1,133 @@
+/* Applications.css */
+
+/***************** Rails specific *****************/
+/*div.field_with_errors {display:inline} */
+div.notice {color:green;}
+div.alert {color:red;}
+div.warning {color:orange;}
+/***************** Rails specific END *****************/
+
+/***************** Shared *****************/
+li.error { color: red }
+a.inactive {color:gray; text-decoration:none; cursor:default;}
+.hidden { display:none; }
+#opaco {
+    background-color: #000000; left: 0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";/* IE8 */
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity = 70); /* IE5+ */
+    filter: alpha(opacity=70);/* IE4- */
+    moz-opacity: 0; /* Mozilla */
+    -khtml-opacity: 0; /* Safari */
+    opacity: 0;  /* general CSS3 */
+    position: absolute; top: 0; width: 100%; z-index: 10;
+}
+#popup textarea {
+    display: block;
+    width: auto;
+    margin-bottom: 10px;
+}
+.clear-both { clear:both }
+.float-left { float:left }
+
+#popup {
+    background-color: #FFFFFF; position: fixed; left:50%; top:50%; min-width: 300px; z-index: 11;
+}
+td.middle-vertical-align { vertical-align:middle; }
+td.top-vertical-align { vertical-align:top; }
+.text-align-center { text-align:center; }
+
+/**** Bases ****/
+/* body {background: url(/images/background.png)} */
+body {background: white;color:black;}
+/**** Bases END ****/
+a.new-friends {margin-left: -4px; text-decoration:none; color:red;}
+
+/**** Forms ****/
+#response_form {display:none;}
+/**** Forms ****/
+
+/**** Posts ****/
+strong.reply {cursor:pointer}
+
+.author-male a {color:#32A6D4}
+.author-female a {color:#D94A64}
+
+/*div.response div {margin-top:15px; padding: 10px;}*/
+
+div.parent .head, div.parent .head-hidden {
+    background: url(/images/arr.gif) no-repeat 34px 4px;
+    overflow: hidden; height:15px; z-index:1;
+}
+
+div.parent .head-hidden { display: none; }
+/* BLUE: #5599BB */
+div.parent .body {background:white;color:black;width: 600px; padding:5px; margin: 10px;}
+div.response .body {color:#696969; background:white; margin-top:10px;}
+div.parent a {text-decoration:none;}
+
+div.response {padding:5px 10px;}
+
+div.parent ul.responses {background:white; color:black; width: 670px; margin: 0 0 5px 25px;}
+strong.cancel-upload { display: none; cursor:pointer; color:red; }
+/*div.response {margin: 10px 10px 10px 25px;}*/
+/**** Posts END ****/
+
+/***************** Shared end *****************/
+
+/***************** Profiles *****************/
+div#avatar-preview {width: 200px; height: 200px; overflow:hidden;}
+input#release_jcrop {display:none;}
+
+/* MESSAGES */
+input#message_subject { padding: 5px 7px; width:290px; border:1px solid gray;}
+
+div#recipients-container { width: 300px; padding:2px; }
+#users-select {display: block; border:none;  width:290px; float:left; padding-left:2px;}
+.token {float:left; background: gray; color:white; margin: 2px 3px 0 0; min-width:40px;}
+.token-focused {color:white; background:blue}
+.remove-token {
+    cursor:pointer;
+    padding: 10px;
+    background: url(/images/cancel.gif) center no-repeat;
+    vertical-align:top; width:20px; height:8px!important;
+}
+div#avatar { width:100px; height:100px; border:1px solid black; }
+td#avatar-row { padding:50px 30px 50px 0; }
+td#recipients-row { vertical-align:middle;padding-right:15px; }
+div#new-message-form-container { margin-left:30px; }
+
+tr.deleted-message { display:none; }
+
+td.message-details { color:gray; font-size:12px; font-weight:bold; padding:5px; }
+td.message-body { padding:25px; width:300px;}
+table#messages td, table#messages, th {   }
+div#options { display:none; padding: 15px;  }
+div#options-placeholder { height: 50px; width:600px; }
+a.recover-message { color:gray; text-decoration:none; font-size:12px; border-bottom: 1px dashed gray; }
+a.recover-messages { margin-left: 100px; color:gray; font-size:12px; }
+/* MESSAGES END */
+
+/* FRIENDSHIPS */
+table#friends { border: 1px solid gray;   }
+table#friends td { border-bottom: 1px solid gray;  }
+td.friend-avatar { padding: 15px; }
+td.friend-info, td.friend-options { padding: 25px 15px 15px 15px; }
+td.friend-info { width: 150px; }
+td.friend-options { min-width: 165px; }
+/* FRIENDSHIPS END */
+
+/* ALBUMS */
+div#new-album-form-container { display:none; }
+h1#create-album { cursor:pointer; }
+div#albums { width: 800px; }
+div.album { float:left; padding: 15px; margin: 10px;  width:170px; height:170px;
+  border:1px solid black; -webkit-border-radius:2px; background:black;color:white;
+}
+div.album .album-cover { width:150px; height: 150px; }
+div#album-settings {float:left; width:200px; height:500px; border-right:1px solid red; margin-top:15px;}
+/* ALBUMS END */
+
+/***************** Profiles END ***************/
+.ui-menu-item { font-size: 14px; font-weight:bold; background:none; color:black;}
+.thin-border { border: 1px solid gray; }
+.autocompletion-item { border-bottom : 1px dashed black;}
