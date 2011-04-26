@@ -1,5 +1,5 @@
-# Licemerov
+# Pandora 
 
-This is a social network built using 
-[*Rails3]
+This is a social network built using Rails 3
+
 
