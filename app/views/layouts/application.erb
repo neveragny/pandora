@@ -1,30 +1,73 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html>
 <head>
-  <title>Licemerov.net</title>
-  <%= stylesheet_link_tag :defaults %>
-  <%= javascript_include_tag :defaults %>
+  <meta name="MSSmartTagsPreventParsing" content="true" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>Пандора - проект "Живая база недвижимости" Киев.</title>
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+
+  <%= stylesheet_link_tag 'main.css', 'applesearch.css', 'css3buttons.css', 'reset.css' %>
+  <%= stylesheet_link_tag '/fancybox/jquery.fancybox-1.3.4.css' %>
+  <%= javascript_include_tag 'jquery.js', 'rails.js', 'application.js', 'applesearch.js'%>
   <%= javascript_include_tag 'form', 'jquery.remotipart' %>
+  <%= javascript_include_tag '/fancybox/jquery.fancybox-1.3.4.pack.js', '/fancybox/jquery.mousewheel-3.0.4.pack.js'%>
+  <%= yield :head %>
   <%= csrf_meta_tag %>
-  <%= yield(:head) %>
 </head>
 <body>
-<%= render :partial => 'shared/header' %>
+
 <% if @user && @user.avatar.exists? %>
     <% user_attrs = "#{@user.login},#{@user.gender},#{@user.avatar.url(:small)},#{@user.id}" %>
 <% else %>
     <% user_attrs = nil %>
 <% end %>
-<div id="wrapper" data-user="<%= user_attrs %>" class="<%= controller_name %>">
 
-  <div id="notices">
-    <div class="notice"><%= flash[:notice] %></div>
-    <div class="alert"><%= flash[:alert] %></div>
-    <div class="warning"><%= flash[:warning] %></div>
-  </div>
+    <div id="wrapper" data-user="<%= user_attrs %>" class="<%= controller_name %>">
 
-  <%= yield %>
-</div>
+        <div id="errors">
+          <div class="notices"><%= flash[:notice] %></div>
+          <div class="alerts"><%= flash[:alert] %></div>
+          <div class="warnings"><%= flash[:warning] %></div>
+        </div>
 
+        <div class="header">
+          <!-- navigation -->
+            <div class="w-nav clf">
+              <%= render :partial => 'traffic/jam' %>
+
+              <%= render :partial => 'shared/header' %>
+
+          </div>
+        </div>
+        
+<%= yield %>
+
+    </div>
+    <div id="spinner" class="loading">
+      <span>Загрузка..</span>
+      <img width="" height="" src="/images/loading.gif" class="" alt=""> 
+    </div>
 </body>
 </html>
+
+<script>
+    $(" span a.link_main").mouseenter(function(){
+        $("span.sub_summer_main, span.sub_summer_main a").fadeIn(1000);
+    });
+     $("span.sub_summer_main").mouseleave(function(){
+       setTimeout(function(){
+           $("span.sub_summer_main").fadeOut();
+       },250);
+     });
+    $("div#login_link a.signin_link").click(function(){
+      $("div#login").fadeIn(1000);
+    });
+    $("div#login span.close_login").click(function(){
+      $("div#login").fadeOut(1000);
+    });
+
+</script>
+
+

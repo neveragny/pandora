@@ -1,0 +1,22 @@
+<div id="applesearch">
+<%#= form_tag("#", :method => "get") do %>
+
+
+  <span class="sbox_l"></span>
+  <span class="sbox">
+    <input id="srch_fld" results="5" onkeyup="applesearch.onChange('srch_fld','srch_clear')" />
+  </span>
+  <span class="sbox_r" id="srch_clear"></span>
+
+  <p class="search_selects">
+    <span id="sel_rooms" class="select">все</span>
+    <%= select_tag "rooms", options_for_select([["все", 0],["1 комнатные", 1], ["2 комнатные",2], ["3 комнатные",3], ["4 комнатные",4] , ["5 комнатные",5], ["6 комнатные",6]]), :id => "rooms_num", :class => "styled", :name => "d"  %>
+    <span id="sel_dist" class="select">весь Киев</span>
+    <%= collection_select :district, :id, Dist.all, :dist_code, :dist_name, {:prompt => "весь Киев"}, {:class => "styled"} %>
+  </p>
+  <span id="search_rent"><a class="magnifier button" href="#"><span class="magnifier icon"></span>поиск</a></span>  
+
+  <%#= submit_tag "найти", :class => "search_submit" %>
+<%# end %>
+<div style="clear: both;"></div>
+</div>

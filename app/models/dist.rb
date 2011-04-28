@@ -1,3 +1,3 @@
 class Dist < ActiveRecord::Base
-  establish_connection :countries
+  establish_connection :rents
 end

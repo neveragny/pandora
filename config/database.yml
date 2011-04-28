@@ -29,7 +29,7 @@ countries:
   poll: 5
   timeout: 5000
 
-rent:
+rents:
   adapter: sqlite3
   database: db/rents.sqlite3
   poll: 5

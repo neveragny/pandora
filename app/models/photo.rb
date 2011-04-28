@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  establish_connection :countries
+  establish_connection :rents
   belongs_to :rent
 
   has_attached_file :photo,

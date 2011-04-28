@@ -1,5 +1,5 @@
 class Rent < ActiveRecord::Base
-  establish_connection :countries
+  establish_connection :rents
   has_many :photos
   attr_accessor :img_amount
 

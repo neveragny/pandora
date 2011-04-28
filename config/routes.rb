@@ -1,6 +1,24 @@
 Licemerov::Application.routes.draw do
 
-  root :to => 'main#index'
+  root :to => 'estate#index'
+
+  resources :estate do
+      collection do
+        get :result
+        get :paging
+      end
+    end
+
+  # user sessions routes
+  get '/registration' => 'users#new', :as => :register
+  get '/logout' => 'user_sessions#destroy', :as => :logout
+  get '/login' => 'user_sessions#new', :as => :login
+
+  match '/:user_profile', :to => 'users#show', :as => :user_profile
+  match '/:user_profile/edit', :to => 'users#edit', :as => :edit_profile
+
+  match 'estate/result', :to => 'estate#result'
+
   resources :root_entries, :only => [:create, :update], :controller => :main
 
   # user sessions routes

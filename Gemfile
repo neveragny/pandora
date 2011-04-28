@@ -22,6 +22,8 @@ gem 'unicode'
 # rails g jquery:install.
 gem 'jquery-rails'
 
+gem 'mechanize'
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

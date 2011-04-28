@@ -1,0 +1,12 @@
+              <% probki = get_traffic %>
+
+              <span style="color:black;margin-right:100px;font-size:10px">
+                <span>
+                    <span style="">Пробки:</span>
+                    <span class="probki_light" style=""><img src="<%= "/images/traffic/#{probki["icon"]}" %>" alt=""></span>
+                    <span style="font-size:9px">(<%= probki["time"] %> )</span>
+                    <b style="padding-left:7px;"><%= probki["level"] %></b>
+                    <span class="probki" style="color:black;font-size:small; "><%= probki["info"] %></span>
+
+                </span>
+              </span>

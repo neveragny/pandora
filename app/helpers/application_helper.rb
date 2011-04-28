@@ -1,4 +1,5 @@
 module ApplicationHelper
+# encoding: utf-8
   def get_traffic
     traffic = Hash.new
     agent = Mechanize.new { |a|
@@ -15,13 +16,13 @@ module ApplicationHelper
     traffic["info"] = xml ? xml.xpath("//region[@id='143']/hint").text : ""
     traffic["icon"] = xml ? xml.xpath("//region[@id='143']/icon").text + ".png" : "green.png"
     traffic["level"] = case traffic["level"]
-        when "0" then "0 баллов"
-        when "1" then "1 балл"
-        when "2" then "2 балла"
-        when "3" then "3 балла"
-        when "4" then "4 балла"
-        when "5" then "5 баллов"
-        else "#{traffic["level"]} баллов"
+        when "0" then "0 points"
+        when "1" then "1 point"
+        when "2" then "2 points"
+        when "3" then "3 points"
+        when "4" then "4 points"
+        when "5" then "5 points"
+        else "#{traffic["level"]} points"
     end
 
     logger.debug("######################")

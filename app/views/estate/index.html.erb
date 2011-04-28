@@ -1,0 +1,31 @@
+
+<div class="main">
+  <div class="estate_search1">
+    <div class="search-line-wrapper">
+      <div class="search-line-decor">
+        <%= render :partial => "searh_form", :object => @rents %>
+      </div>
+    </div>
+  </div>
+
+  <div class="result_content">
+    <div id="result_content_table">
+      <div id="search-results" class="search-results">
+        <%= render :partial => 'result' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  div.result_content{
+    font: 70.5%/1.4 Helvetica, sans-serif;
+    margin-left:20px;
+  }
+</style>
+
+<% content_for :head do %>
+  <%= javascript_include_tag 'rents.js' %>
+<% end %>
+
