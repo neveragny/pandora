@@ -1,0 +1,15 @@
+common: &common
+  access_key_id: AKIAIRAKQIZVMOVIPVHQ
+  secret_access_key: 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
+
+development:
+  <<: *common
+  bucket: comilffo
+
+test:
+  <<: *common
+  bucket: comilffo-test
+
+production:
+  <<: *common
+  bucket: comilffo_prod

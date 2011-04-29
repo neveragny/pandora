@@ -24,9 +24,6 @@ module ApplicationHelper
         when "5" then "5 points"
         else "#{traffic["level"]} points"
     end
-
-    logger.debug("######################")
-    logger.debug(traffic)
     traffic
   end
 end

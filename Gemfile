@@ -6,7 +6,7 @@ gem 'rails', '3.0.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
-
+gem 'mysql2'
 # Authlogic for authentication
 gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git',
   :branch => 'rails3'
@@ -23,6 +23,8 @@ gem 'unicode'
 gem 'jquery-rails'
 
 gem 'mechanize'
+
+gem "s3"
 
 
 # Use unicorn as the web server
