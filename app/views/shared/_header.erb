@@ -1,9 +1,9 @@
 <div id="login_link">
   <% if current_user %>
-    <%= link_to t(:profile), home_page %>&nbsp;&nbsp;
-    <%= link_to t(:logout), logout_path %>
+    <%= link_to t(:profile), home_page, :class => "nav-a" %>&nbsp;&nbsp;
+    <%= link_to t(:logout), logout_path, :class => "nav-a"  %>
   <% else %>
-    <%= link_to t(:login), login_path, :class => "signin_link"  %>&nbsp;&nbsp;
-    <%= link_to t(:register), register_path, :class => "" %>
+    <%#= link_to t(:login), register_path , :class => "nav-a" %>
+    <%= link_to t(:login_or_register), login_path, :class => "nav-a" %>
   <% end %>
 </div>

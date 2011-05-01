@@ -1902,8 +1902,7 @@ A.graygreen:hover {color: #00840d !important; background-color: #E5FFE8 !importa
     margin-bottom: 10px;
 }
 .main-search {
-    padding: 0px 7px;
-    background: #EFEFEF;
+    padding: 0 7px;
     color: #000;
     height: 34px;
     vertical-align: middle;
@@ -2185,7 +2184,7 @@ width: 520px; display: block; margin: 66px 1px 0 1px !important; z-index: auto; 
 ---------------------------------------- */
 #result_content H2 {font-weight: bold; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px;}
 #result_content H2 .black {color: black;}
-.search-results {margin: 15px 0; position: relative;}
+.search-results {margin: 15px 0; position: relative; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:70%;}
 	.search-results TH {font-size: 11px; font-weight: normal; white-space: nowrap; vertical-align: top !important; line-height: 18px; }
 	.search-results TH, .search-results TD {
 		padding: 5px 4px;
@@ -4963,7 +4962,7 @@ BODY.clients-page .sidebar-block STRONG {font-size: 15px;}
     .project-info2 .links .bolder{ padding-left: 10px;}
     .project-info2 .links .bolder a:hover {text-decoration: none; color: #000; background: none;}
 
-.copyrights2 { padding-top: 10px; border-top: 4px solid #E1E1E1;line-height: 2em;font-size: 1em; color: #717171;}
+.copyrights2 { width:100%; padding-top: 10px; border-top: 4px solid #E1E1E1;line-height: 1em;font-size: 0.7em; color: #717171;}
     .copyrights2 .black {color: black;}
 	.copyrights2 A {text-decoration: none; border-bottom: none;}
 	.project-info2 .feedback A {display: inline;}

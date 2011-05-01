@@ -1,39 +1,54 @@
-<div class='pagination'>
-  <span class="paging"></span>
-</div>
-<div class="result-table">
-  <table id="estates_table" class="rents_table">
-    <tbody style="display:none;">
-      <tr>
-        <th></th>
-        <th id="room_sorter">
-          <a href="#">комнат</a>
-          <a href="#">
-            <span class="ico downn"></span>
-          </a>
-        </th>  
-        
-        <th id="adress_sorter">месторасположение</th>
-        <th id="floor_sorter">
-          <a href="#">этаж</a>
-          <a href="#">
-            <span class="ico downn"></span>
-          </a>
-        </th>
-        <th id="cost_sorter">
-          <a href="#">цена</a>
-          <a href="#">
-            <span class="ico downn"></span>
-          </a>
-        </th>
-        <th>
-          описание
-          <a class="green description-extra-button" href="#">развернуто</a>
-        </th>
-        <th></th>
-      </tr>
-    </tbody>
+<div id="result_content">
+
+<h2>Результаты поиска:
+    <span class="black">
+    <a href="#">найдено<span id="estates_result_count">17359</span>объектов</a>
+    |
+    <!--<a class="estates-table-toggle-map-button" href="#">Свернуть карту</a>-->
+    <!--|-->
+    <a class="side-bar-button" href="#">Скрыть правую колонку</a>
+    </span>
+</h2>
+
+
+<div id="result_content_table">
+    <div id="search-results" class="search-results">
+        <table id="estates_table">
+            <tbody>
+              <tr>
+                <th></th>
+                <th id="room_sorter">
+                  <a href="#">комнат</a>
+                  <a href="#">
+                    <span class="ico downn"></span>
+                  </a>
+                </th>
+
+                <th id="adress_sorter">месторасположение</th>
+                <th id="floor_sorter">
+                  <a href="#">этаж</a>
+                  <a href="#">
+                    <span class="ico downn"></span>
+                  </a>
+                </th>
+                <th id="cost_sorter">
+                  <a href="#">цена</a>
+                  <a href="#">
+                    <span class="ico downn"></span>
+                  </a>
+                </th>
+                <th>
+                  описание
+                  <a class="green description-extra-button" href="#">развернуто</a>
+                </th>
+                <th></th>
+              </tr>
+            </tbody>
 </table>
+</div>
+
+</div>
+</div>
 </div>
 
 
@@ -44,100 +59,100 @@
 span.paging{ font-weight: 400; font: 1.2em/100% arial; min-height:26px;  }
 span.paging a, span.paging em{margin: 0 0.2em 0 0.1em; padding: .3em .4em; font-style:normal;}
 span.paging a:hover { background: #c5dae5; color: #456b7e; }
-span.paging a{text-decoration:underline;}  
+span.paging a{text-decoration:underline;}
 a.page_first, a.page_last{display:none;}
 
-/* Search Results
----------------------------------------- */
-#result_content H2 {font-weight: bold; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px;}
-#result_content H2 .black {color: black;}
-.search-results {margin: 15px 0; position: relative;}
-    .search-results TH {font-size: 11px; font-weight: normal; white-space: nowrap; vertical-align: top !important; line-height: 18px; }
-    .search-results TH, .search-results TD {
-        padding: 5px 4px;
-        text-align: left;
-        vertical-align: middle;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
-    .search-results TH, .search-results .alt TD {background-color: #FFF; }
-    .search-results TD {background-color: #F2F2F2;}
-    .search-results TH A {border: none;}
+/* Search Results*/
+/*---------------------------------------- */
+/*#result_content H2 {font-weight: bold; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px;}*/
+/*#result_content H2 .black {color: black;}*/
+/*.search-results {margin: 15px 0; position: relative;}*/
+    /*.search-results TH {font-size: 11px; font-weight: normal; white-space: nowrap; vertical-align: top !important; line-height: 18px; }*/
+    /*.search-results TH, .search-results TD {*/
+        /*padding: 5px 4px;*/
+        /*text-align: left;*/
+        /*vertical-align: middle;*/
+        /*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+        /*}*/
+    /*.search-results TH, .search-results .alt TD {background-color: #FFF; }*/
+    /*.search-results TD {background-color: #F2F2F2;}*/
+    /*.search-results TH A {border: none;}*/
 
-.search-results .chk {width: 25px; padding: 0px;}
-.search-results .ob-addfav {}
-.search-results .ob-addfav div {width: 15px; height: 16px; background: transparent url('/images/sprite.png') -48px -93px no-repeat; display: inline-block;  margin: 0px 7px 0 5px; position: relative; top: 3px; float: left;}
-.commer .ob-addfav div {top: 0px}
-.search-results .chk .ob-addfav div{top: 0px}
-    .search-results .ob-addfav a {border: none; font-weight: normal; color: #000;}
-    .search-results .ob-addfav a.selected div {background-position:-77px -98px !important;width: 13px;
-    height: 13px;}
+/*.search-results .chk {width: 25px; padding: 0px;}*/
+/*.search-results .ob-addfav {}*/
+/*.search-results .ob-addfav div {width: 15px; height: 16px; background: transparent url('/images/sprite.png') -48px -93px no-repeat; display: inline-block;  margin: 0px 7px 0 5px; position: relative; top: 3px; float: left;}*/
+/*.commer .ob-addfav div {top: 0px}*/
+/*.search-results .chk .ob-addfav div{top: 0px}*/
+    /*.search-results .ob-addfav a {border: none; font-weight: normal; color: #000;}*/
+    /*.search-results .ob-addfav a.selected div {background-position:-77px -98px !important;width: 13px;*/
+    /*height: 13px;}*/
 
-    .search-results .rooms {
-        width: auto !important;
-        text-align: left;
-        padding-left: 5px;
-        }
+    /*.search-results .rooms {*/
+        /*width: auto !important;*/
+        /*text-align: left;*/
+        /*padding-left: 5px;*/
+        /*}*/
 
-    .search-results .rooms, .search-results .price, .search-results .station STRONG, .search-results .desc STRONG {font-weight: bold; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
-    .search-results .station STRONG, .search-results .desc STRONG {font-size: 12px; line-height: 11px;}
-    .search-results .station STRONG, .search-results .contacts strong, .search-results .user strong {display: block;}
-    .search-results .rooms {font-size: 15px;}
-    .search-results .desc {width: 45%;}
-    .search-results .desc A.estate-link {border-bottom: none;}
-    .search-results .desc A.estate-link:visited {color: #666;}
-    .search-results .desc .estate-display-name {border-bottom: none;}
+    /*.search-results .rooms, .search-results .price, .search-results .station STRONG, .search-results .desc STRONG {font-weight: bold; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}*/
+    /*.search-results .station STRONG, .search-results .desc STRONG {font-size: 12px; line-height: 11px;}*/
+    /*.search-results .station STRONG, .search-results .contacts strong, .search-results .user strong {display: block;}*/
+    /*.search-results .rooms {font-size: 15px;}*/
+    /*.search-results .desc {width: 45%;}*/
+    /*.search-results .desc A.estate-link {border-bottom: none;}*/
+    /*.search-results .desc A.estate-link:visited {color: #666;}*/
+    /*.search-results .desc .estate-display-name {border-bottom: none;}*/
 
-    .search-results .desc span.description-extra{display:none;}
-    .search-results a.green{color: #00840d !important;border-bottom:1px dashed;}
-    .search-results a.green:hover {background-color: #b1f2b7;}
+    /*.search-results .desc span.description-extra{display:none;}*/
+    /*.search-results a.green{color: #00840d !important;border-bottom:1px dashed;}*/
+    /*.search-results a.green:hover {background-color: #b1f2b7;}*/
 
-    .search-results td.desc a.green{border:none;}
+    /*.search-results td.desc a.green{border:none;}*/
 
 
-    .search-results .price, .search-results .percents, .search-results .contacts {white-space: nowrap;}
-    .search-results .price {font-size: 18px;}
-    .search-results .station A {
-        text-decoration: none;
-        border: none;
-        padding: 0 2px;
-        }
-        .search-results .station A:hover {
-            text-decoration: none;
-            }
-    .search-results .selected td {background-color: #FFFF99 !important;}
-    .search-results .with_photo_link {background: #54B328; padding: 0 5px; color: white; border-bottom: 1px dotted #000;}
-    .search-results .no-commission {background: #BE007F; padding: 0 5px; color: white;}
-    .search-results .agents-dont-call {background: #0095CB; padding: 0 5px; color: white;}
-    .search-results .recomended {background: #BE007F; padding: 0 5px; color: white;}
-    .search-results .featured TD {background: #FFFF99;}
-    .search-results .trapped TD {background: #E5FDE8;}
+    /*.search-results .price, .search-results .percents, .search-results .contacts {white-space: nowrap;}*/
+    /*.search-results .price {font-size: 18px;}*/
+    /*.search-results .station A {*/
+        /*text-decoration: none;*/
+        /*border: none;*/
+        /*padding: 0 2px;*/
+        /*}*/
+        /*.search-results .station A:hover {*/
+            /*text-decoration: none;*/
+            /*}*/
+    /*.search-results .selected td {background-color: #FFFF99 !important;}*/
+    /*.search-results .with_photo_link {background: #54B328; padding: 0 5px; color: white; border-bottom: 1px dotted #000;}*/
+    /*.search-results .no-commission {background: #BE007F; padding: 0 5px; color: white;}*/
+    /*.search-results .agents-dont-call {background: #0095CB; padding: 0 5px; color: white;}*/
+    /*.search-results .recomended {background: #BE007F; padding: 0 5px; color: white;}*/
+    /*.search-results .featured TD {background: #FFFF99;}*/
+    /*.search-results .trapped TD {background: #E5FDE8;}*/
 
-    .search-results span.graysmall {color: #929292;font-size: 10px; padding: 0px; margin: 0px;}
-    .search-results span.magentasmall {color: #be007f;font-size: 10px; padding: 0px; margin: 0px;}
-    .search-results .upp, .search-results .downn {display: block; margin-left: 6px;}
-    .search-results #room_sorter {padding-bottom: 8px;}
-    .search-results #cost_per_meter a {line-height: 10px;}
+    /*.search-results span.graysmall {color: #929292;font-size: 10px; padding: 0px; margin: 0px;}*/
+    /*.search-results span.magentasmall {color: #be007f;font-size: 10px; padding: 0px; margin: 0px;}*/
+    /*.search-results .upp, .search-results .downn {display: block; margin-left: 6px;}*/
+    /*.search-results #room_sorter {padding-bottom: 8px;}*/
+    /*.search-results #cost_per_meter a {line-height: 10px;}*/
 
-    .search-results table#estates_table {width:100%;}
+    /*.search-results table#estates_table {width:100%;}*/
 /* ICO */
-.ico {background: url("/images/sprite.png") no-repeat scroll 0 0 transparent;}
-.ico {
-    border: medium none !important;
-    display: inline-block;
-    font-size: 0;
-    position: relative;}
-.ico.new_win {
-    background-position: -40px -30px;
-    height: 11px;
-    margin: 0 5px;
-    top: 2px;
-    width: 11px;
-}  
-.ico.downn{
-  background-position: -104px -5px;
-  height: 3px;
-  margin-right: 4px;
-  width: 5px;
-}
+/*.ico {background: url("/images/sprite.png") no-repeat scroll 0 0 transparent;}*/
+/*.ico {*/
+    /*border: medium none !important;*/
+    /*display: inline-block;*/
+    /*font-size: 0;*/
+    /*position: relative;}*/
+/*.ico.new_win {*/
+    /*background-position: -40px -30px;*/
+    /*height: 11px;*/
+    /*margin: 0 5px;*/
+    /*top: 2px;*/
+    /*width: 11px;*/
+/*}*/
+/*.ico.downn{*/
+  /*background-position: -104px -5px;*/
+  /*height: 3px;*/
+  /*margin-right: 4px;*/
+  /*width: 5px;*/
+/*}*/
 
 </style>

@@ -1,29 +1,48 @@
-
-<div class="main">
-  <div class="estate_search1">
-    <div class="search-line-wrapper">
-      <div class="search-line-decor">
+<div id="universal_search" class="search">
+    <div class="main-search">
         <%= render :partial => "searh_form", :object => @rents %>
-      </div>
     </div>
-  </div>
-
-  <div class="result_content">
-    <div id="result_content_table">
-      <div id="search-results" class="search-results">
-        <%= render :partial => 'result' %>
-      </div>
-    </div>
-  </div>
 </div>
 
+<div class="main">
+    <div id="content" class="content">
+        <table>
+            <tbody>
+            <tr>
+            <td class="contentside">
 
-<style>
-  div.result_content{
-    font: 70.5%/1.4 Helvetica, sans-serif;
-    margin-left:20px;
-  }
-</style>
+                            <%= render :partial => 'result' %>
+
+            </td>
+            <td class="spaceside">&nbsp;</td>
+            <td id="side_bar_toggler" class="toggleside">
+                <a href="#">
+                    <span class="ico arrtoggle"></span>
+                </a>
+            </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="side_bar" class="sidebar" style="display: block;">
+<!--SIDEBAR CONTENT GOES HERE-->
+</div>
+
+<br class="clear">
+
+<div class="footer">
+        <div class="copyrights2">
+            <span class="black">&copy;</span>
+            2010 &ndash; 2011 "Пандора - живая база недвижимости" Все права защищены.
+            <a class="graygreen" href="/about">О проекте</a>
+            <a class="graygreen" href="/cooperate">Приглашаем к сотрудничеству</a>
+            <a class="graygreen" href="/reprint">Правила перепечатки</a>
+            Проект живая база по аренде квартир публикует бесплатные объявления по аренде квартир от собственников и агентств.
+        </div>
+    </div>
+
 
 <% content_for :head do %>
   <%= javascript_include_tag 'rents.js' %>

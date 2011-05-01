@@ -35,6 +35,7 @@ ru:
   logout: Выйти
   login: Войти
   register: Регистрация
+  login_or_register: войти или зарегистрироватся
 
   # PROFILE
   edit_details: Изменить Данные

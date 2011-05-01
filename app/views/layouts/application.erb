@@ -25,30 +25,62 @@
 <% end %>
 
     <div id="wrapper" data-user="<%= user_attrs %>" class="<%= controller_name %>">
-
-        <div id="errors">
-          <div class="notices"><%= flash[:notice] %></div>
-          <div class="alerts"><%= flash[:alert] %></div>
-          <div class="warnings"><%= flash[:warning] %></div>
-        </div>
+        <div class="page">
+            <div id="errors">
+              <div class="notices"><%= flash[:notice] %></div>
+              <div class="alerts"><%= flash[:alert] %></div>
+              <div class="warnings"><%= flash[:warning] %></div>
+            </div>
 
         <div class="header">
           <!-- navigation -->
             <div class="w-nav clf">
-              <%= render :partial => 'traffic/jam' %>
+                <ul class="nav-ul userbar-ul">
+                    <li class="nav-li">
+                        <dl class="nav-dl">
+                            <dt> </dt>
+                            <dd>
+                            <!--<a class="nav-a" href="/users/new">Войти или Зарегистрироваться</a>-->
+                                <%= render :partial => 'shared/header' %>
 
-              <%= render :partial => 'shared/header' %>
-
-          </div>
-        </div>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="nav-li">
+                        <dl class="nav-dl">
+                            <dt>
+                                <a href="/favorites">
+                                    <span id="favorites_counter" class="mhint mhint-big">0</span>
+                                </a>
+                            </dt>
+                            <dd>
+                                <a class="nav-a" href="/favorites">Избранное</a>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+                <p class="nav-title">Недвижимость в рамках вашего бюджета</p>
+                    <ul class="nav-ul clf">
+                        <li id="basedata" class="nav-li selected">
+                            <a class="nav-a" href="#">Базы данных<i class="tri"></i></a>
+                        </li>
+                        <li id="pubata" class="nav-li ">абаба</li>
+                        <li id="forumdata" class="nav-li nav-li-l"> <%= render :partial => 'traffic/jam' %> </li>
+                    </ul>
+            </div>
+        </div> <!-- END OF header -->
         
-<%= yield %>
+        <%= yield %>
 
-    </div>
-    <div id="spinner" class="loading">
+        </div> <!-- END OF page -->
+    </div> <!-- END OF wrapper -->
+
+    <div id="spinner" class="loading" style="display:none">
       <span>Загрузка..</span>
       <img width="" height="" src="/images/loading.gif" class="" alt=""> 
     </div>
+
+
 </body>
 </html>
 

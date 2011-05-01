@@ -114,14 +114,14 @@ $.ajax({
 
     });
 
-    $('table.rents_table tbody tr.estate-row').remove();
-    $('table.rents_table tbody').append(items.join(''));
+    $('table#estates_table tbody tr.estate-row').remove();
+    $('table#estates_table tbody').append(items.join(''));       //div#result_content_table div#search-results.search-results table#estates_table tbody
 
-    if ($('table.rents_table tbody tr.estate-row').size() > 0 ){
-      $("table.rents_table tbody tr:odd").addClass("alt");
+    if ($('table#estates_table tbody tr.estate-row').size() > 0 ){
+      $("table#estates_table tbody tr:odd").addClass("alt");
     }
 
-    $('table.rents_table tbody').fadeIn('fast', function(){
+    $('table#estates_table tbody tbody').fadeIn('fast', function(){
 
           append_paging(data.pages, dist_code, rooms, page);
         });
