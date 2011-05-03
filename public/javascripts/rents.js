@@ -42,26 +42,33 @@ $('a.green.description-extra-button').click(function(){
 //
 $('td#side_bar_toggler').hover(
   function(){
-    $('td#side_bar_toggler a span').removeClass('arrtoggle');
-    $('td#side_bar_toggler a span').addClass('white');
+//    $('td#side_bar_toggler a span').removeClass('arrtoggle');
+//    $('td#side_bar_toggler a span').addClass('white');
   },
   function(){
     $('td#side_bar_toggler a span').removeClass('white');
     $('td#side_bar_toggler a span').addClass('arrtoggle');
   });
 
-$('td#side_bar_toggler').click(function(){
-  if($('td#side_bar_toggler').attr('data-status') == "on" ){
-    $('div#mains').removeClass("mains_toggle");
-    alert("do removeClass content_toggle");
-    $('div#content').removeClass("content_toggle");
-//    $('div#side_bar').addClass("sidebar_hide");
-    $('td#side_bar_toggler').attr('data-status', 'off');}
+function hide_sidebar(){
+  var main = document.getElementById("main");
+  var cont = document.getElementById("content");
+  if($('td#side_bar_toggler a').attr('data-status') == "show" ){
+    main.style.margin= "0";
+    cont.style.padding = "0";
+    $('td#side_bar_toggler a').attr('data-status', "hide");}
   else{
-    $('div#mains').addClass("mains_toggle");
-    $('div#content').addClass("content_toggle");
-    $('div#side_bar').removeClass("sidebar_hide");
-    $('td#side_bar_toggler').attr('data-status', 'on');}
+    main.style.margin= "0 0 0 -325px";
+    cont.style.padding = "0 0 0 325px";
+    $('td#side_bar_toggler a').attr('data-status', "show");}
+}
+
+$('td#side_bar_toggler').click(function(){
+  hide_sidebar();
+});
+
+$("a.side-bar-button").click(function(){
+  hide_sidebar();
 });
 
 
@@ -92,6 +99,7 @@ $.ajax({
     $('table#estates_table tbody').fadeOut('fast', function(){
        $('span.paging').empty();
        $('div#spinner').show();
+       $('span#estates_result_count').empty();
     });
   },
   success: function(data){
@@ -124,6 +132,7 @@ $.ajax({
     $('table#estates_table tbody').fadeIn('fast', function(){
           append_paging(data.pages, dist_code, rooms, page);
     });
+    $('span#estates_result_count').append(data.amount);
   }
 });
 }   //end of render_result

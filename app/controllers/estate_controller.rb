@@ -28,12 +28,12 @@ class EstateController < ApplicationController
     rooms = params[:rooms].to_i
     page = params[:page].to_i
     search_string = params[:string]
-    @rents = Rent.get_rents(dist_code, rooms,search_string, page)
+    @rents, @amnt = Rent.get_rents(dist_code, rooms,search_string, page)
     @pages = Rent.get_pages(dist_code, rooms,search_string)
 
     respond_to do |format|
       format.html
-      format.json { render :json => {:rents => @rents, :pages => @pages} }
+      format.json { render :json => {:rents => @rents, :pages => @pages, :amount => @amnt} }
     end
   end
 

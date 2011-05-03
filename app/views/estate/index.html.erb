@@ -4,19 +4,17 @@
     </div>
 </div>
 
-<div class="main">
+<div id="main" class="main">
     <div id="content" class="content">
         <table>
             <tbody>
             <tr>
             <td class="contentside">
-
-                            <%= render :partial => 'result' %>
-
+                <%= render :partial => 'result' %>
             </td>
             <td class="spaceside">&nbsp;</td>
             <td id="side_bar_toggler" class="toggleside">
-                <a href="#">
+                <a href="#" data-status="show">
                     <span class="ico arrtoggle"></span>
                 </a>
             </td>
