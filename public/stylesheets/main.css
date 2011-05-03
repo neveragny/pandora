@@ -738,7 +738,7 @@ INPUT.txt, TEXTAREA.txt {
 	.btn-30.red I.l {background-position:0 0;}
 
 	.btn-30.green INPUT {
-		background:url(../images/btns.png) 0 -170px; repeat-x;
+		background:url(../images/btns.png) 0 -170px repeat-x;
 		color:#fff;
 	}
 
@@ -1336,7 +1336,6 @@ INPUT.txt, TEXTAREA.txt {
 		margin-left: 44px;
 		font-size: 0.9em;
 		line-height: 20px;
-		clear
 	}
 	#demo-list li.file .file-remove {
 		clear: right;
@@ -2182,7 +2181,7 @@ width: 520px; display: block; margin: 66px 1px 0 1px !important; z-index: auto; 
 
 /* Search Results
 ---------------------------------------- */
-#result_content H2 {font-weight: bold; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px;}
+#result_content H2 {display: inline; ;font-weight: bold; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px;}
 #result_content H2 .black {color: black;}
 .search-results {margin: 15px 0; position: relative; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:70%;}
 	.search-results TH {font-size: 11px; font-weight: normal; white-space: nowrap; vertical-align: top !important; line-height: 18px; }
@@ -3922,7 +3921,7 @@ table.promo2 td.bodyright {
 }
 
 
-<!-- Ä±â€¡Ã Ã”ï£¿Ã“ÃšÃ‹â€š Ã“Ã”Ã‚ï£¿Ëš Ã‹ÃÃ‚ÃŒÃ‹ â€”â€¡Â¯Ã‹ ÃƒÃ“Ã‹Ã’Ã‚Ã‚â€šâ€¡ -->
+
 
 @media all and (min-width: 0px){
    table.promo2 tr.last          {background:url('../images/opera_part.gif') no-repeat;}
@@ -5195,4 +5194,13 @@ A {color: #000000; text-decoration: none;}
 	width: 16px;
 	height: 16px;
 	background: url(../images/twitter.png) no-repeat;
+}
+
+
+
+
+/* description extra */
+
+.description-extra {
+    display:inline;
 }

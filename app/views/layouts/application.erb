@@ -24,7 +24,7 @@
     <% user_attrs = nil %>
 <% end %>
 
-    <div id="wrapper" data-user="<%= user_attrs %>" class="<%= controller_name %>">
+    <div id="wrapper" data-user="<%= user_attrs %>" class="<%= controller_name + "_pandora" %>">
         <div class="page">
             <div id="errors">
               <div class="notices"><%= flash[:notice] %></div>

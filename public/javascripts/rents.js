@@ -30,11 +30,11 @@ $('span#search_rent a').bind('click', function(){
 $('a.green.description-extra-button').click(function(){
 //  event.preventDefault();
   if($('span.description-extra').is(":visible")){
-    $('span.description-extra').hide();
+    $('span.description-extra').css("diplay", "none");
     $('a.green.description-extra-button').text("развернуто");
   }
   else{
-    $('span.description-extra').show();
+    $('span.description-extra').css("diplay", "inline-block");
     $('a.green.description-extra-button').text("коротко");
   }
 });
@@ -89,7 +89,7 @@ $.ajax({
   url:'estate/result.json?dist_code='+dist_code+'&rooms='+rooms+'&page='+page+'&string='+search_string,
   dataType: "json",
   beforeSend: function(){
-    $('table.rents_table tbody').fadeOut('fast', function(){
+    $('table#estates_table tbody').fadeOut('fast', function(){
        $('span.paging').empty();
        $('div#spinner').show();
     });
@@ -104,7 +104,7 @@ $.ajax({
                '<td class="station">'+ val.rent.adress.split(",")[2] + '</td>' +
                '<td class="floor">'+ getFloors(val.rent.floor_at, val.rent.floors) +  '</td>' +
                '<td class="price">'+ val.rent.price + '</td>' +
-               '<td class="desc">'+ images_amount(val.img_amount) +subs(val.rent.info) + '<span class="description-extra">'+ extra(val.rent.info) +'</span> ' +
+               '<td class="desc">'+ images_amount(val.img_amount) + subs(val.rent.info) + (val.rent.info == null ? "" : "...") +'<span class="description-extra">'+  extra("..."/*val.rent.info*/)  +'</span> ' +
                '<a class="green" target="_blank" href="/estate/' + val.rent.id + '">&nbsp;Подробнее о квартире<i class ="ico new_win"></i></a>'  + '</td>' +
                '<td class="contacts"><ul>');
       $.each(val.rent.phones.split(","), function(key,value) {
@@ -121,10 +121,9 @@ $.ajax({
       $("table#estates_table tbody tr:odd").addClass("alt");
     }
 
-    $('table#estates_table tbody tbody').fadeIn('fast', function(){
-
+    $('table#estates_table tbody').fadeIn('fast', function(){
           append_paging(data.pages, dist_code, rooms, page);
-        });
+    });
   }
 });
 }   //end of render_result
@@ -208,6 +207,7 @@ function append_paging(size, dist_code, rooms, page){
 
   $.each(items, function() {
       $(this).appendTo('span.paging');
+
   });
 
   if(page > 6 && page < size - 5){
