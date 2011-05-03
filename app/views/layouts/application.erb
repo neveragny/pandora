@@ -38,12 +38,11 @@
                 <ul class="nav-ul userbar-ul">
                     <li class="nav-li">
                         <dl class="nav-dl">
-                            <dt> </dt>
-                            <dd>
+
                             <!--<a class="nav-a" href="/users/new">Войти или Зарегистрироваться</a>-->
                                 <%= render :partial => 'shared/header' %>
 
-                            </dd>
+
                         </dl>
                     </li>
                     <li class="nav-li">
@@ -62,9 +61,11 @@
                 <p class="nav-title">Недвижимость в рамках вашего бюджета</p>
                     <ul class="nav-ul clf">
                         <li id="basedata" class="nav-li selected">
-                            <a class="nav-a" href="#">Базы данных<i class="tri"></i></a>
+                            <a class="nav-a" href="/">Базы данных<i class="tri"></i></a>
                         </li>
-                        <li id="pubata" class="nav-li ">абаба</li>
+                        <li id="pubata" class="nav-li ">
+                          <a class="nav-a" href="#">Айфонушка<i class="tri"></i></a>
+                        </li>
                         <li id="forumdata" class="nav-li nav-li-l"> <%= render :partial => 'traffic/jam' %> </li>
                     </ul>
             </div>

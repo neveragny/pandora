@@ -5204,3 +5204,15 @@ A {color: #000000; text-decoration: none;}
 .description-extra {
     display:inline;
 }
+
+
+/*SIGNUP*/
+.shared {
+    display: block;
+    height: 31px;
+    padding: 20px 0 0;
+}
+
+.shared a:hover{
+    color:#00840D;
+}
