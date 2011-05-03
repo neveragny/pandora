@@ -11,8 +11,9 @@ class User < ActiveRecord::Base
   acts_as_authentic do |config|
     config.login_field :login
     config.validates_format_of_login_field_options(
-        :with => /\A\w[\w\.\-_]+$/, # Original regexp was too clumsy ( allowing spaces and nasty @ thinds )
-        :message => I18n.t('ru.activerecord.errors.models.user.attributes.login.invalid')
+        :with => /\A\w[\w\.\-_]+$/ # Original regexp was too clumsy ( allowing spaces and nasty @ thinds )
+        #:message => I18n.t('ru.activerecord.errors.models.user.attributes.login.invalid')
+  #      :message => "invalid username"
     )
   end
 
