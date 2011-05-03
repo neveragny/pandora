@@ -14,7 +14,7 @@ Licemerov::Application.routes.draw do
   get '/logout' => 'user_sessions#destroy', :as => :logout
   get '/login' => 'user_sessions#new', :as => :login
 
-  match '/:user_profile', :to => 'users#show', :as => :user_profile
+  get '/:user_profile', :to => 'users#show', :as => :user_profile
   match '/:user_profile/edit', :to => 'users#edit', :as => :edit_profile
 
   match 'estate/result', :to => 'estate#result'

@@ -83,7 +83,9 @@ class ApplicationController < ActionController::Base
 
   def existent_user
     return @user if defined?(@user)
+    logger.debug @user
     @user = User.where(:login => params[:user_profile]).first
+    logger.debug "NU SUKA"
     redirect_to root_path unless @user
   end
 
