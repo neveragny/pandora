@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20110503213006) do
   create_table "bookmarks", :force => true do |t|
     t.string   "type",       :null => false
     t.string   "ref_id",     :null => false
+    t.integer  "user_id",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
