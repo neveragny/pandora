@@ -37,4 +37,18 @@ class EstateController < ApplicationController
     end
   end
 
+  def add_to_bookmarks
+    bookmark = Bookmark.new(:ref_id => params[:rent_id])
+    bookmark.type = "rent"  #THIS IMPORTANT!
+    
+    respont_to do |format|
+      if bookmark.save
+        format.json {render :json => {:result => "OK"}}
+      else
+        format.json {render :json => {:result => "NOT OK"}}
+      end
+    end
+
+  end
+
 end

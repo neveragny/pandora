@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110425151825) do
+ActiveRecord::Schema.define(:version => 20110503213006) do
 
   create_table "albums", :force => true do |t|
     t.integer  "user_id",         :default => 0,                     :null => false
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(:version => 20110425151825) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "latinized_title"
+  end
+
+  create_table "bookmarks", :force => true do |t|
+    t.string   "type",       :null => false
+    t.string   "ref_id",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "friendships", :force => true do |t|

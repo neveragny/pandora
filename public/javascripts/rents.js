@@ -1,5 +1,5 @@
 $(document).ready(function() {  
-  window.onload = function () { applesearch.init(); };
+   applesearch.init(); 
 
 if ( ! $('#estates_table td').length  && window.location.pathname == "/") {
   render_result(0, 0, 1, "");
@@ -20,12 +20,22 @@ $("select#district_id").bind('change',function () {
 $("select#rooms_num").bind('change', function(){
   $("span#sel_rooms").html($("select#rooms_num option:selected ").text());
 });
+
+$("span.ob-addfav a").live('click', function(event){
+    var id = $(this).closest('tr').attr('id');    
+    if($("tr#"+ id + " span.ob-addfav a").attr("class") == "selected"){
+      $("tr#"+ id + " span.ob-addfav a").removeClass("selected");}
+    else{
+      $("tr#"+ id + " span.ob-addfav a").addClass("selected");}
+    event.preventDefault();
+
+});
+
 //
 
 $('span#search_rent a').bind('click', function(){
   rent_search();
 });
-//
 
 $('a.green.description-extra-button').click(function(){
 //  event.preventDefault();
