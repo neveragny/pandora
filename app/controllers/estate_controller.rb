@@ -6,7 +6,8 @@ class EstateController < ApplicationController
     if params[:id] == "index"
       redirect_to "/"
     end
-#    @rents = Rent.all
+   
+    @rents, @amnt = Rent.get_rents(0, 0, "", 1)
     respond_to do |format|
       format.html
       format.json { render :json => @rents }

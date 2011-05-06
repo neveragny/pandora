@@ -1,9 +1,11 @@
 $(document).ready(function() {  
    applesearch.init(); 
 
-if ( ! $('#estates_table td').length  && window.location.pathname == "/") {
-  render_result(0, 0, 1, "");
-}
+//g_favorites_counter = FavoritesCounter;
+
+//if ( ! $('#estates_table td').length  && window.location.pathname == "/") {
+//  render_result(0, 0, 1, "");
+//}
 
 $('div.estate_search1 input').bind("keypress" ,function(e){
   if (e.keyCode == 13) {
@@ -21,15 +23,15 @@ $("select#rooms_num").bind('change', function(){
   $("span#sel_rooms").html($("select#rooms_num option:selected ").text());
 });
 
-$("span.ob-addfav a").live('click', function(event){
-    var id = $(this).closest('tr').attr('id');    
-    if($("tr#"+ id + " span.ob-addfav a").attr("class") == "selected"){
-      $("tr#"+ id + " span.ob-addfav a").removeClass("selected");}
-    else{
-      $("tr#"+ id + " span.ob-addfav a").addClass("selected");}
-    event.preventDefault();
+//$("span.ob-addfav a").live('click', function(event){
+//    var id = $(this).closest('tr').attr('id');    
+    //if($("tr#"+ id + " span.ob-addfav a").attr("class") == "selected"){
+    //  $("tr#"+ id + " span.ob-addfav a").removeClass("selected");}
+    //else{
+    //  $("tr#"+ id + " span.ob-addfav a").addClass("selected");}
+    //event.preventDefault();
 
-});
+//});
 
 //
 
@@ -37,17 +39,22 @@ $('span#search_rent a').bind('click', function(){
   rent_search();
 });
 
-$('a.green.description-extra-button').click(function(){
+//$('a.green.description-extra-button').click(function(){
 //  event.preventDefault();
-  if($('span.description-extra').is(":visible")){
-    $('span.description-extra').css("diplay", "none");
-    $('a.green.description-extra-button').text("развернуто");
-  }
-  else{
-    $('span.description-extra').css("diplay", "inline-block");
-    $('a.green.description-extra-button').text("коротко");
-  }
-});
+//  if($('span.description-extra').is(":visible")){
+//    $('span.description-extra').css("diplay", "none");
+//    $('a.green.description-extra-button').text("развернуто");
+//  }
+//  else{
+//    $('span.description-extra').css("diplay", "inline-block");
+//    $('a.green.description-extra-button').text("коротко");
+//  }
+//});
+
+if ($('table#estates_table tbody tr.estate-row').size() > 0 ){
+  $("table#estates_table tbody tr:odd").addClass("alt");
+}
+
 //
 //
 $('td#side_bar_toggler').hover(
@@ -242,3 +249,107 @@ function append_paging(size, dist_code, rooms, page){
 
 
 }
+
+
+var FAVORITES_ESTATES = new Object();
+
+FAVORITES_ESTATES.add = function(estate_id){
+  if ( $.cookie('user_id' == undefined) || $.cookie('user_id' == "")  ){
+    var estates = FAVORITES_ESTATE.all();
+    estates.include(estate_id);
+    var estates_string = estates.join(",");
+    $.cookie("favorite_estates", estates_string, {path: "/"})
+  }else {
+    //TODO create ajax request to add to bookmarks
+  }
+  
+};
+
+FAVORITES_ESTATES.remove = function(id){
+     if ( $.cookie('user_id' == undefined) || $.cookie('user_id' == "")  ){
+        var estates = FAVORITES_ESTATES.all();
+        estates.erase(id+"");
+        var estates_string = estates.join(",");
+        $.cookie("favorite_estates", estates_string, {path: "/"})
+     } else {
+        //TODO create ajax request to add to bookmarks
+     }
+};
+
+FAVORITES_ESTATES.all = function() {
+  if ( $.cookie('user_id' == undefined) || $.cookie('user_id' == "") ){
+    var estates_string = $.cookie("favorite_estates");
+    var estates = [];
+    if (estates_string && estates_string != "") {
+      estates = estates_string.split(",");
+    }
+    return estates;
+  } else{
+    return g_favorites_estate_ids.split(",");
+  }
+};
+
+FAVORITES_ESTATES.count = function() {
+  return FAVORITES_ESTATES.all().length;
+}
+
+FAVORITES_ESTATES.exists = function(estate_id) {
+  return FAVORITES_ESTATES.all().contains(estate_id+"");
+}
+
+var FavoritesCounter = {
+  
+
+  initialize: function(){
+    this.label = $("#favorites_counter");
+    this.count = FAVORITES_ESTATES.count();
+  },
+
+  increment: function() {
+    this.change(+1);
+  },
+  
+  decrement: function() {
+    this.change(-1);
+  },
+
+  //private
+  change: function(diff) {
+    this.count = this.count + diff
+    this.label.innerHTML = this.count;
+  }
+    
+};
+
+var FavoriteSwitcher = {
+  initialize: function(container, estate_id) {
+    var this_class = this;
+    this.button = container.getElement("A");
+    this.estate_id = estate_id;
+
+    if (FAVORITES_ESTATES.exists(estate_id)) {
+      this.button.addClass("selected");
+    }
+    this.button.addEvent('click', function(event) {
+      event.stop();
+      this_class.toggle_favorite();
+    });
+  },
+
+  toggle_favorite: function() {
+    if (this.button.hasClass("selected")){
+      FAVORITES_ESTATES.remove(this.estate_id);
+      g_favorites_counter.decrement();
+    } else {
+      FAVORITES_ESTATES.add(this.estate_id);
+      g_favorites_counter.increment();
+    }
+    this.button.toggleClass("selected");
+  }
+    
+};
+
+
+$(document).ready(function(){
+    g_favorites_counter = FavoritesCounter;
+}); 
