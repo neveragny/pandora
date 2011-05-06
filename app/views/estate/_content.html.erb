@@ -1,0 +1,38 @@
+<div id="result_content">
+
+<h2>Результаты поиска:
+    <span class="black">
+    <a href="#">найдено&nbsp;<span id="estates_result_count">__</span>&nbsp;объектов</a>
+    |
+    <!--<a class="estates-table-toggle-map-button" href="#">Свернуть карту</a>-->
+    <!--|-->
+    <a class="side-bar-button" href="#">Скрыть правую колонку</a>
+    </span>
+</h2>
+
+  <div class='pagination'>
+  <span class="paging"></span>
+</div>
+
+<div id="result_content_table">
+  <%= render :partial => 'result' %>
+</div>
+
+
+</div>
+
+
+
+
+<style>
+  /* PAGING  */
+
+div.pagination {display: inline; float: right; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.8em;}
+span.paging{  min-height:26px;  }
+span.paging a, span.paging em{margin: 0 0.2em 0 0.1em; padding: .3em .4em; font-style:normal;}
+span.paging a:hover { background: #c5dae5; color: #456b7e; }
+span.paging a{text-decoration:underline;}
+a.page_first, a.page_last{display:none;}
+
+
+</style>
