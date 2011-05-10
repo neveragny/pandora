@@ -107,6 +107,9 @@ ru:
   album_description: Описание
   album_updated: Обновлено
 
+
+  photo_created: Фотография добавлена
+
   # Notices
   welcome: Добро Пожаловать
   succesfully_updated: 'Обновлено Успешно: %{updated}'
@@ -158,9 +161,16 @@ ru:
               taken: У вас уже есть альбом с таким названием
 
 
+
   #Traffic
   traffic:
     zerofive: баллов
     one: балл
     other: балла
+
+  message:
+    attributes:
+      body:
+        too_short: В сообщении должно быть хотя бы 2 символа
+
 

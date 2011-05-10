@@ -1,0 +1,23 @@
+
+<%# Pop up form to send a message. single receiver, no autocompletion %>
+
+<%= form_for Message.new, :remote => true, :html => { 'data-notify' => true, :id => 'single-receiver-message-form' } do |f| %>
+
+  <div>
+    <%= t(:recipient) %>:  <input id='message-recipient' type="text" disabled="disabled" value="" />
+  </div>
+
+
+  <%= f.hidden_field :recipients %>
+  <%= f.hidden_field :parent_id %>
+
+  <div>
+    <%= f.text_area :body, :cols => 35, :rows => 5 %>
+  </div>
+
+  <%= f.submit t(:send_message), :disable_with => t(:please_wait), :disabled => true %>
+
+<% end %>
+
+</div>
+

@@ -47,12 +47,13 @@ Licemerov::Application.routes.draw do
   end
   get '/:user_profile/friends' => 'friendships#show', :as => :friends
 
-  # ****************** Messages ******************
+# ****************** Messages ******************
   resources :messages, :only => [:create, :destroy, :update] do
     post :recover, :on => :member
   end
 
-  get '/:user_profile/messages' => 'messages#show', :as => :user_messages
+  get '/:user_profile/messages' => 'messages#index', :as => :user_messages
+  get '/:user_profile/messages/:id' => 'messages#show', :as => :show_message
   get '/:user_profile/new_message' => 'messages#new', :as => :new_message
   # ****************** Messages  END ******************
 
@@ -62,6 +63,13 @@ Licemerov::Application.routes.draw do
   get '/:user_profile/albums/:album_title' => 'albums#show', :as => :user_album
   get '/:user_profile/albums/:album_title/edit' => 'albums#edit', :as => :edit_user_album
   #  ****************** Photo Albums END ******************
+
+  #  ****************** Photos ******************
+  resources :photos, :only => [:create, :update, :destroy]
+  get '/:user_profile/photos/:id' => 'photos#show', :as => :user_photo
+
+
+  #  ****************** Photos END ******************
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

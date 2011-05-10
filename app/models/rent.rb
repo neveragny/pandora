@@ -1,6 +1,6 @@
 class Rent < ActiveRecord::Base
   establish_connection :rents
-  has_many :photos
+  has_many :rentphotos
   attr_accessor :img_amount
 
   after_initialize :img_length
@@ -70,7 +70,7 @@ class Rent < ActiveRecord::Base
 
   def img_length
 #    self.img_amount = self.photos ? self.photos.length : 0
-    amount = Photo.count_by_sql "SELECT COUNT(*) from photos where rent_id = #{self.id}"
+    amount = Rentphoto.count_by_sql "SELECT COUNT(*) from photos where rent_id = #{self.id}"
     self.img_amount = amount > 0 ? amount : 0
 
   end

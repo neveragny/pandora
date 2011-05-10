@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
   <meta name="MSSmartTagsPreventParsing" content="true" />
@@ -23,6 +23,7 @@
 <% else %>
     <% user_attrs = nil %>
 <% end %>
+
 
     <div id="wrapper" data-user="<%= user_attrs %>" class="<%= controller_name + "_pandora" %>">
         <div class="page">
@@ -76,6 +77,8 @@
         </div> <!-- END OF page -->
     </div> <!-- END OF wrapper -->
 
+    <div id="opaco" class="hidden"></div>
+
     <div id="spinner" class="loading" style="display:none">
       <span>Загрузка..</span>
       <img width="" height="" src="/images/loading.gif" class="" alt=""> 
@@ -102,5 +105,3 @@
     });
 
 </script>
-
-
