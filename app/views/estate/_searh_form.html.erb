@@ -14,7 +14,10 @@
     <span id="sel_dist" class="select">весь Киев</span>
     <%= collection_select :district, :id, Dist.all, :dist_code, :dist_name, {:prompt => "весь Киев"}, {:class => "styled"} %>
   </p>
-  <span id="search_rent"><a class="magnifier button" href="#"><span class="magnifier icon"></span>поиск</a></span>  
+  <span id="search_rent">
+    <!--<a class="magnifier button" href="#">поиск</a>-->
+    <%= link_to "Search", '/estate/index.js', :remote => true, :class => "magnifier button" %>
+  </span>
 
   <%#= submit_tag "найти", :class => "search_submit" %>
 <%# end %>

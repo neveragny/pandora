@@ -11,6 +11,7 @@ class EstateController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render :json => @rents }
+      format.js {render :content_type => 'text/javascript', :layout => false}
     end
   end
 
@@ -33,8 +34,8 @@ class EstateController < ApplicationController
     @pages = Rent.get_pages(dist_code, rooms,search_string)
 
     respond_to do |format|
-      format.html
-      format.json { render :json => {:rents => @rents, :pages => @pages, :amount => @amnt} }
+      #format.html
+      format.js { render :content_type => 'text/javascript' }
     end
   end
 

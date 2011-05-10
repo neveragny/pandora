@@ -2,6 +2,8 @@ Licemerov::Application.routes.draw do
 
   root :to => 'estate#index'
 
+  match "/:estate/index", :to => 'estate#index'
+
   resources :estate do
       collection do
         get :result
