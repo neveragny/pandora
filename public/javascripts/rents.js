@@ -1,14 +1,36 @@
 $(document).ready(function() {  
    applesearch.init(); 
 
-//g_favorites_counter = FavoritesCounter;
+if (typeof $.cookie('favorite_estates') != 'string'){
+   $.cookie('favorite_estates', '');
+}
+
 
 g_side_bar = $("div#side_bar");
+
+user_session = $.cookie('user_credentials');
+if ( (typeof user_session) == 'string' &&  user_session && user_session != ""){
+
+   g_favorites_estate_ids = $.ajax({
+      url:'estate/all_bookmarks.json',
+      dataType: "json" ,
+      async: false,
+      complete: function(data){
+        g_favorites_estate_ids = data;
+      }
+    }).responseText;
+
+}
+
 g_favorites_counter = new FavoritesCounter();
 
 g_estates_table = new EstatesTable();
 
 g_estates_table.initialize($("div#result_content"));
+
+
+
+
 
 
 $("span#favorites_counter").empty();
@@ -87,20 +109,20 @@ function rent_search(page){
 }
 
 function render_result(dist_code, rooms, page, search_string){
-$.ajax({
-  url:'estate/result.js?dist_code='+dist_code+'&rooms='+rooms+'&page='+page+'&string='+search_string,
-//  dataType: "js",
-  beforeSend: function(){
-    $('table#estates_table tbody').fadeOut('fast', function(){
-       $('span.paging').empty();
-       $('div#spinner').show();
-       $('span#estates_result_count').empty();
-    });
-  },
-  success: function(data){
+    $.ajax({
+      url:'estate/result.js?dist_code='+dist_code+'&rooms='+rooms+'&page='+page+'&string='+search_string,
+    //  dataType: "js",
+      beforeSend: function(){
+        $('table#estates_table tbody').fadeOut('fast', function(){
+           $('span.paging').empty();
+           $('div#spinner').show();
+           $('span#estates_result_count').empty();
+        });
+      },
+      success: function(data){
 
-  }
-});
+      }
+    });
 }   //end of render_result
 
 function images_amount(size){
@@ -208,41 +230,52 @@ function object_found(count) {
 var FAVORITES_ESTATES = new Object();
 
 FAVORITES_ESTATES.add = function(estate_id){
-  if ( $.cookie('user_id' == undefined) || $.cookie('user_id' == "")  ){
+  var user_session = $.cookie('user_credentials');
+  if ( (typeof user_session) == 'string' &&  user_session && user_session != ""){
+    $.ajax({
+      url:'estate/add_to_bookmarks.json?rent_id='+estate_id,
+      dataType: "json",
+      success: function(data){}
+    });
+  }else {
     var estates = FAVORITES_ESTATES.all();
     estates.push(estate_id);
     estates = $.unique(estates);
     var estates_string = estates.join(",");
     $.cookie("favorite_estates", estates_string, {path: "/"})
-  }else {
-    //TODO create ajax request to add to bookmarks
   }
-  
+
 };
 
 FAVORITES_ESTATES.remove = function(id){
-     if ( $.cookie('user_id' == undefined) || $.cookie('user_id' == "")  ){
+     var user_session = $.cookie('user_credentials');
+     if ( (typeof user_session) == 'string' &&  user_session && user_session != ""){
+       $.ajax({
+         url:'estate/remove_from_bookmarks.json?rent_id='+id,
+         dataType: "json"//,
+//         success: function(data){
+//         }
+       });
+
+     } else {
         var estates = FAVORITES_ESTATES.all();
         var idx = estates.indexOf(id+"");
         if(idx != -1) estates.splice(idx, 1);
         //estates.erase(id+"");
         var estates_string = estates.join(",");
         $.cookie("favorite_estates", estates_string, {path: "/"})
-     } else {
-        //TODO create ajax request to add to bookmarks
      }
 };
 
 FAVORITES_ESTATES.all = function() {
-  if ( $.cookie('user_id' == undefined) || $.cookie('user_id' == "") ){
-    var estates_string = $.cookie("favorite_estates");
-    var estates = [];
-    if ( (typeof estates_string) == 'string' &&  estates_string && estates_string != "") {
-      estates = estates_string.split(',');
-    }
-    return estates;
+  var user_session = $.cookie('user_credentials');
+  var estates_string = $.cookie("favorite_estates");
+  var estates = [];
+  if ( (typeof user_session) == 'string' &&  user_session && user_session != "") {
+    return g_favorites_estate_ids.split(',');
   } else{
-    return g_favorites_estate_ids.split(",");
+    estates = estates_string.length == 0 ? [] : estates_string.split(',');
+    return estates;
   }
 };
 
@@ -252,7 +285,6 @@ FAVORITES_ESTATES.count = function() {
 
 FAVORITES_ESTATES.exists = function(estate_id) {
     return $.inArray(estate_id + "", FAVORITES_ESTATES.all()) != -1 ;
-//  return FAVORITES_ESTATES.all().contains(estate_id+"");
 }
 
 function FavoritesCounter(){
@@ -273,7 +305,7 @@ function FavoritesCounter(){
   this.change = function(diff) {
     this.count = this.count + diff
     this.label.empty();
-    this.label.append(this.count); //innerHTML = this.count;
+    this.label.append(this.count);
   }
     
 };
@@ -287,7 +319,7 @@ function FavoriteSwitcher(){
     if (FAVORITES_ESTATES.exists(estate_id)) {
       this.button.addClass("selected");
     }
-    this.button.bind('click', function(event) {
+    this.button.live('click', function(event) {
       event.preventDefault();
       this_class.toggle_favorite();
     });
@@ -314,6 +346,9 @@ function EstatesTable(){
         this.description_extra_button = $(".description-extra-button");
         this.side_bar_button = $(".side-bar-button");
         this.descriptions_expanded = false;
+        if ($('table#estates_table tbody tr.estate-row').size() > 0 ){
+          $("table#estates_table tbody tr:odd").addClass("alt");
+        }
         this.description_extra_button.bind('click', function(event) {
             event.preventDefault();
             this_object.toggle_descriptions();

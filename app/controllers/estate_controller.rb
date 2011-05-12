@@ -40,17 +40,34 @@ class EstateController < ApplicationController
   end
 
   def add_to_bookmarks
-    bookmark = Bookmark.new(:ref_id => params[:rent_id])
-    bookmark.type = "rent"  #THIS IMPORTANT!
+    bookmark = Rentbookmark.new(:user_id => @current_user,:rent_id => params[:rent_id])
     
-    respont_to do |format|
+    respond_to do |format|
       if bookmark.save
-        format.json {render :json => {:result => "OK"}}
+        format.json {render :json => {:result => "ADDED"}}
       else
         format.json {render :json => {:result => "NOT OK"}}
       end
     end
+  end
 
+  def remove_from_bookmarks
+    bookmark_id = Rentbookmark.where("user_id = ? and rent_id = ?", @current_user, params[:rent_id]).first.id
+
+    respond_to do |format|
+      if Rentbookmark.destroy(bookmark_id)
+        format.json {render :json => {:result => "REMOVED"}}
+      else
+        format.json {render :json => {:result => "NOT OK"}}
+      end
+    end
+  end
+
+  def all_bookmarks
+    @bookmarks = Rentbookmark.get_all @current_user
+      respond_to do |format|
+        format.json {render :json => @bookmarks, :layout => false, :status => 200 if @current_user }
+      end
   end
 
 end

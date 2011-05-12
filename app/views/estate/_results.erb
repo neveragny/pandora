@@ -22,14 +22,15 @@
           </td>
           <td class="rooms"><%= item.rooms %></td>
           <td class="station"><%= item.adress %></td>
-          <td class="floor"><%= item.floors %></td>
+          <td class="floor"><%= item.id %></td>
           <td class="price"><%= item.price %></td>
 
           <td class="desc">
             <strong>
               <a class="estate-display-name" href="/users/33008">mvs</a>
             </strong>
-            <a target="_blank" class="estate-link" href="/estate/<%= item.id %>"><%= item.info %><span class="description-extra hide"></span></a>
+            <a target="_blank" class="estate-link" href="/estate/<%= item.id %>">
+              <%= item.info %><span class="description-extra hide"></span></a>
             <a target="_blank" class="green" href="/estate/<%= item.id %>">открыть в новом окне<i class="ico new-win"></i></a>
           </td>
           <td class="contacts">+7(903) 167-5732<br>+7(903) 167-5732</td>

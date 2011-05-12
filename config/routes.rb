@@ -2,14 +2,7 @@ Licemerov::Application.routes.draw do
 
   root :to => 'estate#index'
 
-  match "/:estate/index", :to => 'estate#index'
 
-  resources :estate do
-      collection do
-        get :result
-        get :paging
-      end
-    end
 
   # user sessions routes
   get '/registration' => 'users#new', :as => :register
@@ -70,6 +63,22 @@ Licemerov::Application.routes.draw do
 
 
   #  ****************** Photos END ******************
+
+  #  ****************** Rents ***********************
+  match "/:estate/index", :to => 'estate#index'
+  match "/:estate/add_to_bookmarks", :to => 'estate#add_to_bookmarks'
+  match "/:estate/remove_from_bookmarks", :to => 'estate#remove_from_bookmarks'
+  match "/:estate/all_bookmarks", :to => 'estate#all_bookmarks'
+
+  resources :estate do
+      collection do
+        get :result
+        get :paging
+      end
+  end
+
+
+  #  ****************** Rents END ***********************
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

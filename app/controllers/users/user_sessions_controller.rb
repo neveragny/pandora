@@ -16,13 +16,8 @@ class UserSessionsController < ApplicationController
     @session = US.new(params[:user_session])
     if @session.save
       @current_user = US.find.record
-<<<<<<< HEAD
-      cookies[:user_id] = @current_user.id
-      redirect_to(home_page)#, :notice => 'Welcome!')
-=======
       session[:return_to] ? redirect_to(session[:return_to]) :
           redirect_to(home_page, :notice => 'Welcome!')
->>>>>>> 2d1f1c36d842ede52c00e7f9d50e31a7c4107c22
     else
       redirect_to(login_path, :alert => 'Failed to log in, please try again')
     end
@@ -31,10 +26,6 @@ class UserSessionsController < ApplicationController
   def destroy
     @session = US.find
     @session.destroy
-<<<<<<< HEAD
-    cookies[:user_id] = ""
-=======
->>>>>>> 2d1f1c36d842ede52c00e7f9d50e31a7c4107c22
     redirect_to login_path
   end
 
