@@ -188,7 +188,9 @@ div#album-settings {float:left; width:200px; height:500px; border-right:1px soli
 /* PHOTOS */
 form#new_photo { clear:both }
 div#photos { width: 800px; }
-div.photo { float:left }
+div.photo { float:left; margin-left: 5px; }
+div#current-photo { width: 600px; height:400px; position:fixed; left:630px; top:90px; display:none; }
+strong#enable-fullscreen { cursor:pointer; margin: 15px 0; }
 /* PHOTOS END */
 
 >>>>>>> 2d1f1c36d842ede52c00e7f9d50e31a7c4107c22

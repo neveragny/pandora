@@ -7,20 +7,21 @@ class PhotosController < ApplicationController
   layout Proc.new { |controller| controller.request.xhr?? false : 'application' }
 
   def show
-
+    @photo = @user.photos.where(['photos.id = ?', params[:id]]).first
+    respond_to do |format|
+      if @photo
+        format.json {render :json => {:photo => @photo.photo.url(:large)} }
+      else
+        render :nothing => true
+      end
+    end
   end
 
   def create
     @upload = Photo.new(params[:photo].merge({:user_id => current_user.id}))
-    if @upload.save
-      flash[:notice] = "Successfully created upload."
-      respond_to do |format|
-        format.json {
-          render :json => json_for(@upload), :status => 200
-        }
-      end
-    else
-      render :action => 'show'
+    @upload.save
+    respond_to do |format|
+      format.json { render :json => json_for(@upload), :status => 200 }
     end
   end
 

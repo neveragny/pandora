@@ -1,5 +1,5 @@
 
-//	object_found('17356');
+	object_found(<%= @amnt %>);
 
 
 
@@ -12,16 +12,11 @@
 
 	g_estates_table = new EstatesTable();
 
-    g_estates_table.initialize($("div#result_content"));
+  g_estates_table.initialize($("div#result_content"));
 
-//	var saved_search = $('saved_search_counter');
-//	if($defined(saved_search) && !$defined(saved_search.get('href'))) {
-//		saved_search.set('text', '17356');
-//		saved_search.set('href', $('filter_update').toQueryString());
-//	}
+    ajax_pagination(<%= @page %>, <%= @pages %>);
 
-//	ajax_pagination();
 //	TABLE_SORTERS.init('sorted_type', 'make_search()');
-//	new SmoothScroll({ duration:700 }, window);
+
 
 

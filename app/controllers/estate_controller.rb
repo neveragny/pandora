@@ -3,17 +3,37 @@ class EstateController < ApplicationController
   skip_before_filter :existent_user
 
   def index
-    if params[:id] == "index"
-      redirect_to "/"
+    logger.warn "PARAMS : #{params}"
+
+    @filter = params[:filter]
+    logger.debug("FILTER: #{@filter}")
+    @page = params[:page].blank? ? 1 : params[:page].to_i
+
+
+
+    if !@filter
+      @rents, @amnt = Rent.get_rents(0, 0, "", (!@page? 1: @page) )
+      @pages = Rent.get_pages(0, 0, "")
+    else
+      dist_code= @filter[:dist_code].blank? ? 0 : @filter[:dist_code]
+      rooms= @filter[:rooms].blank? ? 0 : @filter[:rooms].to_i
+      search_query= @filter[:search_query]
+      @rents, @amnt = Rent.get_rents(dist_code, rooms, search_query, @page )  #dist_code ,rooms ,string ,page
+      @pages = Rent.get_pages(dist_code, rooms, search_query) # dist_code, rooms, search_string
+      @pagified_filter = filter_to_string(@filter)
+      logger.debug("filter_to_string: #{filter_to_string(@filter)}")
+      logger.debug("ROOMS: #{@filter[:rooms]}")
+      logger.debug("PAGES: #{@pages}")
+      logger.debug("PAGE: #{@page}")
     end
-   
-    @rents, @amnt = Rent.get_rents(0, 0, "", 1)
+
     respond_to do |format|
       format.html
-      format.json { render :json => @rents }
+#      format.json { render :json => @rents }
       format.js {render :content_type => 'text/javascript', :layout => false}
     end
-  end
+  end  
+  
 
   def show
     #check if guys comming to old comilffo from google :D
@@ -69,5 +89,16 @@ class EstateController < ApplicationController
         format.json {render :json => @bookmarks, :layout => false, :status => 200 if @current_user }
       end
   end
+  
+  private
+  def filter_to_string(filter)
+    if !filter[:dist_code].blank? || !filter[:rooms].blank? || !filter[:search_query].blank?
+      return "&filter[dist_code]=#{filter[:dist_code]}&filter[rooms]=#{filter[:rooms]}&filter[search_query]=#{filter[:search_query]}"
+    end
+  end
+
 
 end
+
+
+

@@ -28,6 +28,7 @@ g_estates_table = new EstatesTable();
 
 g_estates_table.initialize($("div#result_content"));
 
+ajax_pagination(1, $("span.paging").attr("data-pages"));
 
 
 
@@ -89,9 +90,33 @@ $("a.side-bar-button").click(function(){
 });
 
 
+$("span#search_rent a").click(
+        function(event){
+            event.preventDefault();
+            doSearch();
+        }
+)
+
+
 }); // DOCUMENT ON_READY END
 
+oControl= new function (par1, par2) {
+    var self= this;
+    var val1= par2 * 2;
+    var t1;
+
+    var privatF1= function (par3) {
+        return par1 + par3 + val1;
+    };
+
+    self.pubF1= function (par4) {
+        t1= setTimeout(function() {privatF1(par4)}, 50);
+    };
+} ('abc', 123);
+
 // FUNCTIONS
+
+
 
 function rent_search(page){
       var dist_code = $("select#district_id option:selected")[0].value;
@@ -149,77 +174,7 @@ function getFloors(at, all){
     return at == null ? "" : "" + at + "/" + all
 }
 
-function append_paging(size, dist_code, rooms, page){
-  var page = parseInt(page);
-  var items = [];
-  if (size < 10){
-    for (var i=1;i<=size;i++){
-      if(i == page){
-        items.push($('<em>'+i+'</em>'));
-      }
-      else{
-        items.push($('<a href="#">'+ i +'</a>').click(
-          function(event) {
-            event.preventDefault();
-            rent_search($(this).text());//render_result(dist_code, rooms, $(this).text());
-          }))
-        }
-      }
-  }
-  else{
-    var startRange;
-    var endRange;
-    if( page <= 5){
-      startRange = 1;
-      endRange = 10;
-    }
-    else{
-      startRange = page >= size ? (page - 11) : page - 5;
-      endRange = page >= (size -4) ? size : (page + 5) ;
-    }
-    items.push($('<a class="page_first" title="Первая страница" href="#">←</a>').click(function(event) {
-          event.preventDefault();
-          rent_search(1);
-          //render_result(dist_code, rooms, 1);
-        }));
 
-    for (var i = startRange; i<= endRange; i++){
-      if(i == page){
-        items.push($('<em>'+i+'</em>'));
-      }
-      else{
-        items.push($('<a class="page_link" href="#">'+ i +'</a>').click(function(event) {
-          event.preventDefault();
-          rent_search($(this).text());
-          //render_result(dist_code, rooms, $(this).text());
-        }))
-      }
-    }
-        items.push($('<a class="page_last" title="Последняя страница" href="#">→</a>').click(function(event) {
-          event.preventDefault();
-          rent_search(size);
-          //render_result(dist_code, rooms, size);
-        }))
-  }
-
-  $.each(items, function() {
-      $(this).appendTo('span.paging');
-
-  });
-
-  if(page > 6 && page < size - 5){
-    $('a.page_first').show();
-    $('a.page_last').show();
-  }
-  else if(page < size - 5){
-    $('a.page_last').show();
-  }
-  else if(page > 6){
-    $('a.page_first').show();
-  }
-
-
-}
 
 function object_found(count) {
     $('span#estates_result_count').empty();
@@ -308,7 +263,7 @@ function FavoritesCounter(){
     this.label.append(this.count);
   }
     
-};
+}
 
 function FavoriteSwitcher(){
   this.initialize = function(container, estate_id) {
@@ -344,7 +299,7 @@ function EstatesTable(){
         var this_object = this;
         this.description_extras = $(".description-extra");
         this.description_extra_button = $(".description-extra-button");
-        this.side_bar_button = $(".side-bar-button");
+        this.side_bar_button = $("a.side-bar-button");
         this.descriptions_expanded = false;
         if ($('table#estates_table tbody tr.estate-row').size() > 0 ){
           $("table#estates_table tbody tr:odd").addClass("alt");
@@ -354,7 +309,8 @@ function EstatesTable(){
             this_object.toggle_descriptions();
         });
         if (!g_side_bar.is(":visible")) {
-            this.side_bar_button.innerHTML = "Показать правую колонку";
+						alert("sdfsd");
+            this.side_bar_button.innerHTML = "Показать хуй правую колонку";
         }
         this.side_bar_button.bind('click', function(event) {
             event.preventDefault();
@@ -416,9 +372,19 @@ function EstatesTable(){
         g_estates_search_map.toggle();
         this.map_hidden = !this.map_hidden;
     }
-};
+}
 
-
-//$(document).ready(function(){
-//    g_favorites_counter = new FavoritesCounter();
-//});
+function ajax_pagination(current_page, all_pages){
+    var ajax_pagination_request = null;
+    if(current_page > 6){ $("a.page_first").show() }
+    if(current_page < all_pages){ $("a.page_last").show() }
+    $.each($("span.paging a"), function(elem){
+        $(this).click( function(e){
+            e.preventDefault();
+            $.ajax({
+                url: $(this).attr("href"),
+                complete: function(data){}
+            });
+        });
+    });
+}

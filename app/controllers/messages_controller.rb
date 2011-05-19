@@ -3,25 +3,16 @@ class MessagesController < ApplicationController
   SECTIONS = ['sent']
   layout Proc.new { |controller| controller.request.xhr?? false : 'application' }
 
-<<<<<<< HEAD
-  before_filter :require_owner, :only => :show
-  before_filter :require_user, :only => :new
-  before_filter :valid_term, :only => :new # Only hit database with trusted LIKE statement
-  before_filter :valid_section, :only => :show
-=======
   before_filter :require_owner, :only => :index
   before_filter :require_user, :only => :new
   before_filter :valid_term, :only => :new # Only hit database with trusted LIKE statement
   before_filter :valid_section, :only => :index
->>>>>>> 2d1f1c36d842ede52c00e7f9d50e31a7c4107c22
   before_filter :valid_parent, :only => :create
   before_filter :valid_message_ids, :only => [:destroy, :recover, :update]
   skip_before_filter :existent_user, :only => [:new, :create, :destroy, :recover, :update]
   skip_before_filter :delete_messages, :only => [:destroy, :update, :recover]
 
 
-<<<<<<< HEAD
-=======
 
   def index
     @message = Message.new
@@ -31,7 +22,6 @@ class MessagesController < ApplicationController
                 end
   end
 
->>>>>>> 2d1f1c36d842ede52c00e7f9d50e31a7c4107c22
   # Used to autocomplete users login when sending a new message
   #
   def new
@@ -52,15 +42,7 @@ class MessagesController < ApplicationController
   end
 
   def show
-<<<<<<< HEAD
-    @message = Message.new
-    @messages = case params[:section]
-                  when 'inbox' then current_user.incoming_messages
-                  when 'sent' then current_user.messages
-                end
-=======
     @message = Message.find params[:id]
->>>>>>> 2d1f1c36d842ede52c00e7f9d50e31a7c4107c22
   end
 
   def create
@@ -75,18 +57,6 @@ class MessagesController < ApplicationController
                                    :parent_id => params[:message][:parent_id] )
     }
 
-<<<<<<< HEAD
-    @success = true
-
-    @messages.each {|message| @success = false unless message.save }
-
-    respond_to do |format|
-      if @success
-        format.json { render :json => { :message => t(:message_created) } }
-        format.html { redirect_to :back, :notice => t(:message_created) }
-      else
-        render guilty_response
-=======
     @success, @errors = true, Array.new
 
     @messages.each {|message| @success, @errors = false, message.errors unless message.save }
@@ -102,7 +72,6 @@ class MessagesController < ApplicationController
           render :json => { :errors => @errors.values.map(&:first), :html_class => :alert },
             :status => :unprocessable_entity
         }
->>>>>>> 2d1f1c36d842ede52c00e7f9d50e31a7c4107c22
       end
     end
   end
@@ -166,11 +135,7 @@ class MessagesController < ApplicationController
   end
 
   def valid_parent
-<<<<<<< HEAD
-    if params[:message][:parent_id]
-=======
     if params[:message][:parent_id] && params[:message][:parent_id].to_i > 0
->>>>>>> 2d1f1c36d842ede52c00e7f9d50e31a7c4107c22
       # Means that current_user should be the one who received or sent parent message ( common sense )
       render guilty_response unless
           Message.of(current_user).where( :id => params[:message][:parent_id] ).count > 0
@@ -178,15 +143,9 @@ class MessagesController < ApplicationController
   end
 
   def valid_message_ids
-<<<<<<< HEAD
-    # params[:id] is a string that may  containt 1 or  more message id's that user wishes to delete
-    # or mark as read ( using checkboxes in view )
-    # we split it by comma, check each supposed id for validness ( should match /^\d+$/ regex[ ), join these back into
-=======
     # params[:id] is a string that may  contain 1 or more message id's that user wishes to delete
     # or mark as read ( using checkboxes in view )
     # we split it by comma, check each supposed id for validness ( should match /^\d+$/ regex ), join these back into
->>>>>>> 2d1f1c36d842ede52c00e7f9d50e31a7c4107c22
     # comma separated string and use it in sql IN statement.
 
     if params[:id]
@@ -207,4 +166,3 @@ class MessagesController < ApplicationController
     params[:section] = 'inbox' unless SECTIONS.include?(params[:section])
   end
 end
-
