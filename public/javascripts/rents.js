@@ -341,16 +341,18 @@ function EstatesTable(){
 
     this.expand_descriptions = function() {
         this.description_extras.each(function(extra) {
-            extra.show();
+            //extra.show();
+            $(this).removeClass('hide');
         });
-        this.description_extra_button.innerHTML = "коротко";
+        this.description_extra_button.html("коротко");
     },
 
     this.collapse_descriptions = function() {
         this.description_extras.each(function(extra) {
-            extra.hide();
+            //extra.hide();
+            $(this).addClass('hide');
         });
-        this.description_extra_button.innerHTML = "развернуто";
+        this.description_extra_button.html("развернуто");
     },
 
     this.toggle_side_bar = function() {

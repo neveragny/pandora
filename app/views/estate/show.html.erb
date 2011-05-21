@@ -57,10 +57,10 @@
                   <div class="ob-foto">
                     <div class="ob-foto">
                       <span class="ob-foto-detail">
-                        <% if @rent.photos.length == 0 %>
+                        <% if @rent.rentphotos.length == 0 %>
                             <img alt="Нет фото" src="/images/estate_no_photo.jpg">
                         <% else %>
-                            <%= image_tag @rent.photos[0].photo.url %>
+                            <%= image_tag @rent.rentphotos[0].photo.url %>
                         <% end %>
                       </span>
                       <img src="/images/ombre-photo.png">
@@ -103,8 +103,8 @@
                <br class="clear">
                <!--<h1><%#= @rent.ria_id %></h1>-->
                 <div class="photo-object">
-                  <% if @rent.photos %>
-                    <% @rent.photos.each do |item| %>
+                  <% if @rent.rentphotos %>
+                    <% @rent.rentphotos.each do |item| %>
                       <a class="gal" rel="group_gal" href="<%= item.photo.url %>">
                           <%= image_tag item.photo.url(:thumb) %>
                       </a>

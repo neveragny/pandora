@@ -16,7 +16,7 @@ BODY {
 	font: 62.5%/1.4 Arial, Helvetica, sans-serif;
 	}
 
-#wrapper {border-top: 3px solid #E1E1E1; padding: 0 15px;}
+#wrapper {border-top: 3px solid #E1E1E1; padding: 0 25px;}
 
 H3, H4, .search-controllers .paging, .object .object-info .howmuch,
 .mini LI.price, .mini LI.tel {font-family: Georgia, "Nimbus Roman No9 L", serif}
@@ -5204,7 +5204,11 @@ A {color: #000000; text-decoration: none;}
 /* description extra */
 
 .description-extra {
-    display:inline;
+    display:inline;    
+}
+
+a.description-extra-button {
+ border-bottom: 1px dashed gray !important;
 }
 
 
