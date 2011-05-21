@@ -42,7 +42,7 @@ $.fn.alignCenter = function() {
             marginTop =  - $(this).height()/2 + 'px';
     return $(this).css({'margin-left':marginLeft, 'margin-top':marginTop});
 };
-
+mouse_is_inside_signin = false
 
 $(window).load(function() {
     if((typeof $.Jcrop == 'function') && $('#cropbox').length)
@@ -51,6 +51,7 @@ $(window).load(function() {
 });
 
 $(document).ready(function() {
+
     var wrapper = $('#wrapper');
 
     if (wrapper.attr('data-user').length > 1)
@@ -135,6 +136,31 @@ $(document).ready(function() {
 
     $.user = $.licemerov.user;
     $.utils = $.licemerov.utils;
+
+
+    // login form
+    $("a.modal_signup").bind("click",function(event){
+        event.preventDefault();
+        $("div.modal_background").show();
+        $("div#modal1").show();
+    });
+    $("div#modal1 div.submit a.cancel").bind('click',function(){
+        $("div.modal_background").hide();
+        $("div#modal1").hide();
+    });
+    $('div#modal1').hover(function(){
+            mouse_is_inside_signin=true;
+        }, function(){
+            mouse_is_inside_signin=false;
+        });
+
+        $("body").mouseup(function(){
+            if(! mouse_is_inside_signin){
+                $('div#modal1').hide();
+                $("div.modal_background").hide();
+            }
+        });
+
 
 });
 
@@ -632,6 +658,8 @@ function appendErrors(errors, form) { // Render object errors
         form.prepend("<div class='field_with_errors'>" + errors[index] + "</div>");
     });
 }
+
+
 
 
 //  ******************* CROPPING FUNCTIONS ******************** TODO: please refactor me

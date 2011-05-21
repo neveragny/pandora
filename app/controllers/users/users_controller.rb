@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_owner, :only => [:edit]
 
+  layout 'application', :except => [:new, :create]
+
   def show
   end
 
