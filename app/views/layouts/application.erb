@@ -97,7 +97,7 @@
     <div id="modal1" class="modal window" style="top: 43.125px; left: 355.5px;">
       <div id="login" class="wrapper">
         <div class="title">
-            <h1>Log in</h1>
+            <h1>На Берлин!</h1>
         </div>
         <%= form_for(UserSession.new) do |f| %>
           <div id="form">
@@ -118,7 +118,7 @@
           </div>
           <div class="submit">
             <%= f.submit t(:login), :class=> :button, :disable_with => t(:please_wait) %>
-            <a href="/account/signup">Sign up</a>
+            <%= link_to t(:register), register_path, :class => "signup" %>
            <a href="#cancel" class="cancel">Cancel</a>
           </div>
             <!--<fieldset>-->
