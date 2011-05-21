@@ -1,25 +1,348 @@
-<h1> Прэуэт! </h1>
+<html class=" gecko mac js native-css-gradients" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head xmlns:fb="http://www.facebook.com/2008/fbml" xmlns="http://www.w3.org/1999/xhtml">
+  <meta name="MSSmartTagsPreventParsing" content="true" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>Пандора - проект "Живая база недвижимости" Киев.</title>
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
 
-<h3> Please register </h3>
+  <%= stylesheet_link_tag 'reset.css' %>
+  <%= javascript_include_tag 'jquery.js', 'rails.js', 'application.js', 'applesearch.js', 'jcookie.js'%>
+  <%= javascript_include_tag 'form', 'jquery.remotipart' %>
 
-<%= render :partial => 'shared/errors', :locals => {:target => @user} %>
+  <%= yield :head %>
+  <%= csrf_meta_tag %>
 
-<%= form_for @user do |f| -%>
-    <div class="row">
-      <%= f.label :login %>: <%= f.text_field :login %>
+</head>
+<body>
+  <div id="header">
+
+  </div>
+  <div id="content">
+    <div id="wrapper" data-user="   ">
+      <div id="main" class="corners all">
+        <div id="signup">
+          <%= render :partial => 'shared/errors', :locals => {:target => @user} %>
+
+          <%= form_for @user do |f| -%>
+              <div class="title">
+                <h2>Региструруйся<span>&mdash; будет круто!</span></h2>
+                <a class="modal_signup" href="#login">войти</a>
+              </div>
+              <div class="main">
+
+                    <%= f.label "логин" %><%= f.text_field :login %>
+
+
+                    <%= f.label "почтовый ящик" %><%= f.text_field :email %>
+
+
+                    <%= f.label "пол" %>пацанчик<%= f.radio_button :sex, 1, :checked => true %>
+                                         деваха<%= f.radio_button :sex, 0 %>
+
+
+                    <%= f.label "пароль" %><%= f.password_field :password %>
+
+
+                    <%= f.label "еще разок пароль" %><%= f.password_field :password_confirmation %>
+
+              </div>
+              <div class="submit">
+                <%= f.submit t(:register), :class => "button", :disable_with => t(:please_wait) %>
+                <!--<a class="button" href="#submit">Sign up</a>-->
+              </div>
+          <% end %>
+
+        </div>
+        <div class="clear"></div>
+      </div>
     </div>
-    <div class="row">
-      <%= f.label :email %>: <%= f.text_field :email %>
+  </div>
+  <div id="signup-footer"></div>
+
+    <div class="modal_background" style="width: 100%; height: 100%;"></div>
+    <div id="modal1" class="modal window" style="top: 43.125px; left: 355.5px;">
+      <div id="login" class="wrapper">
+        <div class="title">
+            <h1>Log in</h1>
+        </div>
+        <%= form_for(UserSession.new) do |f| %>
+          <div id="form">
+            <fieldset>
+              <label><%= f.label t(:user_login) %></label>
+                <div><%= f.text_field :login %></div>
+            </fieldset>
+            <fieldset>
+              <label><%= f.label t(:password) %></label>
+                <div><%= f.password_field :password %></div>
+            </fieldset>
+            <fieldset>
+                <label></label>
+                <div class="forgot">
+                    <a href="#">не помним пароль?</a>
+                </div>
+            </fieldset>
+          </div>
+          <div class="submit">
+            <%= f.submit t(:login), :class=> :button, :disable_with => t(:please_wait) %>
+            <%= link_to t(:register), register_path, :class => "signup" %>
+            <a href="#cancel" class="cancel">Cancel</a>
+          </div>
+            <!--<fieldset>-->
+                <%#= f.label t(:remember_me) %> <%#= f.check_box :remember_me %>
+            <!--</fieldset>-->
+        <% end %>
+
+
+
+
+      </div>
     </div>
-    <div class="row">
-      <%= f.label :sex %>: Male<%= f.radio_button :sex, 1, :checked => true %>
-                           Female<%= f.radio_button :sex, 0 %>
-    </div>
-    <div class="row">
-      <%= f.label :password %>: <%= f.password_field :password %>
-    </div>
-    <div class="row">
-      <%= f.label :password_confirmation %>: <%= f.password_field :password_confirmation %>
-    </div>
-    <%= f.submit t(:register), :disable_with => t(:please_wait) %>
-<% end %>
+
+
+</body>
+</html>
+
+
+
+<style>
+    html, body, div, span, applet, object, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+        border: 0 none;
+        font-family: inherit;
+        font-size: 100%;
+        font-style: inherit;
+        font-weight: inherit;
+        margin: 0;
+        outline: 0 none;
+    }
+
+    body {
+        background: none repeat scroll 0 0 #E9E9E9;
+        color: #333333;
+        font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+        font-size: 13px;
+    }
+    body, #content {
+        background: none repeat scroll 0 0 #D3E5F4 !important;
+        padding: 10px;
+        min-height: 371px;
+    }
+    body #main, #content #main {
+        background: none repeat scroll 0 0 #FFFFFF;
+        margin: 0 10px;
+        overflow: hidden;
+        padding: 0;
+        border: medium none !important;
+        border-radius: 0 0 10px 10px !important;
+    }
+    body div#content div#wrapper {
+        margin: 0 auto;
+        width: 990px;
+    }
+    #signup {
+        background: url("/images/bg_signup.png?1297106063") no-repeat scroll 0 0 #2E4457;
+        overflow: hidden;
+        padding: 30px 60px 30px 30px;
+    }
+    #signup > form {
+        background: none repeat scroll 0 0 #627C92;
+        border-radius: 30px 30px 30px 30px;
+        color: #D3E5F4;
+        float: right;
+        overflow: hidden;
+        padding: 30px;
+        width: 550px;
+    }
+    #signup > form .title {
+        margin-bottom: 10px;
+        overflow: hidden;
+    }
+    #signup > form .title h2, #signup > form .title a {
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 24px;
+    }
+    #signup > form .title h2 {
+        float: left;
+    }
+    #signup > form .title h2 span {
+        font-size: 11px;
+        font-weight: normal;
+    }
+    #signup > form .title a {
+        color: inherit;
+        float: right;
+        text-decoration: underline;
+    }
+    #signup > form label {
+        display: block;
+        font-weight: bold;
+        margin: 15px 0 5px;
+    }
+    #signup > form label.status {
+        display: inline-block;
+        font-size: 15px;
+        max-width: 220px;
+        padding-left: 10px;
+    }
+    #signup > form label.status.error {
+        color: #EB9400;
+    }
+    #signup > form label.status.success {
+        color: #B1D422;
+    }
+    #signup > form label img {
+        margin-right: 5px;
+        position: relative;
+        top: -3px;
+        vertical-align: middle;
+    }
+    #signup > form label .formError, #signup > form .fieldWithErrors {
+        display: inline;
+    }
+    #signup > form .error {
+        background: none repeat scroll 0 0 transparent;
+    }
+    #signup > form input[type="text"], #signup > form input[type="password"] {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: medium none;
+        border-radius: 7px 7px 7px 7px;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 10px;
+        width: 290px;
+    }
+    #signup > form .submit {
+        margin-top: 18px;
+        padding: 12px 0;
+    }
+
+    #signup > form .submit{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    #signup > form .submit > a.more {
+        color: inherit;
+        float: right;
+        padding: 10px 0;
+        text-decoration: underline;
+    }
+    #signup > form .submit .button {
+        background: none repeat scroll 0 0 #A3D62F;
+        border: medium none;
+        color: #FFFFFF;
+        float: left;
+        padding: 10px 30px;
+    }
+    #signup > form .submit > .button:hover {
+        background: none repeat scroll 0 0 #9CC242;
+    }
+    #signup > form .submit p.terms {
+        clear: both;
+        font-size: 11px;
+        padding-top: 20px;
+    }
+    #signup > form .submit p.terms a {
+        color: inherit;
+        text-decoration: underline;
+    }
+    #facebook-button {
+        float: right;
+        margin-top: 10px;
+    }
+    .formError {
+        color: #FF8888;
+    }
+
+</style>
+
+
+<style>
+  body > .modal_background {
+    background: none repeat scroll 0 0 #000000;
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    z-index: 50;
+    display:none;
+  }
+  body > .modal.window {
+    display:none;
+    background: none repeat scroll 0 0 rgba(37, 58, 74, 0.6);
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1000;
+  }
+  body > .modal.window > a{
+      color: #0281CF;
+  }
+  div.modal > #login {
+    margin: 0;
+    width: 500px;
+  }
+  body > .modal.window > .wrapper {
+    background: url("/images/modal_background.png") repeat-x scroll left top #FFFFFF;
+    border-radius: 5px 5px 5px 5px;
+    padding: 15px;
+  }
+  div.modal > #login #form {
+    background: none repeat scroll 0 0 #F2F2F2;
+    border-radius: 5px 5px 5px 5px;
+    padding: 0 15px 9px;
+  }
+  div.modal > #login #form fieldset {
+    overflow: hidden;
+    padding-top: 15px;
+  }
+  div.modal > #login #form fieldset > label {
+    display: block;
+    float: left;
+    font-size:12.5px;
+    position: relative;
+    top: 11px;
+    width: 150px;
+  }
+  div.modal > #login #form fieldset > div {
+    margin-left: 150px;
+  }
+  div.modal > #login #form fieldset > div.forgot {
+    font-size: 11px;
+    margin-bottom: 5px;
+  }
+  div.modal > #login div.submit {
+    clear: both;
+    padding: 22px 0 7px 165px;
+  }
+  div.modal > #login .button {
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 30px;
+    padding: 5px 30px;
+  }
+  body .button {
+    background: url("/images/background_button.png") repeat-x scroll center bottom #FFFFFF;
+    border: 1px solid #B2B2B2;
+    border-radius: 20px 20px 20px 20px;
+    color: #333333;
+    font-size: 11px;
+    padding: 4px 15px;
+  }
+  div.modal > #login a[href="#cancel"] {
+    color: #999999;
+    margin-left: 30px;
+  }
+
+</style>
+
+
+
+
+
+
+
+
+
+
