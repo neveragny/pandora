@@ -89,6 +89,16 @@ class EstateController < ApplicationController
         format.json {render :json => @bookmarks, :layout => false, :status => 200 if @current_user }
       end
   end
+
+  def favorites
+    if @current_user
+      
+    else
+      favorites = cookies[:favorite_estates].split(',')
+      @fav_rents = Rent.where("id in (?)", favorites)
+#      fav = Rent.where("id in (?)", [5459,5458,5714 ])
+    end
+  end
   
   private
   def filter_to_string(filter)

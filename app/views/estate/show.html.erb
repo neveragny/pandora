@@ -13,7 +13,7 @@
                     </a>
                   </div>
                   <span class="big gray">
-                    <a href="#">Дядя<%#= @rent.name %></a>
+                    <a href="#"><%= @rent.name %></a>
                   </span>
                   <br>
                   <span class="big"><%= @rent.phones.split(',')[0]  %></span>
@@ -126,10 +126,7 @@
                 </div>
 
                 <!--MAP-->
-                <div id="map" class="map_container">
-                  <div id="map_2" class="map" style="height: 300px; ">
-                    <div id="YMapsID" style="heigth:300px;"></div>
-	              </div>
+                <div id="map" class="map_container" style="height: 300px;">
                 </div>
                 <!--END OF MAP-->
               </div>
@@ -175,17 +172,16 @@
 
 
 <script type="text/javascript">
-  <% adress = @rent.adress.split(',') %>
+  <% adress = @rent.adress %>
   window.onload = function () {
-    var address = "<%= adress[0] + "," + adress[2] %>";
+    var address = "<%= adress %>";
         var image = "/images/alt_spin.png";
-        //new google.maps.LatLng(-34.397, 150.644);
-        var myOptions = {zoom: 16, mapTypeId: google.maps.MapTypeId.ROADMAP};
+        var latlng = new google.maps.LatLng(51.38763, 30.46006699999998);
+        var myOptions = {zoom: 16, center: latlng,  mapTypeId: google.maps.MapTypeId.ROADMAP};
         geocoder = new google.maps.Geocoder();
-        var map = new google.maps.Map(document.getElementById("YMapsID"), myOptions);
+        var map = new google.maps.Map(document.getElementById("map"), myOptions);
         geocoder.geocode( {'address': address}, function(results, status){
-            var latlng = new google.maps.LatLng(results[0].geometry.location.Da, results[0].geometry.location.Ea);
-            map.setCenter(latlng);
+            map.setCenter(results[0].geometry.location);
             lat = map.getCenter();
             var marker = new google.maps.Marker({
               position: map.getCenter(),
