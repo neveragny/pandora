@@ -60,7 +60,7 @@ class EstateController < ApplicationController
   end
 
   def add_to_bookmarks
-    bookmark = Rentbookmark.new(:user_id => @current_user,:rent_id => params[:rent_id])
+    bookmark = Rentbookmark.new(:user_id => @current_user.id,:rent_id => params[:rent_id])
     
     respond_to do |format|
       if bookmark.save
@@ -84,15 +84,17 @@ class EstateController < ApplicationController
   end
 
   def all_bookmarks
-    @bookmarks = Rentbookmark.get_all @current_user
+    @bookmarks = Rentbookmark.get_all @current_user.id
       respond_to do |format|
         format.json {render :json => @bookmarks, :layout => false, :status => 200 if @current_user }
       end
   end
 
   def favorites
+    logger.warn "CURRENT_USER: #{@current_user.id}"
     if @current_user
-      
+      @fav_rents = Rent.where("id in (?)", Rentbookmark.get_all(@current_user.id).split(','))
+      logger.warn @fav_rents
     else
       favorites = cookies[:favorite_estates].split(',')
       @fav_rents = Rent.where("id in (?)", favorites)
