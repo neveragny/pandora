@@ -40,27 +40,27 @@ $("span#favorites_counter").append(FAVORITES_ESTATES.count());
 
 
 
-$('div.estate_search1 input').bind("keypress" ,function(e){
-  if (e.keyCode == 13) {
-    rent_search();
-  }
-});
-
-$("select#district_id").bind('change',function () {
-  $("span#sel_dist").html($("select#district_id option:selected ").text());
-         
-});
+//$('div.estate_search1 input').bind("keypress" ,function(e){
+//  if (e.keyCode == 13) {
+//    rent_search();
+//  }
+//});
 //
-
-$("select#rooms_num").bind('change', function(){
-  $("span#sel_rooms").html($("select#rooms_num option:selected ").text());
-});
-
+//$("select#district_id").bind('change',function () {
+//  $("span#sel_dist").html($("select#district_id option:selected ").text());
 //
-
-$('span#search_rent a').bind('click', function(){
-  //rent_search();
-});
+//});
+////
+//
+//$("select#rooms_num").bind('change', function(){
+//  $("span#sel_rooms").html($("select#rooms_num option:selected ").text());
+//});
+//
+////
+//
+//$('span#search_rent a').bind('click', function(){
+//  //rent_search();
+//});
 
 if ($('table#estates_table tbody tr.estate-row').size() > 0 ){
   $("table#estates_table tbody tr:odd").addClass("alt");

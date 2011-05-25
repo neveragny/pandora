@@ -91,7 +91,6 @@ class EstateController < ApplicationController
   end
 
   def favorites
-    logger.warn "CURRENT_USER: #{@current_user.id}"
     if @current_user
       @fav_rents = Rent.where("id in (?)", Rentbookmark.get_all(@current_user.id).split(','))
       logger.warn @fav_rents
