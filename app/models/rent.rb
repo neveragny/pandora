@@ -1,12 +1,19 @@
 class Rent < ActiveRecord::Base
   establish_connection :rents
   has_many :rentphotos
+  before_create :enrich
+
   attr_accessor :img_amount
 
   after_initialize :img_length
 
   def as_json(option = {})
     super.merge(:img_amount => img_amount)
+  end
+
+  def enrich
+    logger.warn "BEFORE CREATE RENT"
+    img_length
   end
 
   def self.get_pages(dist_code, rooms, search_string)
@@ -70,9 +77,8 @@ class Rent < ActiveRecord::Base
 
   def img_length
 #    self.img_amount = self.photos ? self.photos.length : 0
-    amount = Rentphoto.count_by_sql "SELECT COUNT(*) from rentphotos where rent_id = #{self.id}"
+    amount = (self.id).nil? ? 0 :(Rentphoto.count_by_sql "SELECT COUNT(*) from rentphotos where rent_id = #{self.id}") 
     self.img_amount = amount > 0 ? amount : 0
-
   end
 
 end

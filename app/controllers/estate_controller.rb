@@ -100,6 +100,16 @@ class EstateController < ApplicationController
 #      fav = Rent.where("id in (?)", [5459,5458,5714 ])
     end
   end
+
+  def new
+    if @current_user
+      @rent = Rent.new
+    end
+  end
+
+  def create
+
+  end
   
   private
   def filter_to_string(filter)

@@ -224,15 +224,32 @@ FAVORITES_ESTATES.remove = function(id){
 
 FAVORITES_ESTATES.all = function() {
   var user_session = $.cookie('user_credentials');
-  var estates_string = $.cookie("favorite_estates");
+  var estates_string = readCookie("favorite_estates");
   var estates = [];
   if ( (typeof user_session) == 'string' &&  user_session && user_session != "") {
     return g_favorites_estate_ids.split(',');
   } else{
-    estates = estates_string.length == 0 ? [] : estates_string.split(',');
+    if(estates_string == null){
+      estates = [];
+    } else {
+      estates = estates_string.split(',');
+    }
+    
+//    estates = estates_string.length == 0 ? [] : estates_string.split(',');
     return estates;
   }
 };
+
+function readCookie(name){
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0;i < ca.length;i++) {
+    var c = ca[i];
+    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+  }
+  return null;
+}
 
 FAVORITES_ESTATES.count = function() {
   return FAVORITES_ESTATES.all().length;
@@ -381,10 +398,12 @@ function ajax_pagination(current_page, all_pages){
     if(current_page > 6){ $("a.page_first").show() }
     if(current_page < all_pages){ $("a.page_last").show() }
     $.each($("span.paging a"), function(elem){
-        $(this).click( function(e){
+        $(this).bind("click", function(e){
             e.preventDefault();
             $.ajax({
+                type: "GET",
                 url: $(this).attr("href"),
+                dataType: "script",
                 complete: function(data){}
             });
         });
