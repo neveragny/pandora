@@ -1,5 +1,6 @@
 <% if profile_owner? %>
     <% section = params[:section] %>
+
     <%= show(:inactive => (section == 'show')) %>
     <%= show_pending(:inactive => (section == 'pending')) %>
     <%= show_online(:inactive => (section == 'online')) %>
@@ -23,3 +24,7 @@
     </div>
 <% end  %>
 
+
+<%= render :layout => 'shared/popup', :locals => {:id => 'message-form-container'}  do %>
+  <%= render :partial => 'messages/new_message_form' %>
+<% end %>

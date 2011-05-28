@@ -6,7 +6,9 @@ gem 'rails', '3.0.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
-#gem 'mysql2'
+
+gem 'mysql2', '< 0.3'
+
 # Authlogic for authentication
 gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git',
   :branch => 'rails3'
@@ -26,9 +28,10 @@ gem 'mechanize'
 
 gem "s3"
 
+gem 'ar-octopus', :require => "octopus"
 
 # Use unicorn as the web server
-# gem 'unicorn'
+ gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'

@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_owner, :only => [:edit]
 
+  layout 'application', :except => [:new, :create]
+
   def show
   end
 
@@ -30,7 +32,7 @@ class UsersController < ApplicationController
 
   def create
     @current_user = @user = User.new(params[:user])
-    if @user.save!
+    if @user.save
       redirect_to(home_page, :notice => t(:welcome))
     else
       render :action => :new

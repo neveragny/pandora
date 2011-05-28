@@ -42,7 +42,7 @@ $.fn.alignCenter = function() {
             marginTop =  - $(this).height()/2 + 'px';
     return $(this).css({'margin-left':marginLeft, 'margin-top':marginTop});
 };
-
+mouse_is_inside_signin = false
 
 $(window).load(function() {
     if((typeof $.Jcrop == 'function') && $('#cropbox').length)
@@ -50,53 +50,8 @@ $(window).load(function() {
             minSize: [100, 100], aspectRation:1});
 });
 
-function togglePopup() { //TODO: REFACTORING
-    var $popUp = $('#popup'),
-            $opaco = $('#opaco');
-
-    if ($popUp.hasClass('hidden'))  {
-
-        if($.browser.msie) {
-            $opaco.height($(document).height()).toggleClass('hidden');
-        } else {
-            $opaco.height($(document).height()).toggleClass('hidden').fadeTo('slow', 0.7);
-        }
-        $popUp
-                .alignCenter()
-                .toggleClass('hidden');
-        $('#message_body').focus();
-    } else {
-        $opaco.toggleClass('hidden').removeAttr('style');
-        $popUp.toggleClass('hidden');
-        if ($popUp.find('form')) {
-            $popUp.find('form').clearForm();
-        }
-    }
-}
-
-function changeMarkedMessagesCounter( count ) {
-    var counter = $('#marked-messages-counter').
-            html( count ),
-            container = $('#options'),
-            visible = counter.is(':visible');
-    if ( count == 0 )  {
-        container.hide();
-    } else {
-        if ( !visible ) container.show();
-    }
-}
-
-function updateMessageActionLinks( ids ) {
-    var buttons = $('a.delete-messages, a.read-messages');
-    $.each(buttons, function() {
-        var messages = ids.join(','),
-                href = '/messages/' + messages;
-        $(this).data('messages', messages).attr('href', href);
-    });
-}
-
-
 $(document).ready(function() {
+
     var wrapper = $('#wrapper');
 
     if (wrapper.attr('data-user').length > 1)
@@ -110,7 +65,6 @@ $(document).ready(function() {
         user: {},
         actions: {},
         noticesContainer: $('#notices'),
-        utils: {},
         controller: wrapper.attr('class')
     };
     if(typeof user_attributes != 'undefined') {
@@ -125,54 +79,88 @@ $(document).ready(function() {
         $.licemerov.user.friends = $.parseJSON( $('#friends-json').text() );
 
 
-    $.licemerov.utils.linkTo = function(options) {
-        if (typeof options.href == 'undefined') {
-            options.href = $.licemerov.location;
-        }
-        var $url = $('<a></a>')
-                .attr('href', options.href).text(options.text);
+    $.licemerov.utils = {
+        linkTo: function(options) {
+            if (typeof options.href == 'undefined') {
+                options.href = $.licemerov.location;
+            }
+            var $url = $('<a></a>')
+                    .attr('href', options.href).text(options.text);
 
-        if ( typeof options.data != 'undefined' ) {
-            if ( options.data.remote )
-                $.each( options.data, function(key, value) {
-                    $url.attr('data-' + key, value);
+            if ( typeof options.data != 'undefined' ) {
+                if ( options.data.remote )
+                    $.each( options.data, function(key, value) {
+                        $url.attr('data-' + key, value);
+                    });
+            }
+
+            if ( typeof options.html != 'undefined' ) {
+                $.each( options.html, function(key, value) {
+                    eval('$url[0].' + key + ' = "' + value + '"');
                 });
-        }
+            }
 
-        if ( typeof options.html != 'undefined' ) {
-            $.each( options.html, function(key, value) {
-                eval('$url[0].' + key + ' = "' + value + '"');
+            return $url;
+        },
+        noticeFor: function(params) {
+            var notice = $('<div></div>');
+
+            return notice.addClass(params.html_class)
+                    .text( params.message )
+        },
+        appendNotice: function(notice) {
+            $.licemerov.noticesContainer.find('div').
+                    html(''); // Reset notices
+
+            if (! notice instanceof Array) notice = [notice];
+
+            $.each(notice, function() {
+                var message = $(this);
+                $.licemerov.noticesContainer.find('.' + message.attr('class')).
+                        append( message );
             });
+        },
+        closePopup: function(popUp) {
+            var form = popUp.find('form');
+            if ( popUp.is(':visible') ) {
+                popUp.toggleClass('hidden');
+                $('#opaco').addClass('hidden').removeAttr('style');
+                if ( form.length ) {
+                    form.clearForm();
+                }
+            }
         }
-
-        return $url;
-    };
-
-    $.licemerov.utils.noticeFor = function(params) {
-        var notice = $('<div></div>');
-
-        return notice.addClass(params.html_class)
-                .text( params.message )
-    };
-
-    $.licemerov.utils.appendNotice = function(notice) {
-        $.licemerov.noticesContainer.find('div').
-                html(''); // Reset notices
-
-        if (! notice instanceof Array) notice = [notice];
-
-        $.each(notice, function() {
-            var message = $(this);
-            $.licemerov.noticesContainer.find('.' + message.attr('class')).
-                    append( message );
-        });
-
     };
 
     // Let's occupy more namespaces!
 
     $.user = $.licemerov.user;
     $.utils = $.licemerov.utils;
+
+
+    // login form
+    $("a.modal_signup").bind("click",function(event){
+        event.preventDefault();
+        $("div.modal_background").show();
+        $("div#modal1").show();
+    });
+    $("div#modal1 div.submit a.cancel").bind('click',function(){
+        $("div.modal_background").hide();
+        $("div#modal1").hide();
+    });
+    $('div#modal1').hover(function(){
+            mouse_is_inside_signin=true;
+        }, function(){
+            mouse_is_inside_signin=false;
+        });
+
+        $("body").mouseup(function(){
+            if(! mouse_is_inside_signin){
+                $('div#modal1').hide();
+                $("div.modal_background").hide();
+            }
+        });
+
 
 });
 
@@ -204,12 +192,6 @@ $(document).ready(function() {
         $(this).toggleLoader();
     });
 
-    $('a#new-message, #close-popup').click(function(event) { //TODO: Refactoring
-        event.preventDefault();
-        togglePopup();
-        return false;
-    });
-
     $('a.inactive').live('click', function(event) {
         event.preventDefault();
         return false;
@@ -218,11 +200,14 @@ $(document).ready(function() {
     $('#parent_form, #response_form, #edit_avatar').clearForm();
 
     $('form#parent_form, form#response_form').keyup(function() {
-        $(this.elements[this.elements.length - 1])
-                .attr('disabled', (this.elements[2].value.length < 2)); //elements[2] is a textarea
-    });
-//            .bind("ajax:beforeSend", function() {toggleLoader(this)}). // TODO: Wait for JangoSteve's pull request merged into jquery-ujs
-//            bind("ajax:complete", function() {toggleLoader(this)});
+        var $this = $(this),
+            submit = $this.find(':submit'),
+            textArea = $this.find('textarea');
+
+        submit.attr('disabled', !(textArea.val().length >= 2) );
+    })
+            .bind("ajax:beforeSend", function() {$(this).toggleLoader()}).
+            bind("ajax:complete", function() {$(this).toggleLoader()});
 
     $('form#edit_avatar :file').change(function() {
         $('form#edit_avatar :submit')
@@ -244,7 +229,7 @@ $(document).ready(function() {
 
     $('form#new_album').bind('ajax:complete', function(event, xhr, status) {
         var params = $.parseJSON( xhr.responseText ),
-            $this = $(this);
+                $this = $(this);
         if ( status == 'success' ) {
             $('div#albums').append(
                     $(params.album)
@@ -263,22 +248,24 @@ $(document).ready(function() {
 
 
     $('.delete-album').live('ajax:complete', function() {
-        $(this).parent().slideUp('fast', function() { $(this).remove() });
+        $(this).parent().slideUp('fast', function() { $(this).delayedRemove() });
     });
 
     // Albums END
 
     // Friendships
 
-    function messageFor(htmlClass, variations) {
-        var message = variations;
-        if ( /reject-friendship-invite/.test(htmlClass) ) {
-            message = variations.rejected;
-        } else if ( /delete-friend/.test(htmlClass) ) {
-            message = variations.deleted;
+    var friendshipsApi = $.licemerov.friendships = {
+        messageFor: function(htmlClass, variations) {
+            var message = variations;
+            if ( /reject-friendship-invite/.test(htmlClass) ) {
+                message = variations.rejected;
+            } else if ( /delete-friend/.test(htmlClass) ) {
+                message = variations.deleted;
+            }
+            return message;
         }
-        return message;
-    }
+    };
 
     $('a.delete-friend, a.add-to-black-list, ' +
             'a.reject-friendship-invite, a.approve-friendship-invite').
@@ -323,7 +310,7 @@ $(document).ready(function() {
             var params = $.parseJSON( xhr.responseText ),
                     $this = $(this),
                     row = $this.parents('tr'),
-                    message = messageFor( $this.attr('class'), params.message  ),
+                    message = friendshipsApi.messageFor( $this.attr('class'), params.message  ),
                     notice = $('<div class="' + params.html_class + '">' + message + '</div>');
 
             $.licemerov.noticesContainer.find('.' + params.html_class)
@@ -335,29 +322,72 @@ $(document).ready(function() {
     // Friendships end
 
     // Messages
-//    $('a.delete-message, a.delete-messages, a.recover-message, a.recover-messages, a.read-messages')
-//            .live('ajax:beforeSend', function() {
-//        $(this).toggleLoader();
-//    });
+
+    // I am chainable
+    var messagesApi = $.licemerov.messages = {
+        filter: null,
+        setFilter: function(value) {
+            messagesApi.filter = value;
+            return messagesApi;
+        },
+        setMarkedMessagesCount: function(count) {
+            var counter = $('#marked-messages-counter').
+                    html( count ),
+                    container = $('#options');
+            if ( count == 0 )  {
+                container.hide();
+            } else {
+                if ( container.not(':visible') ) container.show();
+            }
+            return messagesApi;
+        },
+        updateMessageActionLinks: function(ids) {
+            var buttons = $('a.delete-messages, a.read-messages');
+            $.each(buttons, function() {
+                var messages = ids.join(','),
+                    href = '/messages/' + messages;
+                $(this).data('messages', messages).attr('href', href);
+            });
+            return messagesApi;
+        }
+    };
 
     $('a.delete-message').bind('ajax:complete', function(event, xhr, status) {
         if (status == 'success') {
             var params = $.parseJSON(xhr.responseText),
                     $this = $(this),
-                    row = $this.parents('tr')[0],
+                    row = $this.parents('tr').
+                            toggleClass('to-be-deleted'),
                     column = $this.parent(),
 
                     url = $.utils.linkTo({
                         text: params.single,
-                        href: '/messages/' + row.id + '/recover',
+                        href: '/messages/' + row.attr('id') + '/recover',
                         data: { remote: true, method: 'post' },
                         html: { className: 'recover-message' }
                     }).bind('ajax:complete', function(event, xhr, status) {
                         if (status == 'success') {
-                            $(this).remove();
+                            $(this).delayedRemove();
                             column.find('.delete-message').show();
+                            $(row).toggleClass('to-be-deleted').
+                                    find('input[type="checkbox"]').attr({checked:false, disabled:false});
                         }
-                    });
+                    }),
+
+
+                    checkbox = row.find('input[type="checkbox"]').attr('disabled', true);
+
+
+            if (checkbox.is(':checked')) { // You're nasty or not confident with your hands
+                checkbox.prop('checked', false);
+                var ids = [];
+                $.each( $('td.mark-message input:checked'), function() {
+                    ids.push(this.id.replace('message-', ''));
+                });
+                messagesApi.setMarkedMessagesCount( ids.length ).
+                        updateMessageActionLinks( ids ).
+                        setFilter(null);
+            }
 
             column.append(url);
         }
@@ -365,13 +395,13 @@ $(document).ready(function() {
 
     $('a.delete-messages').bind('ajax:complete', function(event, xhr, status) {
         if (status == 'success') {
-            var $this = $(this).toggleLoader().show(),
-                recoveryLinkSupplied = $('.recover-messages').length;
+            var $this = $(this).show(),
+                    recoveryLinkSupplied = $('.recover-messages').length;
 
             $.each( $this.data('messages').split(','), function() {
                 $('tr#' + this).toggleClass('deleted-message')
                         .find('input[type="checkbox"]')
-                           .attr('checked', false)
+                        .prop('checked', false)
             });
 
             if ( ! recoveryLinkSupplied ) {
@@ -384,18 +414,18 @@ $(document).ready(function() {
                         }).bind('ajax:complete', function(event, xhr, status) {
                             if ( status == 'success' ) {
                                 $('.deleted-message').removeClass('deleted-message');
-                                $(this).remove();
+                                $(this).delayedRemove();
                             }
                         });
                 $('#marking-message-options').append(url);
             }
-            changeMarkedMessagesCounter( 0 );
-            $.licemerov.user.messages_marked_filter = null;
+            messagesApi.setMarkedMessagesCount( 0 ).
+                    setFilter(null);
         }
     });
 
     $('a.read-messages').bind('ajax:complete', function() {
-        var $this = $(this).toggleLoader().show();
+        var $this = $(this).show();
         $.each( $('td.mark-message input:checked'), function() {
             this.checked = false;
         });
@@ -406,8 +436,8 @@ $(document).ready(function() {
             }
         });
 
-        changeMarkedMessagesCounter( 0 );
-        $.licemerov.user.messages_marked_filter = null;
+        messagesApi.setMarkedMessagesCount( 0 ).
+                setFilter(null);
     });
 
     $('td.mark-message input[type="checkbox"]').click(function() {
@@ -418,9 +448,9 @@ $(document).ready(function() {
             ids.push( this.id.replace('message-', '') );
         });
 
-        updateMessageActionLinks(ids);
-        $.licemerov.user.messages_marked_filter = null;
-        changeMarkedMessagesCounter( checkedMessages.length );
+        messagesApi.updateMessageActionLinks(ids).
+                setFilter(null).
+                setMarkedMessagesCount( checkedMessages.length );
     });
 
     $('span#marking-message-options a').click(function(event) {
@@ -429,43 +459,120 @@ $(document).ready(function() {
                 ids = [],
                 markMessages = function( elements, check ) {
                     $.each( elements, function() {
-                        this.checked = check;
-                        if ( check ) ids.push(this.id.replace('message-', ''))
+                        var disabled = this.disabled;
+                        if (! disabled ) {
+                            this.checked = check;
+                            if ( check ) ids.push(this.id.replace('message-', ''));
+                        }
                     });
                 },
                 elements = [],
-                filter = $.licemerov.user.messages_marked_filter;
+                filter = messagesApi.filter;
 
         markMessages( $('td.mark-message input[type="checkbox"]:checked'), false ); // Unmark all messages first
 
         if ( filter && filter == id ) { // User didn't check/uncheck anything and clicks filter again
             // uncheck all messages
             markMessages( $('td.mark-message input[type="checkbox"]:checked'), false );
-            updateMessageActionLinks( [0] );
-            $.licemerov.user.messages_marked_filter = null; // hence no filter is active
+            messagesApi.updateMessageActionLinks( [0] ).
+                    setFilter(null); // hence no filter is active
         } else {
             if ( id == 'mark-unread-messages' ) {
-                elements = $('tr.unread:not(.deleted-message) input[type="checkbox"]');
+                elements = $('tr.unread:not(.deleted-message) input[type="checkbox"]').not(':disabled');
             } else if ( id == 'mark-read-messages' ) {
-                elements = $('tr.read:not(.deleted-message) input[type="checkbox"]')
+                elements = $('tr.read:not(.deleted-message) input[type="checkbox"]').not(':disabled');
             } else if ( id == 'mark-all-messages' ) {
-                elements = $('tr:not(.deleted-message) input[type="checkbox"]')
+                elements = $('tr:not(.deleted-message) input[type="checkbox"]').not(':disabled');
             }
 
             markMessages(elements, true);
-            updateMessageActionLinks( ids );
-            $.licemerov.user.messages_marked_filter = (elements.length > 0)? id : null;
-
+            messagesApi.updateMessageActionLinks( ids ).
+                    setFilter( (elements.length > 0)? id : null );
         }
 
-        changeMarkedMessagesCounter( elements.length );
+        messagesApi.setMarkedMessagesCount( elements.length );
 
         return false;
     });
 
+    $('[data-popup]').click(function(event) {
+        event.preventDefault();
+        var $this = $(this),
+                $opaco = $('#opaco');
+        $( $this.attr('data-popup') ). // data-popup attr holds a selector
+                alignCenter().
+                toggleClass('hidden');
+
+        $opaco.height( $(document).height() ).toggleClass('hidden');
+    });
+
+    $('.close').click(function() {
+        $.utils.closePopup( $(this).parents('.popup') );
+    });
+
+    $('#opaco').click(function() {
+        $.utils.closePopup( $('.popup').filter(':visible') );
+    });
+
+    $('#single-receiver-message-form').bind('ajax:complete', function() {
+        var $this = $(this).clearForm();
+        $.utils.closePopup( $this.parents('.popup') );
+
+        setTimeout(function() {
+            $this.find(':submit').attr('disabled', true)
+        }, 1);
+    });
+
+    $('#single-receiver-message-form #message_body').bind('keyup keydown', function() {
+        var submit = $('#single-receiver-message-form').find(':submit'),
+                length = this.value.length;
+
+        submit.attr('disabled', !(length >= 2 && length < 1000));
+    });
+
+    $('.write-message').click(function() {
+        var recipient = $.parseJSON( $(this).attr('data-recipient') );
+        $('#message-recipient').
+                val( recipient.login );
+        $('#message_recipients').
+                val( recipient.id );
+    });
 
     // Messages end
 
+    // Photos
+
+
+    var currentPhotoContainer = $('#current-photo');
+
+
+    $('#new_photo').bind('ajax:complete', function(event, xhr, status)  {
+        var params = $.parseJSON(xhr.responseText),
+            container = $('#photos'),
+            photo = params.photo;
+        if ( status == 'success' ) {
+            container.append( photo );
+            $('#enable-fullscreen').show();
+        }
+    });
+
+    $('.photo').live('click', function() {
+      var $this = $(this),
+          smallImg = $this.find('img').attr('src'),
+          largeImg = $('<img></img>').attr('src', smallImg.replace('medium', 'large')),
+          photoId = $this.attr('id').replace('photo-', '');
+
+      location.hash = '#' + photoId;
+
+      currentPhotoContainer.html( largeImg ).show();
+    });
+
+
+    // Other related code moved to photos.js ( to be merged later )
+
+    // Photos end
+
+    // Main page (comments and stuff)
 
     $('.reply').live('click', function() {
         var form = $('#response_form'),
@@ -497,49 +604,54 @@ $(document).ready(function() {
     });
 
     $('.cancel-upload').click(function() {
-        var $cancel = $(this).hide();
-        var $field = $cancel.prev();
+        var $cancel = $(this).hide(),
+            $field = $cancel.prev(),
+            $form = $(this).parents('form');
         $field.replaceWith($field.clone(true)).val('');
-        $cancel.parents('form')
-                .find(':submit')
-                .attr('disabled', ($cancel.attr('rel') != 'disable'));
+
+        // Stupid workaround
+        if ( $form.attr('id') == 'edit_avatar' )
+            $form.find(':submit').attr('disabled', true);
     });
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-12535593-3']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
 
 });
 
+
+$.fn.delayedRemove = function() {
+    return this.each(function() {
+        var $this = $(this);
+        setTimeout(function() {
+            $this.remove();
+        }, 5);
+    });
+};
 $.fn.toggleLoader = function() {
     return this.each(function() {
-        var loadersCount = $('.loader').length,
-                currentLoaderClass = 'loader-' + (loadersCount + 1),
-                $this = $(this),
-                loader = ("<img class='" + currentLoaderClass  + "' src='/images/loader.gif' />");
+        var $this = $(this),
+            loadersCount = $('.loader').length,
+            tag = $this[0].tagName.toLocaleLowerCase(),
+            thisLoaderId = $this.data('loader');
 
-        if (this.tagName.toLowerCase() == 'a') {
-            $this.is(':visible')? $this.after(loader).hide() :
-                    $('.' + currentLoaderClass).remove();
-        } else if ( this.tagName.toLowerCase() == 'form' ) {
-            var submit = $this.find(':submit');
-            if (submit.is(':visible')) {
-                submit.hide();
-                $this.append(loader);
-            } else {
-                submit.show().next().remove();
-                if (this.id == 'response_form' && $this.find('.field_with_errors').length == 0)
-                    $this.hide();
+        if (! this ) return;
+
+        if ( thisLoaderId ) {
+            // Remove loader (action completed)
+            $('#' + thisLoaderId).remove();
+            $this.data('loader', null);
+            if ( tag == 'form' ) $this.find(':submit').show();
+        } else { // Starting action, append loader
+            thisLoaderId = 'loader-' + (loadersCount + 1);
+            $this.
+                    after("<img class='loader' id='" + thisLoaderId + "' src='/images/loader.gif' />").
+                    data('loader', thisLoaderId);
+            if ( tag == 'a' ) $this.hide();
+            if ( tag == 'form' ) {
+                $this.find(':submit').hide();
             }
         }
     });
 };
+
 
 function appendErrors(errors, form) { // Render object errors
     $.each(errors, function(index) {
@@ -548,12 +660,16 @@ function appendErrors(errors, form) { // Render object errors
 }
 
 
+
+
 //  ******************* CROPPING FUNCTIONS ******************** TODO: please refactor me
 
 function releaseJcrop() {
-    $.licemerov.jcrop_api.release();
-    $('#release_jcrop').hide().parent('form').find(':submit').attr('disabled', 'disabled').
-            parent('form').find('input[id^="crop"]').val('');
+    if ( typeof $.licemerov.jcrop_api != 'undefined' ) {
+        $.licemerov.jcrop_api.release();
+        $('#release_jcrop').hide().parent('form').find(':submit').attr('disabled', 'disabled').
+                parent('form').find('input[id^="crop"]').val('');
+    }
 }
 
 $(document).ready(function() {
@@ -564,7 +680,7 @@ $(document).ready(function() {
 
 function updateCrop(coords) {
     if ($('#release_jcrop').not(':visible')) {
-        $('#edit_avatar').clearForm().find(':submit').attr('disabled', '');
+        $('#edit_avatar').clearForm().find(':submit').attr('disabled', false);
         $('#release_jcrop').show();
     }
     var ratio = (parseFloat($('#cropbox').attr('data-ratio'))); // The rate of original image / re-sized image

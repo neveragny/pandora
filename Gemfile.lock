@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/formasfunction/remotipart.git
-  revision: e1a38fe5aef40e2918f840ca5c51b95c383ff4a1
+  revision: 64ce25f5affcaad038314c53b06b8d6a0907e5b0
   specs:
-    remotipart (0.2.1)
+    remotipart (0.3.4)
 
 GIT
   remote: git://github.com/odorcicd/authlogic.git
@@ -42,15 +42,18 @@ GEM
       activemodel (= 3.0.3)
       activesupport (= 3.0.3)
     activesupport (3.0.3)
-    arel (2.0.7)
+    ar-octopus (0.3.4)
+      activerecord (>= 2.3)
+    arel (2.0.10)
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    i18n (0.5.0)
-    jquery-rails (0.2.6)
-      rails (~> 3.0)
-      thor (~> 0.14.4)
-    mail (2.2.15)
+    i18n (0.6.0)
+    jquery-rails (1.0.9)
+      railties (~> 3.0)
+      thor (~> 0.14)
+    kgio (2.4.1)
+    mail (2.2.19)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -58,14 +61,15 @@ GEM
     mechanize (1.0.0)
       nokogiri (>= 1.2.1)
     mime-types (1.16)
+    mysql2 (0.2.7)
     nokogiri (1.4.4)
-    paperclip (2.3.8)
-      activerecord
-      activesupport
+    paperclip (2.3.11)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
     polyglot (0.3.1)
     proxies (0.2.1)
-    rack (1.2.1)
-    rack-mount (0.6.13)
+    rack (1.2.3)
+    rack-mount (0.6.14)
       rack (>= 1.0.0)
     rack-test (0.5.7)
       rack (>= 1.0)
@@ -82,7 +86,7 @@ GEM
       activesupport (= 3.0.3)
       rake (>= 0.8.7)
       thor (~> 0.14.4)
-    rake (0.8.7)
+    rake (0.9.0)
     s3 (0.3.8)
       proxies (~> 0.2.0)
     sqlite3 (1.3.3)
@@ -91,20 +95,26 @@ GEM
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    tzinfo (0.3.24)
-    unicode (0.3.1)
+    tzinfo (0.3.27)
+    unicode (0.4.0)
+    unicorn (3.6.2)
+      kgio (~> 2.3)
+      rack
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  ar-octopus
   authlogic!
   jquery-rails
   mechanize
   mime-types
+  mysql2 (< 0.3)
   paperclip
   rails (= 3.0.3)
   remotipart!
   s3
   sqlite3-ruby
   unicode
+  unicorn

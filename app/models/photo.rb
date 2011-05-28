@@ -1,32 +1,60 @@
-class Photo < ActiveRecord::Base
-  establish_connection :rents
-  belongs_to :rent
-
-  has_attached_file :photo,
-      :styles => {
-          :thumb => "100x100",
-          :small => "150x150"
-      },
-      :storage => :s3,
-      :s3_credentials => "#{Rails.root}/config/s3.yml",
-      :path => ":attachment/:id/:style.:extension",
-      :url => ':s3_domain_url'
-  #attr_accessor :photo_file_name, :photo_content_type, :photo_size
-
+class NotRestrictedValidator < ActiveModel::EachValidator
+  # You can`t register with restricted login!!!
+  def validate_each(record, attribute, value)
+    record.errors[attribute] << ": Using #{attribute} '#{value}' is forbidden, sorry" unless
+        !User::RESTRICTED_LOGINS.index(value) #.find {|login| value =~ /#{login}/}
+  end
 end
 
 
+class Photo < ActiveRecord::Base
 
+  attr_accessible :user_id, :album_id, :photo
 
+  belongs_to :album
+  belongs_to :user # just to stay on a safe side, might be removed later
+  has_many :photo_comments
 
+  #<width>x<height><specifier>
 
+  # % : Interpret width and height as a percentage of the current size
+  # ! : Resize to width and height exactly, loosing original aspect ratio
+  # < Resize only if the image is smaller than the geometry specification
+  # > Resize only if the image is greater than the geometry specification
+  # # : Crop!
 
+  has_attached_file :photo, :styles => { :large => '600x400>', :medium => "300x200#", :thumb => "200x150>" }
 
+  validates_presence_of :photo_file_name
+  validates_presence_of :photo_content_type
+  validates_presence_of :photo_file_size
 
+  validates_attachment_content_type :photo,
+                                    :content_type => ['image/jpeg', 'image/jpg',
+                                                      'image/pjpeg', 'image/png', 'image/gif'],
+                                    :message => 'wtf?',
+                                    :unless => Proc.new  { |model| model.photo }
+  validates_attachment_size :photo, :less_than => 4.megabytes, :unless => Proc.new { |model| model.photo }
 
+  before_save :randomize_file_name, :if => :uploading_photo?
+  after_post_process :save_photo_dimensions
 
+  private
 
+  def randomize_file_name
+    extension = File.extname(photo_file_name).downcase
+    self.photo.instance_write(:file_name, "#{ActiveSupport::SecureRandom.hex(16)}#{extension}")
+  end
 
+  def uploading_photo?
+    photo_file_name_changed?
+  end
 
+  def save_photo_dimensions # See lib/attachment.rb for details
+    if photo.geometry && photo.geometry.width > 100 && photo.geometry.height > 100
+      self.photo_dimensions = {:original => {:width => photo.geometry.width, :height => photo.geometry.height},
+                               :large => {:width => photo.geometry(:large).width, :height => photo.geometry(:large).height}}.to_s
+    end
+  end
 
-#You HAVE TO EXPLICITLY specify <your_bucket_here>.amazonws.com
+end

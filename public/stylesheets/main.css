@@ -16,7 +16,7 @@ BODY {
 	font: 62.5%/1.4 Arial, Helvetica, sans-serif;
 	}
 
-#wrapper {border-top: 3px solid #E1E1E1; padding: 0 15px;}
+#wrapper {border-top: 3px solid #E1E1E1; padding: 0 25px;}
 
 H3, H4, .search-controllers .paging, .object .object-info .howmuch,
 .mini LI.price, .mini LI.tel {font-family: Georgia, "Nimbus Roman No9 L", serif}
@@ -180,7 +180,6 @@ A.em {
     cursor:pointer;
     vertical-align: middle;
     }
-
 .footer {
 	width: 100%;
 	padding-top: 15px;
@@ -1003,13 +1002,13 @@ INPUT.txt, TEXTAREA.txt {
         margin-left: 0px;
         background-position: -98px -101px;
         }
-    .toggleside:hover .ico.arrtoggle {
+/*    .toggleside:hover .ico.arrtoggle {
         top:0px;
         width:5px;
         height:9px;
         margin-left: 0px;
         background-position: -103px -101px;
-        }
+        }*/
     .ico.arrtoggleb{
         top:0px;
         width:5px;
@@ -2197,7 +2196,7 @@ width: 520px; display: block; margin: 66px 1px 0 1px !important; z-index: auto; 
     .search-results TD {background-color: #F2F2F2;}
     .search-results TH A {border: none;}
 
-.search-results .chk {width: 10px; padding: 0px;}
+.search-results .chk {width: 25px; padding: 0px;}
 .search-results .ob-addfav {}
 .search-results .ob-addfav div {width: 15px; height: 16px; background: transparent url('../images/sprite.png') -48px -93px no-repeat; display: inline-block;  margin: 0px 7px 0 5px; position: relative; top: 3px; float: left;}
 .commer .ob-addfav div {top: 0px}
@@ -5204,7 +5203,11 @@ A {color: #000000; text-decoration: none;}
 /* description extra */
 
 .description-extra {
-    display:inline;
+    display:inline;    
+}
+
+a.description-extra-button {
+ border-bottom: 1px dashed gray !important;
 }
 
 

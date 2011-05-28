@@ -1,4 +1,5 @@
 <div id="search-results" class="search-results">
+
   <table id="estates_table">
     <tbody>
       <tr>
@@ -7,12 +8,12 @@
         <th id="adress_sorter">месторасположение</th>
         <th id="floor_sorter"><a href="#">этаж</a><a href="#"><span class="ico downn"></span></a></th>
         <th id="cost_sorter"><a href="#">цена</a><a href="#"><span class="ico downn"></span></a></th>
-        <th>описание<a class="green description-extra-button" href="#">развернуто</a></th>
+        <th>описание: &nbsp;<a class="green description-extra-button" href="#">развернуто</a></th>
         <th></th>
       </tr>
 
       <!-- loop starts -->
-      <% @rents.each do |item|  %>
+      <% @fav_rents.each do |item| %>
 
         <tr estate_id="<%= item.id %>" class="estate-row" id="estate_<%= item.id %>">
           <td class="chk">
@@ -22,17 +23,29 @@
           </td>
           <td class="rooms"><%= item.rooms %></td>
           <td class="station"><%= item.adress %></td>
-          <td class="floor"><%= item.floors %></td>
+          <td class="floor"><%= item.floor_at %><%= "/#{item.floors}" if !(item.floors.blank?)%></td>
           <td class="price"><%= item.price %></td>
 
           <td class="desc">
-            <strong>
-              <a class="estate-display-name" href="/users/33008">mvs</a>
-            </strong>
-            <a target="_blank" class="estate-link" href="/estate/<%= item.id %>"><%= item.info %><span class="description-extra hide"></span></a>
+            <% img_amount = item.img_amount %>
+            <% if img_amount > 0 %>
+              <span class='with_photo_link'><%=img_amount%>&nbsp;фото</span>&nbsp;
+            <% end %>
+            <!--<strong>
+<a class="estate-display-name" href="/users/33008">mvs</a>
+</strong> -->
+            <% description = item.info %>
+            <a target="_blank" class="estate-link" href="/estate/<%= item.id %>">
+              <%= description[0..130] if !(description.blank?) && description.length > 100 %>
+              <span class="description-extra hide">
+                <%= description[131..(description.length-1)] if description.is_a?(String) && description.length > 131%>
+              </span>
+            </a>
             <a target="_blank" class="green" href="/estate/<%= item.id %>">открыть в новом окне<i class="ico new-win"></i></a>
           </td>
-          <td class="contacts">+7(903) 167-5732<br>+7(903) 167-5732</td>
+          <td class="contacts">
+            <%= item.phones.split(",")[0] if !(item.phones.blank?) %>
+          </td>
       </tr>
       
     <% end %>
@@ -40,4 +53,3 @@
     </tbody>
   </table>
 </div>
-

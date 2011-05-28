@@ -50,7 +50,11 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy # delete/cancel friendship
+<<<<<<< HEAD
     #@friendship.destroy
+=======
+    @friendship.destroy
+>>>>>>> 2d1f1c36d842ede52c00e7f9d50e31a7c4107c22
     # As this action skips 'existent user' filter, we must know the profile owners id to show 
     # an 'add to friends' link
     @user = User.where(:id => friend_id(@friendship)).first

@@ -1,0 +1,22 @@
+
+	object_found(<%= @amnt %>);
+
+
+
+	$("estates_result_count").empty();
+	$("estates_result_count").append("17356");
+
+	$("div#result_content_table").empty();
+
+	$('div#result_content_table').append("<%= escape_javascript(render :partial => 'results' )%>");
+
+	g_estates_table = new EstatesTable();
+
+  g_estates_table.initialize($("div#result_content"));
+
+    ajax_pagination(<%= @page %>, <%= @pages %>);
+
+//	TABLE_SORTERS.init('sorted_type', 'make_search()');
+
+
+

@@ -1,71 +1,72 @@
 $(document).ready(function() {  
    applesearch.init(); 
 
-//g_favorites_counter = FavoritesCounter;
+if (typeof $.cookie('favorite_estates') != 'string'){
+   $.cookie('favorite_estates', '');
+}
 
-//if ( ! $('#estates_table td').length  && window.location.pathname == "/") {
-//  render_result(0, 0, 1, "");
-//}
 
-$('div.estate_search1 input').bind("keypress" ,function(e){
-  if (e.keyCode == 13) {
-    rent_search();
-  }
-});
+g_side_bar = $("div#side_bar");
 
-$("select#district_id").bind('change',function () {
-  $("span#sel_dist").html($("select#district_id option:selected ").text());
-         
-});
-//
+user_session = $.cookie('user_credentials');
+if ( (typeof user_session) == 'string' &&  user_session && user_session != ""){
 
-$("select#rooms_num").bind('change', function(){
-  $("span#sel_rooms").html($("select#rooms_num option:selected ").text());
-});
+   g_favorites_estate_ids = $.ajax({
+      url:'estate/all_bookmarks.json',
+      dataType: "json" ,
+      async: false,
+      complete: function(data){
+        g_favorites_estate_ids = data;
+      }
+    }).responseText;
 
-//$("span.ob-addfav a").live('click', function(event){
-//    var id = $(this).closest('tr').attr('id');    
-    //if($("tr#"+ id + " span.ob-addfav a").attr("class") == "selected"){
-    //  $("tr#"+ id + " span.ob-addfav a").removeClass("selected");}
-    //else{
-    //  $("tr#"+ id + " span.ob-addfav a").addClass("selected");}
-    //event.preventDefault();
+}
 
+g_favorites_counter = new FavoritesCounter();
+
+g_estates_table = new EstatesTable();
+
+g_estates_table.initialize($("div#result_content"));
+
+ajax_pagination(1, $("span.paging").attr("data-pages"));
+
+
+
+
+
+$("span#favorites_counter").empty();
+$("span#favorites_counter").append(FAVORITES_ESTATES.count());
+
+
+
+
+//$('div.estate_search1 input').bind("keypress" ,function(e){
+//  if (e.keyCode == 13) {
+//    rent_search();
+//  }
 //});
-
 //
-
-$('span#search_rent a').bind('click', function(){
-  rent_search();
-});
-
-//$('a.green.description-extra-button').click(function(){
-//  event.preventDefault();
-//  if($('span.description-extra').is(":visible")){
-//    $('span.description-extra').css("diplay", "none");
-//    $('a.green.description-extra-button').text("развернуто");
-//  }
-//  else{
-//    $('span.description-extra').css("diplay", "inline-block");
-//    $('a.green.description-extra-button').text("коротко");
-//  }
+//$("select#district_id").bind('change',function () {
+//  $("span#sel_dist").html($("select#district_id option:selected ").text());
+//
+//});
+////
+//
+//$("select#rooms_num").bind('change', function(){
+//  $("span#sel_rooms").html($("select#rooms_num option:selected ").text());
+//});
+//
+////
+//
+//$('span#search_rent a').bind('click', function(){
+//  //rent_search();
 //});
 
 if ($('table#estates_table tbody tr.estate-row').size() > 0 ){
   $("table#estates_table tbody tr:odd").addClass("alt");
 }
 
-//
-//
-$('td#side_bar_toggler').hover(
-  function(){
-//    $('td#side_bar_toggler a span').removeClass('arrtoggle');
-//    $('td#side_bar_toggler a span').addClass('white');
-  },
-  function(){
-    $('td#side_bar_toggler a span').removeClass('white');
-    $('td#side_bar_toggler a span').addClass('arrtoggle');
-  });
+
 
 function hide_sidebar(){
   var main = document.getElementById("main");
@@ -89,9 +90,33 @@ $("a.side-bar-button").click(function(){
 });
 
 
+$("span#search_rent a").click(
+        function(event){
+            event.preventDefault();
+            doSearch();
+        }
+)
+
+
 }); // DOCUMENT ON_READY END
 
+oControl= new function (par1, par2) {
+    var self= this;
+    var val1= par2 * 2;
+    var t1;
+
+    var privatF1= function (par3) {
+        return par1 + par3 + val1;
+    };
+
+    self.pubF1= function (par4) {
+        t1= setTimeout(function() {privatF1(par4)}, 50);
+    };
+} ('abc', 123);
+
 // FUNCTIONS
+
+
 
 function rent_search(page){
       var dist_code = $("select#district_id option:selected")[0].value;
@@ -109,49 +134,20 @@ function rent_search(page){
 }
 
 function render_result(dist_code, rooms, page, search_string){
-$.ajax({
-  url:'estate/result.json?dist_code='+dist_code+'&rooms='+rooms+'&page='+page+'&string='+search_string,
-  dataType: "json",
-  beforeSend: function(){
-    $('table#estates_table tbody').fadeOut('fast', function(){
-       $('span.paging').empty();
-       $('div#spinner').show();
-       $('span#estates_result_count').empty();
+    $.ajax({
+      url:'estate/result.js?dist_code='+dist_code+'&rooms='+rooms+'&page='+page+'&string='+search_string,
+    //  dataType: "js",
+      beforeSend: function(){
+        $('table#estates_table tbody').fadeOut('fast', function(){
+           $('span.paging').empty();
+           $('div#spinner').show();
+           $('span#estates_result_count').empty();
+        });
+      },
+      success: function(data){
+
+      }
     });
-  },
-  success: function(data){
-    $('div#spinner').hide();
-    var items = [];
-    $.each(data.rents, function(key, val) {
-      items.push('<tr id="' + val.rent.id +'" class="estate-row">'+
-               '<td class="chk">'+ "<span class ='ob-addfav'><a class='' href='#'><div></div></a></span>" + '</td>'+
-               '<td class="rooms">'+ val.rent.rooms + '</td>' +
-               '<td class="station">'+ val.rent.adress.split(",")[2] + '</td>' +
-               '<td class="floor">'+ getFloors(val.rent.floor_at, val.rent.floors) +  '</td>' +
-               '<td class="price">'+ val.rent.price + '</td>' +
-               '<td class="desc">'+ images_amount(val.img_amount) + subs(val.rent.info) + (val.rent.info == null ? "" : "...") +'<span class="description-extra">'+  extra("..."/*val.rent.info*/)  +'</span> ' +
-               '<a class="green" target="_blank" href="/estate/' + val.rent.id + '">&nbsp;Подробнее о квартире<i class ="ico new_win"></i></a>'  + '</td>' +
-               '<td class="contacts"><ul>');
-      $.each(val.rent.phones.split(","), function(key,value) {
-        items.push('<li>'+ value + '</li>');
-      });
-      items.push('</ul></td></tr>');
-
-    });
-
-    $('table#estates_table tbody tr.estate-row').remove();
-    $('table#estates_table tbody').append(items.join(''));       //div#result_content_table div#search-results.search-results table#estates_table tbody
-
-    if ($('table#estates_table tbody tr.estate-row').size() > 0 ){
-      $("table#estates_table tbody tr:odd").addClass("alt");
-    }
-
-    $('table#estates_table tbody').fadeIn('fast', function(){
-          append_paging(data.pages, dist_code, rooms, page);
-    });
-    $('span#estates_result_count').append(data.amount);
-  }
-});
 }   //end of render_result
 
 function images_amount(size){
@@ -178,165 +174,130 @@ function getFloors(at, all){
     return at == null ? "" : "" + at + "/" + all
 }
 
-function append_paging(size, dist_code, rooms, page){
-  var page = parseInt(page);
-  var items = [];
-  if (size < 10){
-    for (var i=1;i<=size;i++){
-      if(i == page){
-        items.push($('<em>'+i+'</em>'));
-      }
-      else{
-        items.push($('<a href="#">'+ i +'</a>').click(
-          function(event) {
-            event.preventDefault();
-            rent_search($(this).text());//render_result(dist_code, rooms, $(this).text());
-          }))
-        }
-      }
-  }
-  else{
-    var startRange;
-    var endRange;
-    if( page <= 5){
-      startRange = 1;
-      endRange = 10;
-    }
-    else{
-      startRange = page >= size ? (page - 11) : page - 5;
-      endRange = page >= (size -4) ? size : (page + 5) ;
-    }
-    items.push($('<a class="page_first" title="Первая страница" href="#">←</a>').click(function(event) {
-          event.preventDefault();
-          rent_search(1);
-          //render_result(dist_code, rooms, 1);
-        }));
-
-    for (var i = startRange; i<= endRange; i++){
-      if(i == page){
-        items.push($('<em>'+i+'</em>'));
-      }
-      else{
-        items.push($('<a class="page_link" href="#">'+ i +'</a>').click(function(event) {
-          event.preventDefault();
-          rent_search($(this).text());
-          //render_result(dist_code, rooms, $(this).text());
-        }))
-      }
-    }
-        items.push($('<a class="page_last" title="Последняя страница" href="#">→</a>').click(function(event) {
-          event.preventDefault();
-          rent_search(size);
-          //render_result(dist_code, rooms, size);
-        }))
-  }
-
-  $.each(items, function() {
-      $(this).appendTo('span.paging');
-
-  });
-
-  if(page > 6 && page < size - 5){
-    $('a.page_first').show();
-    $('a.page_last').show();
-  }
-  else if(page < size - 5){
-    $('a.page_last').show();
-  }
-  else if(page > 6){
-    $('a.page_first').show();
-  }
 
 
+function object_found(count) {
+    $('span#estates_result_count').empty();
+    $('span#estates_result_count').append(count);
 }
 
 
 var FAVORITES_ESTATES = new Object();
 
 FAVORITES_ESTATES.add = function(estate_id){
-  if ( $.cookie('user_id' == undefined) || $.cookie('user_id' == "")  ){
-    var estates = FAVORITES_ESTATE.all();
-    estates.include(estate_id);
+  var user_session = $.cookie('user_credentials');
+  if ( (typeof user_session) == 'string' &&  user_session && user_session != ""){
+    $.ajax({
+      url:'estate/add_to_bookmarks.json?rent_id='+estate_id,
+      dataType: "json",
+      success: function(data){}
+    });
+  }else {
+    var estates = FAVORITES_ESTATES.all();
+    estates.push(estate_id);
+    estates = $.unique(estates);
     var estates_string = estates.join(",");
     $.cookie("favorite_estates", estates_string, {path: "/"})
-  }else {
-    //TODO create ajax request to add to bookmarks
   }
-  
+
 };
 
 FAVORITES_ESTATES.remove = function(id){
-     if ( $.cookie('user_id' == undefined) || $.cookie('user_id' == "")  ){
+     var user_session = $.cookie('user_credentials');
+     if ( (typeof user_session) == 'string' &&  user_session && user_session != ""){
+       $.ajax({
+         url:'estate/remove_from_bookmarks.json?rent_id='+id,
+         dataType: "json"//,
+//         success: function(data){
+//         }
+       });
+
+     } else {
         var estates = FAVORITES_ESTATES.all();
-        estates.erase(id+"");
+        var idx = estates.indexOf(id+"");
+        if(idx != -1) estates.splice(idx, 1);
+        //estates.erase(id+"");
         var estates_string = estates.join(",");
         $.cookie("favorite_estates", estates_string, {path: "/"})
-     } else {
-        //TODO create ajax request to add to bookmarks
      }
 };
 
 FAVORITES_ESTATES.all = function() {
-  if ( $.cookie('user_id' == undefined) || $.cookie('user_id' == "") ){
-    var estates_string = $.cookie("favorite_estates");
-    var estates = [];
-    if (estates_string && estates_string != "") {
-      estates = estates_string.split(",");
-    }
-    return estates;
+  var user_session = $.cookie('user_credentials');
+  var estates_string = readCookie("favorite_estates");
+  var estates = [];
+  if ( (typeof user_session) == 'string' &&  user_session && user_session != "") {
+    return g_favorites_estate_ids.split(',');
   } else{
-    return g_favorites_estate_ids.split(",");
+    if(estates_string == null){
+      estates = [];
+    } else {
+      estates = estates_string.split(',');
+    }
+    
+//    estates = estates_string.length == 0 ? [] : estates_string.split(',');
+    return estates;
   }
 };
+
+function readCookie(name){
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0;i < ca.length;i++) {
+    var c = ca[i];
+    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+  }
+  return null;
+}
 
 FAVORITES_ESTATES.count = function() {
   return FAVORITES_ESTATES.all().length;
 }
 
 FAVORITES_ESTATES.exists = function(estate_id) {
-  return FAVORITES_ESTATES.all().contains(estate_id+"");
+    return $.inArray(estate_id + "", FAVORITES_ESTATES.all()) != -1 ;
 }
 
-var FavoritesCounter = {
+function FavoritesCounter(){
   
+  this.label = $("span#favorites_counter");
+  this.count = FAVORITES_ESTATES.count();
 
-  initialize: function(){
-    this.label = $("#favorites_counter");
-    this.count = FAVORITES_ESTATES.count();
-  },
 
-  increment: function() {
+  this.increment = function() {
     this.change(+1);
   },
   
-  decrement: function() {
+  this.decrement = function() {
     this.change(-1);
   },
 
   //private
-  change: function(diff) {
+  this.change = function(diff) {
     this.count = this.count + diff
-    this.label.innerHTML = this.count;
+    this.label.empty();
+    this.label.append(this.count);
   }
     
-};
+}
 
-var FavoriteSwitcher = {
-  initialize: function(container, estate_id) {
+function FavoriteSwitcher(){
+  this.initialize = function(container, estate_id) {
     var this_class = this;
-    this.button = container.getElement("A");
+    this.button = container.find("A");
     this.estate_id = estate_id;
 
     if (FAVORITES_ESTATES.exists(estate_id)) {
       this.button.addClass("selected");
     }
-    this.button.addEvent('click', function(event) {
-      event.stop();
+    this.button.live('click', function(event) {
+      event.preventDefault();
       this_class.toggle_favorite();
     });
   },
 
-  toggle_favorite: function() {
+  this.toggle_favorite = function() {
     if (this.button.hasClass("selected")){
       FAVORITES_ESTATES.remove(this.estate_id);
       g_favorites_counter.decrement();
@@ -349,7 +310,102 @@ var FavoriteSwitcher = {
     
 };
 
+function EstatesTable(){
 
-$(document).ready(function(){
-    g_favorites_counter = FavoritesCounter;
-}); 
+    this.initialize = function(container) {
+        var this_object = this;
+        this.description_extras = $(".description-extra");
+        this.description_extra_button = $(".description-extra-button");
+        this.side_bar_button = $("a.side-bar-button");
+        this.descriptions_expanded = false;
+        if ($('table#estates_table tbody tr.estate-row').size() > 0 ){
+          $("table#estates_table tbody tr:odd").addClass("alt");
+        }
+        this.description_extra_button.bind('click', function(event) {
+            event.preventDefault();
+            this_object.toggle_descriptions();
+        });
+        if (!g_side_bar.is(":visible")) {
+						alert("sdfsd");
+            this.side_bar_button.innerHTML = "Показать хуй правую колонку";
+        }
+        this.side_bar_button.bind('click', function(event) {
+            event.preventDefault();
+            this_object.toggle_side_bar();
+        });
+        this.estate_rows = $(".estate-row");
+        this.estate_rows.each(function() {
+            var favorite_container = $(this).find(".ob-addfav");
+            var estate_id = $(this).attr("estate_id");
+            var fav_swtch = new FavoriteSwitcher();
+            fav_swtch.initialize(favorite_container, estate_id);
+        });
+//        this.toggle_map_button = container.getElement(".estates-table-toggle-map-button");
+//        this.map_hidden = false;
+//        this.toggle_map_button.addEvent('click', function(event) {
+//            this_object.toggle_map();
+//        });
+    },
+
+    this.toggle_descriptions =  function() {
+        if (this.descriptions_expanded) {
+            this.collapse_descriptions();
+        } else {
+            this.expand_descriptions();
+        }
+        this.descriptions_expanded = !this.descriptions_expanded;
+    },
+
+    this.expand_descriptions = function() {
+        this.description_extras.each(function(extra) {
+            //extra.show();
+            $(this).removeClass('hide');
+        });
+        this.description_extra_button.html("коротко");
+    },
+
+    this.collapse_descriptions = function() {
+        this.description_extras.each(function(extra) {
+            //extra.hide();
+            $(this).addClass('hide');
+        });
+        this.description_extra_button.html("развернуто");
+    },
+
+    this.toggle_side_bar = function() {
+        if (!g_side_bar.is(":visible")) {
+            g_side_bar.show();
+            this.side_bar_button.innerHTML = "Скрыть правую колонку";
+        } else {
+            g_side_bar.hide();
+            this.side_bar_button.innerHTML = "Показать правую колонку";
+        }
+    },
+
+    this.toggle_map = function() {
+        if (this.map_hidden) {
+            this.toggle_map_button.innerHTML = "Свернуть карту";
+        } else {
+            this.toggle_map_button.innerHTML = "Показать карту";
+        }
+        g_estates_search_map.toggle();
+        this.map_hidden = !this.map_hidden;
+    }
+}
+
+function ajax_pagination(current_page, all_pages){
+    var ajax_pagination_request = null;
+    if(current_page > 6){ $("a.page_first").show() }
+    if(current_page < all_pages){ $("a.page_last").show() }
+    $.each($("span.paging a"), function(elem){
+        $(this).bind("click", function(e){
+            e.preventDefault();
+            $.ajax({
+                type: "GET",
+                url: $(this).attr("href"),
+                dataType: "script",
+                complete: function(data){}
+            });
+        });
+    });
+}

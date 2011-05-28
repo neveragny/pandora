@@ -5,3 +5,4 @@ require File.expand_path('../application', __FILE__)
 Licemerov::Application.initialize!
 
 Dir[File.join(Rails.root, 'lib', 'patches', '**', '*.rb')].sort.each { |patch| require(patch) }
+

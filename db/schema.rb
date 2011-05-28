@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110503213006) do
+ActiveRecord::Schema.define(:version => 20110512111603) do
 
   create_table "albums", :force => true do |t|
     t.integer  "user_id",         :default => 0,                     :null => false
@@ -50,6 +50,39 @@ ActiveRecord::Schema.define(:version => 20110503213006) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_id"
+  end
+
+  create_table "photo_comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "photo_id"
+    t.string   "user_avatar_url"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photos", :force => true do |t|
+    t.integer  "album_id"
+    t.integer  "user_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "photo_dimensions"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rentbookmarks", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "rent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rentphotos", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "root_entries", :force => true do |t|

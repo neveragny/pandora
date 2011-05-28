@@ -3,16 +3,37 @@ class EstateController < ApplicationController
   skip_before_filter :existent_user
 
   def index
-    if params[:id] == "index"
-      redirect_to "/"
+    logger.warn "PARAMS : #{params}"
+
+    @filter = params[:filter]
+    logger.debug("FILTER: #{@filter}")
+    @page = params[:page].blank? ? 1 : params[:page].to_i
+
+
+
+    if !@filter
+      @rents, @amnt = Rent.get_rents(0, 0, "", (!@page? 1: @page) )
+      @pages = Rent.get_pages(0, 0, "")
+    else
+      dist_code= @filter[:dist_code].blank? ? 0 : @filter[:dist_code]
+      rooms= @filter[:rooms].blank? ? 0 : @filter[:rooms].to_i
+      search_query= @filter[:search_query]
+      @rents, @amnt = Rent.get_rents(dist_code, rooms, search_query, @page )  #dist_code ,rooms ,string ,page
+      @pages = Rent.get_pages(dist_code, rooms, search_query) # dist_code, rooms, search_string
+      @pagified_filter = filter_to_string(@filter)
+      logger.debug("filter_to_string: #{filter_to_string(@filter)}")
+      logger.debug("ROOMS: #{@filter[:rooms]}")
+      logger.debug("PAGES: #{@pages}")
+      logger.debug("PAGE: #{@page}")
     end
-   
-    @rents, @amnt = Rent.get_rents(0, 0, "", 1)
+
     respond_to do |format|
       format.html
-      format.json { render :json => @rents }
+#      format.json { render :json => @rents }
+      format.js {render :content_type => 'text/javascript', :layout => false}
     end
-  end
+  end  
+  
 
   def show
     #check if guys comming to old comilffo from google :D
@@ -33,23 +54,72 @@ class EstateController < ApplicationController
     @pages = Rent.get_pages(dist_code, rooms,search_string)
 
     respond_to do |format|
-      format.html
-      format.json { render :json => {:rents => @rents, :pages => @pages, :amount => @amnt} }
+      #format.html
+      format.js { render :content_type => 'text/javascript' }
     end
   end
 
   def add_to_bookmarks
-    bookmark = Bookmark.new(:ref_id => params[:rent_id])
-    bookmark.type = "rent"  #THIS IMPORTANT!
+    bookmark = Rentbookmark.new(:user_id => @current_user.id,:rent_id => params[:rent_id])
     
-    respont_to do |format|
+    respond_to do |format|
       if bookmark.save
-        format.json {render :json => {:result => "OK"}}
+        format.json {render :json => {:result => "ADDED"}}
       else
         format.json {render :json => {:result => "NOT OK"}}
       end
     end
-
   end
 
+  def remove_from_bookmarks
+    bookmark_id = Rentbookmark.where("user_id = ? and rent_id = ?", @current_user, params[:rent_id]).first.id
+
+    respond_to do |format|
+      if Rentbookmark.destroy(bookmark_id)
+        format.json {render :json => {:result => "REMOVED"}}
+      else
+        format.json {render :json => {:result => "NOT OK"}}
+      end
+    end
+  end
+
+  def all_bookmarks
+    @bookmarks = Rentbookmark.get_all @current_user.id
+      respond_to do |format|
+        format.json {render :json => @bookmarks, :layout => false, :status => 200 if @current_user }
+      end
+  end
+
+  def favorites
+    if @current_user
+      @fav_rents = Rent.where("id in (?)", Rentbookmark.get_all(@current_user.id).split(','))
+      logger.warn @fav_rents
+    else
+      favorites = cookies[:favorite_estates].split(',')
+      @fav_rents = Rent.where("id in (?)", favorites)
+#      fav = Rent.where("id in (?)", [5459,5458,5714 ])
+    end
+  end
+
+  def new
+    if @current_user
+      @rent = Rent.new
+    end
+  end
+
+  def create
+
+  end
+  
+  private
+  def filter_to_string(filter)
+    if !filter[:dist_code].blank? || !filter[:rooms].blank? || !filter[:search_query].blank?
+      return "&filter[dist_code]=#{filter[:dist_code]}&filter[rooms]=#{filter[:rooms]}&filter[search_query]=#{filter[:search_query]}"
+    end
+  end
+
+
 end
+
+
+

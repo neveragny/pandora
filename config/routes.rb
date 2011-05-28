@@ -2,12 +2,7 @@ Licemerov::Application.routes.draw do
 
   root :to => 'estate#index'
 
-  resources :estate do
-      collection do
-        get :result
-        get :paging
-      end
-    end
+
 
   # user sessions routes
   get '/registration' => 'users#new', :as => :register
@@ -45,12 +40,13 @@ Licemerov::Application.routes.draw do
   end
   get '/:user_profile/friends' => 'friendships#show', :as => :friends
 
-  # ****************** Messages ******************
+# ****************** Messages ******************
   resources :messages, :only => [:create, :destroy, :update] do
     post :recover, :on => :member
   end
 
-  get '/:user_profile/messages' => 'messages#show', :as => :user_messages
+  get '/:user_profile/messages' => 'messages#index', :as => :user_messages
+  get '/:user_profile/messages/:id' => 'messages#show', :as => :show_message
   get '/:user_profile/new_message' => 'messages#new', :as => :new_message
   # ****************** Messages  END ******************
 
@@ -60,6 +56,32 @@ Licemerov::Application.routes.draw do
   get '/:user_profile/albums/:album_title' => 'albums#show', :as => :user_album
   get '/:user_profile/albums/:album_title/edit' => 'albums#edit', :as => :edit_user_album
   #  ****************** Photo Albums END ******************
+
+  #  ****************** Photos ******************
+  resources :photos, :only => [:create, :update, :destroy]
+  get '/:user_profile/photos/:id' => 'photos#show', :as => :user_photo
+
+  #  ****************** Photo Comments ******************
+  resources :photo_comments, :only => [:create, :update, :destroy]
+
+  #  ****************** Photos END ******************
+
+  #  ****************** Rents ***********************
+  match "/:estate/index", :to => 'estate#index'
+  match "/:estate/add_to_bookmarks", :to => 'estate#add_to_bookmarks'
+  match "/:estate/remove_from_bookmarks", :to => 'estate#remove_from_bookmarks'
+  match "/:estate/all_bookmarks", :to => 'estate#all_bookmarks'
+  match "/:estate/favorites", :to => 'estate#favorites'
+
+  resources :estate do
+      collection do
+        get :result
+        get :paging
+      end
+  end
+
+
+  #  ****************** Rents END ***********************
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,3 +1,15 @@
+.bundle
+db/*.sqlite3
 config/database.yml
-Gemfile
-Gemfile.lock
+public/system/*
+log/*.log
+tmp/**/*
+*.log
+tmp/**/*
+tmp/*
+doc/api
+doc/app
+*.swp
+*~
+.idea
+

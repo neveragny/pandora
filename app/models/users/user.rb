@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   acts_as_authentic do |config|
     config.login_field :login
     config.validates_format_of_login_field_options(
-        :with => /\A\w[\w\.\-_]+$/, # Original regexp was too clumsy ( allowing spaces and nasty @ thinds )
+        :with => /\A\w[\w\.\-_]+$/, # Original regexp was too clumsy ( allowing spaces and nasty @ things )
         :message => I18n.t('ru.activerecord.errors.models.user.attributes.login.invalid')
     )
   end
@@ -68,6 +68,8 @@ class User < ActiveRecord::Base
   has_many :incoming_messages, :class_name => 'Message', :foreign_key => :receiver_id
 
   has_many :albums
+  has_many :photos
+  has_many :photo_comments
 
   # Make one db request instead of two ( for both direct and inverse friendships )
   # you must show it some love even though it's ugly

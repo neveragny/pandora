@@ -24,8 +24,8 @@ class Message < ActiveRecord::Base
   # Parent_id is set once you reply someones message ( for messaging history purposes)
   # If the message you reply to already has parent_id (i.e. parent_id IS NOT NULL) - new message parent_id is set to it (
   # to just order by 'created_at DESC' later. if it IS NULL - the parent_id is set to parent message's ID
+  validates :parent_id, :existent_message => true, :on => :create, :allow_blank => true
 
-  validates :parent_id, :existent_message => true, :on => :create
   validates :body, :length => {:minimum => 2, :maximum => 1000 }
   validates :subject, :length => {:maximum => 200 }
   validate :not_sent_to_self

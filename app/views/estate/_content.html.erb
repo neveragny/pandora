@@ -2,7 +2,7 @@
 
 <h2>Результаты поиска:
     <span class="black">
-    <a href="#">найдено&nbsp;<span id="estates_result_count">__</span>&nbsp;объектов</a>
+    <a href="#">найдено&nbsp;<span id="estates_result_count"><%= @amnt > 0 ? @amnt : 0 %></span>&nbsp;объектов</a>
     |
     <!--<a class="estates-table-toggle-map-button" href="#">Свернуть карту</a>-->
     <!--|-->
@@ -10,12 +10,10 @@
     </span>
 </h2>
 
-  <div class='pagination'>
-  <span class="paging"></span>
-</div>
+
 
 <div id="result_content_table">
-  <%= render :partial => 'result' %>
+  <%= render :partial => 'results' %>
 </div>
 
 

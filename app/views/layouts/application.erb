@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
   <meta name="MSSmartTagsPreventParsing" content="true" />
@@ -12,7 +12,7 @@
   <%= stylesheet_link_tag '/fancybox/jquery.fancybox-1.3.4.css' %>
   <%= javascript_include_tag 'jquery.js', 'rails.js', 'application.js', 'applesearch.js', 'jcookie.js'%>
   <%= javascript_include_tag 'form', 'jquery.remotipart' %>
-  <%= javascript_include_tag '/fancybox/jquery.fancybox-1.3.4.pack.js', '/fancybox/jquery.mousewheel-3.0.4.pack.js'%>
+  <%#= javascript_include_tag '/fancybox/jquery.fancybox-1.3.4.pack.js', '/fancybox/jquery.mousewheel-3.0.4.pack.js'%>
   <%= yield :head %>
   <%= csrf_meta_tag %>
 </head>
@@ -23,6 +23,7 @@
 <% else %>
     <% user_attrs = nil %>
 <% end %>
+
 
     <div id="wrapper" data-user="<%= user_attrs %>" class="<%= controller_name + "_pandora" %>">
         <div class="page">
@@ -48,12 +49,12 @@
                     <li class="nav-li">
                         <dl class="nav-dl">
                             <dt>
-                                <a href="/favorites">
+                                <a href="estate/favorites">
                                     <span id="favorites_counter" class="mhint mhint-big">0</span>
                                 </a>
                             </dt>
                             <dd>
-                                <a class="nav-a" href="/favorites">Избранное</a>
+                                <a class="nav-a" href="estate/favorites">Избранное</a>
                             </dd>
                         </dl>
                     </li>
@@ -76,31 +77,139 @@
         </div> <!-- END OF page -->
     </div> <!-- END OF wrapper -->
 
+    <div id="opaco" class="hidden"></div>
+
     <div id="spinner" class="loading" style="display:none">
       <span>Загрузка..</span>
       <img width="" height="" src="/images/loading.gif" class="" alt=""> 
     </div>
+    <div class="furjbqy" style="position:fixed; top:250px; left:0;">
+      <a target="_blank" href="http://saitowed.reformal.ru/proj/">
+        <img class="tdsfh" height="151" width="22" style="border: 0;" alt="" src="http://widget.reformal.ru/tmpl/images/transp.gif">
+        <style>
+          .furjbqy a {background: none repeat scroll 0 0 #EFA300;display: block;height: 151px;width: 22px;}
+          .tdsfh {background: url("http://widget.reformal.ru/tmpl/images/feedback_tab.png") repeat scroll 0 0 transparent;}
+        </style>  
+      </a>
+    </div>
 
+    <div class="modal_background" style="width: 100%; height: 100%;"></div>
+    <div id="modal1" class="modal window" style="top: 43.125px; left: 355.5px;">
+      <div id="login" class="wrapper">
+        <div class="title">
+            <h1>На Берлин!</h1>
+        </div>
+        <%= form_for(UserSession.new) do |f| %>
+          <div id="form">
+            <fieldset>
+              <label><%= f.label t(:user_login) %></label>
+                <div><%= f.text_field :login %></div>
+            </fieldset>
+            <fieldset>
+              <label><%= f.label t(:password) %></label>
+                <div><%= f.password_field :password %></div>
+            </fieldset>
+            <fieldset>
+                <label></label>
+                <div class="forgot">
+                    <a href="/reset_password">не помним пароль?</a>
+                </div>
+            </fieldset>
+          </div>
+          <div class="submit">
+            <%= f.submit t(:login), :class=> :button, :disable_with => t(:please_wait) %>
+            <%= link_to t(:register), register_path, :class => "signup" %>
+           <a href="#cancel" class="cancel">Cancel</a>
+          </div>
+            <!--<fieldset>-->
+                <%#= f.label t(:remember_me) %> <%#= f.check_box :remember_me %>
+            <!--</fieldset>-->
+        <% end %>
+
+
+
+
+      </div>
+    </div>
 
 </body>
 </html>
 
-<script>
-    $(" span a.link_main").mouseenter(function(){
-        $("span.sub_summer_main, span.sub_summer_main a").fadeIn(1000);
-    });
-     $("span.sub_summer_main").mouseleave(function(){
-       setTimeout(function(){
-           $("span.sub_summer_main").fadeOut();
-       },250);
-     });
-    $("div#login_link a.signin_link").click(function(){
-      $("div#login").fadeIn(1000);
-    });
-    $("div#login span.close_login").click(function(){
-      $("div#login").fadeOut(1000);
-    });
+<style>
+  body > .modal_background {
+    background: none repeat scroll 0 0 #000000;
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    z-index: 50;
+    display:none;
+  }
+  body > .modal.window {
+    display:none;
+    background: none repeat scroll 0 0 rgba(37, 58, 74, 0.6);
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1000;
+  }
+  body > .modal.window > a{
+      color: #0281CF;
+  }
+  div.modal > #login {
+    margin: 0;
+    width: 500px;
+  }
+  body > .modal.window > .wrapper {
+    background: url("/images/modal_background.png") repeat-x scroll left top #FFFFFF;
+    border-radius: 5px 5px 5px 5px;
+    padding: 15px;
+  }
+  div.modal > #login #form {
+    background: none repeat scroll 0 0 #F2F2F2;
+    border-radius: 5px 5px 5px 5px;
+    padding: 0 15px 9px;
+  }
+  div.modal > #login #form fieldset {
+    overflow: hidden;
+    padding-top: 15px;
+  }
+  div.modal > #login #form fieldset > label {
+    display: block;
+    float: left;
+    font-size:12.5px;
+    position: relative;
+    top: 11px;
+    width: 150px;
+  }
+  div.modal > #login #form fieldset > div {
+    margin-left: 150px;
+  }
+  div.modal > #login #form fieldset > div.forgot {
+    font-size: 11px;
+    margin-bottom: 5px;
+  }
+  div.modal > #login div.submit {
+    clear: both;
+    padding: 22px 0 7px 165px;
+  }
+  div.modal > #login .button {
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 30px;
+    padding: 5px 30px;
+  }
+  body .button {
+    background: url("/images/background_button.png") repeat-x scroll center bottom #FFFFFF;
+    border: 1px solid #B2B2B2;
+    border-radius: 20px 20px 20px 20px;
+    color: #333333;
+    font-size: 11px;
+    padding: 4px 15px;
+  }
+  div.modal > #login a[href="#cancel"] {
+    color: #999999;
+    margin-left: 30px;
+  }
 
-</script>
-
-
+</style>
