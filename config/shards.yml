@@ -1,0 +1,16 @@
+octopus:
+  replicated: true
+  octopus_enviroments:
+    - development
+    - production
+  development:
+    shards:
+      slave1:
+        adapter: mysql2
+        encoding: utf8
+        host: 192.168.1.100
+        database: rents
+        username: root
+        password: k2o32
+        
+        
