@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.1.0.rc1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -27,8 +27,6 @@ gem 'jquery-rails'
 gem 'mechanize'
 
 gem "s3"
-
-gem 'ar-octopus', :require => "octopus"
 
 # Use unicorn as the web server
  gem 'unicorn'
