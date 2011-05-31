@@ -97,7 +97,6 @@ class EstateController < ApplicationController
     else
       favorites = cookies[:favorite_estates].split(',')
       @fav_rents = Rent.where("id in (?)", favorites)
-#      fav = Rent.where("id in (?)", [5459,5458,5714 ])
     end
   end
 
@@ -108,7 +107,17 @@ class EstateController < ApplicationController
   end
 
   def create
-
+    @user = current_user
+    @rent = current_user.rents.build( params[:rent] )
+    if @rent.save
+      format.html { redirect_to "/"}
+    else
+      format.json {
+          render :json => { :errors => @album.errors.values.map(&:first),
+                            :html_class => 'alert' },
+                 :status => :unprocessable_entity
+        }
+    end
   end
   
   private

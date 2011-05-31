@@ -1,18 +1,18 @@
 $(document).ready(function() {  
    applesearch.init(); 
 
-if (typeof $.cookie('favorite_estates') != 'string'){
-   $.cookie('favorite_estates', '');
+if (typeof getCookie('favorite_estates') == null ){
+   setCookie('favorite_estates', '', 7);
 }
 
 
 g_side_bar = $("div#side_bar");
 
-user_session = $.cookie('user_credentials');
+user_session = getCookie('user_credentials');
 if ( (typeof user_session) == 'string' &&  user_session && user_session != ""){
 
    g_favorites_estate_ids = $.ajax({
-      url:'estate/all_bookmarks.json',
+      url:'/estate/all_bookmarks.json',
       dataType: "json" ,
       async: false,
       complete: function(data){
@@ -135,7 +135,7 @@ function rent_search(page){
 
 function render_result(dist_code, rooms, page, search_string){
     $.ajax({
-      url:'estate/result.js?dist_code='+dist_code+'&rooms='+rooms+'&page='+page+'&string='+search_string,
+      url:'/estate/result.js?dist_code='+dist_code+'&rooms='+rooms+'&page='+page+'&string='+search_string,
     //  dataType: "js",
       beforeSend: function(){
         $('table#estates_table tbody').fadeOut('fast', function(){
@@ -185,10 +185,10 @@ function object_found(count) {
 var FAVORITES_ESTATES = new Object();
 
 FAVORITES_ESTATES.add = function(estate_id){
-  var user_session = $.cookie('user_credentials');
+  var user_session = getCookie('user_credentials');
   if ( (typeof user_session) == 'string' &&  user_session && user_session != ""){
     $.ajax({
-      url:'estate/add_to_bookmarks.json?rent_id='+estate_id,
+      url:'/estate/add_to_bookmarks.json?rent_id='+estate_id,
       dataType: "json",
       success: function(data){}
     });
@@ -197,16 +197,17 @@ FAVORITES_ESTATES.add = function(estate_id){
     estates.push(estate_id);
     estates = $.unique(estates);
     var estates_string = estates.join(",");
-    $.cookie("favorite_estates", estates_string, {path: "/"})
+    eraseCookie("favorite_estates");
+    setCookie("favorite_estates", estates_string, 7)
   }
 
 };
 
 FAVORITES_ESTATES.remove = function(id){
-     var user_session = $.cookie('user_credentials');
+     var user_session = getCookie('user_credentials');
      if ( (typeof user_session) == 'string' &&  user_session && user_session != ""){
        $.ajax({
-         url:'estate/remove_from_bookmarks.json?rent_id='+id,
+         url:'/estate/remove_from_bookmarks.json?rent_id='+id,
          dataType: "json"//,
 //         success: function(data){
 //         }
@@ -218,13 +219,14 @@ FAVORITES_ESTATES.remove = function(id){
         if(idx != -1) estates.splice(idx, 1);
         //estates.erase(id+"");
         var estates_string = estates.join(",");
-        $.cookie("favorite_estates", estates_string, {path: "/"})
+        eraseCookie("favorite_estates");
+        setCookie("favorite_estates", estates_string, 7)
      }
 };
 
 FAVORITES_ESTATES.all = function() {
-  var user_session = $.cookie('user_credentials');
-  var estates_string = readCookie("favorite_estates");
+  var user_session = getCookie('user_credentials');
+  var estates_string = getCookie("favorite_estates");
   var estates = [];
   if ( (typeof user_session) == 'string' &&  user_session && user_session != "") {
     return g_favorites_estate_ids.split(',');
@@ -236,20 +238,9 @@ FAVORITES_ESTATES.all = function() {
     }
     
 //    estates = estates_string.length == 0 ? [] : estates_string.split(',');
-    return estates;
+    return estates[0] == 0 ? [] : estates ;
   }
 };
-
-function readCookie(name){
-  var nameEQ = name + "=";
-  var ca = document.cookie.split(';');
-  for(var i=0;i < ca.length;i++) {
-    var c = ca[i];
-    while (c.charAt(0)==' ') c = c.substring(1,c.length);
-    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-  }
-  return null;
-}
 
 FAVORITES_ESTATES.count = function() {
   return FAVORITES_ESTATES.all().length;
@@ -326,7 +317,6 @@ function EstatesTable(){
             this_object.toggle_descriptions();
         });
         if (!g_side_bar.is(":visible")) {
-						alert("sdfsd");
             this.side_bar_button.innerHTML = "Показать хуй правую колонку";
         }
         this.side_bar_button.bind('click', function(event) {

@@ -32,8 +32,8 @@
               <span class='with_photo_link'><%=img_amount%>&nbsp;фото</span>&nbsp;
             <% end %>
             <!--<strong>
-<a class="estate-display-name" href="/users/33008">mvs</a>
-</strong> -->
+                <a class="estate-display-name" href="/users/33008">mvs</a>
+            </strong> -->
             <% description = item.info %>
             <a target="_blank" class="estate-link" href="/estate/<%= item.id %>">
               <%= description[0..130] if !(description.blank?) && description.length > 100 %>
@@ -53,3 +53,8 @@
     </tbody>
   </table>
 </div>
+
+
+<% content_for :head do %>
+  <%= javascript_include_tag 'rents.js' %>
+<% end %>

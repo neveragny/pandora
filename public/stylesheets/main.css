@@ -11,7 +11,7 @@ A:hover {border-bottom: none !important;}
 TABLE {width: 100%;}
 
 BODY {
-	background: #fff;
+	background: url('/images/stripe_rp.gif') !important;
 	color: #000;
 	font: 62.5%/1.4 Arial, Helvetica, sans-serif;
 	}
@@ -130,6 +130,7 @@ A.em {
 .header {color:#484848;	position:relative; width:100%; z-index:5;}
 
 .page, .page-main {
+    background-color: #ffffff;
 	width: 100%;
 	/*overflow: hidden;*/
 	min-width: 980px !important;

@@ -1,6 +1,12 @@
 class Rent < ActiveRecord::Base
+
+      #TODO validations!
+
+
   replicated_model()
   establish_connection :rents
+
+  belongs_to :user
   has_many :rentphotos
   before_create :enrich
 

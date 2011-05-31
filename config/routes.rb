@@ -72,6 +72,7 @@ Licemerov::Application.routes.draw do
   match "/:estate/remove_from_bookmarks", :to => 'estate#remove_from_bookmarks'
   match "/:estate/all_bookmarks", :to => 'estate#all_bookmarks'
   match "/:estate/favorites", :to => 'estate#favorites'
+#  match "/:estate/create" , :to => 'estate#create' , :as => :new_estate
 
   resources :estate do
       collection do

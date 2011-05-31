@@ -1,18 +1,34 @@
 <% if @rent %>
-  <%= form_for @rent, :url => new_estate_path(@rent) do |f| %>
-    <%= f.text_field :adress  %>
-    <%= f.text_field :price  %>
-    <%= f.text_field :rooms  %>
-    <%= f.text_field :floor_at  %>
-    <%= f.text_field :floors  %>
-    <%= f.text_field :live_sqr  %>
-    <%= f.text_field :kitchen_sqr  %>
-    <%= f.text_field :total_sqr  %>
-    <%= f.text_field :wall_type  %>
-    <%= f.text_field :info  %>
-    <%= f.text_field :name  %>
-    <%= f.text_field :phones  %>
-    <%= f.text_field :dist_code  %>
+  <%= form_for :rent, @rent, :url => { :action => "create"} do |f| %>
+    город : <%= select_tag "city", options_for_select([["Киев"]]) %>
+    район :    <%= collection_select :rent, :dist_code, Dist.all, :dist_code, :name_initial ,{:class => "styled"} %><br>
+    адрес :<%= f.text_field :adress  %><br>
+        <hr>
+
+    <%= select_tag "rooms", options_for_select(
+        [["1 комнатная", 1],
+         ["2 комнатная",2],
+         ["3 комнатная",3],
+         ["4 комнатная",4] ,
+         ["5 комнатная",5],
+         ["6 комнатная",6]]),
+               :id => "rooms_num", :class => "styled", :name => "rent[rooms]"  %><br>
+
+    площадь всего :<%= f.text_field :total_sqr  %>
+    жилая площадь :<%= f.text_field :live_sqr  %>
+    площадь кухни :<%= f.text_field :kitchen_sqr  %><br>
+
+    этаж :<%= f.text_field :floor_at  %><br>
+    этажность :<%= f.text_field :floors  %><br>
+    тип стен :<%= select_tag("rent[wall_type]", options_for_select([["кирпич"], ["панель"], ["блок"]]))  %><br>
+    детали :<%= f.text_field :info  %><br>
+    имя :<%= f.text_field :name  %><br>
+    телефоны :<%= f.text_field :phones  %><br>
+    цена :<%= f.text_field :price  %><br>
+    <%= submit_tag "add" %>
   <% end %>
 
-<% end %>  
+<% end %>
+
+
+<!--collection_select(object, method, collection, value_method, text_method, options = {}, html_options = {})-->
