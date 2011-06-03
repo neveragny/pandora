@@ -95,8 +95,10 @@ class EstateController < ApplicationController
       @fav_rents = Rent.where("id in (?)", Rentbookmark.get_all(@current_user.id).split(','))
       logger.warn @fav_rents
     else
-      favorites = cookies[:favorite_estates].split(',')
-      @fav_rents = Rent.where("id in (?)", favorites)
+     
+      favorites = cookies[:favorite_estates]
+      
+      @fav_rents = favorites ? Rent.where("id in (?)", favorites.split(',')) : []
     end
   end
 

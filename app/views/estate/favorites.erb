@@ -1,5 +1,5 @@
 <div id="search-results" class="search-results">
-
+<% if !(@fav_rents.nil?) && @fav_rents.length > 0 %>
   <table id="estates_table">
     <tbody>
       <tr>
@@ -52,6 +52,9 @@
       <!-- loop ends -->
     </tbody>
   </table>
+<% else  %>
+  <h1></h1>
+<% end %>
 </div>
 
 

@@ -3282,7 +3282,7 @@ width: 520px; display: block; margin: 66px 1px 0 1px !important; z-index: auto; 
 			width: 518px;
 			padding: 0;
 			}
-		.popup .report TEXTAREA, SELECT {border: 1px solid #BFBBB5 !important;}
+		.popup .report TEXTAREA, SELECT {border: 1px solid #BFBBB5 !important; border-radius: 4px 4px 4px 4px;}
 		.popup .report SELECT {width: 100%;}
 
 		.popup .request .btn-30 {
