@@ -265,82 +265,119 @@
 
 
 <style>
-  body > .modal_background {
-    background: none repeat scroll 0 0 #000000;
-    left: 0;
-    opacity: 0.5;
-    position: absolute;
-    top: 0;
-    z-index: 50;
-    display:none;
-  }
-  body > .modal.window {
-    display:none;
-    background: none repeat scroll 0 0 rgba(37, 58, 74, 0.6);
-    border-radius: 10px 10px 10px 10px;
-    padding: 10px;
-    position: absolute;
-    z-index: 1000;
-  }
-  body > .modal.window > a{
-      color: #0281CF;
-  }
-  div.modal > #login {
-    margin: 0;
-    width: 500px;
-  }
-  body > .modal.window > .wrapper {
-    background: url("/images/modal_background.png") repeat-x scroll left top #FFFFFF;
-    border-radius: 5px 5px 5px 5px;
-    padding: 15px;
-  }
-  div.modal > #login #form {
-    background: none repeat scroll 0 0 #F2F2F2;
-    border-radius: 5px 5px 5px 5px;
-    padding: 0 15px 9px;
-  }
-  div.modal > #login #form fieldset {
-    overflow: hidden;
-    padding-top: 15px;
-  }
-  div.modal > #login #form fieldset > label {
-    display: block;
+body {    
+		color: #838383;
+    font: 13px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+#flow {
+    background: none repeat scroll 0 0 #F5F5F5;
+}
+	#flow #slab-wrapper {
+	    margin: 60px 27%;
+	    width: 640px;
+	}
+	
+		#flow #slab-wrapper h1 {
+		    color: #838383;
+		    float: left;
+		    font-size: 26px;
+		    letter-spacing: -1px;
+		    padding-bottom: 25px;
+		    font-weight: normal;
+		}
+			#flow #slab-wrapper h1 strong {
+		    color: #202020;
+		    font-weight: normal;
+			}
+		
+		#flow #slab-wrapper .signin {
+    	float: right;
+    	padding-top: 5px;
+		}
+		
+		#flow #slab-wrapper #slab {
+	    background: url("rainbow-sm.gif") repeat-x scroll left top white;
+	    box-shadow: 0 2px 5px 0 #DDDDDD;
+	    clear: both;
+	    margin-bottom: 10px;
+	    overflow: hidden;
+	    padding: 40px 0 15px 35px;
+		}
+			#flow #slab-wrapper #slab form {
+	    	margin: 0 0 10px;
+	    	padding: 0 0 10px;
+			}
+			.common-form {
+		    background: none repeat scroll 0 0 white;
+		    border-bottom-left-radius: 5px;
+		    border-bottom-right-radius: 5px;
+		    margin-bottom: 20px;
+		    overflow: hidden;
+			}	
+			#flow #slab-wrapper #slab form .field {
+    		padding-bottom: 40px;
+			}	
+			#flow #slab-wrapper #slab form label {
+    		margin-left: 5px;
+    		padding-bottom: 4px;
+			}
+#flow #slab-wrapper #slab form LABEL {
+	display: block;
+  font-weight: bold;
+}
+#flow #slab-wrapper #slab FORM INPUT {
+    color: #202020;
     float: left;
-    font-size:12.5px;
-    position: relative;
-    top: 11px;
-    width: 150px;
-  }
-  div.modal > #login #form fieldset > div {
-    margin-left: 150px;
-  }
-  div.modal > #login #form fieldset > div.forgot {
-    font-size: 11px;
-    margin-bottom: 5px;
-  }
-  div.modal > #login div.submit {
-    clear: both;
-    padding: 22px 0 7px 165px;
-  }
-  div.modal > #login .button {
-    font-size: 15px;
-    font-weight: bold;
-    margin-right: 30px;
-    padding: 5px 30px;
-  }
-  body .button {
-    background: url("/images/background_button.png") repeat-x scroll center bottom #FFFFFF;
-    border: 1px solid #B2B2B2;
-    border-radius: 20px 20px 20px 20px;
-    color: #333333;
-    font-size: 11px;
-    padding: 4px 15px;
-  }
-  div.modal > #login a[href="#cancel"] {
-    color: #999999;
-    margin-left: 30px;
-  }
+    font-size: 18px;
+    height: 28px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    width: 300px;
+}
 
+INPUT{
+    -moz-transition-duration: 0.1s;
+    -moz-transition-property: border-color;
+    -moz-transition-timing-function: linear;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #B3B3B3;
+    border-radius: 3px 3px 3px 3px;
+    font: 13px/18px "Helvetica Neue",Arial,sans-serif;
+    height: 18px;
+    outline: medium none;
+    padding: 5px 9px;
+    vertical-align: bottom;
+}
+#flow #slab-wrapper #slab form #submitup {
+    border: 1px solid #FF920D;
+    border-radius: 15px 15px 15px 15px;
+    font-size: 13px;
+    margin: 5px 0 0 5px;
+    width: 100px;
+}	
+.borderradius submitup {
+    border: 1px solid #FF920D;
+    border-radius: 20px 20px 20px 20px;
+    font-size: 13px;
+}	
+#submitup {  
+    -moz-transition-duration: 0.2s;
+    -moz-transition-property: box-shadow;
+    -moz-transition-timing-function: linear;
+    background: -moz-linear-gradient(center top , #FFC039 0%, #FF920D 100%) repeat scroll 0 0 #FF920D;
+    border: medium none;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: bold !important;
+    height: 31px;
+    line-height: 18px;
+    padding: 4px 17px 6px;
+    text-align: center;
+    text-shadow: 0 -1px 0 #DE6E00;
+}
 </style>
 
 
