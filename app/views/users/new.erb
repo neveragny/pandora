@@ -29,27 +29,24 @@
           <%= render :partial => 'shared/errors', :locals => {:target => @user} %>
 
           <%= form_for @user do |f| -%>
-              <div class="title">
-                <h2>Региструруйся<span>&mdash; будет круто!</span></h2>
-                <a class="modal_signup" href="#login">войти</a>
-              </div>
+
               <div class="main">
-
+                  <div class="field">
                     <%= f.label "логин" %><%= f.text_field :login %>
-
-
+                  </div> 
+                  <div class="field">
                     <%= f.label "почтовый ящик" %><%= f.text_field :email %>
-
-
+                  </div>
+                  <div class="field">
                     <%= f.label "пол" %>пацанчик<%= f.radio_button :sex, 1, :checked => true %>
                                          деваха<%= f.radio_button :sex, 0 %>
-
-
+                  </div>  
+                  <div class="field">
                     <%= f.label "пароль" %><%= f.password_field :password %>
-
-
+                  </div> 
+                  <div class="field">
                     <%= f.label "еще разок пароль" %><%= f.password_field :password_confirmation %>
-
+                  </div>
               </div>
               <div class="submit">
                 <%= f.submit t(:register), :class => "button", :disable_with => t(:please_wait) %>
