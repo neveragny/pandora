@@ -16,13 +16,16 @@
 
 </head>
 <body>
-  <div id="header">
-
-  </div>
-  <div id="content">
-    <div id="wrapper" data-user="   ">
-      <div id="main" class="corners all">
-        <div id="signup">
+<body id="flow">
+	<div id="slab-wrapper">
+		<h1>
+			<strong>Регистрация</strong>&nbsp;&mdash; это Просто.
+		</h1>
+		<p class="signin">
+			уже с нами?
+			<a id="nav_sign_in" href="/signin">войти</a>
+		</p>
+		<div id="slab">
           <%= render :partial => 'shared/errors', :locals => {:target => @user} %>
 
           <%= form_for @user do |f| -%>
@@ -100,6 +103,9 @@
       </div>
     </div>
 
+
+  </div>
+	</div>
 
 </body>
 </html>
