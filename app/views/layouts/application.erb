@@ -17,7 +17,27 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+<!--[if IE]>
+<div id="iealert">
+<p>
+Attention Internet Explorer Users! We're currently having some technical issues which may cause parts of CulinaryCulture to behave strangely. 
+We're working on fixing this as soon as possible. In the mean time we recommend using an alternate browser such as Firefox, Safari or Chrome. Thanks! 
+</p>
+</div>
+<style>
+div#iealert {
+border-bottom: #ddd 2px solid; 
+text-align: center; 
+padding-bottom: 15px; 
+padding-left: 15px; 
+padding-right: 15px; 
+background: #fff; 
+font-size: 15px; 
+padding-top: 15px;
+}
+</style>
 
+<![endif]-->
 <% if @user && @user.avatar.exists? %>
     <% user_attrs = "#{@user.login},#{@user.gender},#{@user.avatar.url(:small)},#{@user.id}" %>
 <% else %>
