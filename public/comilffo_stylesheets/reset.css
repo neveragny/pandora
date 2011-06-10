@@ -1,50 +1,70 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	font-size: 100%;
-	vertical-align: baseline;
-	background: transparent;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
+# encoding: utf-8
+require 'rubygems'
+require 'excelsior'
 
-/* remember to define focus styles! */
-:focus {
-	outline: 0;
-}
 
-/* remember to highlight inserts somehow! */
-ins {
-	text-decoration: none;
-}
-del {
-	text-decoration: line-through;
-}
 
-/* tables still need 'cellspacing="0"' in the markup */
-table {
-		border-collapse: collapse;
-			border-spacing: 0;
-		}''
+class Red
+
+  def main
+    filename = 'streets_utf.csv'
+    file = File.new(filename, 'r')
+    
+    file.each_line("\n") do |row|
+      arow = row.gsub(/\n/, "").split(',')
+	      ukr_name = arow[0]
+	      rus_name = arow[1]
+	      type = arow[2]
+	      dists = enrich_dists(arow[3])
+	      old_name =  arow[4]
+
+        generate_sql(ukr_name, rus_name, type, dists, old_name)
+#        p arow
+#	      if dists.eql? dit
+#	        p arow
+#	      end
+# puts dists.encoding	
+# puts dit.encoding
+#puts str
+
+    end # each
+  end #  main
+  
+  def generate_sql(ukr_name, rus_name, type, dists, old_name)
+    dists = dists.join(',')
+    sql_insert = "INSERT INTO streets (rus_name, ukr_name, type, dists, old_name) VALUES (\"#{rus_name}\", \"#{ukr_name}\", \"#{type}\", \"#{dists}\", \"#{old_name}\")"  
+	  puts sql_insert
+  end
+  
+  def enrich_dists(dists)
+    adist = dists.split(' ')
+    if adist.length > 1
+      adist[0].gsub!(/\"/, '')
+      adist[1].gsub!(/\"/, '')
+      adist[2].nil? ? nil : adist[2].gsub!(/\"/, '')      
+    end
+    
+    new_str = []
+    
+    adist.each do |dist|
+      i = case dist
+        when "Голосеевский" then 1
+        when "Дарницкий" then 2
+        when "Деснянский" then 3
+        when "Днепровский" then 4
+        when "Оболонский" then 5
+        when "Печерский" then 6
+        when "Подольский" then 7
+        when "Святошинский" then 8
+        when "Соломенский" then 9
+        when "Шевченковский" then 10                                                                                          
+      end
+      new_str << i
+    end
+    
+    new_str
+  end
+  
+end #class Red
+
+Red.new.main
