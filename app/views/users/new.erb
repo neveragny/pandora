@@ -30,14 +30,13 @@
 
           <%= form_for @user do |f| -%>
 
-              <div class="main">
                   <div class="field">
                     <%= f.label "логин" %><%= f.text_field :login %>
                   </div> 
                   <div class="field">
                     <%= f.label "почтовый ящик" %><%= f.text_field :email %>
                   </div>
-                  <div class="field">
+                  <div class="radio">
                     <%= f.label "пол" %>пацанчик<%= f.radio_button :sex, 1, :checked => true %>
                                          деваха<%= f.radio_button :sex, 0 %>
                   </div>  
@@ -47,11 +46,8 @@
                   <div class="field">
                     <%= f.label "еще разок пароль" %><%= f.password_field :password_confirmation %>
                   </div>
-              </div>
-              <div class="submit">
-                <%= f.submit t(:register), :class => "button", :disable_with => t(:please_wait) %>
+                <%= f.submit t(:register), :class => "button", :id => "submitup", :disable_with => t(:please_wait) %>
                 <!--<a class="button" href="#submit">Sign up</a>-->
-              </div>
           <% end %>
 
         </div>
@@ -140,7 +136,7 @@ body {
 		}
 		
 		#flow #slab-wrapper #slab {
-	    background: url("rainbow-sm.gif") repeat-x scroll left top white;
+	    background: url("/images/rainbow-sm.gif") repeat-x scroll left top white;
 	    box-shadow: 0 2px 5px 0 #DDDDDD;
 	    clear: both;
 	    margin-bottom: 10px;
@@ -172,8 +168,9 @@ body {
 #flow #slab-wrapper #slab FORM INPUT {
     color: #202020;
     float: left;
-    font-size: 18px;
-    height: 28px;
+    font-size: 16px;
+    font-weight: bold;
+    height: 30px;
     margin-bottom: 10px;
     margin-left: 5px;
     width: 300px;

@@ -1,53 +1,92 @@
-function createCookie(name,value,days) {
-	if (days) {
-		var date = new Date();
-		date.setTime(date.getTime()+(days*24*60*60*1000));
-		var expires = "; expires="+date.toGMTString();
-	}
-	else var expires = "";
-	document.cookie = name+"="+value+expires+"; path=/";
-}
+/*jslint browser: true */ /*global jQuery: true */
 
-function readCookie(name) {
-	var nameEQ = name + "=";
-	var ca = document.cookie.split(';');
-	for(var i=0;i < ca.length;i++) {
-		var c = ca[i];
-		while (c.charAt(0)==' ') c = c.substring(1,c.length);
-		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-	}
-	return null;
-}
+/**
+ * jQuery Cookie plugin
+ *
+ * Copyright (c) 2010 Klaus Hartl (stilbuero.de)
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ */
 
-function eraseCookie(name) {
-	createCookie(name,"",-1);
-}
+// TODO JsDoc
 
+/**
+ * Create a cookie with the given key and value and other optional parameters.
+ *
+ * @example $.cookie('the_cookie', 'the_value');
+ * @desc Set the value of a cookie.
+ * @example $.cookie('the_cookie', 'the_value', { expires: 7, path: '/', domain: 'jquery.com', secure: true });
+ * @desc Create a cookie with all available options.
+ * @example $.cookie('the_cookie', 'the_value');
+ * @desc Create a session cookie.
+ * @example $.cookie('the_cookie', null);
+ * @desc Delete a cookie by passing null as value. Keep in mind that you have to use the same path and domain
+ *       used when the cookie was set.
+ *
+ * @param String key The key of the cookie.
+ * @param String value The value of the cookie.
+ * @param Object options An object literal containing key/value pairs to provide optional cookie attributes.
+ * @option Number|Date expires Either an integer specifying the expiration date from now on in days or a Date object.
+ *                             If a negative value is specified (e.g. a date in the past), the cookie will be deleted.
+ *                             If set to null or omitted, the cookie will be a session cookie and will not be retained
+ *                             when the the browser exits.
+ * @option String path The value of the path atribute of the cookie (default: path of page that created the cookie).
+ * @option String domain The value of the domain attribute of the cookie (default: domain of page that created the cookie).
+ * @option Boolean secure If true, the secure attribute of the cookie will be set and the cookie transmission will
+ *                        require a secure protocol (like HTTPS).
+ * @type undefined
+ *
+ * @name $.cookie
+ * @cat Plugins/Cookie
+ * @author Klaus Hartl/klaus.hartl@stilbuero.de
+ */
 
-function setCookie (name, value, expires, path, domain, secure) {
-      document.cookie = name + "=" + escape(value) +
-        ((expires) ? "; expires=" + expires : "") +
-        ((path) ? "; path=" + path : "") +
-        ((domain) ? "; domain=" + domain : "") +
-        ((secure) ? "; secure" : "");
-}
+/**
+ * Get the value of a cookie with the given key.
+ *
+ * @example $.cookie('the_cookie');
+ * @desc Get the value of a cookie.
+ *
+ * @param String key The key of the cookie.
+ * @return The value of the cookie.
+ * @type String
+ *
+ * @name $.cookie
+ * @cat Plugins/Cookie
+ * @author Klaus Hartl/klaus.hartl@stilbuero.de
+ */
+jQuery.cookie = function (key, value, options) {
+    
+    // key and at least value given, set cookie...
+    if (arguments.length > 1 && String(value) !== "[object Object]") {
+        options = jQuery.extend({}, options);
 
-function getCookie(name) {
-	var cookie = " " + document.cookie;
-	var search = " " + name + "=";
-	var setStr = null;
-	var offset = 0;
-	var end = 0;
-	if (cookie.length > 0) {
-		offset = cookie.indexOf(search);
-		if (offset != -1) {
-			offset += search.length;
-			end = cookie.indexOf(";", offset)
-			if (end == -1) {
-				end = cookie.length;
-			}
-			setStr = unescape(cookie.substring(offset, end));
-		}
-	}
-	return(setStr);
-}
+        if (value === null || value === undefined) {
+            options.expires = -1;
+        }
+
+        if (typeof options.expires === 'number') {
+            var days = options.expires, t = options.expires = new Date();
+            t.setDate(t.getDate() + days);
+        }
+        
+        value = String(value);
+        
+        return (document.cookie = [
+            encodeURIComponent(key), '=',
+            options.raw ? value : encodeURIComponent(value),
+            options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+            options.path ? '; path=' + options.path : '',
+            options.domain ? '; domain=' + options.domain : '',
+            options.secure ? '; secure' : ''
+        ].join(''));
+    }
+
+    // key and possibly options given, get cookie...
+    options = value || {};
+    var result, decode = options.raw ? function (s) { return s; } : decodeURIComponent;
+    return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
+};
+

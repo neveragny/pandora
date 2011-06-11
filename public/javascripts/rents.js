@@ -1,14 +1,15 @@
 $(document).ready(function() {  
    applesearch.init(); 
 
-if (typeof getCookie('favorite_estates') == null ){
-   setCookie('favorite_estates', '', 7);
-}
-
+//if ($.cookie('favorite_estates') == null ){
+//   $.cookie('favorite_estates', '.', '', '/','nomoveton.co.ua', '');
+//}
+//else {
+//}
 
 g_side_bar = $("div#side_bar");
 
-user_session = getCookie('user_credentials');
+user_session = $.cookie('user_credentials');
 if ( (typeof user_session) == 'string' &&  user_session && user_session != ""){
 
    g_favorites_estate_ids = $.ajax({
@@ -185,8 +186,8 @@ function object_found(count) {
 var FAVORITES_ESTATES = new Object();
 
 FAVORITES_ESTATES.add = function(estate_id){
-  var user_session = getCookie('user_credentials');
-  if ( (typeof user_session) == 'string' &&  user_session && user_session != ""){
+  var user_session = $.cookie('user_credentials');
+  if ( typeof user_session === 'string' &&  user_session && user_session != ""){
     $.ajax({
       url:'/estate/add_to_bookmarks.json?rent_id='+estate_id,
       dataType: "json",
@@ -197,14 +198,14 @@ FAVORITES_ESTATES.add = function(estate_id){
     estates.push(estate_id);
     estates = $.unique(estates);
     var estates_string = estates.join(",");
-    eraseCookie("favorite_estates");
-    setCookie("favorite_estates", estates_string, 7)
+    $.cookie("favorite_estates", "null");
+    $.cookie("favorite_estates", estates_string, '','/','nomoveton.co.ua','')
   }
 
 };
 
 FAVORITES_ESTATES.remove = function(id){
-     var user_session = getCookie('user_credentials');
+     var user_session = $.cookie('user_credentials');
      if ( (typeof user_session) == 'string' &&  user_session && user_session != ""){
        $.ajax({
          url:'/estate/remove_from_bookmarks.json?rent_id='+id,
@@ -214,7 +215,7 @@ FAVORITES_ESTATES.remove = function(id){
        });
 
      } else {
-        var estates = FAVORITES_ESTATES.all();
+        var estates = new Array(FAVORITES_ESTATES.all());
         var idx = estates.indexOf(id+"");
         if(idx != -1) estates.splice(idx, 1);
         //estates.erase(id+"");
@@ -225,20 +226,17 @@ FAVORITES_ESTATES.remove = function(id){
 };
 
 FAVORITES_ESTATES.all = function() {
-  var user_session = getCookie('user_credentials');
-  var estates_string = getCookie("favorite_estates");
-  var estates = [];
+  var user_session = $.cookie('user_credentials');
+  var favorite_estates = $.cookie("favorite_estates");
   if ( (typeof user_session) == 'string' &&  user_session && user_session != "") {
     return g_favorites_estate_ids.split(',');
   } else{
-    if(estates_string == null){
-      estates = [];
-    } else {
-      estates = estates_string.split(',');
+    if( favorite_estates  != null){
+      return favorite_estates.split(',');
     }
     
 //    estates = estates_string.length == 0 ? [] : estates_string.split(',');
-    return estates[0] == 0 ? [] : estates ;
+    return [];
   }
 };
 

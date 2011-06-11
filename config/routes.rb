@@ -2,8 +2,6 @@ Licemerov::Application.routes.draw do
 
   root :to => 'estate#index'
 
-
-
   # user sessions routes
   get '/registration' => 'users#new', :as => :register
   get '/logout' => 'user_sessions#destroy', :as => :logout

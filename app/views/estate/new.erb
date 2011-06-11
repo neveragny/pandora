@@ -30,5 +30,7 @@
 
 <% end %>
 
-
+<% content_for :head do %>
+  <%= javascript_include_tag "autocomplete-rails.js" %>
+<% end %>
 <!--collection_select(object, method, collection, value_method, text_method, options = {}, html_options = {})-->
