@@ -1,5 +1,6 @@
 class EstateController < ApplicationController
 
+  autocomplete :street, :rus_name
   skip_before_filter :existent_user
 
   def index

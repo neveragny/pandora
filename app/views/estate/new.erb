@@ -2,7 +2,7 @@
   <%= form_for :rent, @rent, :url => { :action => "create"} do |f| %>
     город : <%= select_tag "city", options_for_select([["Киев"]]) %>
     район :    <%= collection_select :rent, :dist_code, Dist.all, :dist_code, :name_initial ,{:class => "styled"} %><br>
-    адрес :<%= f.text_field :adress  %><br>
+    адрес :<%= f.autocomplete_field :street, :rus_name, autocomplete_street_rus_name %><br>
         <hr>
 
     <%= select_tag "rooms", options_for_select(

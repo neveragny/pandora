@@ -73,10 +73,11 @@ Licemerov::Application.routes.draw do
 #  match "/:estate/create" , :to => 'estate#create' , :as => :new_estate
 
   resources :estate do
-      collection do
+    collection do
         get :result
         get :paging
-      end
+    end
+    get :autocomplete_street_rus_name, :on => :collection
   end
 
 
