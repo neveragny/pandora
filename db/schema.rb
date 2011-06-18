@@ -84,8 +84,6 @@ ActiveRecord::Schema.define(:version => 20110602182053) do
     t.datetime "updated_at"
   end
 
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_histories_on_item_and_table_and_month_and_year"
-
   create_table "rentbookmarks", :force => true do |t|
     t.integer  "user_id"
     t.integer  "rent_id"
@@ -150,6 +148,28 @@ ActiveRecord::Schema.define(:version => 20110602182053) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "avatar_dimensions"
+  end
+
+  create_table "rents", :force => true do |t|
+    t.string    "adress",
+    t.integer   "price",
+    t.integer   "rooms",
+    t.integer   "floor_at",
+    t.integer   "floors",
+    t.integer   "total_sqr",
+    t.integer   "live_sqr",
+    t.integer   "kitchen_sqr",
+    t.string    "wall_type",
+    t.string    "info",
+    t.string    "name",
+    t.string    "phones",
+    t.date      "date",
+    t.string    "ria_id",
+    t.integer   "dist_code",
+    t.datetime  "created_at",
+    t.datetime  "updated_at",
+    t.integer   "user_id",
+    t.string    "city"
   end
 
 end

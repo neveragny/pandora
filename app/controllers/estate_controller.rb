@@ -122,11 +122,19 @@ class EstateController < ApplicationController
         }
     end
   end
+
+  def autocomplete_street
+    logger.warn params[:term]
+    @streets = Street.find_by_sql "select rus_name from streets where rus_name LIKE '%#{params[:term]}%'"
+    respond_to do |format|
+      format.json { render :json => @streets}
+    end
+  end
   
   private
   def filter_to_string(filter)
     if !filter[:dist_code].blank? || !filter[:rooms].blank? || !filter[:search_query].blank?
-      return "&filter[dist_code]=#{filter[:dist_code]}&filter[rooms]=#{filter[:rooms]}&filter[search_query]=#{filter[:search_query]}"
+      "&filter[dist_code]=#{filter[:dist_code]}&filter[rooms]=#{filter[:rooms]}&filter[search_query]=#{filter[:search_query]}"
     end
   end
 
