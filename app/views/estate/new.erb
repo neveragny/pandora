@@ -2,7 +2,10 @@
   <%= form_for :rent, @rent, :url => { :action => "create"} do |f| %>
     город : <%= select_tag "city", options_for_select([["Киев"]]) %>
     район :    <%= collection_select :rent, :dist_code, Dist.all, :dist_code, :name_initial ,{:class => "styled"} %><br>
-    адрес :<%= f.text_field :adress, {"data-autocomplete" => "/estate/acst"} %><br>
+    <div class="ui-widget">
+        <label for="adress">адрес :</label>
+        <%= f.text_field :adress, {"data-autocomplete" => "/estate/acst", :id => "adress", :class => "ui-autocomplete-input"} %><br>
+    </div>
         <hr>
 
     <%= select_tag "rooms", options_for_select(
@@ -32,5 +35,6 @@
 
 <% content_for :head do %>
   <%= javascript_include_tag "autocomplete-rails.js", "jquery-ui" %>
+  <%= stylesheet_link_tag "jquery-ui-1.8.13.custom" %>
 <% end %>
 <!--collection_select(object, method, collection, value_method, text_method, options = {}, html_options = {})-->

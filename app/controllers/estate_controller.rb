@@ -125,9 +125,12 @@ class EstateController < ApplicationController
 
   def autocomplete_street
     logger.warn params[:term]
-    @streets = Street.find_by_sql "select rus_name from streets where rus_name LIKE '%#{params[:term]}%'"
+#    @streets = Street.autocomplete_rus(params[:term])
+    streets = Street.find_by_sql "select rus_name from streets where rus_name LIKE '%#{params[:term]}%'"
+    streets_array = []
+    streets.each{|street| streets_array << street.rus_name }
     respond_to do |format|
-      format.json { render :json => @streets}
+      format.json { render :json => streets_array}
     end
   end
   

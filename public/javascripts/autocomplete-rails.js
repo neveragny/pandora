@@ -50,18 +50,25 @@ $(document).ready(function(){
 			}
 
 	    $(e).autocomplete({
-				source: function( request, response ) {
-					$.getJSON( $(e).attr('data-autocomplete'), {
-					term: extractLast( request.term )
-					}, function() {
-                        $(arguments[0]).each(function(i, el) {
-                            var obj = {};
-                            obj[el.id] = el;
-                            $(e).data(obj);
-                        });
-                        response.apply(null, arguments);
-                    });
-				},
+                source : 'acst',
+
+//				source: function( request, response ) {
+//					$.getJSON( //url,data,callback
+//                            $(e).attr('data-autocomplete'),
+//                            { term: extractLast( request.term ) },
+//                            function() {
+//                                $(arguments[0]).each(function(i, el) {
+//
+//                                    var obj = {};
+//                                    obj[i] = el.rus_name;
+//                                    $(e).data(obj);
+//                                    alert(obj)
+//                                });
+//                                alert(arguments);
+//                                response.apply(null, arguments);
+//                            }
+//                    );
+//				},
 				search: function() {
 					// custom minLength
 					var term = extractLast( this.value );
