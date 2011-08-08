@@ -2,7 +2,7 @@
 
 <h2>Результаты поиска:
     <span class="black">
-    <a href="#">найдено&nbsp;<span id="estates_result_count"><%= !(@amnt.nil?) && @amnt > 0 ? @amnt : 0 %></span>&nbsp;объектов</a>
+    <a href="#">найдено&nbsp;<span id="estates_result_count"><%= !(@pages.nil?) && @pages > 0 ? @pages : 0 %></span>&nbsp;объектов</a>
     |
     <!--<a class="estates-table-toggle-map-button" href="#">Свернуть карту</a>-->
     <!--|-->
@@ -30,7 +30,7 @@ span.paging{  min-height:26px;  }
 span.paging a, span.paging em{margin: 0 0.2em 0 0.1em; padding: .3em .4em; font-style:normal;}
 span.paging a:hover { background: #c5dae5; color: #456b7e; }
 span.paging a{text-decoration:underline;}
-a.page_first, a.page_last{display:none;}
+/*a.page_first, a.page_last{display:none;}*/
 
 
 </style>

@@ -1,6 +1,6 @@
 Licemerov::Application.routes.draw do
 
-  root :to => 'estate#index'
+  root :to => 'rents#index'
 
   # user sessions routes
   get '/registration' => 'users#new', :as => :register
@@ -73,6 +73,8 @@ Licemerov::Application.routes.draw do
 #  match "/:estate/create" , :to => 'estate#create' , :as => :new_estate
 
   match "/:estate/acst", :to => "estate#autocomplete_street"
+
+  resources :rents
 
   resources :estate do
     collection do

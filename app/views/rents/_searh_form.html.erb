@@ -1,0 +1,22 @@
+<div id="applesearch">
+<%= form_for @estate , :remote => true do |f| %>
+
+  <%= f.hidden_field :page, :value => "1" %>
+  <span class="sbox_l"></span>
+  <span class="sbox">
+    <%= f.text_field :pattern, :id => :srch_fld %>
+  </span>
+
+  <span class="sbox_r" id="srch_clear"></span>
+
+  <!--  <p class="search_selects"> -->
+    <!--<span id="sel_rooms" class="select">все</span>-->
+    <%= f.select :rooms, options_for_select([["все", ""],["1 комнатные", 1], ["2 комнатные",2], ["3 комнатные",3], ["4 комнатные",4] , ["5 комнатные",5], ["6 комнатные",6]]), :id => "rooms_num", :class => "styled" %>
+    <!--<span id="sel_dist" class="select">весь Киев</span>-->
+    <%= f.collection_select :dist_code, Dist.all, :dist_code, :dist_name, {:prompt => "весь Киев", :class => "styled"} %>
+<!--    </p> -->
+
+  <%= submit_tag "найти", :class => "search_submit" %>
+<% end %>
+<div style="clear: both;"></div>
+</div>

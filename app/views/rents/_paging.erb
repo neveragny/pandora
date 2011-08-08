@@ -1,0 +1,29 @@
+  <span class="paging" data-pages="<%= @pages %>">
+    <% if @pages == 1 || @pages == 0 %>
+        <em>1&nbsp;страница</em>
+    <% elsif @pages < 10 && @pages > 1 %>
+        <% i = 0 %>
+      <% while  i < @pages do  %>
+        <% if i == @page  %>
+            <em><%= i %></em>
+        <% else %>
+            <%= link_to i, nil, :id => i %>
+        <% end %>
+        <% i =+ 1 %>
+      <% end %>
+    <% else %>
+      <%
+         start_range = @page <= 5? 1 : (@page >= @last_page ? (@page - 11) : (@page -5) )
+         end_range = @page <= 5? 10 : ( @page >= (@last_page-4) ? @last_page : (@page + 5) ) %>
+
+      <%= link_to '←', "#", :id => "1", :class => :page_first, :title => "первая" if @page > 5 %>
+      <% (start_range..end_range).each do |i| %>
+        <% if i == @page  %>
+            <em><%= i %></em>
+        <% else %>
+            <%= link_to i, "#", :id => i %>
+        <% end %>
+      <% end %>
+      <%= link_to '→', "#", :id => @last_page, :class => :page_last, :title => "последняя" unless  @page > (@last_page - 4) %>
+    <% end %>
+  </span>

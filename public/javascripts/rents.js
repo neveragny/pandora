@@ -1,5 +1,12 @@
 $(document).ready(function() {  
-   applesearch.init(); 
+   applesearch.init();
+
+//
+
+   $("input#srch_fld").bind('onkeyup', function(event) {
+            //event.preventDefault();
+            applesearch.onChange('srch_fld','srch_clear');
+        });
 
 //if ($.cookie('favorite_estates') == null ){
 //   $.cookie('favorite_estates', '.', '', '/','nomoveton.co.ua', '');
@@ -29,7 +36,7 @@ g_estates_table = new EstatesTable();
 
 g_estates_table.initialize($("div#result_content"));
 
-ajax_pagination(1, $("span.paging").attr("data-pages"));
+ajax_pagination();
 
 
 
@@ -117,6 +124,10 @@ oControl= new function (par1, par2) {
 
 // FUNCTIONS
 
+
+$('form#new_rent').bind('ajax:complete', function(event, xhr, status){
+    $('input#rent_page').val("1");
+});
 
 
 function rent_search(page){
@@ -381,19 +392,12 @@ function EstatesTable(){
     }
 }
 
-function ajax_pagination(current_page, all_pages){
-    var ajax_pagination_request = null;
-    if(current_page > 6){ $("a.page_first").show() }
-    if(current_page < all_pages){ $("a.page_last").show() }
-    $.each($("span.paging a"), function(elem){
-        $(this).bind("click", function(e){
-            e.preventDefault();
-            $.ajax({
-                type: "GET",
-                url: $(this).attr("href"),
-                dataType: "script",
-                complete: function(data){}
-            });
+function ajax_pagination(){
+    $(".paging a").each(function(i, val) {
+        $(this).click(function(event){
+            event.preventDefault();
+            $('input[name="rent[page]"]').val($(this).attr("id"));
+            $('form.new_rent').submit();
         });
     });
 }

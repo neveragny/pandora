@@ -1,0 +1,19 @@
+
+object_found(<%= @pages %>);
+
+$("div#result_content_table").empty();
+
+$('div#result_content_table').append("<%= escape_javascript(render :partial => 'results' )%>");
+
+g_estates_table = new EstatesTable();
+
+g_estates_table.initialize($("div#result_content"));
+
+ajax_pagination("<%= @page %>", "<%= @pages %>");
+
+$('input#rent_page').val("1");
+
+//	TABLE_SORTERS.init('sorted_type', 'make_search()');
+
+
+

@@ -1,44 +1,33 @@
-class EstateController < ApplicationController
+class RentsController < ApplicationController
 
   autocomplete :street, :rus_name
   skip_before_filter :existent_user
+  before_filter :validate_request, :only => :create
+
+  ITEMS_PER_PAGE = 20
 
   def index
-    logger.warn "PARAMS : #{params}"
-
-    @filter = params[:filter]
-    logger.debug("FILTER: #{@filter}")
-    @page = params[:page].blank? ? 1 : params[:page].to_i
-
-
-
-    if !@filter
-      @rents, @amnt = Rent.get_rents(0, 0, "", (!@page? 1: @page) )
-      @pages = Rent.get_pages(0, 0, "")
-    else
-      dist_code= @filter[:dist_code].blank? ? 0 : @filter[:dist_code]
-      rooms= @filter[:rooms].blank? ? 0 : @filter[:rooms].to_i
-      search_query= @filter[:search_query]
-      @rents, @amnt = Rent.get_rents(dist_code, rooms, search_query, @page )  #dist_code ,rooms ,string ,page
-      @pages = Rent.get_pages(dist_code, rooms, search_query) # dist_code, rooms, search_string
-      @pagified_filter = filter_to_string(@filter)
-      logger.debug("filter_to_string: #{filter_to_string(@filter)}")
-      logger.debug("ROOMS: #{@filter[:rooms]}")
-      logger.debug("PAGES: #{@pages}")
-      logger.debug("PAGE: #{@page}")
+    @estate = Rent.new
+    @page =  1
+    @rents, amount = Rent.get_rents(@page )
+    @pages = amount.to_i ? amount.to_i+1 : amount.to_i
+    @last_page = amount/ITEMS_PER_PAGE + 1
     end
+  end
 
+  def create
+    @page = params[:rent][:page].to_i
+    @rents, amount = Rent.get_rents(@page, params[:rent][:dist_code], params[:rent][:rooms], params[:rent][:pattern])
+    @pages = amount.to_i ? amount.to_i+1 : amount.to_i
+    @last_page = amount/ITEMS_PER_PAGE + 1
     respond_to do |format|
-      format.html
-#      format.json { render :json => @rents }
-      format.js {render :content_type => 'text/javascript', :layout => false}
+      format.js { render :layout => false }
     end
-  end  
-  
+  end
+
 
   def show
-    #check if guys comming to old comilffo from google :D
-    redirect_to :action => :index if params[:id] == "index"
+    redirect_to :action => :index if params[:id] == "index" #check if guys comming to old comilffo from google :D
     @rent = Rent.where(:id => params[:id]).first
   end
 
@@ -62,7 +51,7 @@ class EstateController < ApplicationController
 
   def add_to_bookmarks
     bookmark = Rentbookmark.new(:user_id => @current_user.id,:rent_id => params[:rent_id])
-    
+
     respond_to do |format|
       if bookmark.save
         format.json {render :json => {:result => "ADDED"}}
@@ -96,9 +85,9 @@ class EstateController < ApplicationController
       @fav_rents = Rent.where("id in (?)", Rentbookmark.get_all(@current_user.id).split(','))
       logger.warn @fav_rents
     else
-     
+
       favorites = cookies[:favorite_estates]
-      
+
       @fav_rents = favorites ? Rent.where("id in (?)", favorites.split(',')) : []
     end
   end
@@ -109,7 +98,7 @@ class EstateController < ApplicationController
     end
   end
 
-  def create
+  def creates
     @user = current_user
     @rent = current_user.rents.build( params[:rent] )
     if @rent.save
@@ -133,7 +122,7 @@ class EstateController < ApplicationController
       format.json { render :json => streets_array}
     end
   end
-  
+
   private
   def filter_to_string(filter)
     if !filter[:dist_code].blank? || !filter[:rooms].blank? || !filter[:search_query].blank?
@@ -141,8 +130,13 @@ class EstateController < ApplicationController
     end
   end
 
+  def print_params
+    logger.warn "PARAMS : #{params}"
+  end
 
-end
+  def validate_request
+    nil unless request.xhr?
+  end
 
 
 
