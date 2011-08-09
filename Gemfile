@@ -24,7 +24,7 @@ gem 'unicode'
 # rails g jquery:install.
 gem 'jquery-rails'
 
-gem 'mechanize'
+#gem 'mechanize'
 
 gem "s3"
 

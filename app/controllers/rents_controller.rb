@@ -31,22 +31,8 @@ class RentsController < ApplicationController
     @rent = Rent.where(:id => params[:id]).first
   end
 
-#  If user select "все" in rooms amount at UI , params[:rooms] will be = 0
-#  For dist_code the same , if all district selected, 0 value passed to controller
-#  Logic handles by Rent model
-#
   def result
-    dist_code = params[:dist_code].to_i
-    rooms = params[:rooms].to_i
-    page = params[:page].to_i
-    search_string = params[:string]
-    @rents, @amnt = Rent.get_rents(dist_code, rooms,search_string, page)
-    @pages = Rent.get_pages(dist_code, rooms,search_string)
 
-    respond_to do |format|
-      #format.html
-      format.js { render :content_type => 'text/javascript' }
-    end
   end
 
   def add_to_bookmarks
@@ -98,6 +84,21 @@ class RentsController < ApplicationController
     end
   end
 
+  def add_new_rent
+
+  end
+
+  def stree_autocompleet
+    logger.warn params[:term]
+#    @streets = Street.autocomplete_rus(params[:term])
+    streets = Street.find_by_sql "select rus_name from streets where rus_name LIKE '%#{params[:term]}%'"
+    streets_array = []
+    streets.each{|street| streets_array << street.rus_name }
+    respond_to do |format|
+      format.json { render :json => streets_array, :layout => :false}
+    end
+  end
+
   def creates
     @user = current_user
     @rent = current_user.rents.build( params[:rent] )
@@ -112,16 +113,7 @@ class RentsController < ApplicationController
     end
   end
 
-  def autocomplete_street
-    logger.warn params[:term]
-#    @streets = Street.autocomplete_rus(params[:term])
-    streets = Street.find_by_sql "select rus_name from streets where rus_name LIKE '%#{params[:term]}%'"
-    streets_array = []
-    streets.each{|street| streets_array << street.rus_name }
-    respond_to do |format|
-      format.json { render :json => streets_array}
-    end
-  end
+
 
   private
   def filter_to_string(filter)

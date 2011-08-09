@@ -46,7 +46,8 @@
                 <%= description[131..(description.length-1)]  if description.is_a?(String) && description.length > 131%>
               </span>
             </a>
-            <a target="_blank" class="green" href="/estate/<%= item.id %>">открыть в новом окне<i class="ico new-win"></i></a>
+            <!--<a target="_blank" class="green" href="/estate/<%#= item.id %>">открыть в новом окне<i class="ico new-win"></i></a>-->
+            <%= link_to 'открыть в новом окне', rent_path(item.id), html_options = { :class => "green", :target => "_blank" } %>
           </td>
           <td class="contacts">
             <%= item.phones.split(",")[0] if !(item.phones.blank?) %>

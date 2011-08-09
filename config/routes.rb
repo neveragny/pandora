@@ -72,9 +72,17 @@ Licemerov::Application.routes.draw do
   match "/:estate/favorites", :to => 'estate#favorites'
 #  match "/:estate/create" , :to => 'estate#create' , :as => :new_estate
 
-  match "/:estate/acst", :to => "estate#autocomplete_street"
+#  match "/:estate/acst", :to => "estate#autocomplete_street"
 
-  resources :rents
+
+#                                      match '/:rents/stree_autocompleet', :to => 'rents#stree_autocompleet'
+  resources :rents do
+      get :stree_autocompleet, :as => :stree_autocompleet
+      get :new, :as => :new_rent
+      post :add_new_rent
+  end
+
+
 
   resources :estate do
     collection do

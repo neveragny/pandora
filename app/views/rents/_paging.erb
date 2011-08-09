@@ -2,15 +2,15 @@
     <% if @pages == 1 || @pages == 0 %>
         <em>1&nbsp;страница</em>
     <% elsif @pages < 10 && @pages > 1 %>
-        <% i = 0 %>
-      <% while  i < @pages do  %>
-        <% if i == @page  %>
-            <em><%= i %></em>
-        <% else %>
-            <%= link_to i, nil, :id => i %>
+
+        <% (0..@pages).each do |page| %>
+          <% if page == @page %>
+            <em><%= page %></em>
+          <% else %>
+            <%= link_to page, nil, :id => page %>
+          <% end %>
         <% end %>
-        <% i =+ 1 %>
-      <% end %>
+
     <% else %>
       <%
          start_range = @page <= 5? 1 : (@page >= @last_page ? (@page - 11) : (@page -5) )
