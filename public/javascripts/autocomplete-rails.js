@@ -42,6 +42,7 @@ $(document).ready(function(){
 	jQuery.railsAutocomplete.fn.extend({
 		init: function(e) {
 			e.delimiter = $(e).attr('data-delimiter') || null;
+			dist_id = $('select#rent_dist_code').val();
 			function split( val ) {
 				return val.split( e.delimiter );
 			}
@@ -50,7 +51,7 @@ $(document).ready(function(){
 			}
 
 	    $(e).autocomplete({
-                source : 'acst',
+                source : 'complete_street?dist='+dist_id,
 
 //				source: function( request, response ) {
 //					$.getJSON( //url,data,callback

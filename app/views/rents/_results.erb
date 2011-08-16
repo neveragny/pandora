@@ -40,14 +40,14 @@
               <a class="estate-display-name" href="/users/33008">mvs</a>
             </strong> -->
             <% description = item.info %>
-            <a target="_blank" class="estate-link" href="/estate/<%= item.id %>">
+            <a target="_blank" class="estate-link" href="/rents/<%= item.id %>">
               <%= description[0..130] if !(description.blank?) && description.length > 100 %>
               <span class="description-extra hide">
                 <%= description[131..(description.length-1)]  if description.is_a?(String) && description.length > 131%>
               </span>
             </a>
             <!--<a target="_blank" class="green" href="/estate/<%#= item.id %>">открыть в новом окне<i class="ico new-win"></i></a>-->
-            <%= link_to 'открыть в новом окне', rent_path(item.id), html_options = { :class => "green", :target => "_blank" } %>
+            <%= link_to 'открыть в новом окне', rent_path(item), html_options = { :class => "green", :target => "_blank" } %>
           </td>
           <td class="contacts">
             <%= item.phones.split(",")[0] if !(item.phones.blank?) %>

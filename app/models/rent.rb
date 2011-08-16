@@ -6,7 +6,7 @@ class Rent < ActiveRecord::Base
 
   belongs_to :user
   has_many :rentphotos
-  before_create :enrich
+  #before_create :enrich
 
   attr_accessor :img_amount
 

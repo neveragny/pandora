@@ -1,6 +1,6 @@
 class RentsController < ApplicationController
 
-  autocomplete :street, :rus_name
+  #autocomplete :street, :rus_name
   skip_before_filter :existent_user
   before_filter :validate_request, :only => :create
 
@@ -12,7 +12,6 @@ class RentsController < ApplicationController
     @rents, amount = Rent.get_rents(@page )
     @pages = amount.to_i ? amount.to_i+1 : amount.to_i
     @last_page = amount/ITEMS_PER_PAGE + 1
-    end
   end
 
   def create
@@ -27,12 +26,10 @@ class RentsController < ApplicationController
 
 
   def show
+    Rails.logger.debug "<<<<<<<<<<<<<<<<<<<<<"
     redirect_to :action => :index if params[:id] == "index" #check if guys comming to old comilffo from google :D
     @rent = Rent.where(:id => params[:id]).first
-  end
-
-  def result
-
+    Rails.logger.debug "#{@rent}<<<<<<<<<<<<<<<<<<<<<"
   end
 
   def add_to_bookmarks
@@ -79,23 +76,20 @@ class RentsController < ApplicationController
   end
 
   def new
-    if @current_user
-      @rent = Rent.new
-    end
+      @rent = Rent.new if @current_user
   end
 
-  def add_new_rent
+  def add_new
 
   end
 
-  def stree_autocompleet
-    logger.warn params[:term]
-#    @streets = Street.autocomplete_rus(params[:term])
-    streets = Street.find_by_sql "select rus_name from streets where rus_name LIKE '%#{params[:term]}%'"
-    streets_array = []
-    streets.each{|street| streets_array << street.rus_name }
+  def complete_street
+    Rails.logger.debug params[:term]
+    Rails.logger.debug params[:dist]
+    streets = Street.find_by_sql "select rus_name from streets where dists LIKE '%#{params[:dist]}%' and rus_name LIKE '%#{params[:term]}%'"
+
     respond_to do |format|
-      format.json { render :json => streets_array, :layout => :false}
+      format.json { render :json => streets.map{ |street| street.rus_name}}
     end
   end
 
@@ -129,6 +123,7 @@ class RentsController < ApplicationController
   def validate_request
     nil unless request.xhr?
   end
-
+  
+end
 
 

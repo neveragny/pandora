@@ -65,31 +65,32 @@ Licemerov::Application.routes.draw do
   #  ****************** Photos END ******************
 
   #  ****************** Rents ***********************
-  match "/:estate/index", :to => 'estate#index'
-  match "/:estate/add_to_bookmarks", :to => 'estate#add_to_bookmarks'
-  match "/:estate/remove_from_bookmarks", :to => 'estate#remove_from_bookmarks'
-  match "/:estate/all_bookmarks", :to => 'estate#all_bookmarks'
-  match "/:estate/favorites", :to => 'estate#favorites'
-#  match "/:estate/create" , :to => 'estate#create' , :as => :new_estate
 
-#  match "/:estate/acst", :to => "estate#autocomplete_street"
-
-
-#                                      match '/:rents/stree_autocompleet', :to => 'rents#stree_autocompleet'
   resources :rents do
-      get :stree_autocompleet, :as => :stree_autocompleet
-      get :new, :as => :new_rent
-      post :add_new_rent
+    get 'complete_street', :on => :collection
+    get 'add_new', :on => :collection
   end
 
+#     match '/rents/stree_autocompleet', :to => 'rents#stree_autocompleet', :as => 'stree_autocompleet'
+#  get '/rents/complete_street' => 'rents#complete_street'
+
+#  resources :rents
+#  do
+##      get :complete_street
+#      get :new, :as => :new_rent
+#      post :add_new_rent
+#  end
 
 
-  resources :estate do
-    collection do
-        get :result
-        get :paging
-    end
-  end
+
+
+#
+#  resources :estate do
+#    collection do
+#        get :result
+#        get :paging
+#    end
+#  end
 
 
   #  ****************** Rents END ***********************
