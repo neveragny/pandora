@@ -1,6 +1,7 @@
 Licemerov::Application.routes.draw do
 
-  root :to => 'rents#index'
+
+  root :to => 'renter#search'
 
   # user sessions routes
   get '/registration' => 'users#new', :as => :register
@@ -70,6 +71,8 @@ Licemerov::Application.routes.draw do
     get 'complete_street', :on => :collection
     get 'add_new', :on => :collection
   end
+
+  resources :renter
 
 #     match '/rents/stree_autocompleet', :to => 'rents#stree_autocompleet', :as => 'stree_autocompleet'
 #  get '/rents/complete_street' => 'rents#complete_street'

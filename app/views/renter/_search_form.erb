@@ -1,0 +1,256 @@
+<div class="curveBottom" id="searchWrapperOuter">
+
+  <div class="curveBottom" id="searchWrapper">
+    <form method="get" action="/renter/listings/search" enctype="application/x-www-form-urlencoded" id="search">
+      <input type="hidden" value="" name="broker_id" id="broker_id">
+      <div id="formContainer">
+        <div class="searchBox wide">
+          <label>Borough</label>
+          <div id="boroughDropdown" rel="#bid" class="fancyDropdown">
+  <span class="selected">All</span>
+  <div class="clear"></div>
+  <ul style="display: none;" class="fancyDropdownOptions">
+
+            <li data-id="0">All</li>
+
+              <li data-id="4">Bronx</li>
+
+              <li data-id="2">Brooklyn</li>
+
+              <li data-id="1">Manhattan</li>
+
+              <li data-id="3">Queens</li>
+
+              <li data-id="5">Staten Island</li>
+
+
+  </ul>
+  <input type="hidden" value="0" name="bid" id="bid">
+</div>
+        </div>
+
+        <div class="searchBox wide">
+          <label>Neighborhood</label>
+          <div id="neighborhoodDropdown" rel="#nids" class="fancyDropdownMultiple">
+  <span class="selected">&nbsp;</span>
+  <div class="clear"></div>
+  <div style="display: none;" class="fancyDropdownMultiplePane">
+
+     <div class="fancyDropdownOptions">
+     <div class="buttons">
+        <span class="closeDropdown"><a href="#">Done/Close</a></span>
+
+        <span class="block"><span class="whiteBtn selectAll"><a href="#">Select All</a></span></span>
+        <span class="block"><span class="whiteBtn unselectAll"><a href="#">Unselect All</a></span></span>
+
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+
+            <div id="neighborhoodOptions"></div>
+
+     </div>
+      <div class="clear"></div>
+  </div>
+  <input type="hidden" value="" name="nids" id="nids">
+</div>
+        </div>
+
+        <div class="searchBox wide">
+          <label>Size</label>
+          <div id="apartmentSizeDropdown" rel="#aids" class="fancyDropdownMultiple">
+  <span class="selected">&nbsp;</span>
+  <div class="clear"></div>
+  <div style="display: none;" class="fancyDropdownMultiplePane">
+
+     <div class="fancyDropdownOptions">
+     <div class="buttons">
+        <span class="closeDropdown"><a href="#">Done/Close</a></span>
+
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+
+            <ul>
+
+              <li><input type="checkbox" value="1"> Studio</li>
+
+              <li><input type="checkbox" value="2"> Loft</li>
+
+              <li><input type="checkbox" value="3"> 1br</li>
+
+              <li><input type="checkbox" value="4"> 2br</li>
+
+              <li><input type="checkbox" value="5"> 3br</li>
+
+              <li><input type="checkbox" value="6"> 4br</li>
+
+              <li><input type="checkbox" value="7"> 5br</li>
+
+              <li><input type="checkbox" value="8"> 6br</li>
+
+              <li><input type="checkbox" value="9"> 7br</li>
+
+              <li><input type="checkbox" value="10"> 8br</li>
+
+            </ul>
+
+     </div>
+      <div class="clear"></div>
+  </div>
+  <input type="hidden" value="0" name="aids" id="aids">
+</div>
+        </div>
+
+        <div class="lastBox">
+          <label>Rent</label>
+          <input type="text" size="6" name="min_rent" id="minRent" default="$" class="idleField"> to
+        </div>
+
+        <div class="searchBox wide">
+          <label>&nbsp;</label>
+          <input type="text" size="6" name="max_rent" id="maxRent" default="$" class="idleField">
+        </div>
+
+        <div class="searchBox wide">
+          <label>I want to move by</label>
+          <div style="width: 125px;">
+            <input type="text" size="13" name="move_date" id="dateAvailable" default="" class="w16em dateformat-m-sl-d-sl-Y text idleField hasDatepicker">
+          </div>
+        </div>
+
+		<div id="searchBoxRenter">
+        <a class="button search submitButton" href="#"><span>Search</span></a>
+        <div class="clear"></div>
+
+        <a class="close" href="/renter/listings/search">clear</a>
+
+      </div>
+    </div>
+
+<!-- filters -->
+      <div class="clear"></div>
+
+    <fieldset class="searchFilters" id="renterFilters">
+
+     <div class="container1">
+           <div class="searchBox">
+	            <input type="checkbox" value="1" name="photos" id="photos" class="field text">
+	            Must have photos
+            </div>
+
+
+           	<div class="searchBox">
+            	<input type="checkbox" value="1" name="suggested" id="suggested" class="field text">
+            	<span title="That match my profile" class="tooltip mouseover">Suggested for me</span>
+            </div>
+
+
+            <div class="searchBox">
+            	<input type="checkbox" value="1" name="no_fee" id="no_fee" class="field text">
+            	No fee only
+            </div>
+
+
+	           <div class="searchBox">
+            	<input type="checkbox" value="1" name="favorites" id="favorites" class="field text">
+            	My Favorites
+            </div>
+
+          </div>
+
+         <div class="container2">
+         <div class="searchBox menu">
+         	<label>Amenities</label>
+            <div id="amenityDropdown" rel="#amids" class="fancyDropdownMultiple">
+  <span class="selected">&nbsp;</span>
+  <div class="clear"></div>
+  <div style="display: none;" class="fancyDropdownMultiplePane">
+
+     <div class="fancyDropdownOptions">
+     <div class="buttons">
+        <span class="closeDropdown"><a href="#">Done/Close</a></span>
+
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+
+            <ul id="amenities">
+
+              <li><input type="checkbox" value="12"> Balcony</li>
+
+              <li><input type="checkbox" value="17"> Dishwasher</li>
+
+              <li><input type="checkbox" value="1"> Doorman</li>
+
+              <li><input type="checkbox" value="2"> Elevator</li>
+
+              <li><input type="checkbox" value="8"> Garage</li>
+
+              <li><input type="checkbox" value="6"> Health Club</li>
+
+              <li><input type="checkbox" value="3"> Laundry Room</li>
+
+              <li><input type="checkbox" value="7"> Outdoor Space</li>
+
+              <li><input type="checkbox" value="15"> Parking</li>
+
+              <li><input type="checkbox" value="11"> Terrace</li>
+
+              <li><input type="checkbox" value="14"> Washer/Dryer</li>
+
+            </ul>
+
+     </div>
+      <div class="clear"></div>
+  </div>
+  <input type="hidden" value="0" name="amids" id="amids">
+</div>
+        </div>
+
+         <div style="margin-left: 55px;" class="searchBox menu">
+          <label>Pets</label>
+          <div id="petsDropdown" rel="#pets" class="fancyDropdownMultiple">
+  <span class="selected">All</span>
+  <div class="clear"></div>
+  <div style="display: none;" class="fancyDropdownMultiplePane">
+
+     <div class="fancyDropdownOptions">
+     <div class="buttons">
+        <span class="closeDropdown"><a href="#">Done/Close</a></span>
+
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+
+            <ul>
+
+              <li><input type="checkbox" value="dogs"> Dogs</li>
+
+              <li><input type="checkbox" value="cats"> Cats</li>
+
+            </ul>
+
+     </div>
+      <div class="clear"></div>
+  </div>
+  <input type="hidden" value="" name="pets" id="pets">
+</div>
+        </div>
+	</div>
+
+
+
+      <!--
+      <span class="checkboxCont">
+        <input class="field text" id="exclusive" name="exclusive" type="checkbox" value="1" />
+        exclusive listings
+      </span>
+      -->
+
+    </fieldset>
+    <div class="clear"></div>
+    </form>
+  </div>
+</div>
+<div class="clear"></div>

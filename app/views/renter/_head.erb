@@ -1,0 +1,19 @@
+<ul id="siteNav">
+    <% if @current_user %>
+    <li><a title="Messages from brokers,  suggested apartments, reviews you need to write, etc..." href="/renter">Overview</a></li>
+    <li><a id="offerTab" title="Contacts" href="/renter/contacts" class=" ">Contacts</a></li>
+    <li><a title="Reviews you've written and those you need to write..." href="/renter/reviews" class=" ">Reviews</a></li>
+    <li><a href="http://www.nakedapartments.com/renter/listings/saved-searches" class=" ">Saved Searches</a></li>
+    <li id="faves"><a href="http://www.nakedapartments.com/renter/favorites">&nbsp;</a></li>
+    <li id="searchOpen" class="active">
+    <a title="Search for apartments" href="/renter/listings/search" class=" ">Search for Apartments</a>
+    </li>
+    <li id="deals"><a href="/renter/naked-solutions"><span class="title">naked</span>Solutions</a></li>
+    <% else %>
+    <li><a class="infoModal cboxElement" href="#overviewModalContainer">Overview</a></li>
+    <li id="faves"><a class="infoModal cboxElement" href="#favoritesModalContainer">&nbsp;</a></li>
+    <li><a class="infoModal cboxElement" href="#reviewsModalContainer">Reviews</a></li>
+    <li><a class="infoModal cboxElement" href="#savedSearchesModalContainer">Saved Searches</a></li>
+    <li class="active" id="searchOpen"><a href="/renter/listings/search" class=" ">Find Apartments</a></li>
+    <% end %>
+</ul>

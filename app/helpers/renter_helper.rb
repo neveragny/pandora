@@ -1,0 +1,2 @@
+module RenterHelper
+end

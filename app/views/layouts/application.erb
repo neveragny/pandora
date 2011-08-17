@@ -8,7 +8,8 @@
   <title>Пандора - проект "Живая база недвижимости" Киев.</title>
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
 
-  <%= stylesheet_link_tag 'main.css', 'applesearch.css', 'css3buttons.css', 'reset.css' %>
+  <%#= stylesheet_link_tag 'main.css', 'applesearch.css', 'css3buttons.css', 'reset.css' %>
+  <%= stylesheet_link_tag 'all_naked.css'%>
   <%= stylesheet_link_tag '/fancybox/jquery.fancybox-1.3.4.css' %>
   <%= javascript_include_tag 'jquery.js', 'rails.js', 'application.js', 'applesearch.js', 'jcookie.js'%>
   <%= javascript_include_tag 'form', 'jquery.remotipart' %>
@@ -16,226 +17,56 @@
   <%= yield :head %>
   <%= csrf_meta_tag %>
 </head>
-<body>
-<!--[if IE]>
-<div id="iealert">
-<p>
-Вниманию пользователей Internet Explorer! В данный момент на сайте могут возникать некоторый проблемы, которые могут привести к странному поведению ресурса.
-Мы пытаемся устранить все существующие проблемы для пользователей Internet Explorer. В ближайшее время мы рекомендуем пользоваться одним из более современных браузеров: Chrome, Firefox или Safari. Спасибо за понимание! 
-</p>
-</div>
-<style>
-div#iealert {
-border-bottom: #ddd 2px solid; 
-text-align: center; 
-padding-bottom: 15px; 
-padding-left: 15px; 
-padding-right: 15px; 
-background: #fff; 
-font-size: 15px; 
-padding-top: 15px;
-}
-</style>
-
-<![endif]-->
-<% if @user && @user.avatar.exists? %>
-    <% user_attrs = "#{@user.login},#{@user.gender},#{@user.avatar.url(:small)},#{@user.id}" %>
-<% else %>
-    <% user_attrs = nil %>
-<% end %>
-
-
-    <div id="wrapper" data-user="<%= user_attrs %>" class="<%= controller_name + "_pandora" %>">
-        <div class="page">
-            <div id="errors">
-              <div class="notices"><%= flash[:notice] %></div>
-              <div class="alerts"><%= flash[:alert] %></div>
-              <div class="warnings"><%= flash[:warning] %></div>
-            </div>
-
-        <div class="header">
-          <!-- navigation -->
-            <div class="w-nav clf">
-                <ul class="nav-ul userbar-ul">
-                    <li class="nav-li">
-                        <dl class="nav-dl">
-
-                            <!--<a class="nav-a" href="/users/new">Войти или Зарегистрироваться</a>-->
-                                <%= render :partial => 'shared/header' %>
-
-
-                        </dl>
-                    </li>
-                    <li class="nav-li">
-                        <dl class="nav-dl">
-                            <dt>
-                                <a href="/estate/favorites">
-                                    <span id="favorites_counter" class="mhint mhint-big">0</span>
-                                </a>
-                            </dt>
-                            <dd>
-                                <a class="nav-a" href="/estate/favorites">Избранное</a>
-                            </dd>
-                        </dl>
-                    </li>
+<body class="">
+	<div id="wrapper">
+		<div id="masthead">
+			<div id="logo">
+				<a title="Naked Apartments: NYC apartment rentals" href="/">
+				<img border="0" alt="Naked Apartments: Search apartments for rent in New York City" src="/images/logo_inside.gif">
+				</a>
+		    </div>
+		    <div id="adminBar">
+              <% if @current_user %>
+                <ul class="curveBottom clearfix">
+                    <li id="inviteFriends"><a class="infoModal cboxElement" href="#inviteFriendsModal">SHARE</a></li>
+                    <li class="view"><a href="/renter/profile" class="bold">View Profile</a></li>
+                    <li class="last"><a class="bold" href="/logoff">Logout</a></li>
                 </ul>
-                <p class="nav-title">Недвижимость в рамках вашего бюджета</p>
-                    <ul class="nav-ul clf">
-                        <li id="basedata" class="nav-li selected">
-                            <a class="nav-a" href="/">Базы данных<i class="tri"></i></a>
-                        </li>
-                        <li id="pubata" class="nav-li ">
-                          <a class="nav-a" href="#">Рейтинг<i class="tri"></i></a>
-                        </li>
-                        <li id="pubata" class="nav-li ">
-                          <a class="nav-a" href="#">Посты<i class="tri"></i></a>
-                        </li>
-                        <li id="pubata" class="nav-li ">
-                          <a class="nav-a" href="#">Сервисы<i class="tri"></i></a>
-                        </li>
-                        <!--<li id="forumdata" class="nav-li nav-li-l"> <%#= render :partial => 'traffic/jam' %> </li>-->
-                    </ul>
-            </div>
-        </div> <!-- END OF header -->
-        
+              <% else %>
+                <ul>
+                  <!--<li class="like first"><div id="fb-root" class=" fb_reset"><script async="" src="http://connect.facebook.net/en_US/all.js"></script><div style="position: absolute; top: -10000px; height: 0pt; width: 0pt;"><div><iframe scrolling="no" id="f3820c4e91b682" name="f2a12e0a29438e4" style="border: medium none; overflow: hidden; height: 240px; width: 575px;" class="FB_UI_Hidden" src="http://www.facebook.com/extern/login_status.php?api_key=149838751731831&amp;app_id=149838751731831&amp;channel_url=http%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df1660d3a36f968a%26origin%3Dhttp%253A%252F%252Fwww.nakedapartments.com%252Ff90ac01594e37%26relation%3Dparent.parent%26transport%3Dpostmessage&amp;display=hidden&amp;extern=2&amp;locale=en_US&amp;next=http%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df2fabd9f9eecb48%26origin%3Dhttp%253A%252F%252Fwww.nakedapartments.com%252Ff90ac01594e37%26relation%3Dparent%26transport%3Dpostmessage%26frame%3Df2b5ecad0d587f2%26result%3D%2522xxRESULTTOKENxx%2522&amp;no_session=http%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df1762d05769d114%26origin%3Dhttp%253A%252F%252Fwww.nakedapartments.com%252Ff90ac01594e37%26relation%3Dparent%26transport%3Dpostmessage%26frame%3Df2b5ecad0d587f2&amp;no_user=http%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df3a3525d6b1b7b%26origin%3Dhttp%253A%252F%252Fwww.nakedapartments.com%252Ff90ac01594e37%26relation%3Dparent%26transport%3Dpostmessage%26frame%3Df2b5ecad0d587f2&amp;ok_session=http%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df18c8dcf18c5968%26origin%3Dhttp%253A%252F%252Fwww.nakedapartments.com%252Ff90ac01594e37%26relation%3Dparent%26transport%3Dpostmessage%26frame%3Df2b5ecad0d587f2&amp;sdk=joey&amp;session_origin=1&amp;session_version=3"></iframe></div></div></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like font="arial" show_faces="false" width="50" layout="button_count" send="false" href="http://www.nakedapartments.com" class=" fb_edge_widget_with_comment fb_iframe_widget"><span><iframe scrolling="no" id="fc339d5565f754" name="f18090256a20156" style="border: medium none; overflow: hidden; height: 21px; width: 90px;" title="Like this content on Facebook." class="fb_ltr" src="http://www.facebook.com/plugins/like.php?channel_url=http%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df38e6c113b1c1f2%26origin%3Dhttp%253A%252F%252Fwww.nakedapartments.com%252Ff90ac01594e37%26relation%3Dparent.parent%26transport%3Dpostmessage&amp;font=arial&amp;href=http%3A%2F%2Fwww.nakedapartments.com&amp;layout=button_count&amp;locale=en_US&amp;node_type=link&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=90"></iframe></span></fb:like></li>-->
+                  <li><a href="/renter/listings/search">Apartment Search</a></li>
+                  <li class="login"><a class="login" href="/login">Log In</a></li>
+                  <li class="signup">
+                  <a class="signup" data-tagged-trac="sitewide-admin-bar|renter_signup" href="/renter/signup"><strong>SIGN UP</strong> <span class="small">(IT'S FREE!)</span></a></li>
+                </ul>
+              <% end %>
+		    </div>
+
+		    <div class="clear"></div>
+          <%= render :partial => "#{controller_name}/head" %>
+
+        </div>
         <%= yield %>
 
-        </div> <!-- END OF page -->
-    </div> <!-- END OF wrapper -->
+        <div class="curve" id="footerWrapper">
+		  <div id="footer">
 
-    <div id="opaco" class="hidden"></div>
+			<a title="about Naked Apartments" href="/about">About Us</a>
+			<a title="NYC Neighborhoods" href="/nyc/neighborhoods">NYC Neighborhoods</a>
+            <a title="NYC Popular Searches" href="/nyc/popular-searches">NYC Popular Searches</a>
+			<a title="Frequently Asked Questions" href="/about/faq">Help/FAQ</a>
+			<a title="Our Blog" target="new" href="/blog/">Blog</a>
+			<a title="Privacy Policy" href="/about/privacy-policy">Privacy Policy</a>
+			<a title="Terms and Conditions" href="/about/terms-and-conditions" class=" ">Terms &amp; Conditions</a>
+			<a rel="nofollow" href="/about/feedback_form" class="btnHtml feedbackBox cboxElement">Contact Us</a>
 
-    <div id="spinner" class="loading" style="display:none">
-      <span>Загрузка..</span>
-      <img width="" height="" src="/images/loading.gif" class="" alt=""> 
-    </div>
-    <div class="furjbqy" style="position:fixed; top:250px; left:0;">
-      <a target="_blank" href="http://saitowed.reformal.ru/proj/">
-        <img class="tdsfh" height="151" width="22" style="border: 0;" alt="" src="http://widget.reformal.ru/tmpl/images/transp.gif">
-        <style>
-          .furjbqy a {background: none repeat scroll 0 0 #EFA300;display: block;height: 151px;width: 22px;}
-          .tdsfh {background: url("http://widget.reformal.ru/tmpl/images/feedback_tab.png") repeat scroll 0 0 transparent;}
-        </style>  
-      </a>
-    </div>
+		  </div>
 
-    <div class="modal_background" style="width: 100%; height: 100%;"></div>
-    <div id="modal1" class="modal window" style="top: 43.125px; left: 355.5px;">
-      <div id="login" class="wrapper">
-        <div class="title">
-            <h1>На Берлин!</h1>
         </div>
-        <%= form_for(UserSession.new) do |f| %>
-          <div id="form">
-            <fieldset>
-              <label><%= f.label t(:user_login) %></label>
-                <div><%= f.text_field :login %></div>
-            </fieldset>
-            <fieldset>
-              <label><%= f.label t(:password) %></label>
-                <div><%= f.password_field :password %></div>
-            </fieldset>
-            <fieldset>
-                <label></label>
-                <div class="forgot">
-                    <a href="/reset_password">не помним пароль?</a>
-                </div>
-            </fieldset>
-          </div>
-          <div class="submit">
-            <%= f.submit t(:login), :class=> :button, :disable_with => t(:please_wait) %>
-            <%= link_to t(:register), register_path, :class => "signup" %>
-           <a href="#cancel" class="cancel">Cancel</a>
-          </div>
-            <!--<fieldset>-->
-                <%#= f.label t(:remember_me) %> <%#= f.check_box :remember_me %>
-            <!--</fieldset>-->
-        <% end %>
-
-
-
-
-      </div>
-    </div>
-
+        <span class="copyright">&copy; Copyright Naked Apartments 2011; Neighborhood data, &copy; 2011 Urban Mapping Inc.
+ <br> <a class="hud" href="/about/fair-housing">Fair Housing and Equal Opportunity</a><span class="madeinNYC"> Made in New York</span>
+ </span>
+	</div>
 </body>
 </html>
-
-<style>
-  body > .modal_background {
-    background: none repeat scroll 0 0 #000000;
-    left: 0;
-    opacity: 0.5;
-    position: absolute;
-    top: 0;
-    z-index: 50;
-    display:none;
-  }
-  body > .modal.window {
-    display:none;
-    background: none repeat scroll 0 0 rgba(37, 58, 74, 0.6);
-    border-radius: 10px 10px 10px 10px;
-    padding: 10px;
-    position: absolute;
-    z-index: 1000;
-  }
-  body > .modal.window > a{
-      color: #0281CF;
-  }
-  div.modal > #login {
-    margin: 0;
-    width: 500px;
-  }
-  body > .modal.window > .wrapper {
-    background: url("/images/modal_background.png") repeat-x scroll left top #FFFFFF;
-    border-radius: 5px 5px 5px 5px;
-    padding: 15px;
-  }
-  div.modal > #login #form {
-    background: none repeat scroll 0 0 #F2F2F2;
-    border-radius: 5px 5px 5px 5px;
-    padding: 0 15px 9px;
-  }
-  div.modal > #login #form fieldset {
-    overflow: hidden;
-    padding-top: 15px;
-  }
-  div.modal > #login #form fieldset > label {
-    display: block;
-    float: left;
-    font-size:12.5px;
-    position: relative;
-    top: 11px;
-    width: 150px;
-  }
-  div.modal > #login #form fieldset > div {
-    margin-left: 150px;
-  }
-  div.modal > #login #form fieldset > div.forgot {
-    font-size: 11px;
-    margin-bottom: 5px;
-  }
-  div.modal > #login div.submit {
-    clear: both;
-    padding: 22px 0 7px 165px;
-  }
-  div.modal > #login .button {
-    font-size: 15px;
-    font-weight: bold;
-    margin-right: 30px;
-    padding: 5px 30px;
-  }
-  body .button {
-    background: url("/images/background_button.png") repeat-x scroll center bottom #FFFFFF;
-    border: 1px solid #B2B2B2;
-    border-radius: 20px 20px 20px 20px;
-    color: #333333;
-    font-size: 11px;
-    padding: 4px 15px;
-  }
-  div.modal > #login a[href="#cancel"] {
-    color: #999999;
-    margin-left: 30px;
-  }
-
-</style>
