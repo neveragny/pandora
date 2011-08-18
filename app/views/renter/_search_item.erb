@@ -1,0 +1,55 @@
+<%= @rents[0].photos rescue nil %>
+<% @rents.each do |item| %>
+    <tr data-longitude="-73.996456" data-latitude="40.744093" data-id="383659" class="listingRow" id="listing_383659_row1">
+      <td class="border thumbnail">
+
+        <a href="http://www.nakedapartments.com/rental/383659" class=" ">
+          <!--<img src="http://s3.amazonaws.com/nakedapartments/images/4505761/thumb.jpg?1309203580" alt="Thumb">-->
+          <%= image_tag item.photo.url(:thumb) rescue nil %>
+          </a>
+
+      </td>
+
+      <td class="border flag">
+
+        <span class="listingTitle"><a href="http://www.nakedapartments.com/rental/383659">
+         <%= item.rooms %>к, <%= item.adress %> <%= item.price %> грн </a>
+        </span>
+
+        <div class="newCell listingDate">
+          11 <%= t(:days) %>
+          <span class="calm"><%= t(:onsite) %></span>
+        </div>
+
+
+        <div class="newCell brokerCont">
+
+          <a href="http://www.nakedapartments.com/a/profile/kate-kearney-patch/3d8"><%= item.name %></a>
+
+          <span class="noRating"><span><%= t(:rent_not_yet_rated) %></span></span>
+          <span class="duplicates"><span class="dupes"><strong>33 other brokers</strong> offer a similar listing at this address</span></span>
+        </div>
+
+
+        <div data-id="383659" class="">
+          <div class="newCell amenities">
+
+            Doorman, Elevator, Laundry Room, Pets Allowed
+
+          </div>
+        </div>
+
+
+        <div class="hidden mapMarkerHtml">
+          <div class="center">
+            <img alt="" src="http://s3.amazonaws.com/nakedapartments/images/4505761/thumb.jpg?1309203580">
+            <br>
+            <a href="http://www.nakedapartments.com/rental/383659">
+              <%= item.rooms %>к, <%= item.adress %> <%= item.price %> грн </a>
+          </div>
+        </div>
+
+      </td>
+    </tr>
+
+<% end %>

@@ -179,10 +179,32 @@ ru:
               blank: Вы не можете оставить пустой комментарий
               too_long: Слишком длинный комментарий ( максимум 1000 знаков )
 
+# Comilffo
+
+  comilffo: comilffo
+  solutions: Solutions
+  share: РАСШАРИТЬ
+  days: дней
+  onsite: на сайте
+# RENTER
+
+  renter_search: Поиск жилья
+  rentert_popular_searches: Популярные запросы
+  renter_wall: Стенка
+  renter_wall_description: Сообщенияот брокеров, предложения обьектов, посмотренные квартиры, прочее ...
+  renter_correspondence: Корреспонденция
+  renter_reviews: Просмотры
+  renter_reviews_description: Просмотренные квартиры    #Reviews you've written and those you need to write...
+  renter_saved_searches: История поиска
+
+  rent_not_yet_rated: пока без оценки
+# Footer
+
+  footer_about_us: О нас
+  faq: Помощь
+  contact_us: Пишите нам
 
 
-  #Traffic
-  traffic:
-    zerofive: баллов
-    one: балл
-    other: балла
+
+
+#<%= t() %>
