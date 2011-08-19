@@ -21,7 +21,7 @@ class Rent < ActiveRecord::Base
   def Rent.get_rents(page, dist_code=nil, rooms=nil, search_string=nil)
     logger.debug("Rent#get_rents:    " + dist_code.to_s + "  " + rooms.to_s + "  " + page.to_s)
     prepared_statement = where("dist_code  like ? and rooms like ? and (adress like ? or info like ?)", "%#{dist_code}%", "%#{rooms}%", "%#{search_string}%", "%#{search_string}%")
-    result_rents =  prepared_statement.offset((page.to_i*20)-20).limit(20).order("date DESC").all
+    result_rents =  prepared_statement.offset((page.to_i*10)-10).limit(10).order("date DESC").all
     condition_amount = prepared_statement.count
     return result_rents, condition_amount
     end

@@ -186,6 +186,13 @@ ru:
   share: РАСШАРИТЬ
   days: дней
   onsite: на сайте
+  done_close: ОК/Закрыть
+  select_all: Выбрать все
+  unselect_all: Убрать все
+  search: найти
+  clear: очистить
+  price: Цена
+  rooms: Комнат
 # RENTER
 
   renter_search: Поиск жилья
@@ -196,13 +203,16 @@ ru:
   renter_reviews: Просмотры
   renter_reviews_description: Просмотренные квартиры    #Reviews you've written and those you need to write...
   renter_saved_searches: История поиска
-
+  renter_move_by: Хочу переехать до
   rent_not_yet_rated: пока без оценки
+
+  renter_search_borough: Район
 # Footer
 
   footer_about_us: О нас
   faq: Помощь
   contact_us: Пишите нам
+
 
 
 

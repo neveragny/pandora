@@ -3,7 +3,7 @@ class RenterController < ApplicationController
   skip_before_filter :existent_user
 #  before_filter :validate_request, :only => :create
 
-  ITEMS_PER_PAGE = 20
+  ITEMS_PER_PAGE = 10
 
   def index
 
