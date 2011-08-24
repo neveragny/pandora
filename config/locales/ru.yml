@@ -36,7 +36,7 @@ ru:
   login: Войти
   register: Регистрация
   enter: Вход
-  do_not_have_account: Нету аккаунта?
+  do_not_have_account: Нет аккаунта?
 
   # PROFILE
   edit_details: Изменить Данные
