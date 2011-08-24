@@ -392,12 +392,12 @@ function EstatesTable(){
     }
 }
 
-function ajax_pagination(){
-    $(".paging a").each(function(i, val) {
-        $(this).click(function(event){
-            event.preventDefault();
-            $('input[name="rent[page]"]').val($(this).attr("id"));
-            $('form.new_rent').submit();
-        });
-    });
-}
+//function ajax_pagination(){
+//    $(".paging a").each(function(i, val) {
+//        $(this).click(function(event){
+//            event.preventDefault();
+//            $('input[name="rent[page]"]').val($(this).attr("id"));
+//            $('form.new_rent').submit();
+//        });
+//    });
+//}

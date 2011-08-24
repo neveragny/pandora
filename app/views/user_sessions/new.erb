@@ -1,16 +1,59 @@
-<h1>Please login</h1>
+<div class="clearfix" id="blueBox">
+	<span class="admin">
+      <%= t(:do_not_have_account) %>
+      <%= link_to t(:register), register_path, :"data'-tagged-trac" => "login|renter_signup" %>
+    </span>
+  <h1><%= t(:enter) %></h1>
 
-<%= form_for @session do |f| %>
-    <div class="row">
-      <%= f.label t(:user_login) %>: <%= f.text_field :login %>
-    </div>
-    <div class="row">
-      <%= f.label t(:password) %>: <%= f.password_field :password %>
-    </div>
-    <div class="row">
-      <%= f.label t(:remember_me) %> <%= f.check_box :remember_me %>
-    </div>
-    <div class="submit">
-      <%= f.submit t(:login), :disable_with => t(:please_wait) %>
-    </div>
-<% end %>
+
+
+		  <div class="block bgBlue curve clearfix">
+		  <!--<form method="post" id="new_user_session" class="new_user_session" action="/user_session">-->
+          <%= form_for @session do |f| %>
+                <!--%input{:type => :hidden, :name => :authentication_type, :value => :user}-->
+            <%= hidden_field 'authentication_type', 'sdfdf'  %>
+		    <div class="row">
+		      <%= f.label t(:user_login) %>
+		      <!--<input type="text" size="25" name="user_session[email]" id="username" class="text idleField">-->
+              <%= f.text_field :login, :size => '25' %>
+		    </div>
+
+		    <div class="row">
+		      <%= f.label t(:password) %>
+		      <!--<input type="password" size="25" name="user_session[password]" id="password" class="text idleField">-->
+              <%= f.password_field :password, :size => '25' %>
+		    </div>
+
+		    <div class="loginOptions clearfix">
+		      <div class="checkboxCont">
+		        <!--<input type="checkbox" id="rememberMe" value="1" name="user_session[remember_me]">-->
+		        <!--<label for="rememberMe">remember me on this computer</label>-->
+                <%= f.label t(:remember_me) %>
+                <%= f.check_box :remember_me %>
+		      </div>
+		    </div>
+            <%= link_to url_for(@session), :id => 'loginBtn', :class => 'button login submitButton large' do %>
+                <span><%= t(:login) %></span>
+            <% end %>
+		    <div class="clear"></div>
+		    <div class="help">Забыли пароль? <a id="resetPasswordBtn" href="/user_sessions/forgot_password">Востановить</a></div>
+		  <% end %>
+          </div>
+
+
+
+		  <div class="block padLeft35">
+		   <!--<div class="or wide">- ИЛИ -</div>-->
+		     <!--<a onclick="fb_login('/renter'); return false;" class="btnFB wide" href="#"><span>вход через facebook</span></a>-->
+            <!--<%#= link_to 'facebook', to_facebook_url %>-->
+		  </div>
+
+</div>
+
+
+
+
+
+
+
+

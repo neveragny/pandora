@@ -1,0 +1,151 @@
+/* global styles */
+
+
+	#main{
+    background-color: #fff;
+    margin-top: 30px;
+    padding: 20px 15px;
+    border: 2px solid #fff;
+    -moz-box-shadow: 0px 1px 7px #8ac9da; 
+    -webkit-box-shadow: 0px 1px 7px #8ac9da;
+    box-shadow: 0px 1px 7px #8ac9da;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px; }
+        
+	#account #main{
+    padding: 20px 0px 20px 0px;
+    -moz-box-shadow: 0px 0px 0px 0px #fff; 
+    -webkit-box-shadow:  0px 0px 0px 0px #fff; 
+    box-shadow:  0px 0px 0px 0px #fff; 
+    border: 0px;
+    margin-top: -10px;}
+    
+   #broker_signup .headMessage, #account .headMessage{
+   	margin-bottom: 10px;}
+      
+    .contactUs a.thickbox{
+        font-weight: normal}
+        
+		.contactUs H5{
+			font-weight: bold;
+			color: #888;
+			font-size: 15px;}
+			
+			
+		/* head message  */
+			#broker_signup .headMessage h1{
+				font-size: 22px;
+				line-height: 26px;
+				color: #555}
+				
+			#broker_signup .headMessage h2{
+				font-size: 16px;}
+		
+		
+		/* section title with button  */
+		#broker_signup .sectionTitle, #account .sectionTitle{
+			margin-top: 10px;
+			padding: 20px 0px 20px 27px;
+			margin-top: 10px;
+			font-size: 15px;
+			text-transform: uppercase;
+			font-family: arial;
+			color: #999;
+			letter-spacing: 1px;}	
+			
+		#broker_signup .sectionTitle.features, #account .sectionTitle.features{
+			background: transparent url(/images/sprites/pricing.gif) no-repeat 0 -1237px}	
+			
+		#broker_signup .sectionTitle.pricing, #account .sectionTitle.pricing{
+			border-top: 10px solid #F5F5F5;
+			background: transparent url(/images/sprites/pricing.gif) no-repeat 0 -1302px}
+			
+		#broker_signup .sectionTitle.faq, #account .sectionTitle.faq{
+			border-top: 10px solid #F5F5F5;
+			background: transparent url(/images/sprites/pricing.gif) no-repeat 0 -1362px}		
+			
+		#broker_signup .sectionTitle .button, #account .sectionTitle .button{
+			margin-top: -15px;
+			letter-spacing: normal;
+			text-transform: none;
+			font-size: 13px;}	
+			
+		            
+ /* content blocks - faq, logos, features etc... */       
+ 
+.contentBlock {
+        border-top:10px solid #F5F5F5;
+        color:#777777;
+        font-size:12px;
+        line-height:18px;
+        margin-top:40px;
+        padding-top:20px;}
+            
+    
+   .contentBlock .plug {
+        background-color:#F5F5F5;
+        color:#B3B3B3;
+        font-family:Georgia,arial;
+        font-size:14px;
+        font-style:normal;
+        margin:-10px auto 0;
+        text-align:center;
+        width:330px;}
+            
+    .contentBlock .plug em{
+           font-size: 18px;
+           vertical-align: -40%;
+           color: #888;}
+           
+    #logosMontage {
+        background:url("/images/logos/brokers-montage.gif") no-repeat scroll 0px 40px transparent;
+        height:95px;
+        margin-top: 20px;
+        padding-top:10px;}
+    
+    #account #logosMontage {
+        background:url("/images/logos/brokers-montage.gif") no-repeat scroll 25px 40px transparent;}
+
+ .message{
+    font-style: normal}          
+
+
+
+
+ /* signup  side content */
+    
+    .fact{
+        font-size: 13px;
+        width: 155px;
+        line-height: 16px;
+        background-color: #EFF8FA;
+        padding: 10px;
+        color: #65A1AF;
+        margin-bottom: 10px;}
+        
+    .fact strong{
+        font-size: 34px;
+        padding-bottom: 10px;
+        display: block;
+        color: #c6e0eb;
+        text-shadow: 0px 1px 3px #fff;}
+    
+
+ /* existing client table */
+ 
+    #existing{
+       background-color:#F98700;
+       padding: 5px 10px ; 
+       margin: 3px 0px;
+       text-align: center;
+       font-size: 16px;
+       line-height: 19px;
+        font-weight: bold;
+       color: #fff;}
+       
+    #existing a{
+       font-size: 12px;
+       color:#8E2A03;}
+    
+

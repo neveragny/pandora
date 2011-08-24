@@ -6,27 +6,27 @@ var SearchListings = {
     });
 
     // Nav
-    var populate_neighborhoods = function(borough_id) {
-      var neighborhood_options = $('#neighborhoodOptions');
-      var neighborhood_dropdown = $('#neighborhoodDropdown');
-      var options = neighborhood_dropdown.find('.fancyDropdownOptions');
-      if(borough_id == "0") {
-        neighborhood_dropdown.unbind('click');
-        neighborhood_dropdown.find('.selected').html('&nbsp;');
-        neighborhood_options.html('');
-        $('#nids').val('');
-        return false;
-      }
-      neighborhood_dropdown.find('.selected').html('Loading...');
-      $.get('/listings/serp-neighborhood-dropdown/' + borough_id, function(html) {
-        neighborhood_options.html(html);
-        neighborhood_dropdown.fancyDropdown({multiple:true});
-        if($('#parentNeighborhoods').length > 0)
-          options.addClass('withParents');
-        else 
-          options.removeClass('withParents');
-      });
-    };
+//    var populate_neighborhoods = function(borough_id) {
+//      var neighborhood_options = $('#neighborhoodOptions');
+//      var neighborhood_dropdown = $('#neighborhoodDropdown');
+//      var options = neighborhood_dropdown.find('.fancyDropdownOptions');
+//      if(borough_id == "0") {
+//        neighborhood_dropdown.unbind('click');
+//        neighborhood_dropdown.find('.selected').html('&nbsp;');
+//        neighborhood_options.html('');
+//        $('#nids').val('');
+//        return false;
+//      }
+//      neighborhood_dropdown.find('.selected').html('Loading...');
+//      $.get('/listings/serp-neighborhood-dropdown/' + borough_id, function(html) {
+//        neighborhood_options.html(html);
+//        neighborhood_dropdown.fancyDropdown({multiple:true});
+//        if($('#parentNeighborhoods').length > 0)
+//          options.addClass('withParents');
+//        else
+//          options.removeClass('withParents');
+//      });
+//    };
 
     $('#boroughDropdown').fancyDropdown({afterSelect: function(id, parent) {
       $('#nids').val('');
@@ -34,9 +34,9 @@ var SearchListings = {
     }});
 		
     // on page load...
-    if($('#bid').length > 0) {
-      populate_neighborhoods($('#bid').val());
-    }
+//    if($('#bid').length > 0) {
+//      populate_neighborhoods($('#bid').val());
+//    }
     $('.fancyDropdownMultiple').fancyDropdown({multiple:true});
     $('.fancyDropdown').fancyDropdown();
     $('#neighborhoodDropdown').click(function() {
@@ -44,8 +44,8 @@ var SearchListings = {
         alert('Please first select a borough before choosing a neighborhood');
     });
     
-    $('#saveSearchButton').colorbox({
-      onComplete: function() {
+    $('#saveSearchButton').fancybox({
+      'onComplete': function() {
         $(this).hide();
         ga_track_event('Listing Search', 'Click', 'Saved search');
       }
@@ -327,6 +327,20 @@ var AnonymousRenter = {
   }
 };
 
+var RenterPagination = {
+  setup: function (){
+    $(".paging a").each(function(i, val) {
+        $(this).click(function(event){
+            event.preventDefault();
+            $('input[name="page"]').val($(this).attr("id"));
+            $('form.renter').submit();
+        });
+    });
+}
+};
+
+
+
 
 (function($) {
   /**
@@ -401,6 +415,7 @@ $(document).ready(function() {
   Reviews.setup();
   RenterProfile.setup();
   RenterHomepage.setup();
+  RenterPagination.setup();
 
   $('#listingDetail .favorite:not(.infoModal)').listingFavoriteButtons();
   $('#listingSERPOuter .favorite').listingFavoriteButtons(function(listing_id, type) {

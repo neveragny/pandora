@@ -1,7 +1,7 @@
 Licemerov::Application.routes.draw do
 
 
-  root :to => 'renter#search'
+  root :to => 'renter#listings'
 
   # user sessions routes
   get '/registration' => 'users#new', :as => :register
@@ -16,9 +16,8 @@ Licemerov::Application.routes.draw do
   resources :root_entries, :only => [:create, :update], :controller => :main
 
   # user sessions routes
-  get 'registration' => 'users#new', :as => :register
-  get 'logout' => 'user_sessions#destroy', :as => :logout
-  get 'login' => 'user_sessions#new', :as => :login
+  get 'to_facebook' => 'user_sessions#to_facebook', :as => :to_facebook
+  get 'facebook_callback' => 'user_sessions#facebook_callback', :as => :facebook_callback
 
   resources :user_sessions, :only => :create
 
@@ -67,12 +66,16 @@ Licemerov::Application.routes.draw do
 
   #  ****************** Rents ***********************
 
-  resources :rents do
-    get 'complete_street', :on => :collection
-    get 'add_new', :on => :collection
-  end
+#  resources :rents do
+#    get 'complete_street', :on => :collection
+#    get 'add_new', :on => :collection
+#  end
 
-  resources :renter
+  resources :renter do
+    collection do
+      match :search
+    end
+  end
 
 #     match '/rents/stree_autocompleet', :to => 'rents#stree_autocompleet', :as => 'stree_autocompleet'
 #  get '/rents/complete_street' => 'rents#complete_street'

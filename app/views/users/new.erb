@@ -1,232 +1,283 @@
-<html class=" gecko mac js native-css-gradients" xmlns:fb="http://www.facebook.com/2008/fbml">
-<head xmlns:fb="http://www.facebook.com/2008/fbml" xmlns="http://www.w3.org/1999/xhtml">
-  <meta name="MSSmartTagsPreventParsing" content="true" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-  <title>Пандора - проект "Живая база недвижимости" Киев.</title>
-  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+<%= content_for :head do %>
+  <%= stylesheet_link_tag 'signup.css' %>
+  <% end %>
 
-  <%= stylesheet_link_tag 'reset.css' %>
-  <%= javascript_include_tag 'jquery.js', 'rails.js', 'application.js', 'applesearch.js', 'jcookie.js'%>
-  <%= javascript_include_tag 'form', 'jquery.remotipart' %>
+<div id="main">
+<div class="headMessage">
+        <span class="contactUs">
+        <h5>Questions?</h5>
+        <a href="/about/feedback_form" class="feedbackBox cboxElement">Send us an email</a>
+        </span>
 
-  <%= yield :head %>
-  <%= csrf_meta_tag %>
+  <h1 class="arial">Create your free account
+    <span class="oops"><a href="/broker/choose-plan" class=" ">Landlords, Brokers &amp; Agents: Sign Up Here</a></span>
+  </h1>
 
-</head>
-<body>
-<body id="flow">
-	<div id="slab-wrapper">
-		<h1>
-			<strong>Регистрация</strong>&nbsp;&mdash; это Просто.
-		</h1>
-		<p class="signin">
-			уже с нами?
-			<a id="nav_sign_in" href="/signin">войти</a>
-		</p>
-		<div id="slab">
-          <%= render :partial => 'shared/errors', :locals => {:target => @user} %>
+  <h2 class="arial">Tell us a bit about yourself, and what you're looking for. </h2>
+</div>
 
-          <%= form_for @user do |f| -%>
+<div id="leftCol">
 
-                  <div class="field">
-                    <%= f.label "логин" %><%= f.text_field :login %>
-                  </div> 
-                  <div class="field">
-                    <%= f.label "почтовый ящик" %><%= f.text_field :email %>
-                  </div>
-                  <div class="radio">
-                    <%= f.label "пол" %>пацанчик<%= f.radio_button :sex, 1, :checked => true %>
-                                         деваха<%= f.radio_button :sex, 0 %>
-                  </div>  
-                  <div class="field">
-                    <%= f.label "пароль" %><%= f.password_field :password %>
-                  </div> 
-                  <div class="field">
-                    <%= f.label "еще разок пароль" %><%= f.password_field :password_confirmation %>
-                  </div>
-                <%= f.submit t(:register), :class => "button", :id => "submitup", :disable_with => t(:please_wait) %>
-                <!--<a class="button" href="#submit">Sign up</a>-->
-          <% end %>
 
-        </div>
-        <div class="clear"></div>
-      </div>
-    </div>
+<form method="post" id="new_renter" class="new_renter" action="/renter/create-profile">
+<fieldset class="main noBorder">
+  <h2 class=" ">Personal Information</h2>
+
+
+  <div class="rowLine" id="name">
+    <label for="user_first_name">First Name</label>
+    <input type="text" size="25" name="user[first_name]" id="user_first_name" class="text idleField">
+
+    <div class="clear"></div>
   </div>
-  <div id="signup-footer"></div>
 
-    <div class="modal_background" style="width: 100%; height: 100%;"></div>
-    <div id="modal1" class="modal window" style="top: 43.125px; left: 355.5px;">
-      <div id="login" class="wrapper">
-        <div class="title">
-            <h1>Log in</h1>
-        </div>
-        <%= form_for(UserSession.new) do |f| %>
-          <div id="form">
-            <fieldset>
-              <label><%= f.label t(:user_login) %></label>
-                <div><%= f.text_field :login %></div>
-            </fieldset>
-            <fieldset>
-              <label><%= f.label t(:password) %></label>
-                <div><%= f.password_field :password %></div>
-            </fieldset>
-            <fieldset>
-                <label></label>
-                <div class="forgot">
-                    <a href="#">не помним пароль?</a>
-                </div>
-            </fieldset>
-          </div>
-          <div class="submit">
-            <%= f.submit t(:login), :class=> :button, :disable_with => t(:please_wait) %>
-            <%= link_to t(:register), register_path, :class => "signup" %>
-            <a href="#cancel" class="cancel">Cancel</a>
-          </div>
-            <!--<fieldset>-->
-                <%#= f.label t(:remember_me) %> <%#= f.check_box :remember_me %>
-            <!--</fieldset>-->
-        <% end %>
+  <div class="rowLine">
+    <label for="user_last_name">Last Name</label>
+    <input type="text" size="25" name="user[last_name]" id="user_last_name" class="text idleField">
+
+    <div class="clear"></div>
+  </div>
+
+  <div class="rowLine" id="email">
+				    <span style="display:none" class="help">
+				     <strong>Your email is private.</strong> <br>You decide whom to share it with.
+				    </span>
+
+    <label for="user_email">Email</label>
+    <input type="text" size="25" name="user[email]" id="user_email" class="text idleField">
+
+    <div class="clear"></div>
+  </div>
 
 
+  <div class="rowLine">
+    <label for="user_email_confirmation">Confirm Email</label>
+    <input type="text" size="25" name="user[email_confirmation]" id="user_email_confirmation" class="text idleField">
+
+    <div class="clear"></div>
+  </div>
+
+  <div class="clear"></div>
 
 
-      </div>
-    </div>
-
+  <div class="rowLine" id="phone">
+				 <span style="display:none" class="help">
+				   <strong>Your phone number is private</strong> <br>You decide whom to share it with.
+				 </span>
+    <label for="user_phone_number">Phone Number</label>
+    <input type="text" size="3" name="user[phone_area]" maxlength="3" id="user_phone_area" class="text idleField">
+    <input type="text" size="3" name="user[phone_prefix]" maxlength="3" id="user_phone_prefix" class="text idleField">
+    <input type="text" size="4" name="user[phone_sufix]" maxlength="4" id="user_phone_sufix" class="text idleField">
 
   </div>
-	</div>
 
-</body>
-</html>
+</fieldset>
+
+<fieldset class="main">
+  <h2 class=" ">Choose a password <span class="message inline">(Min. 4 characters)</span></h2>
+
+  <div class="rowLine">
+    <label for="user_enter_a_password">Enter a password</label>
+    <input type="password" size="20" name="user[password]" id="user_password" class="text idleField">
+
+    <div class="clear"></div>
+  </div>
+
+  <div class="rowLine">
+    <label for="user_password_confirmation">Confirm Password</label>
+    <input type="password" size="20" name="user[password_confirmation]" id="user_password_confirmation" class="text idleField">
+
+    <div class="clear"></div>
+  </div>
+
+</fieldset>
 
 
-<style>
-body {    
-		color: #838383;
-    font: 13px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-#flow {
-    background: none repeat scroll 0 0 #F5F5F5;
-}
-	#flow #slab-wrapper {
-	    margin: 60px 27%;
-	    width: 640px;
-	}
-	
-		#flow #slab-wrapper h1 {
-		    color: #838383;
-		    float: left;
-		    font-size: 26px;
-		    letter-spacing: -1px;
-		    padding-bottom: 25px;
-		    font-weight: normal;
-		}
-			#flow #slab-wrapper h1 strong {
-		    color: #202020;
-		    font-weight: normal;
-			}
-		
-		#flow #slab-wrapper .signin {
-    	float: right;
-    	padding-top: 5px;
-		}
-		
-		#flow #slab-wrapper #slab {
-	    background: url("/images/rainbow-sm.gif") repeat-x scroll left top white;
-	    box-shadow: 0 2px 5px 0 #DDDDDD;
-	    clear: both;
-	    margin-bottom: 10px;
-	    overflow: hidden;
-	    padding: 40px 0 15px 35px;
-		}
-			#flow #slab-wrapper #slab form {
-	    	margin: 0 0 10px;
-	    	padding: 0 0 10px;
-			}
-			.common-form {
-		    background: none repeat scroll 0 0 white;
-		    border-bottom-left-radius: 5px;
-		    border-bottom-right-radius: 5px;
-		    margin-bottom: 20px;
-		    overflow: hidden;
-			}	
-			#flow #slab-wrapper #slab form .field {
-    		padding-bottom: 40px;
-			}	
-			#flow #slab-wrapper #slab form label {
-    		margin-left: 5px;
-    		padding-bottom: 4px;
-			}
-#flow #slab-wrapper #slab form LABEL {
-	display: block;
-  font-weight: bold;
-}
-#flow #slab-wrapper #slab FORM INPUT {
-    color: #202020;
-    float: left;
-    font-size: 16px;
-    font-weight: bold;
-    height: 30px;
-    margin-bottom: 10px;
-    margin-left: 5px;
-    width: 300px;
-}
+<fieldset class="main">
+  <h2 class=" ">What kind of apartment are you looking for?</h2>
 
-INPUT{
-    -moz-transition-duration: 0.1s;
-    -moz-transition-property: border-color;
-    -moz-transition-timing-function: linear;
-    background: none repeat scroll 0 0 #FFFFFF;
-    border: 1px solid #B3B3B3;
-    border-radius: 3px 3px 3px 3px;
-    font: 13px/18px "Helvetica Neue",Arial,sans-serif;
-    height: 18px;
-    outline: medium none;
-    padding: 5px 9px;
-    vertical-align: bottom;
-}
-#flow #slab-wrapper #slab form #submitup {
-    border: 1px solid #FF920D;
-    border-radius: 15px 15px 15px 15px;
-    font-size: 13px;
-    margin: 5px 0 0 5px;
-    width: 100px;
-}	
-.borderradius submitup {
-    border: 1px solid #FF920D;
-    border-radius: 20px 20px 20px 20px;
-    font-size: 13px;
-}	
-#submitup {  
-    -moz-transition-duration: 0.2s;
-    -moz-transition-property: box-shadow;
-    -moz-transition-timing-function: linear;
-    background: -moz-linear-gradient(center top , #FFC039 0%, #FF920D 100%) repeat scroll 0 0 #FF920D;
-    border: medium none;
-    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
-    color: #FFFFFF;
-    cursor: pointer;
-    display: block;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: bold !important;
-    height: 31px;
-    line-height: 18px;
-    padding: 4px 17px 6px;
-    text-align: center;
-    text-shadow: 0 -1px 0 #DE6E00;
-}
-</style>
+  <!--RENT  -->
+  <div class="rowLine">
+    <label>Maximum Rent</label>
+    <input type="text" size="10" name="renter[maximum_rent]" id="renter_maximum_rent" default="$" class="text idleField">
+
+    <div class="clear"></div>
+  </div>
+
+  <!--  APT SIZE  -->
+  <div class="rowLine">
+    <label>Размер квартиры <br><span class="message inline">(выберить все подходящие)</span></label>
+
+    <div id="selectApartmentSize" class="rowFixed">
+
+      <div class="checkboxContSm bg clearfix">
+        <input type="checkbox" value="1" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
+        Studio
+      </div>
+
+      <div class="checkboxContSm bg clearfix">
+        <input type="checkbox" value="2" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
+        Loft
+      </div>
+
+      <div class="checkboxContSm bg clearfix">
+        <input type="checkbox" value="3" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
+        1br
+      </div>
+
+      <div class="checkboxContSm bg clearfix">
+        <input type="checkbox" value="4" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
+        2br
+      </div>
+
+      <div class="checkboxContSm bg clearfix">
+        <input type="checkbox" value="5" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
+        3br
+      </div>
+
+      <div class="checkboxContSm bg clearfix">
+        <input type="checkbox" value="6" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
+        4br
+      </div>
+
+      <div class="checkboxContSm bg clearfix">
+        <input type="checkbox" value="7" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
+        5br
+      </div>
+
+      <div class="checkboxContSm bg clearfix">
+        <input type="checkbox" value="8" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
+        6br
+      </div>
+
+      <div class="checkboxContSm bg clearfix">
+        <input type="checkbox" value="9" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
+        7br
+      </div>
+
+      <div class="checkboxContSm bg clearfix">
+        <input type="checkbox" value="10" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
+        8br
+      </div>
+
+    </div>
+    <div class="clear"></div>
+
+  </div>
+
+  <div class="clear"></div>
+  <div class="rowLine">
+    <label>Where are you looking? <br><span class="message inline">(Choose up to 10 'hoods)</span> </label>
+
+    <div class="clear"></div>
+
+
+  </div>
+
+</fieldset>
 
 
 
+<fieldset class="main">
+  <h2>Terms of Service</h2>
+
+  <div class="row">
+    <span class="checkboxContWide">
+      <input type="checkbox" class="field text" value="1" name="terms_confirmation" id="agreeToTerms">
+      <label for="terms">
+        I agree to
+        Naked Apartments
+        <a data-height="400" data-width="450" class="ajaxModal cboxElement" href="/ajax/renter_terms_of_service">Terms
+          of Service</a>.
+      </label>
+    </span>
+  </div>
+</fieldset>
 
 
+<div class="formActions">
+  <div class="buttonContainer">
+    <a id="renterSignupSelfReport" class="button  submitButton large" href="#"><span>Create Profile</span></a>
+  </div>
+  <div class="clear"></div>
+  <a class="cancel" href="/">cancel</a>
+</div>
+
+</form>
+
+</div>
+
+<!--right column-->
+<div id="rightCol">
+  <div class="shadowOuterWhite">
+    <div class="shadowInnerWhite">
+
+      <div class="testimonialNew first marginBottom20">
+        <div class="quote">
+          It's better than Craigslist. Better apartments, better search.
+        </div>
+        <div class="attribution">Brittany</div>
+      </div>
 
 
+      <div class="testimonialNew marginBottom20">
+        <div class="quote">Naked Apartments did an amazing job helping me find a new apartment!</div>
+        <div class="attribution">Sarah</div>
+      </div>
+
+      <div class="testimonialNew marginBottom20">
+        <div class="quote">Naked Apartments is the only reason why I have an awesome one-bedroom in Murray Hill for the
+          price of a studio.
+        </div>
+        <div class="attribution">Stephanie</div>
+      </div>
+
+      <div class="testimonialNew marginBottom20">
+        <div class="quote">Unlike online classifieds, Naked Apartments doesn't tolerate spam or scams.</div>
+        <div class="attribution">Mark</div>
+      </div>
 
 
+      <div class="clear"></div>
 
+      <div class="sideMod">
+        <h2>Your information is secure</h2>
+
+        <p class="calm">Your information will be kept anonymous until you explicitly decide to release it to a broker of
+          your choice.</p>
+
+        <p class="calm">Additionally, we use a <em>secure encryption</em> process to protect all of your sensitive
+          information.</p>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<div class="clear"></div>
+</div>
+
+
+<%= render :partial => 'shared/errors', :locals => {:target => @user} %>
+
+<%= form_for @user do |f| -%>
+
+    <div class="field">
+      <%= f.label "логин" %><%= f.text_field :login %>
+    </div>
+    <div class="field">
+      <%= f.label "почтовый ящик" %><%= f.text_field :email %>
+    </div>
+    <div class="radio">
+      <%= f.label "пол" %>пацанчик<%= f.radio_button :sex, 1, :checked => true %>
+      деваха<%= f.radio_button :sex, 0 %>
+    </div>
+    <div class="field">
+      <%= f.label "пароль" %><%= f.password_field :password %>
+    </div>
+    <div class="field">
+      <%= f.label "еще разок пароль" %><%= f.password_field :password_confirmation %>
+    </div>
+    <%= f.submit t(:register), :class => "button", :id => "submitup", :disable_with => t(:please_wait) %>
+    <!--<a class="button" href="#submit">Sign up</a>-->
+<% end %>

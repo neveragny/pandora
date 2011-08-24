@@ -1,88 +1,31 @@
 <div class="curveBottom" id="searchWrapperOuter">
 
 <div class="curveBottom" id="searchWrapper">
-<form method="get" action="/renter/listings/search" enctype="application/x-www-form-urlencoded" id="search">
-<input type="hidden" value="" name="broker_id" id="broker_id">
-
-
-===========================
-===========================
-
-<!--<div id="applesearch">-->
-<%#= form_for @estate , :remote => true do |f| %>
-
-  <%#= f.hidden_field :page, :value => "1" %>
-  <!--<span class="sbox_l"></span>-->
-  <!--<span class="sbox">-->
-    <%#= f.text_field :pattern, :id => :srch_fld %>
-  <!--</span>-->
-
-  <!--<span class="sbox_r" id="srch_clear"></span>-->
-
-  <!--  <p class="search_selects"> -->
-    <!--<span id="sel_rooms" class="select">все</span>-->
-    <%#= f.select :rooms, options_for_select([["все", ""],["1 комнатные", 1], ["2 комнатные",2], ["3 комнатные",3], ["4 комнатные",4] , ["5 комнатные",5], ["6 комнатные",6]]), :id => "rooms_num", :class => "styled" %>
-    <!--<span id="sel_dist" class="select">весь Киев</span>-->
-    <%#= f.collection_select :dist_code, Dist.all, :dist_code, :dist_name, {:prompt => "весь Киев", :class => "styled"} %>
-<!--    </p> -->
-
-  <%#= submit_tag "найти", :class => "search_submit" %>
-<%# end %>
-<!--<div style="clear: both;"></div>-->
-<!--</div>-->
-
-
-===========================
-===========================
+<%= form_tag search_renter_index_path, :class => :renter, :remote => true do |f| %>
+<%= hidden_field_tag 'broker_id', '', :id => "broker_id" %>
+<%= hidden_field_tag 'page', '1' %>
 
 <div id="formContainer">
   <div class="searchBox wide">
     <label><%= t(:renter_search_borough) %></label>
 
     <div id="boroughDropdown" rel="#bid" class="fancyDropdown">
-      <span class="selected">All</span>
+      <span class="selected"><%= "Все" %></span>
 
       <div class="clear"></div>
       <ul style="display: none;" class="fancyDropdownOptions">
 
-        <li data-id="0"><%= "Все" %></li>
+        <li data-id=""><%= "Все" %></li>
 
         <% Dist.all.each do |dist| %>
         <li data-id="<%= dist.dist_code %>"><%= dist.dist_name %></li>
         <% end %>
       </ul>
-      <input type="hidden" value="0" name="bid" id="bid">
+      <input type="hidden" value="" name="dist_code" id="bid">
     </div>
   </div>
 
-  <div class="searchBox wide">
-    <label>Neighborhood</label>
 
-    <div id="neighborhoodDropdown" rel="#nids" class="fancyDropdownMultiple">
-      <span class="selected">&nbsp;</span>
-
-      <div class="clear"></div>
-      <div style="display: none;" class="fancyDropdownMultiplePane">
-
-        <div class="fancyDropdownOptions">
-          <div class="buttons">
-            <span class="closeDropdown"><a href="#"><%= t(:done_close) %></a></span>
-
-            <span class="block"><span class="whiteBtn selectAll"><a href="#"><%= t(:select_all) %></a></span></span>
-            <span class="block"><span class="whiteBtn unselectAll"><a href="#"><%= t(:unselect_all) %></a></span></span>
-
-            <div class="clear"></div>
-          </div>
-          <div class="clear"></div>
-
-          <div id="neighborhoodOptions"></div>
-
-        </div>
-        <div class="clear"></div>
-      </div>
-      <input type="hidden" value="" name="nids" id="nids">
-    </div>
-  </div>
 
   <div class="searchBox wide">
     <label><%= t(:rooms) %></label>
@@ -100,35 +43,21 @@
             <div class="clear"></div>
           </div>
           <div class="clear"></div>
-
           <ul>
-
-            <li><input type="checkbox" value="1"> Studio</li>
-
-            <li><input type="checkbox" value="2"> Loft</li>
-
-            <li><input type="checkbox" value="3"> 1br</li>
-
-            <li><input type="checkbox" value="4"> 2br</li>
-
-            <li><input type="checkbox" value="5"> 3br</li>
-
-            <li><input type="checkbox" value="6"> 4br</li>
-
-            <li><input type="checkbox" value="7"> 5br</li>
-
-            <li><input type="checkbox" value="8"> 6br</li>
-
-            <li><input type="checkbox" value="9"> 7br</li>
-
-            <li><input type="checkbox" value="10"> 8br</li>
-
+            <li><input type="checkbox" value="1"> 1</li>
+            <li><input type="checkbox" value="2"> 2</li>
+            <li><input type="checkbox" value="3"> 3</li>
+            <li><input type="checkbox" value="4"> 4</li>
+            <li><input type="checkbox" value="5"> 5</li>
+            <li><input type="checkbox" value="6"> 6</li>
+            <li><input type="checkbox" value="7"> 7</li>
+            <li><input type="checkbox" value="8"> 8</li>
+            <li><input type="checkbox" value="9"> 9</li>
           </ul>
-
         </div>
         <div class="clear"></div>
       </div>
-      <input type="hidden" value="0" name="aids" id="aids">
+      <input type="hidden" value="" name="rooms" id="aids">
     </div>
   </div>
 
@@ -150,13 +79,18 @@
     </div>
   </div>
 
+  <div class="searchBox wide">
+    <label><%= 'Ключевое слово если есть' %></label>
+
+    <div style="width: 125px;">
+      <input type="text" size="25" name="pattern" id="keyString" default="" class="text idleField">
+    </div>
+  </div>
+
   <div id="searchBoxRenter">
     <a class="button search submitButton" href="#"><span><%= t(:search) %></span></a>
-
     <div class="clear"></div>
-
     <a class="close" href="/renter/listings/search"><%= t(:clear) %></a>
-
   </div>
 </div>
 
@@ -168,32 +102,25 @@
   <div class="container1">
     <div class="searchBox">
       <input type="checkbox" value="1" name="photos" id="photos" class="field text">
-      Must have photos
+      <%= t(:must_have_photo) %>
     </div>
-
-
-    <div class="searchBox">
-      <input type="checkbox" value="1" name="suggested" id="suggested" class="field text">
-      <span title="That match my profile" class="tooltip mouseover">Suggested for me</span>
-    </div>
-
 
     <div class="searchBox">
       <input type="checkbox" value="1" name="no_fee" id="no_fee" class="field text">
-      No fee only
+      <%= t(:no_fee_only) %>
     </div>
 
 
     <div class="searchBox">
       <input type="checkbox" value="1" name="favorites" id="favorites" class="field text">
-      My Favorites
+      <%= t(:my_favorites) %>
     </div>
 
   </div>
 
   <div class="container2">
     <div class="searchBox menu">
-      <label>Amenities</label>
+      <label><%= t(:amenities) %></label>
 
       <div id="amenityDropdown" rel="#amids" class="fancyDropdownMultiple">
         <span class="selected">&nbsp;</span>
@@ -203,7 +130,7 @@
 
           <div class="fancyDropdownOptions">
             <div class="buttons">
-              <span class="closeDropdown"><a href="#">Done/Close</a></span>
+              <span class="closeDropdown"><a href="#"><%= t(:done_close) %></a></span>
 
               <div class="clear"></div>
             </div>
@@ -243,17 +170,17 @@
     </div>
 
     <div style="margin-left: 55px;" class="searchBox menu">
-      <label>Pets</label>
+      <label><%= t(:pets) %></label>
 
       <div id="petsDropdown" rel="#pets" class="fancyDropdownMultiple">
-        <span class="selected">All</span>
+        <span class="selected"><%= t(:all) %></span>
 
         <div class="clear"></div>
         <div style="display: none;" class="fancyDropdownMultiplePane">
 
           <div class="fancyDropdownOptions">
             <div class="buttons">
-              <span class="closeDropdown"><a href="#">Done/Close</a></span>
+              <span class="closeDropdown"><a href="#"><%= t(:done_close) %></a></span>
 
               <div class="clear"></div>
             </div>
@@ -261,9 +188,9 @@
 
             <ul>
 
-              <li><input type="checkbox" value="dogs"> Dogs</li>
+              <li><input type="checkbox" value="dogs"> <%= t(:dogs) %></li>
 
-              <li><input type="checkbox" value="cats"> Cats</li>
+              <li><input type="checkbox" value="cats"> <%= t(:cats) %></li>
 
             </ul>
 
@@ -285,7 +212,7 @@
 
 </fieldset>
 <div class="clear"></div>
-</form>
+<% end %>
 </div>
 </div>
 <div class="clear"></div>

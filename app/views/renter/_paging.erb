@@ -5,7 +5,7 @@
 
         <% (0..@pages).each do |page| %>
           <% if page == @page %>
-            <em><%= page %></em>
+            <span class="current"><%= page %></span>
           <% else %>
             <%= link_to page, nil, :id => page %>
           <% end %>
@@ -17,13 +17,20 @@
          end_range = @page <= 5? 10 : ( @page >= (@last_page-4) ? @last_page : (@page + 5) ) %>
 
       <%= link_to '←', "#", :id => "1", :class => :page_first, :title => "первая" if @page > 5 %>
-      <% (start_range..end_range).each do |i| %>
-        <% if i == @page  %>
-            <em><%= i %></em>
+      <% (start_range..end_range).each do |page| %>
+        <% if page == @page  %>
+            <span class="current"><%= page %></span>
         <% else %>
-            <%= link_to i, "#", :id => i %>
+            <%= link_to page, "#", :id => page %>
         <% end %>
       <% end %>
       <%= link_to '→', "#", :id => @last_page, :class => :page_last, :title => "последняя" unless  @page > (@last_page - 4) %>
     <% end %>
   </span>
+
+
+            <!--<span class="disabled prev_page">«</span> <span class="current">1</span>-->
+          <!--<a rel="next" href="/renter/listings/search?page=2">2</a> <a href="/renter/listings/search?page=3">3</a>-->
+          <!--<a href="/renter/listings/search?page=4">4</a> <a href="/renter/listings/search?page=5">5</a>-->
+          <!--<span class="gap">…</span> <a href="/renter/listings/search?page=1645">1645</a>-->
+          <!--<a rel="next" class="next_page" href="/renter/listings/search?page=2">»</a>-->

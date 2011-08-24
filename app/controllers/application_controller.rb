@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
 
   before_filter :existent_user
   before_filter :delete_messages
+  before_filter :beta_version
+
+  BETA = true
 
 
   # Prepare a hash( to be converted to json ) for a newly created object
@@ -112,6 +115,12 @@ class ApplicationController < ActionController::Base
 
   def guilty_response
     {:text => 'The server understood the request, but is refusing to serve it', :status => 403}
+  end
+
+  def beta_version
+    if BETA
+      redirect_to login_path unless @current_user
+    end
   end
 
   alias :cu :current_user

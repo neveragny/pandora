@@ -1,75 +1,179 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-  <meta name="MSSmartTagsPreventParsing" content="true" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+  <meta name="MSSmartTagsPreventParsing" content="true"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>Пандора - проект "Живая база недвижимости" Киев.</title>
-  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
 
   <%#= stylesheet_link_tag 'main.css', 'applesearch.css', 'css3buttons.css', 'reset.css' %>
-  <%= stylesheet_link_tag 'all_naked.css'%>
+  <%= stylesheet_link_tag 'all_naked.css' %>
   <%= stylesheet_link_tag '/fancybox/jquery.fancybox-1.3.4.css' %>
-  <%= javascript_include_tag 'jquery.js', 'rails.js', 'application.js', 'all.js', 'renter.js'%>
+  <%= javascript_include_tag 'jquery.js', 'jquery-ui.js', 'rails.js', 'application.js', 'all.js', 'renter.js' %>
+
   <%= javascript_include_tag 'form', 'jquery.remotipart' %>
-  <%#= javascript_include_tag '/fancybox/jquery.fancybox-1.3.4.pack.js', '/fancybox/jquery.mousewheel-3.0.4.pack.js'%>
+  <%= javascript_include_tag '/fancybox/jquery.fancybox-1.3.4.pack.js', '/fancybox/jquery.mousewheel-3.0.4.pack.js' %>
   <%= yield :head %>
   <%= csrf_meta_tag %>
 </head>
-<body class="">
-	<div id="wrapper" data-user="">
-		<div id="masthead">
-			<div id="logo">
-				<a title="Comilffo Apartments: Kiev apartment rentals" href="/">
-				<!--<img border="0" alt="Naked Apartments: Search apartments for rent in New York City" src="/images/logo_inside.gif">-->
-				<h1 style="font-family: Trebuchet MS; font-style: normal; color: whiteSmoke; font-weight: bold; font-size: 25px;">
-                  <span style="font-style: normal; font-variant: normal; font-weight: lighter;">c<span style="color:#f58a07">❦</span>milffo</span> apartments</h1>
-                </a>
-		    </div>
-		    <div id="adminBar">
-              <% if @current_user %>
-                <ul class="curveBottom clearfix">
-                    <li id="inviteFriends"><a class="infoModal cboxElement" href="#inviteFriendsModal"><%= t(:share) %></a></li>
-                    <li class="view"><a href="/renter/profile" class="bold"><%= t(:profile) %></a></li>
-                    <li class="last"><a class="bold" href="/logoff"><%= t(:logout) %></a></li>
-                </ul>
-              <% else %>
-                <ul>
-                  <!--<li class="like first"><div id="fb-root" class=" fb_reset"><script async="" src="http://connect.facebook.net/en_US/all.js"></script><div style="position: absolute; top: -10000px; height: 0pt; width: 0pt;"><div><iframe scrolling="no" id="f3820c4e91b682" name="f2a12e0a29438e4" style="border: medium none; overflow: hidden; height: 240px; width: 575px;" class="FB_UI_Hidden" src="http://www.facebook.com/extern/login_status.php?api_key=149838751731831&amp;app_id=149838751731831&amp;channel_url=http%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df1660d3a36f968a%26origin%3Dhttp%253A%252F%252Fwww.nakedapartments.com%252Ff90ac01594e37%26relation%3Dparent.parent%26transport%3Dpostmessage&amp;display=hidden&amp;extern=2&amp;locale=en_US&amp;next=http%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df2fabd9f9eecb48%26origin%3Dhttp%253A%252F%252Fwww.nakedapartments.com%252Ff90ac01594e37%26relation%3Dparent%26transport%3Dpostmessage%26frame%3Df2b5ecad0d587f2%26result%3D%2522xxRESULTTOKENxx%2522&amp;no_session=http%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df1762d05769d114%26origin%3Dhttp%253A%252F%252Fwww.nakedapartments.com%252Ff90ac01594e37%26relation%3Dparent%26transport%3Dpostmessage%26frame%3Df2b5ecad0d587f2&amp;no_user=http%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df3a3525d6b1b7b%26origin%3Dhttp%253A%252F%252Fwww.nakedapartments.com%252Ff90ac01594e37%26relation%3Dparent%26transport%3Dpostmessage%26frame%3Df2b5ecad0d587f2&amp;ok_session=http%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df18c8dcf18c5968%26origin%3Dhttp%253A%252F%252Fwww.nakedapartments.com%252Ff90ac01594e37%26relation%3Dparent%26transport%3Dpostmessage%26frame%3Df2b5ecad0d587f2&amp;sdk=joey&amp;session_origin=1&amp;session_version=3"></iframe></div></div></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like font="arial" show_faces="false" width="50" layout="button_count" send="false" href="http://www.nakedapartments.com" class=" fb_edge_widget_with_comment fb_iframe_widget"><span><iframe scrolling="no" id="fc339d5565f754" name="f18090256a20156" style="border: medium none; overflow: hidden; height: 21px; width: 90px;" title="Like this content on Facebook." class="fb_ltr" src="http://www.facebook.com/plugins/like.php?channel_url=http%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df38e6c113b1c1f2%26origin%3Dhttp%253A%252F%252Fwww.nakedapartments.com%252Ff90ac01594e37%26relation%3Dparent.parent%26transport%3Dpostmessage&amp;font=arial&amp;href=http%3A%2F%2Fwww.nakedapartments.com&amp;layout=button_count&amp;locale=en_US&amp;node_type=link&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=90"></iframe></span></fb:like></li>-->
-                  <li><a href="/renter/listings/search"><%= t(:renter_search) %></a></li>
-                  <li class="login"><a class="login" href="/login"><%= t(:login) %></a></li>
-                  <li class="signup">
-                      <a class="signup" data-tagged-trac="sitewide-admin-bar|renter_signup" href="/renter/signup">
-                        <strong><%= t(:register) %></strong> <span class="small">(IT'S FREE!)</span>
-                      </a>
-                  </li>
-                </ul>
-              <% end %>
-		    </div>
+<body id="<%= @body %>" class="">
+<div id="wrapper" data-user="">
+  <div id="masthead">
+    <div id="logo">
+      <a title="Comilffo Apartments: Kiev apartment rentals" href="/">
+        <!--<img border="0" alt="Naked Apartments: Search apartments for rent in New York City" src="/images/logo_inside.gif">-->
+        <h1 style="font-family: Trebuchet MS; font-style: normal; color: whiteSmoke; font-weight: bold; font-size: 25px;">
+          <span style="font-style: normal; font-variant: normal; font-weight: lighter;">c<span style="color:#f58a07">❦</span>milffo</span>
+          apartments</h1>
+      </a>
+    </div>
+    <%= render :partial => "#{controller_name}/head" rescue nil %>
 
-		    <div class="clear"></div>
-          <%= render :partial => "#{controller_name}/head" rescue nil %>
+  </div>
+  <%= yield %>
+  <%= render :partial => "#{controller_name}/footer" rescue nil %>
+
+  <span class="copyright">&copy; Copyright Comilffo Apartments 2011; Neighborhood data, &copy; 2011 Urban Mapping Inc.
+        <br> <a class="hud" href="/about/fair-housing">Fair Housing and Equal Opportunity</a><span class="madeinNYC"> Made in New Kiev</span>
+  </span>
+
+</div>
+<div id="feedback">
+  <a rel="nofollow" href="/about/feedback_form" class="feedbackBox cboxElement"><img src="/images/buttons/feedback.gif"></a>
+</div>
+
+<div class="hidden"><!-- - - - OVERVIEW  - - - - - -->
+  <div id="overviewModalContainer">
+    <div style="width:590px; height:300px" class="standard pad" id="md_home">
+      <div class="anon">
+        <h1><a data-tagged-trac="sitewide-modal-overview-top|renter_signup" href="/renter/signup">Sign up</a> for your
+          personal overview page!</h1>
+
+        <div class="clearfix" id="middle">
+        <span class="block" id="one">
+          <strong>Messages</strong>
+          We'll notify you when brokers &amp; landlords send you messages.
+        </span>
+
+        <span class="block" id="two">
+        <strong>Favorites</strong>
+        Quick access to apartments you've saved.
+        </span>
+
+        <span class="block" id="three">
+          <strong>Suggestions</strong>
+          Apartments we think you'll like, based on your profile.
+        </span>
+        </div>
+
+        <div class="bottom curveBottom clearfix">
+          <div class="block">
+            <a data-tagged-trac="sitewide-modal-overview-bottom|renter_signup" class="button  large" href="/renter/signup"><span>Sign Up (it's FREE!)</span></a>
+
+            <div class="clear"></div>
+            <span class="block padTop5">Already have an account? <a href="/login">Log in</a></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- - - - FAVES  - - - - - -->
+  <div id="favoritesModalContainer">
+    <div style="width:590px; height:400pxs" class="standard pad" id="md_faves">
+      <div class="anon">
+        <h1><a data-tagged-trac="sitewide-modal-faves-top|renter_signup" href="/renter/signup">Sign up</a> and save your
+          favorite listings!</h1>
+
+        <div class="clearfix" id="middle">
+          <strong>Your favorite listings in one place!</strong>
+          Click the heart, save the listing. Simple.
+          Unsave the listing by clicking the heart again. Still simple.
+        </div>
+
+        <div class="bottom curveBottom clearfix">
+          <div class="block">
+            <a data-tagged-trac="sitewide-modal-faves-bottom|renter_signup" class="button  large" href="/renter/signup"><span>Sign Up (it's FREE!)</span></a>
+
+            <div class="clear"></div>
+            <span class="block padTop5">Already have an account? <a href="/login">Log in</a></span>
+          </div>
 
         </div>
-        <%= yield %>
+      </div>
+    </div>
+  </div>
 
-        <div class="curve" id="footerWrapper">
-		  <div id="footer">
+  <!-- - - - SAVED SEARCHES  - - - - - -->
+  <div id="savedSearchesModalContainer">
+    <div style="width:590px; " class="standard pad" id="md_saved_searches">
+      <div class="anon">
+        <h1><a data-tagged-trac="sitewide-modal-saved-searches-top|renter_signup" href="/renter/signup">Sign up</a> and
+          save your common searches !</h1>
 
-			<a title="<%= t(:footer_about_us) %>" href="/about"><%= t(:footer_about_us) %></a>
-            <a title="<%= t(:rentert_popular_searches) %>" href="/nyc/popular-searches"><%= t(:rentert_popular_searches) %></a>
-			<a title="<%= t(:faq) %>" href="/about/faq"><%= t(:faq) %></a>
-			<a title="Privacy Policy" href="/about/privacy-policy">Privacy Policy</a>
-			<a title="Terms and Conditions" href="/about/terms-and-conditions" class=" ">Terms &amp; Conditions</a>
-			<a rel="nofollow" href="/about/feedback_form" class="btnHtml feedbackBox cboxElement"><%= t(:contact_us) %></a>
-
-		  </div>
+        <div class="clearfix" id="middle">
+          <strong>Save time; save your searches</strong>
+          Save searches by neighborhood, price, amenities, whatever. No need to 'select' everything again.
 
         </div>
-        <span class="copyright">&copy; Copyright Comilffo Apartments 2011; Neighborhood data, &copy; 2011 Urban Mapping Inc.
- <br> <a class="hud" href="/about/fair-housing">Fair Housing and Equal Opportunity</a><span class="madeinNYC"> Made in New Kiev</span>
- </span>
-	</div>
+
+
+        <div class="bottom curveBottom clearfix">
+          <div class="block">
+            <a data-tagged-trac="sitewide-modal-saved-searches-bottom|renter_signup" class="button  large" href="/renter/signup"><span>Sign Up (it's FREE!)</span></a>
+
+            <div class="clear"></div>
+            <span class="block padTop5">Already have an account? <a href="/login">Log in</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- - - - REVIEWS  - - - - - -->
+  <div id="reviewsModalContainer">
+    <div style="width:590px;" class="standard pad" id="md_reviews">
+      <div class="anon">
+        <h1><a data-tagged-trac="sitewide-modal-saved-searches-top|renter_signup" href="/renter/signup">Sign up</a> to
+          read (&amp; write) reviews of brokers!</h1>
+
+        <div class="clearfix" id="middle">
+          <strong>Know who you're dealing with</strong>
+          Get honest feedback from other renters before you engage with a broker. And write your own reviews afterwards.
+
+        </div>
+
+
+        <div class="bottom curveBottom clearfix">
+          <div class="block">
+            <a data-tagged-trac="sitewide-modal-saved-searches-bottom|renter_signup" class="button  large" href="/renter/signup"><span>Sign Up (it's FREE!)</span></a>
+
+            <div class="clear"></div>
+            <span class="block padTop5">Already have an account? <a href="/login">Log in</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="anonymousFavoriteListingModal">
+    <div style="width: 400px;" class="standard padWide clearfix" id="anonFaves">
+      <div class="h1">Want to save this listing?</div>
+      <p>Take 30 seconds to sign up and save all the listings you want.</p>
+
+      <div class="bordered light clearfix">
+        <div class="block marginTop5">
+          <a data-tagged-trac="modal-favorite-listing|renter_signup" class="button  large" href="/renter/signup"><span>Sign Up (it's FREE)</span></a>
+        </div>
+
+        <a id="closeModal" class="bold block padTop20" href="#">No, thanks</a>
+      </div>
+      <a class="bold" href="/renter/how-it-works">Learn more</a> about Naked Apartments
+    </div>
+  </div>
+</div>
 </body>
 </html>
