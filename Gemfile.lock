@@ -5,12 +5,6 @@ GIT
     remotipart (0.3.4)
 
 GIT
-  remote: git://github.com/galetahub/vkontakte_oauth.git
-  revision: 6cc984a8c11389730d28023e0660e50db3656d65
-  specs:
-    vkontakte_oauth (0.0.1)
-
-GIT
   remote: git://github.com/odorcicd/authlogic.git
   revision: a087ad0cba3c165ba22fcf176c28b6f7517931e8
   branch: rails3
@@ -48,15 +42,12 @@ GEM
       activemodel (= 3.0.9)
       activesupport (= 3.0.9)
     activesupport (3.0.9)
-    addressable (2.2.6)
     arel (2.0.10)
+    authlogic-oauth (1.0.8)
+      activesupport
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    faraday (0.7.4)
-      addressable (~> 2.2.6)
-      multipart-post (~> 1.1.0)
-      rack (>= 1.1.0, < 2)
     i18n (0.5.0)
     jquery-rails (1.0.9)
       railties (~> 3.0)
@@ -68,13 +59,8 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
-    multi_json (1.0.3)
-    multipart-post (1.1.3)
     mysql2 (0.2.11)
     oauth (0.4.5)
-    oauth2 (0.5.0)
-      faraday (>= 0.6.1, < 0.8)
-      multi_json (~> 1.0.0)
     paperclip (2.3.11)
       activerecord (>= 2.3.0)
       activesupport (>= 2.3.2)
@@ -125,11 +111,11 @@ PLATFORMS
 
 DEPENDENCIES
   authlogic!
+  authlogic-oauth
   jquery-rails
   mime-types
   mysql2 (< 0.3)
   oauth
-  oauth2
   paperclip
   rails (= 3.0.9)
   rails3-jquery-autocomplete
@@ -138,4 +124,3 @@ DEPENDENCIES
   sqlite3-ruby
   unicode
   unicorn
-  vkontakte_oauth!

@@ -37,15 +37,19 @@
             <% end %>
 		    <div class="clear"></div>
 		    <div class="help">Забыли пароль? <a id="resetPasswordBtn" href="#">Востановить</a></div>
+<%= oauth_login_button :value => "Login with Twitter" %>
+<input type='submit' value='Login with Vkontakte' name='login_with_oauth' id='user_submit' class=''>
 		  <% end %>
           </div>
 
 
 
 		  <div class="block padLeft35">
-		   <!--<div class="or wide">- ИЛИ -</div>-->
+		   <div class="or wide">- ИЛИ -</div>
 		     <!--<a onclick="fb_login('/renter'); return false;" class="btnFB wide" href="#"><span>вход через facebook</span></a>-->
             <!--<%#= link_to 'facebook', to_facebook_url %>-->
+			<%= oauth_login_button :value => "Login with Twitter" %> 
+		   <input type='submit' value='Login with Vkontakte' name='login_with_oauth' id='user_submit' class=''> 	
 		  </div>
 
 </div>

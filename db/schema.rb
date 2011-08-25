@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110602182053) do
+ActiveRecord::Schema.define(:version => 20110824215508) do
 
   create_table "albums", :force => true do |t|
     t.integer  "user_id",         :default => 0,                     :null => false
@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(:version => 20110602182053) do
     t.datetime "updated_at"
   end
 
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_histories_on_item_and_table_and_month_and_year"
+
   create_table "rentbookmarks", :force => true do |t|
     t.integer  "user_id"
     t.integer  "rent_id"
@@ -126,10 +128,10 @@ ActiveRecord::Schema.define(:version => 20110602182053) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login",               :default => "", :null => false
+    t.string   "login"
     t.string   "email",               :default => "", :null => false
-    t.string   "crypted_password",    :default => "", :null => false
-    t.string   "password_salt",       :default => "", :null => false
+    t.string   "crypted_password"
+    t.string   "password_salt"
     t.string   "persistence_token",   :default => "", :null => false
     t.string   "single_access_token", :default => "", :null => false
     t.string   "perishable_token",    :default => "", :null => false
@@ -148,28 +150,10 @@ ActiveRecord::Schema.define(:version => 20110602182053) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "avatar_dimensions"
+    t.string   "oauth_token"
+    t.string   "oauth_secret"
   end
 
-  create_table "rents", :force => true do |t|
-    t.string    "adress",
-    t.integer   "price",
-    t.integer   "rooms",
-    t.integer   "floor_at",
-    t.integer   "floors",
-    t.integer   "total_sqr",
-    t.integer   "live_sqr",
-    t.integer   "kitchen_sqr",
-    t.string    "wall_type",
-    t.string    "info",
-    t.string    "name",
-    t.string    "phones",
-    t.date      "date",
-    t.string    "ria_id",
-    t.integer   "dist_code",
-    t.datetime  "created_at",
-    t.datetime  "updated_at",
-    t.integer   "user_id",
-    t.string    "city"
-  end
+  add_index "users", ["oauth_token"], :name => "index_users_on_oauth_token"
 
 end
