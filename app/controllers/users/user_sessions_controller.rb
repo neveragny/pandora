@@ -35,17 +35,17 @@ class UserSessionsController < ApplicationController
     redirect_to login_path
   end
 
-  def to_facebook
+  def to_vk
       options = {
-        :redirect_uri => facebook_callback_url,
-        :scope => "email,publish_stream" # whatever you want to do
+        :redirect_uri => 'http://api.vkontakte.ru/oauth/authorize',
+        :scope => "wall,notify,friends,photos,groups" # whatever you want to do
       }
-      client = OAuth2::Client.new(FACEBOOK_API_KEY, FACEBOOK_API_SECRET, :site => FACEBOOK_API_SITE)
+      client = OAuth2::Client.new('2451301', 'M2bRILJgXVcdRqVVCdss', :site => FACEBOOK_API_SITE)
 
       redirect_to client.web_server.authorize_url(options)
   end
 
-  def facebook_callback
+  def facebook_vk
       client = OAuth2::Client.new(FACEBOOK_API_KEY, FACEBOOK_API_SECRET, :site => FACEBOOK_API_SITE)
       access_token = client.web_server.get_access_token(params[:code], :redirect_uri => facebook_callback_url)
 
@@ -55,3 +55,21 @@ class UserSessionsController < ApplicationController
 
 
 end
+
+#http://api.vkontakte.ru/oauth/authorize?
+# client_id=APP_ID&
+# scope=SETTINGS&
+# redirect_uri=REDIRECT_URI&
+# response_type=code
+
+
+#APP_ID:2451301
+#KEY: M2bRILJgXVcdRqVVCdss
+
+#------
+
+
+#https://api.vkontakte.ru/oauth/access_token?
+#client_id=APP_ID&
+#client_secret=APP_SECRET&
+#code=7a6fa4dff77a228eeda56603b8f53806c883f011c40b72630bb50df056f6479e52a

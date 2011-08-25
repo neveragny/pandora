@@ -24,13 +24,8 @@ gem 'unicode'
 # rails g jquery:install.
 gem 'jquery-rails'
 
-#gem "ruby-openid"
-#gem "rack-openid", ">=0.2.1", :require => "rack/openid"
-#gem "authlogic", :git => "git://github.com/odorcicd/authlogic.git", :branch => "rails3"
-gem "oauth"
-gem "authlogic-oauth", :require => 'authlogic_oauth'
-
-#gem 'mechanize'
+gem 'oauth'
+gem 'oauth2'
 
 gem "s3"
 

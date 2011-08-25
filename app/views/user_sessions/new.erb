@@ -37,24 +37,57 @@
             <% end %>
 		    <div class="clear"></div>
 		    <div class="help">Забыли пароль? <a id="resetPasswordBtn" href="#">Востановить</a></div>
-<%= oauth_login_button :value => "Login with Twitter" %>
-<input type='submit' value='Login with Vkontakte' name='login_with_oauth' id='user_submit' class=''>
-		  <% end %>
+          <% end %>
           </div>
 
 
 
 		  <div class="block padLeft35">
 		   <div class="or wide">- ИЛИ -</div>
-		     <!--<a onclick="fb_login('/renter'); return false;" class="btnFB wide" href="#"><span>вход через facebook</span></a>-->
-            <!--<%#= link_to 'facebook', to_facebook_url %>-->
-			<%= oauth_login_button :value => "Login with Twitter" %> 
-		   <input type='submit' value='Login with Vkontakte' name='login_with_oauth' id='user_submit' class=''> 	
-		  </div>
+                <a href="/auth/vkontakte_ua" class="vk">
+                    <div style=""></div>
+                        В Контакте
+                </a>
+
+            ------
+            <%= raw authlogic_facebook_login_button %>
+          </div>
 
 </div>
 
+<style type="text/css">
+  .padLeft35 a {
+      -moz-transition-duration: 200ms;
+    -moz-transition-property: all;
+    border-radius: 5px 5px 5px 5px;
+    display: inline-block;
+    height: 31px;
+    line-height: 31px;
+    margin-left: 11px;
+    position: relative;
+  }
+  .padLeft35 a div {
+      height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  a.vk div {
+      background: url("/images/auth.png") repeat scroll 0 -148px transparent;
+  }
+  a.vk {
+      box-shadow: 0 0 0 #4D7199;
+      width: 121px;
+  }
+  a.vk:hover {
+      box-shadow: 0 0 5px #4D7199;
+  }
+  a.vk:active {
+      box-shadow: 0 0 0 #4D7199;
+  }
 
+</style>
 
 
 

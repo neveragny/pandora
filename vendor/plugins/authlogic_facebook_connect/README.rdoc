@@ -1,0 +1,87 @@
+== Install and use
+
+=== 1. Install the facebooker2 plugin and make Rails use it
+
+  Information on this installation here: https://github.com/mmangino/facebooker2
+
+=== 2. Install the Authlogic Facebook Connect plugin
+
+  $ script/plugin install git://github.com/studybyte/authlogic_facebook_connect.git
+
+=== 3. Make some changes to your database
+
+  class AddFacebookConnectFieldsToUser < ActiveRecord::Migration
+    def self.up
+      add_column :users, :facebook_session_key, :string
+      add_column :users, :facebook_uid, :integer
+    end
+  
+    def self.down
+      remove_column :users, :facebook_uid
+      remove_column :users, :facebook_session_key
+    end
+  end
+
+=== 4. Make your layout look something like this
+
+  Add the <%= fb_connect_async_js %> tag to your application template
+
+=== 5. Add the Facebook Connect button to your login form
+
+  <%= authlogic_facebook_login_button %>
+  Options:
+    :controller => The controller of you user session
+    Any of the options for the fb login button here: http://developers.facebook.com/docs/reference/plugins/login
+
+=== Notes
+
+If you want to save some user data when connecting to facebook you can use the before_connect hook in your user model.
+
+  def before_connect(facebook_session)
+    self.first_name = facebook_session.first_name
+    self.last_name = facebook_session.last_name
+    self.email = facebook_session.email
+    self.username = "#{facebook_session.first_name}.#{facebook_session.last_name}"
+    self.password = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{self.username}--")[0,6]
+    self.password_confirmation = self.password
+    self.active = true
+  end
+
+  
+For more information about what you can get form the facebook_session checkout the Facebooker gem rdoc. 
+  
+=== Authenticating existing users
+
+If you would like to have existing users of you application to connect to their facebook accounts do the following:
+
+Be sure in your users session controller you don't have the `create` action in the require_no_login before_filter. Then make you create action look something like this:
+
+  def create
+    if current_user
+      if current_user_session.associatable_with_facebook_connect?
+        if current_user_session.associate_with_facebook_connect
+          flash[:notice] = "Your account is now associated with your facebook account"
+          redirect_to root_url
+        end
+      else
+        flash[:notice] = "Your facebook account is already connected"
+        redirect_to profile_url
+      end
+    else
+      @user_session = UserSession.new(params[:profile_session])
+      if @user_session.save
+        flash[:notice] = "Login successful!"
+        redirect_to root_url
+      else
+        if @user_session.errors.on(:facebook)
+          flash[:notice] = "An account already exists with this email, please login to connect it with your Facebook account."
+          redirect_to login_path
+        else
+          flash[:notice] = "Could not login."
+          render :action => :new
+        end
+      end
+    end
+  end
+
+This will make the user login to their account first before connecting with their facebook, if a user with the same email already exists. When clicking the Facebook connect button while logged in it will connect their accounts and from then on they will be able to login with facebook.
