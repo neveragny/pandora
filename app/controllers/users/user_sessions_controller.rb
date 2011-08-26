@@ -60,10 +60,8 @@ class UserSessionsController < ApplicationController
                                   :site => 'https://api.vk.com/',
                                   :token_url => '/oauth/token',
                                   :authorize_url => '/oauth/authorize',
-                                  {
-                                      :client_options => {:ssl => {:ca_path => "/etc/ssl/certs"}}
-                                  }
-    )
+                                  :ssl => {:ca_path => "/etc/ssl/certs"}
+                                  )
   end
 
 
