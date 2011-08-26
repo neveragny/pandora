@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :existent_user
   before_filter :delete_messages
-#  before_filter :beta_version
+  before_filter :beta_version
 
   BETA = true
 
