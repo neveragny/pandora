@@ -46,6 +46,7 @@ class UserSessionsController < ApplicationController
   end
 
   def from_vk
+      Rails.logger.debug @client
       access_token = @client.auth_code.get_token(params[:code], :redirect_uri => 'http://nomoveton.co.ua/from_vk')
       access_token.options[:param_name] = 'access_token'
       access_token.options[:mode] = :query
