@@ -40,7 +40,7 @@ class UserSessionsController < ApplicationController
         :redirect_uri => 'http://api.vkontakte.ru/oauth/authorize',
         :scope => "wall,notify,friends,photos,groups" # whatever you want to do
       }
-      client = OAuth2::Client.new('2451301', 'M2bRILJgXVcdRqVVCdss', :site => FACEBOOK_API_SITE)
+      client = OAuth2::Client.new('2451301', 'M2bRILJgXVcdRqVVCdss', :site => 'http://api.vkontakte.ru/oauth/authorize')
 
       redirect_to client.web_server.authorize_url(options)
   end
