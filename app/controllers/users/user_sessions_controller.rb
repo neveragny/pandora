@@ -40,15 +40,17 @@ class UserSessionsController < ApplicationController
         :redirect_uri => 'http://nomoveton.co.ua/from_vk',
         :scope => "wall,notify,friends,photos,groups" # whatever you want to do
       }
-#      client = client
+      @client = client
 
       redirect_to client.auth_code.authorize_url(options)
   end
 
   def from_vk
-      access_token = client.auth_code.get_token(params[:code], :redirect_uri => 'http://nomoveton.co.ua/from_vk')
+      access_token = @client.auth_code.get_token(params[:code], :redirect_uri => 'http://nomoveton.co.ua/from_vk')
       access_token.options[:param_name] = 'access_token'
       access_token.options[:mode] = :query
+
+
   end
 
 
@@ -57,7 +59,8 @@ class UserSessionsController < ApplicationController
     OAuth2::Client.new('2451301', 'M2bRILJgXVcdRqVVCdss',
                                   :site => 'https://api.vk.com/',
                                   :token_url => '/oauth/token',
-                                  :authorize_url => '/oauth/authorize'
+                                  :authorize_url => '/oauth/authorize',
+                                  :ssl => {:ca_path => "/etc/ssl/certs"}
                                   )
   end
 
