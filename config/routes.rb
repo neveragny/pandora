@@ -8,6 +8,7 @@ Licemerov::Application.routes.draw do
   get '/logout' => 'user_sessions#destroy', :as => :logout
   get '/login' => 'user_sessions#new', :as => :login
   get '/to_vk' => 'user_sessions#to_vk', :as => :to_vk
+  get '/from_vk' => 'user_sessions#from_vk', :as => :from_vk
 
   get '/:user_profile', :to => 'users#show', :as => :user_profile
   match '/:user_profile/edit', :to => 'users#edit', :as => :edit_profile

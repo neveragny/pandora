@@ -37,24 +37,47 @@ class UserSessionsController < ApplicationController
 
   def to_vk
       options = {
-        :redirect_uri => 'http://api.vkontakte.ru/oauth/authorize',
+        :redirect_uri => 'http://nomoveton.co.ua/from_vk',
         :scope => "wall,notify,friends,photos,groups" # whatever you want to do
       }
-      client = OAuth2::Client.new('2451301', 'M2bRILJgXVcdRqVVCdss', :site => 'http://api.vkontakte.ru/oauth/authorize')
+#      client = client
 
-      redirect_to client.web_server.authorize_url(options)
+      redirect_to client.auth_code.authorize_url(options)
   end
 
-  def facebook_vk
-      client = OAuth2::Client.new(FACEBOOK_API_KEY, FACEBOOK_API_SECRET, :site => FACEBOOK_API_SITE)
-      access_token = client.web_server.get_access_token(params[:code], :redirect_uri => facebook_callback_url)
-
-      do_my_custom_user_association(access_token)
+  def from_vk
+      access_token = client.auth_code.get_token(params[:code], :redirect_uri => 'http://nomoveton.co.ua/from_vk')
+      access_token.options[:param_name] = 'access_token'
+      access_token.options[:mode] = :query
   end
 
+
+  private
+  def client
+    OAuth2::Client.new('2451301', 'M2bRILJgXVcdRqVVCdss',
+                                  :site => 'https://api.vk.com/',
+                                  :token_url => '/oauth/token',
+                                  :authorize_url => '/oauth/authorize'
+                                  )
+  end
 
 
 end
+
+
+#def client
+#  OAuth2::Client.new(CLIENT_ID, CLIENT_SECRET,
+#                     :site => 'https://api.vk.com/',
+#                     :token_url => '/oauth/token',
+#                     :authorize_url => '/oauth/authorize'
+#                    )
+#end
+#
+#get '/auth/vk' do
+#  url = client.auth_code.authorize_url(
+#    :redirect_uri => redirect_uri,
+#    :scope => ''
+#  )
 
 #http://api.vkontakte.ru/oauth/authorize?
 # client_id=APP_ID&
