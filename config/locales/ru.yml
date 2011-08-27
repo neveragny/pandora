@@ -154,6 +154,8 @@ ru:
     
   activerecord:
     errors:
+      messages:
+        record_invalid: рекорд инвалид
       models:
         user:
           attributes:

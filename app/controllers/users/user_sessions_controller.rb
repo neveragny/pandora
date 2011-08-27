@@ -18,7 +18,6 @@ class UserSessionsController < ApplicationController
 
   def create
     @session = US.new(params[:user_session])
-    Rails.logger.debug "@session: #{@session}"
     @session.save do |result|
       if result
       @current_user = US.find.record
@@ -62,7 +61,7 @@ class UserSessionsController < ApplicationController
         #user_data = get_user access_token
 #        Rails.logger.debug user_data
             
-        field = fields = 'uid, first_name, last_name, nickname, screen_name, sex, bdate (birthdate), city, country, timezone, photo, photo_medium, photo_big, has_mobile, rate, contacts, education, online'
+        field = fields = 'uid, first_name, last_name, nickname, screen_name, sex, bdate, city, country, timezone, photo, photo_medium, photo_big, has_mobile, rate, contacts, education, online'
         user_data = access_token.get("/method/getProfiles", :params => {:uid=> access_token.params['user_id'], :fields => fields }).parsed['response'].first
 #        Rails.logger.debug user_data
         @user = User.new_or_find_by_vk_oauth_access_token(access_token.token, {:user_data => user_data})
@@ -70,10 +69,17 @@ class UserSessionsController < ApplicationController
         if @user.new_record?
           session[:user] = @user
           session[:external_app] = "vkontakte"
-          
+          @user.save(:validate => false)
         else
-          user_session = UserSession.create(@user)
-          redirect_to(home_page, :notice => 'Welcome!') 
+          @session = US.create(@user)
+          @session.save do |result|
+            if result
+              @current_user = US.find.record
+              session[:return_to] ? redirect_to(session[:return_to]) : redirect_to(home_page, :notice => 'Welcome!')
+            else
+              redirect_to(login_path, :alert => 'Failed to log in, please try again')
+            end
+          end
         end
         
       end

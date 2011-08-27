@@ -21,14 +21,23 @@ class User < ActiveRecord::Base
   end
 
   def self.new_or_find_by_vk_oauth_access_token(access_token, options = {})
-    Rails.logger.debug options[:user_data]
-    user = User.where('vk_uid = ?',options[:user_data][:uid])
+    Rails.logger.debug "OPTIONS : #{options}"
+
+    params = {:login => options[:user_data]['last_name'],
+              :vk_uid => options[:user_data]['uid'].to_s,
+              :sex => options[:user_data]['sex'],
+              :email =>  "#{options[:user_data]['screen_name']}@vk.com"
+    }
+    user = User.find_by_vk_uid(params[:vk_uid])
+    Rails.logger.debug "NEW OR FIND BY VKONTAKTE SUKA!!! PARAMS : #{params}"
     if user.blank?
-      user = User.new(:login => options[:last_name])
-      user.save 
+      user = User.new(:login => options[:user_data]['last_name'],
+                      :sex => options[:user_data]['sex'],
+                      :email =>  "#{options[:user_data]['screen_name']}@vk.com" )
+      user.vk_uid = options[:user_data]['uid'].to_s
     end
     user
-  end 
+  end
 
 
   attr_accessible :login, :email, :sex, :password, :password_confirmation, :avatar, :crop_x, :crop_y, :crop_w, :crop_h
@@ -62,7 +71,7 @@ class User < ActiveRecord::Base
 
   # AVATAR section END
 
-  validates :email, :presence => true, :uniqueness => true, :length => {:maximum => 25, :minimum => 5}
+#  validates :email, :presence => true, :uniqueness => true, :length => {:maximum => 25, :minimum => 5}
   validates :login, :presence => true, :uniqueness => true, :length => {:maximum => 15, :minimum => 3}, :not_restricted => true
 
   delegate :first_name, :first_name=, :last_name, :last_name=, :city, :city=, :country, :country=,

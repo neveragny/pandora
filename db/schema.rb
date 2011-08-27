@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20110826232547) do
   create_table "albums", :force => true do |t|
     t.integer  "user_id",         :default => 0,                     :null => false
     t.string   "cover",           :default => "/images/missing.png"
-    t.string   "title",           :default => "",                    :null => false
+    t.string           :default => "",                    :null => false
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
