@@ -20,6 +20,16 @@ class User < ActiveRecord::Base
     login.parameterize
   end
 
+  def self.new_or_find_by_vk_oauth_access_token(access_token, options = {})
+    Rails.logger.debug options[:user_data]
+    user = User.where('vk_uid = ?',options[:user_data][:uid])
+    if user.blank?
+      user = User.new(:login => options[:last_name])
+      user.save 
+    end
+    user
+  end 
+
 
   attr_accessible :login, :email, :sex, :password, :password_confirmation, :avatar, :crop_x, :crop_y, :crop_w, :crop_h
   attr_accessor :crop_x, :crop_y, :crop_h, :crop_w

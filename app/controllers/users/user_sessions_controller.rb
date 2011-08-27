@@ -18,6 +18,7 @@ class UserSessionsController < ApplicationController
 
   def create
     @session = US.new(params[:user_session])
+    Rails.logger.debug "@session: #{@session}"
     @session.save do |result|
       if result
       @current_user = US.find.record
@@ -46,12 +47,38 @@ class UserSessionsController < ApplicationController
   end
 
   def from_vk
-      Rails.logger.debug @client
-      access_token = @client.auth_code.get_token(params[:code], :redirect_uri => 'http://nomoveton.co.ua/from_vk')
+      @client = client
+#      Rails.logger.debug "@client" + client
+      access_token = client.auth_code.get_token(params[:code], :redirect_uri => 'http://nomoveton.co.ua/from_vk')
       access_token.options[:param_name] = 'access_token'
       access_token.options[:mode] = :query
+      Rails.logger.debug "access_token :  #{access_token}"
+      Rails.logger.debug "access_token.options #{access_token.options} "
+      
+      if access_token.token.blank?
+        redirect_to(login_path, :alert => 'Failed to log in, please try again')
+      else
+        Rails.logger.debug "TOKEN : #{access_token.token}"
+        #user_data = get_user access_token
+#        Rails.logger.debug user_data
+            
+        field = fields = 'uid, first_name, last_name, nickname, screen_name, sex, bdate (birthdate), city, country, timezone, photo, photo_medium, photo_big, has_mobile, rate, contacts, education, online'
+        user_data = access_token.get("/method/getProfiles", :params => {:uid=> access_token.params['user_id'], :fields => fields }).parsed['response'].first
+#        Rails.logger.debug user_data
+        @user = User.new_or_find_by_vk_oauth_access_token(access_token.token, {:user_data => user_data})
 
-
+        if @user.new_record?
+          session[:user] = @user
+          session[:external_app] = "vkontakte"
+          
+        else
+          user_session = UserSession.create(@user)
+          redirect_to(home_page, :notice => 'Welcome!') 
+        end
+        
+      end
+#      Rails.logger.debug "responce: #{resp} "
+      
   end
 
 
@@ -63,6 +90,13 @@ class UserSessionsController < ApplicationController
                                   :authorize_url => '/oauth/authorize',
                                   :ssl => {:ca_path => "/etc/ssl/certs"}
                                   )
+  end
+
+  def get_user(access_token)
+    profiles = '/method/getProfiles'
+    fields = 'uid, first_name, last_name, nickname, screen_name, sex, bdate (birthdate), city, country, timezone, photo, photo_medium, photo_big, has_mobile, rate, contacts, education, online'
+    access_token.get('/method/getProfiles', :params => {:uid=> access_token.params['user_id']} ).parsed['responce'].first
+    
   end
 
 

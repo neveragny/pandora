@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110825072001) do
+ActiveRecord::Schema.define(:version => 20110826232547) do
 
   create_table "albums", :force => true do |t|
     t.integer  "user_id",         :default => 0,                     :null => false
@@ -129,15 +129,15 @@ ActiveRecord::Schema.define(:version => 20110825072001) do
 
   create_table "users", :force => true do |t|
     t.string   "login"
-    t.string   "email",                :default => "", :null => false
+    t.string   "email",               :default => "", :null => false
     t.string   "crypted_password"
     t.string   "password_salt"
-    t.string   "persistence_token",    :default => "", :null => false
-    t.string   "single_access_token",  :default => "", :null => false
-    t.string   "perishable_token",     :default => "", :null => false
-    t.integer  "sex",                  :default => 1,  :null => false
-    t.integer  "login_count",          :default => 0,  :null => false
-    t.integer  "failed_login_count",   :default => 0,  :null => false
+    t.string   "persistence_token",   :default => "", :null => false
+    t.string   "single_access_token", :default => "", :null => false
+    t.string   "perishable_token",    :default => "", :null => false
+    t.integer  "sex",                 :default => 1,  :null => false
+    t.integer  "login_count",         :default => 0,  :null => false
+    t.integer  "failed_login_count",  :default => 0,  :null => false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
@@ -150,12 +150,9 @@ ActiveRecord::Schema.define(:version => 20110825072001) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "avatar_dimensions"
-    t.string   "oauth_token"
-    t.string   "oauth_secret"
-    t.string   "facebook_session_key"
-    t.integer  "facebook_uid"
+    t.string   "vk_uid"
   end
 
-  add_index "users", ["oauth_token"], :name => "index_users_on_oauth_token"
+  add_index "users", ["vk_uid"], :name => "index_users_on_vk_uid"
 
 end
