@@ -79,6 +79,9 @@ Licemerov::Application.routes.draw do
     end
   end
 
+  resources :rentall, :only => [:new, :create, :destroy]
+  match '/rentall/:id' => 'rentall#show', :as => 'rent'
+
 #     match '/rents/stree_autocompleet', :to => 'rents#stree_autocompleet', :as => 'stree_autocompleet'
 #  get '/rents/complete_street' => 'rents#complete_street'
 

@@ -8,6 +8,8 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Licemerov
   class Application < Rails::Application
+
+    config.action_controller.consider_all_requests_local = false
     # Autoload nested directories in app/controllers and app/models
 
     config.autoload_paths += Dir["#{Rails.root.to_s}/app/models/*"].find_all {|f| File.stat(f).directory?}

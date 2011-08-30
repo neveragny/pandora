@@ -30,7 +30,7 @@
       </a>
     </div>
     <%#= fb_connect_async_js %>
-    <%= render :partial => "#{controller_name}/head" rescue nil %>
+    <%= render :partial => "/layouts/head" if (controller_name == 'renter' || controller_name == 'rental' ||controller_name == 'users')  %>
 
   </div>
   <%= yield %>

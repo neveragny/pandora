@@ -10,7 +10,7 @@ class RenterController < ApplicationController
   end
 
   def listings
-    @renter = Rent.new
+#    @renter = Rent.new
     @page =  1
     @rents, amount = Rent.get_rents(@page )
     @pages = amount.to_i ? amount.to_i+1 : amount.to_i

@@ -1,0 +1,56 @@
+
+<div id="adminBar">
+  <% if @current_user %>
+      <ul class="curveBottom clearfix">
+        <li id="inviteFriends"><a class="infoModal cboxElement" href="#inviteFriendsModal"><%= t(:share) %></a></li>
+        <li class="view">
+        <%= link_to t(:profile), home_page %>
+        </li>
+        <li class="last">
+          <%= link_to t(:logout), logout_path, :class => 'bold' %>
+        </li>
+      </ul>
+  <% else %>
+      <ul>
+
+        <li><a href="/renter/"><%= t(:renter_search) %></a></li>
+        <li class="login"><a class="login" href="/login"><%= t(:login) %></a></li>
+        <li class="signup">
+          <a class="signup" data-tagged-trac="sitewide-admin-bar|renter_signup" href="/renter/signup">
+            <strong><%= t(:register) %></strong> <span class="small">(IT'S FREE!)</span>
+          </a>
+        </li>
+      </ul>
+  <% end %>
+</div>
+
+<div class="clear"></div>
+
+<ul id="siteNav">
+  <% if @current_user %>
+      <li>
+        <a title="<%= t(:renter_wall_description) %>" href="/renter"><%= t(:renter_wall) %></a>
+      </li>
+      <li>
+        <a id="offerTab" title="<%= t(:renter_correspondence) %>" href="/renter/contacts" class=" "><%= t(:renter_correspondence) %></a>
+      </li>
+      <li>
+        <a title="<%= t(:renter_reviews_description) %>" href="/renter/reviews" class=" "><%= t(:renter_reviews) %></a>
+      </li>
+      <li>
+        <a href="/renter/saved-searches" class=" "><%= t(:renter_saved_searches) %></a>
+      </li>
+      <li id="faves"><a href="/renter/favorites">&nbsp;</a></li>
+      <li id="searchOpen" class="active">
+        <a title="<%= t(:renter_search) %>" href="/renter/" class=" "><%= t(:renter_search) %></a>
+      </li>
+      <li id="deals">
+        <a href="/renter/comilffo-solutions"><span class="title"><%= t(:comilffo) %></span><%= t(:solutions) %></a></li>
+  <% else %>
+      <li><a class="infoModal cboxElement" href="#overviewModalContainer"><%= t(:renter_wall) %></a></li>
+      <li id="faves"><a class="infoModal cboxElement" href="#favoritesModalContainer">&nbsp;</a></li>
+      <li><a class="infoModal cboxElement" href="#reviewsModalContainer"><%= t(:renter_reviews) %></a></li>
+      <li><a class="infoModal cboxElement" href="#savedSearchesModalContainer"><%= t(:renter_saved_searches) %></a></li>
+      <li class="active" id="searchOpen"><a href="/renter/listings/search" class=" "><%= t(:renter_search) %></a></li>
+  <% end %>
+</ul>

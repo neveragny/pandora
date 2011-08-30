@@ -81,10 +81,7 @@ class UserSessionsController < ApplicationController
             end
           end
         end
-        
       end
-#      Rails.logger.debug "responce: #{resp} "
-      
   end
 
 
