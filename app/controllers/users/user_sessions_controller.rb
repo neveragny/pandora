@@ -11,7 +11,7 @@ class UserSessionsController < ApplicationController
   before_filter :require_user, :only => [:destroy]
 
   def new
-    @body = "login"
+    @body_id = "login"
     @session = US.new
   end
 

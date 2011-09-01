@@ -28,6 +28,7 @@ ru:
   change: Изменить
   change_settings: Изменить Настройки
   errors_occured: Произошли ошибки
+  write: Написать сейчас
 
   # HEADER
   main_page: На главную
@@ -228,6 +229,18 @@ ru:
   renter_saved_searches: История поиска
   renter_move_by: Хочу переехать до
   rent_not_yet_rated: пока без оценки
+
+  renter:
+    contact_now: Написать сейчас
+    not_yet_rated: пока без рейтинга
+    back_to_search_results: Вернуться к результатам поиска
+    amenities: удобства
+    favorites: Избранное
+    no_favorites: В избранном пусто
+    messages_will_appear: Сообщения будут здесь
+
+  rentall:
+    near_subways: Близжайшие станции метро
 
   renter_search_borough: Район
 # Footer

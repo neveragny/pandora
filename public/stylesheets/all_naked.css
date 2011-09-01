@@ -11702,13 +11702,13 @@ ul#attachedListings li {
 }
 
 #listingContent .dupes .starsOff {
-    background: url(/images/sprites/stars_sm.gif?1313787470) repeat-x 0 0;
+    background: url(/images/sprites/stars_sm.gif) repeat-x 0 0;
     width: 70px;
     height: 10px
 }
 
 #listingContent .dupes .starsOn {
-    background: url(/images/sprites/stars_sm.gif?1313787470) repeat-x 0 -20px;
+    background: url(/images/sprites/stars_sm.gif) repeat-x 0 -20px;
     height: 10px
 }
 
@@ -12034,22 +12034,22 @@ a .webID {
     color: #147898
 }
 
-#listingContent #info .tableWrap {
-    float: left
+#listingContent #listingDetailWidget .tableWrap {
+    /*float: left*/
 }
 
-#listingContent #info table#listingOverview {
+#listingContent #listingDetailWidget table#listingOverview {
     margin: 0 0 10px 0;
     color: #888;
     width: 230px
 }
 
-#listingContent #info table#listingOverview td {
+#listingContent #listingDetailWidget table#listingOverview td {
     padding: 3px 3px 3px 7px;
     border-top: 1px solid #f1f1f1
 }
 
-#listingContent #info table#listingOverview tr td:first-child {
+#listingContent #listingDetailWidget table#listingOverview tr td:first-child {
     font-weight: bold;
     color: #222
 }
@@ -13273,21 +13273,21 @@ a#toggleSearchFilters {
 }
 
 .starsOff {
-    background: url(/images/sprites/stars.gif?1313787470) repeat-x 0 0;
+    background: url(/images/sprites/stars.gif) repeat-x 0 0;
     display: block;
     width: 100px;
     height: 16px
 }
 
 .starsOn {
-    background: url(/images/sprites/stars.gif?1313787470) repeat-x 0 -20px;
+    background: url(/images/sprites/stars.gif) repeat-x 0 -20px;
     display: block;
     text-indent: -4000px;
     height: 16px
 }
 
 .blue .starsOff {
-    background: url(/images/sprites/stars.gif?1313787470) repeat-x 0 -51px;
+    background: url(/images/sprites/stars.gif) repeat-x 0 -51px;
     height: 15px
 }
 
@@ -13307,7 +13307,7 @@ a#toggleSearchFilters {
 
 .noRating {
     float: left;
-    background: url(/images/sprites/stars.gif?1313787470) no-repeat 0 -112px;
+    background: url(/images/sprites/stars.gif) no-repeat 0 -112px;
     display: block;
     width: 100px;
     padding: 5px 0 0 18px;
@@ -13326,7 +13326,7 @@ a#toggleSearchFilters {
 }
 
 .profileMasthead #rating .noRating {
-    background: url("/images/sprites/stars-big.gif?1313787470") no-repeat scroll 0 -83px;
+    background: url("/images/sprites/stars-big.gif") no-repeat scroll 0 -83px;
     padding: 6px 0 0 24px
 }
 
@@ -13344,7 +13344,7 @@ a#toggleSearchFilters {
     overflow: hidden;
     position: relative;
     float: right;
-    background: url(/images/sprites/stars-big.gif?1313787470) repeat-x 0 0
+    background: url(/images/sprites/stars-big.gif) repeat-x 0 0
 }
 
 .star-rating li {
@@ -13369,7 +13369,7 @@ a#toggleSearchFilters {
 }
 
 .star-rating li a:hover {
-    background: url(/images/sprites/stars-big.gif?1313787470) repeat-x 0 -25px;
+    background: url(/images/sprites/stars-big.gif) repeat-x 0 -25px;
     z-index: 2;
     left: 0;
     border: none
@@ -13416,7 +13416,7 @@ a#toggleSearchFilters {
 }
 
 .star-rating li.current-rating {
-    background: url(/images/sprites/stars-big.gif?1313787470) repeat-x 0 -50px;
+    background: url(/images/sprites/stars-big.gif) repeat-x 0 -50px;
     height: 25px;
     display: block;
     text-indent: -9000px;
@@ -13425,4 +13425,37 @@ a#toggleSearchFilters {
 
 a:active {
     outline: none
+}
+
+
+
+
+
+/*ADDITIONAL  STYLES thoug*/
+.inside-ico {
+    line-height: 16px;
+    padding-left: 25px;
+}
+.inside-icons-info {
+    background: url("/images/inside_icons_sprite.gif") no-repeat scroll 0 -30px transparent;
+}
+.inside-icons-kk {
+    background: url("/images/inside_icons_sprite.gif") no-repeat scroll 0 -54px transparent;
+}
+.inside-icons-etaj {
+    background: url("/images/inside_icons_sprite.gif") no-repeat scroll 0 -80px transparent;
+}
+.inside-icons-square {
+    background: url("/images/inside_icons_sprite.gif") no-repeat scroll 0 -105px transparent;
+}
+.inside-icons-walls {
+    background: url("/images/inside_icons_sprite.gif") no-repeat scroll 0 -180px transparent;
+}
+
+
+.rentall_review {
+    margin: 15px 0 15px 0;
+    padding: 5px;
+    background-color: #d3d3d3;
+    border: 1px dashed #d3d3d3;
 }

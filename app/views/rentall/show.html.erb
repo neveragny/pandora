@@ -1,2 +1,171 @@
-<h1>Rentall#show</h1>
-<p>Find me in app/views/rentall/show.html.erb</p>
+<div id="listingContent">
+<div class="container clearfix">
+<div class="back"><a href="javascript:history.go(-1)" class="back">« <%= t('renter.back_to_search_results') %></a></div>
+
+<div id="head">
+
+  <div class="actions clearfix">
+    <div class="buttonContainer">
+      <a rel="nofollow" data-location="details" data-listing-id="424662" class="button green large contactNow contactAgentBtn cboxElement" href="/renter/contacts/modal_request?broker_id=240&amp;listing_id=424662">
+        <span><%= t('renter.contact_now') %></span>
+      </a>
+    </div>
+
+  </div>
+
+
+  <h1><%= @rentall.rooms %>к, <%= @rentall.adress %> <%= @rentall.price %> грн</h1>
+  <span class="webID">(Web ID: na_#222)</span>
+
+</div>
+
+
+<div id="listingDetailWidget" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+
+
+  <div class="mod curve shadow">
+
+    <div class="tableWrap">
+      <!--special offers -->
+
+
+      <table id="listingOverview">
+
+        <tbody>
+        <tr>
+          <td>
+            <div class='inside-ico inside-icons-info'>Аренда:</div>
+          </td>
+          <td>долгосрочная</td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="inside-ico inside-icons-kk"> комнат:</div>
+          </td>
+          <td>1</td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="inside-ico inside-icons-etaj">Этаж / этажность</div>
+          </td>
+          <td>6 / 16</td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="inside-ico inside-icons-square">Общая площадь :</div>
+          </td>
+          <td>36 м2</td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="inside-ico inside-icons-walls">Стены :</div>
+          </td>
+          <td>кирпич</td>
+        </tr>
+
+        <tr>
+          <td>тип предложения :</td>
+          <td>от посредника</td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="rentall_review">
+      <%= @rentall.info %>
+    </div>
+
+    <div class="photo-object">
+      <% if @rentall.rentphotos %>
+          <% @rentall.rentphotos.each do |item| %>
+              <a class="gal" rel="group_gal" href="<%= item.photo.url %>">
+                <%= image_tag item.photo.url(:thumb) %>
+              </a>
+          <% end %>
+      <% end %>
+    </div>
+
+
+
+
+  </div>
+
+</div>
+
+
+<!--RIGHT BOX-->
+<div id="info" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+
+
+  <div class="mod curve shadow">
+    <div id="overview" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+      <div class="curveTop" id="brokerStats">
+
+        <!--<img class="borderWhite" src="http://s3.amazonaws.com/nakedapartments/broker/photos/4270/normal.jpg?1314804251">-->
+        <%= image_tag '/images/man_brown.png' %>
+
+
+          <span class="name">
+            <a href="http://www.nakedapartments.com/a/profile/maggie-nieves/45e"><%= @rentall.name %></a></span>
+        <span class="noRating"><span><%= t('renter.not_yet_rated') %></span></span>
+
+
+        <div class="marginTop20">
+          <a rel="nofollow" data-location="details" data-listing-id="428985" class="button green largeMedium calm contactAgentBtn cboxElement" href="/renter/contacts/modal_request?broker_id=4270&amp;listing_id=428985">
+            <span><%= t("renter.contact_now") %></span>
+          </a>
+        </div>
+
+      </div>
+
+
+      <div id="transportation">
+        <h4><%= t('rentall.near_subways') %></h4>
+        <ul>
+
+          <li data-longitude="-73.966113" data-latitude="40.764629">
+
+            <span class="line_f subIcon">F</span>
+
+            Lexington Av/63 St (0.45 mi)
+          </li>
+
+          <li data-longitude="-73.967258" data-latitude="40.76266">
+
+            <span class="line_r subIcon">R</span>
+
+            <span class="line_n subIcon">N</span>
+
+            <span class="line_q subIcon">Q</span>
+
+            Lexington Av/59 St (0.48 mi)
+          </li>
+
+          <li data-longitude="-73.96387" data-latitude="40.768141">
+
+            <span class="line_4 subIcon">4</span>
+
+            <span class="line_6 subIcon">6</span>
+
+            <span class="line_5 subIcon">5</span>
+
+            68 St - Hunter College (0.52 mi)
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!--END OF BOX-->
+
+</div>
+</div>

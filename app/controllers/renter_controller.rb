@@ -1,11 +1,13 @@
 class RenterController < ApplicationController
 
   skip_before_filter :existent_user
+  before_filter :enrich_class
 #  before_filter :validate_request, :only => :create
 
   ITEMS_PER_PAGE = 10
 
-  def index
+  def dashboard
+    @body_id = 'home'
 
   end
 
@@ -44,6 +46,11 @@ class RenterController < ApplicationController
       f.js {render :layout => false}
     end
     Rails.logger.debug "search goes Here!"
+  end
+
+  private
+  def enrich_class
+    @class = params[:action]
   end
 
 end

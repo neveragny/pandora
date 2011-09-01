@@ -1,0 +1,131 @@
+<div id="leftCol">
+  <div class="contentMod">
+    <div class="modsub">
+      <ul>
+
+        <li class="active"><a href="#favoritedListingsContainer" class=" "><%= t('renter.favorites') %></a></li>
+      </ul>
+    </div>
+
+
+    <div id="favoritedListingsContainer">
+
+      <table id="favoritedListings">
+
+
+        <tbody>
+        <tr>
+          <td colspan="3">
+              <span class="messageNoContent">
+                 <%= t('renter.no_favorites') %>
+              </span>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+</div>
+<!--END OF LEFT COL-->
+
+
+<!--RIGHT COL-->
+<div id="rightCol">
+  <!-- messages table -->
+  <div id="messages" class="contentMod">
+    <h2 class="curveTop"><%= t(:messages) %> <span class="message"></span></h2>
+    <table>
+
+
+      <tbody>
+      <tr>
+        <td colspan="3">
+    <span class="messageNoContent">
+      <%= t('renter.messages_will_appear') %>
+    </span>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <!-- End: messages table -->
+
+  <!-- <div id="reviewsToWrite" class="contentMod">
+    <h2 class="curveTop">Review the brokers you've worked with!</h2>
+
+<ul id="reviews" class="clearfix">
+	<li>
+		<div class="photo">
+			<span><img src="images/temp/broker.jpg" /></span>
+		</div>
+		<div class="contents clearfix">
+			<a href="" class="name">Nedvonne Young Smithsonvich</a>
+			<a href="" class="button review"><span>Write Review</span></a>
+		</div>
+
+		<div class="footer">
+			<a href="">View message history</a>
+		</div>
+	</li>
+
+	<li class="clearfix">
+		<div class="photo">
+			<span><img src="images/temp/broker2.jpg" /></span>
+		</div>
+		<div class="contents clearfix">
+			<a href="" class="name">Monique Perez Hart</a>
+			<a href="" class="button review"><span>Write Review</span></a>
+		</div>
+		<div class="footer">
+			<a href="">View message history</a>
+		</div>
+		<div class="clearfix"></div>
+	</li>
+
+	<li class="clearfix last">
+		<div class="photo">
+			<span><img src="images/temp/broker3.jpg" /></span>
+		</div>
+		<div class="contents clearfix">
+			<a href="" class="name">Rocco Hart</a>
+			<a href="" class="button review"><span>Write Review</span></a>
+		</div>
+		<div class="footer">
+			<a href="">View message history</a>
+		</div>
+	</li>
+
+</ul>
+
+  </div> -->
+
+
+  <div class="noteWhiteFull">
+    <div class="activityRating ar10 center">10</div>
+
+    <h2 class="noMargin">Ваш рейтинг:</h2>
+    <a class="more" onclick="$('#more1').is(':hidden') ? $('#more1').fadeIn('fast') : $('#more1').fadeOut('fast'); return false;" href="">
+      что это?</a>
+
+    <div class="clear"></div>
+    <div style="display: none" class="answer" id="more1">
+      <!--We get this number by factoring in: frequency of visits, number of searches, promptness of response to contacts-->
+      <!--and other variables.-->
+      Мы получаем это значение по количеству ваших визитов, количеству поисков и общей активность на сайте.
+
+      <p>
+        <strong>это важно?</strong>
+        <br>Да, высокий рейтинг даст брокеру понять, что вы действительно заинтересованы в поиске квартиры.
+      </p>
+
+    </div>
+  </div>
+
+
+</div>
+
+<div class="clear"></div>
