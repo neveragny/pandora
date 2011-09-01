@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   before_filter :delete_messages
 #  before_filter :beta_version
 
-  BETA = true
+  BETA = false
 
 
   # Prepare a hash( to be converted to json ) for a newly created object
@@ -108,6 +108,7 @@ class ApplicationController < ActionController::Base
   end
 
   def existent_user
+    Rails.logger.debug "PARAMS => #{params}"
     return @user if defined?(@user)
     @user = User.where(:login => params[:user_profile]).first
     redirect_to root_path unless @user

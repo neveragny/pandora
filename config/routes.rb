@@ -76,6 +76,7 @@ Licemerov::Application.routes.draw do
   resources :renter do
     collection do
       match :search
+      match :dashboard
     end
   end
 

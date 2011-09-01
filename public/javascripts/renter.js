@@ -417,6 +417,8 @@ $(document).ready(function() {
   RenterHomepage.setup();
   RenterPagination.setup();
 
+  $("a.gal").fancybox();
+
   $('#listingDetail .favorite:not(.infoModal)').listingFavoriteButtons();
   $('#listingSERPOuter .favorite').listingFavoriteButtons(function(listing_id, type) {
     if(type == 'delete') {
