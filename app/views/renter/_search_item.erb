@@ -22,8 +22,12 @@
         </span>
 
         <div class="newCell listingDate">
-          11 <%= t(:days) %>
+        <% if Date.today == item.date %>
+          <%= t('renter.todays_object') %>
+        <% else %>  
+          <%=(Date.today - item.date).to_i %> <%= t(:days) %>
           <span class="calm"><%= t(:onsite) %></span>
+        <% end %>
         </div>
 
 
