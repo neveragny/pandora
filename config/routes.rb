@@ -1,6 +1,14 @@
 Licemerov::Application.routes.draw do
 
 
+  get "about/faq"
+
+  get "about/feedback_form"
+
+  get "about/blog"
+
+  get "about/index"
+
   root :to => 'renter#listings'
 
   # user sessions routes

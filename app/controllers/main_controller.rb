@@ -12,6 +12,7 @@ class MainController < ApplicationController
     @entry = RootEntry.new(params[:root_entry])
     @entry.user_id, @entry.login, @entry.author_sex = current_user.id, current_user.login, current_user.sex
     @entry.save
+    Rails.logger.debug "HMMMMMMMM <<<<<<"
     respond_to do |format|
       format.html { redirect_to '/'}
       format.js {render :layout => false}

@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
 
   before_filter :existent_user
   before_filter :delete_messages
+  before_filter :log_request
 #  before_filter :beta_version
+
 
   BETA = false
 
@@ -72,6 +74,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
+    Rails.logger.debug "require user"
     unless current_user
       store_location
       flash[:notice] = "Please log in"
@@ -81,6 +84,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_owner
+    Rails.logger.debug "require_owner"
     if current_user && @user
       redirect_to home_page unless current_user == @user
     else
@@ -90,6 +94,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_no_user
+    Rails.logger.debug "require_no_user"
     if current_user
       store_location
       flash[:notice] = "You're already authenticated!"
@@ -140,6 +145,16 @@ class ApplicationController < ActionController::Base
     if BETA
       redirect_to login_path unless @current_user
     end
+  end
+
+  def log_request
+    Rails.logger.debug "==================================\n
+                        Ip: #{request.ip}\n
+                        method: #{request.method}
+                        fullpath: #{request.fullpath}
+                        params: #{request.query_parameters() }\n
+                        time: #{Time.now}
+                      \n=================================="
   end
 
   alias :cu :current_user
