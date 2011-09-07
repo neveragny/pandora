@@ -26,13 +26,13 @@ var SearchListings = {
 //        else
 //          options.removeClass('withParents');
 //      });
+//      $('#boroughDropdown').fancyDropdown({afterSelect: function(id, parent) {
+//          $('#nids').val('');
+//          populate_neighborhoods(id);
+//      }});
+
 //    };
 
-    $('#boroughDropdown').fancyDropdown({afterSelect: function(id, parent) {
-      $('#nids').val('');
-      populate_neighborhoods(id);
-    }});
-		
     // on page load...
 //    if($('#bid').length > 0) {
 //      populate_neighborhoods($('#bid').val());

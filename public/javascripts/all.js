@@ -793,7 +793,7 @@ defaults.target=null;if(defaults.format!='all')$(this).autotab_filter(defaults);
         } else if(options.length == 1) {
           return options.eq(0).parent().html().replace(/<\/?[^>]+>/gi, '');
         } else if(options.length > 1) {
-          return 'Various';
+          return 'Несколько';
         }
         return '&nbsp;';
       };
@@ -1294,7 +1294,7 @@ var SearchNav = {
           var ids = new Array;
 
           var checked_options = $(elm + ' input[type=checkbox]:checked');
-          var title = (checked_options.length == 1) ? checked_options.eq(0).parent().html() : 'Various';
+          var title = (checked_options.length == 1) ? checked_options.eq(0).parent().html() : 'Несколько';
           if(checked_options.length == 0) title = '';
 
           checked_options.each(function() {
@@ -1372,7 +1372,7 @@ var SearchNav = {
         });
         SearchNav.dropdown.multiple.highlight.all(options);
         // if multiple options selected, use default title
-        if(ids.length > 1) title = 'Various';
+        if(ids.length > 1) title = 'Несколько';
         self.selectItem(ids.join(','), title, parent);
       },
       selectItem: function(ids, val, parent) {
@@ -1664,55 +1664,6 @@ na.selectAllRowsCheckbox = function() {
     }
   });
 };
-
-
-/*
- * Track Google Analytics Goals for certain pages + actions
- */
-var gaGoalTracking = function() {
-  var self = this;
-  self.successful = false;
-  self.retry = 7
-
-  self.track_goal = function(name) {
-    try {
-      ga_track_pageview('/ga-goal/' + name);
-      self.successful = true;
-    } catch(err) {}
-  };
-
-  self.setup = function(name) {
-    $(document).ready(function() {
-      // try first on ready...
-      self.track_goal(name);
-      // if first attempt doesn't work, lets keep trying
-      var interval = window.setInterval(function() {
-        if(!self.successful && self.retry != 0) {
-          self.track_goal(name);
-          self.retry -= 1
-        } else {
-          window.clearInterval(interval);
-        }
-      }, 3000);
-    });
-  };
-};
-
-function ga_track_pageview(page) {
-  try {
-    if(typeof(pageTracker) == "object"){
-      pageTracker._trackPageview(page);
-    }
-  } catch(err) {}
-}
-
-function ga_track_event(category, action, label) {
-  try {
-    if(typeof(pageTracker) == "object"){
-      pageTracker._trackEvent(category, action, label);
-    }
-  } catch(err) {}
-}
 
 /*
 -------------------------------------------------------------------
@@ -2491,6 +2442,7 @@ na.maps = {
 		}
 	},
 	loadScript: function() {
+        alert(document.location.protocol)
 	  var script = document.createElement("script");
 	  script.type = "text/javascript";
 	  script.src = document.location.protocol + '//maps.google.com/maps/api/js?sensor=false&callback=initialize_maps';
@@ -2504,8 +2456,9 @@ function initialize_maps() {
 
 
 $(document).ready(function() {
-	if($('#listingMap,#listingsMap').length > 0) {
-		na.maps.loadScript();
+	if($('#listingMap,#listingsMap').length > 0){
+        alert('going loadScript now');
+        na.maps.loadScript();
 	}
 });
 

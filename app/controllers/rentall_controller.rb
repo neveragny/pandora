@@ -5,6 +5,7 @@ class RentallController < ApplicationController
   def show
     @body_id = "listingDetail"
     @rentall = Rent.find(params[:id])
+    
   end
 
   def new
