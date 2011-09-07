@@ -1078,12 +1078,12 @@ function remote_forms(selector_prefix) {
 		// loader
 		elm.bind('ajaxSend', function(e, request, options) {
 			elm.hide();
-			$('#cboxLoadedContent .ajaxLoader').remove();
+			$('#fancybox-content .ajaxLoader').remove();
 			elm.after(ajax_loader_centered());
 		});
 
 		// submit button
-		submit_button('#cboxLoadedContent .submitButton');
+		submit_button('#fancybox-content .submitButton');
 		rollover_buttons();
 	});
 }
@@ -1100,13 +1100,13 @@ na.Tracking.firePixel = function(url) {
 $(document).ready(function() {
 	remote_forms();
 
-	$('#cboxLoadedContent #closeModal').live('click', function() {
+	$('#fancybox-content #closeModal').live('click', function() {
     $.colorbox.close();
     return false;
   });
 
 }).bind('cbox_complete', function(){
-	remote_forms('#cboxLoadedContent ');
+	remote_forms('#fancybox-content ');
 });
 
 
@@ -1500,11 +1500,11 @@ var FeedbackForm = {
     });
   },
   formEvents: function() {
-    rollover_button('#cboxLoadedContent .btnGreen');
-    submit_button('#cboxLoadedContent .submitButton');
+    rollover_button('#fancybox-content .btnGreen');
+    submit_button('#fancybox-content .submitButton');
 
     if(window.location.href.search('/rental/') > -1) {
-      $('#cboxLoadedContent #apartmentNote').show();
+      $('#fancybox-content #apartmentNote').show();
       $.colorbox.resize();
     }
 
@@ -1512,8 +1512,8 @@ var FeedbackForm = {
     var options = {
       'success': function(response) {
         // success message
-        $("#cboxLoadedContent").html(response);
-        $.colorbox.resize();
+        $("#fancybox-content").html(response);
+        $.fancybox.resize();
       }
     };
     $('#feedbackForm').ajaxForm(options);
@@ -1568,7 +1568,7 @@ var PersonalizedHomepage = {
 
 var ContactAgent = function() {
   var self = this;
-  var ajax_content = '#cboxLoadedContent';
+  var ajax_content = '#fancybox-content';
   var form = '#new_message';
   self.refreshWindow = false;
   var setup_ajax_form = function() {
@@ -2442,7 +2442,7 @@ na.maps = {
 		}
 	},
 	loadScript: function() {
-        alert(document.location.protocol)
+//        alert(document.location.protocol)
 	  var script = document.createElement("script");
 	  script.type = "text/javascript";
 	  script.src = document.location.protocol + '//maps.google.com/maps/api/js?sensor=false&callback=initialize_maps';
@@ -2457,7 +2457,7 @@ function initialize_maps() {
 
 $(document).ready(function() {
 	if($('#listingMap,#listingsMap').length > 0){
-        alert('going loadScript now');
+//        alert('going loadScript now');
         na.maps.loadScript();
 	}
 });

@@ -1,39 +1,32 @@
 <div id="form" class="standard pad">
-  <h1>Contact Us</h1>
-  <p class="noMargin">Also check out our <a href="/about/faq">Help/FAQs.</a></p>
- 
+  <h1>Напишите нам о чем захотите</h1>
+  <p class="noMargin">А также гляньть в <a href="/about/faq">Помошь/FAQ.</a></p>
+
   <p id="apartmentNote" class="note hidden">
     For all questions about specific apartments, please use the "Contact Now" button on the apartment pages.
   </p>
 
-
-  <form action="/about/feedback_confirmation" id="feedbackForm" method="post">
-
-      <div class="padTop15">
+  <%= form_for @feedback, :url => {:action => "feedback_submit"}, :html => {:id => 'feedbackForm', :class => "standard pad" } do |f| %>
+    <div class="padTop15">
     
     <div class="row">
-      <label for="username">Name</label>    
-      <input type="text" id="name" value="" name="feedback[name]" class="idleField"/>
+      <%= f.label "Имя" %>
+      <%= f.text_field :name %>
     </div>
-
     <div class="row">
-      <label for="password">Email Address</label>   
-      <input type="text" id="email" value="" name="feedback[email]" class="idleField"/>
-
+      <%= f.label "E-mail" %>
+      <%= f.text_field :email %>    
     </div>
-    
-    
     <div class="row">
-      <label for="password">Comment</label>   
-      <textarea rows="6" cols="40" name="feedback[comment]" id="comment" ></textarea>
+      <%= f.label "Комментарий" %>
+      <%= f.text_area :comment %>
     </div>
-
     <div class="clear" />
-    <input type="hidden" id="location" value="" name="feedback[location]" />
-    <span class="btnGreen white submitButton"><a href="#">Submit</a></span>
-
+    <span class="btnGreen white submitButton">
+      <a href="#"><%= t(:submit) %></a>
+    </span>
     <div class="clear" />
-    </div>
-  </form>
+
+
+  <% end %>
 </div>
-

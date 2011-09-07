@@ -4,6 +4,7 @@ Licemerov::Application.routes.draw do
   get "about/faq"
 
   get "about/feedback_form"
+  post "about/feedback_submit"
 
   get "about/blog"
 

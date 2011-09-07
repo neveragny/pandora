@@ -3089,7 +3089,7 @@ body#login #feedback, body#choosePlan #feedback {
     display: none
 }
 
-#details #cboxLoadedContent #form {
+#details #fancybox-content #form {
     width: 350px
 }
 
@@ -6499,7 +6499,7 @@ table#purchases td {
     width: 280px
 }
 
-#cboxLoadedContent #marketingModal h2 {
+#fancybox-content #marketingModal h2 {
     font-size: 30px;
     line-height: 33px;
     font-weight: bold;
@@ -6507,13 +6507,14 @@ table#purchases td {
     color: #153737
 }
 
-#cboxLoadedContent #marketingModal h4 {
+#fancybox-content #marketingModal h4 {
+x-content
     font-size: 17px;
     line-height: 23px;
     color: #527a7a
 }
 
-#cboxLoadedContent #marketingModal #cl {
+#fancybox-content #marketingModal #cl {
     width: 250px
 }
 
@@ -10211,7 +10212,7 @@ body#login {
     text-decoration: underline
 }
 
-#cboxLoadedContent #resetPassword H1 {
+#fancybox-content #resetPassword H1 {
     color: #0c5f6f;
     font-size: 20px;
     line-height: 14px;
@@ -10219,28 +10220,28 @@ body#login {
     text-align: left
 }
 
-#cboxLoadedContent #resetPassword {
+#fancybox-content #resetPassword {
     font-size: 13px;
     line-height: 18px
 }
 
-#cboxLoadedContent #resetPassword label {
+#fancybox-content #resetPassword label {
     color: #0c5f6f
 }
 
-#broker_signup #cboxLoadedContent .bg, #renter_signup #cboxLoadedContent .bg {
+#broker_signup #fancybox-content .bg, #renter_signup #fancybox-content .bg {
     background-color: transparent
 }
 
-#broker_signup #cboxLoadedContent h1, #renter_signup #cboxLoadedContent h1 {
+#broker_signup #fancybox-content h1, #renter_signup #fancybox-content h1 {
     text-align: left
 }
 
-#broker_signup #cboxLoadedContent h3, #renter_signup #cboxLoadedContent h3 {
+#broker_signup #fancybox-content h3, #renter_signup #fancybox-content h3 {
     margin: 15px 0 0
 }
 
-#broker_signup #cboxLoadedContent h2, #renter_signup #cboxLoadedContent h2 {
+#broker_signup # h2, #renter_signup #fancybox-content h2 {
     font-style: normal;
     color: #111;
     margin-top: 15px;
@@ -10248,18 +10249,18 @@ body#login {
     font-weight: bold
 }
 
-#broker_signup #cboxLoadedContent p, #renter_signup #cboxLoadedContent p {
+#broker_signup #fancybox-content, #renter_signup #fancybox-content p {
     margin-top: 8px
 }
 
-#broker_signup #cboxLoadedContent ul, #renter_signup #cboxLoadedContent ul {
+#broker_signup #fancybox-content ul, #renter_signup #fancybox-content ul {
     margin: 10px 0 10px 20px;
     font-size: 13px;
     font-weight: bold;
     list-style: none
 }
 
-#broker_signup #cboxLoadedContent ul ul li, #renter_signup #cboxLoadedContent ul ul li {
+#broker_signup #fancybox-content ul ul li, #renter_signup #fancybox-content ul ul li {
     margin-bottom: 5px;
     font-size: 11px;
     font-weight: normal;
@@ -11079,7 +11080,7 @@ ul#attachedListings li {
     }
 }
 
-#cboxLoadedContent .standard {
+#fancybox-content .standard {
     -moz-border-radius-topleft: 4px;
     -moz-border-radius-topright: 4px;
     -webkit-border-top-right-radius: 4px;
@@ -11089,19 +11090,19 @@ ul#attachedListings li {
     background: transparent url(/images/sprites/backgrounds.gif?1313787470) repeat-x 0 0
 }
 
-#cboxLoadedContent .pad {
+#fancybox-content .pad {
     padding: 5px 5px 10px 10px
 }
 
-#cboxLoadedContent .padWide {
+#fancybox-content .padWide {
     padding: 10px
 }
 
-#cboxLoadedContent .med {
+#fancybox-content .med {
     width: 280px
 }
 
-#cboxLoadedContent h1, #cboxLoadedContent .h1 {
+#fancybox-content h1, #fancybox-content .h1 {
     font-size: 19px;
     line-height: 21px;
     margin-bottom: 0;
@@ -11109,20 +11110,20 @@ ul#attachedListings li {
     padding: 0 40px 10px 0
 }
 
-#cboxLoadedContent .h1 {
+#fancybox-content .h1 {
     font-weight: bold
 }
 
-#cboxLoadedContent .modalContent {
+#fancybox-content .modalContent {
     padding: 10px 0 0 0;
     min-width: 450px
 }
 
-#cboxLoadedContent #contactModal.response H1 {
+#fancybox-content #contactModal.response H1 {
     white-space: normal
 }
 
-#cboxLoadedContent h2 {
+#fancybox-content h2 {
     font-size: 15px;
     line-height: 19px;
     padding: 0;
@@ -11130,24 +11131,24 @@ ul#attachedListings li {
     font-weight: normal
 }
 
-#cboxLoadedContent h2.small {
+#fancybox-content h2.small {
     font-size: 14px;
     line-height: 17px
 }
 
-#cboxLoadedContent h2.small a {
+#fancybox-content h2.small a {
     font-weight: bold;
     text-decoration: underline;
     color: #0f303b
 }
 
-#cboxLoadedContent h2.big {
+#fancybox-content h2.big {
     font-size: 19px;
     line-height: 23px;
     font-weight: bold
 }
 
-#cboxLoadedContent H3 {
+#fancybox-content H3 {
     padding-right: 25px;
     line-height: 14px;
     font-weight: bold;
@@ -11155,18 +11156,18 @@ ul#attachedListings li {
     white-space: nowrap
 }
 
-#cboxLoadedContent p {
+#fancybox-content p {
     padding: 0;
     clear: left;
     color: #5a6163;
     margin: 10px 0
 }
 
-#cboxLoadedContent p.noMargin {
+#fancybox-content p.noMargin {
     margin: 0
 }
 
-#cboxLoadedContent p.note {
+#fancybox-content p.note {
     color: #76898e;
     font-size: 10px;
     background-color: transparent;
@@ -11174,38 +11175,38 @@ ul#attachedListings li {
     margin: 0 0 5px 0
 }
 
-#cboxLoadedContent .row, rowTop {
+#fancybox-content .row, rowTop {
     padding-left: 0
 }
 
-#cboxLoadedContent p.small {
+#fancybox-content p.small {
     font-size: 11px;
     line-height: 14px;
     color: #5e93a0
 }
 
-#cboxLoadedContent p.noTopMargin {
+#fancybox-content p.noTopMargin {
     margin-top: 0
 }
 
-#cboxLoadedContent .bordered {
+#fancybox-content .bordered {
     padding: 10px 0;
     margin: 10px 0;
     border-top: 4px solid #bfe8f1;
     border-bottom: 4px solid #bfe8f1
 }
 
-#cboxLoadedContent .borderedTop {
+#fancybox-content .borderedTop {
     padding-top: 10px;
     margin-top: 10px;
     border-top: 4px solid #bfe8f1
 }
 
-#cboxLoadedContent .borderedTop.light {
+#fancybox-content .borderedTop.light {
     border-top: 2px solid #bfe8f1
 }
 
-#cboxLoadedContent .bordered.light {
+#fancybox-content .bordered.light {
     padding: 15px 0;
     border-top: 2px solid #bfe8f1;
     border-bottom: 2px solid #bfe8f1
@@ -11259,53 +11260,53 @@ ul#attachedListings li {
     width: auto
 }
 
-#cboxLoadedContent .pastMessages {
+#fancybox-content .pastMessages {
     float: left;
     margin-top: 10px;
     line-height: 14px
 }
 
-#cboxLoadedContent .pastMessages a {
+#fancybox-content .pastMessages a {
     font-size: 13px;
     display: block;
     font-weight: bold
 }
 
-#cboxLoadedContent .messageContainerAnon {
+#fancybox-content .messageContainerAnon {
     float: left;
     margin-top: 15px;
     width: 220px;
     text-align: center
 }
 
-#cboxLoadedContent .messageContainerAnon a {
+#fancybox-content .messageContainerAnon a {
     font-weight: bold
 }
 
-#cboxLoadedContent .messageContainerAnon .btnGreen {
+#fancybox-content .messageContainerAnon .btnGreen {
     margin-left: 35px
 }
 
-#cboxLoadedContent .btnGreen.white, #cboxLoadedContent .btnGreen.alerts {
+#fancybox-content .btnGreen.white, #fancybox-content .btnGreen.alerts {
     margin-top: 10px
 }
 
-#cboxLoadedContent p.login a {
+#fancybox-content p.login a {
     display: block;
     line-height: 14px;
     font-weight: bold
 }
 
-#cboxLoadedContent .message {
+#fancybox-content .message {
     color: #007186
 }
 
-#cboxLoadedContent .message a {
+#fancybox-content .message a {
     font-weight: bold;
     text-decoration: underline
 }
 
-#cboxLoadedContent textarea, #cboxLoadedContent input[type='text'] {
+#fancybox-content textarea, #fancybox-content input[type='text'] {
     height: 50px;
     font-size: 12px;
     color: #888;
@@ -11318,27 +11319,27 @@ ul#attachedListings li {
     display: block
 }
 
-#cboxLoadedContent label {
+#fancybox-content label {
     text-transform: uppercase;
     color: #444;
     font-size: 11px
 }
 
-#cboxLoadedContent label .calm {
+#fancybox-content label .calm {
     text-transform: none;
     color: #999
 }
 
-#cboxLoadedContent .width-350 textarea, #cboxLoadedContent .width-350 input[type='text'] {
+#fancybox-content .width-350 textarea, #fancybox-content .width-350 input[type='text'] {
     width: 95%
 }
 
-#cboxLoadedContent input[type='text'] {
+#fancybox-content input[type='text'] {
     height: 15px;
     margin-bottom: 5px
 }
 
-#cboxLoadedContent textarea.small {
+#fancybox-content textarea.small {
     overflow: hidden;
     font-size: 11px;
     color: #444;
@@ -11350,12 +11351,12 @@ ul#attachedListings li {
     border-radius: 2px
 }
 
-#cboxLoadedContent .messageContainer {
+#fancybox-content .messageContainer {
     clear: left;
     margin-top: 25px
 }
 
-#cboxLoadedContent .checkbox {
+#fancybox-content .checkbox {
     width: 340px;
     font-size: 11px;
     color: #888;
@@ -11364,20 +11365,20 @@ ul#attachedListings li {
     margin-left: 5px
 }
 
-#cboxLoadedContent .checkbox.short {
+#fancybox-content .checkbox.short {
     width: 200px
 }
 
-#cboxLoadedContent .checkbox strong {
+#fancybox-content .checkbox strong {
     color: #666;
     font-weight: normal
 }
 
-#cboxLoadedContent .popupSmall {
+#fancybox-content .popupSmall {
     width: 300px
 }
 
-#cboxLoadedContent .formActions {
+#fancybox-content .formActions {
     background-color: #f5f5f5;
     -moz-border-radius-bottomleft: 6px;
     -moz-border-radius-bottomright: 6px;
@@ -11388,14 +11389,14 @@ ul#attachedListings li {
     border: 0
 }
 
-#cboxLoadedContent .anon h1 {
+#fancybox-content .anon h1 {
     font-size: 25px;
     line-height: 30px;
     padding: 20px 40px 10px 10px;
     font-family: arial, "lucida grande"
 }
 
-#cboxLoadedContent .anon #middle {
+#fancybox-content .anon #middle {
     border-top: 10px solid #f0fafc;
     margin-top: 15px;
     padding-top: 30px;
@@ -11404,14 +11405,14 @@ ul#attachedListings li {
     color: #888
 }
 
-#cboxLoadedContent .anon #middle strong {
+#fancybox-content .anon #middle strong {
     color: #333;
     display: block;
     font-size: 16px;
     line-height: 21px
 }
 
-#cboxLoadedContent .anon #middle .block {
+#fancybox-content .anon #middle .block {
     width: 130px;
     padding-left: 40px;
     margin-right: 10px
@@ -11429,22 +11430,22 @@ ul#attachedListings li {
     background: transparent url(/images/sprites/icons.gif?1313787470) no-repeat 5px -1197px
 }
 
-#cboxLoadedContent #md_faves .anon #middle {
+#fancybox-content #md_faves .anon #middle {
     background: transparent url(/images/sprites/callouts.gif?1313787470) no-repeat 330px 15px;
     padding: 30px 300px 15px 5px
 }
 
-#cboxLoadedContent #md_saved_searches .anon #middle {
+#fancybox-content #md_saved_searches .anon #middle {
     background: transparent url(/images/sprites/callouts.gif?1313787470) no-repeat 320px -110px;
     padding: 30px 320px 15px 5px
 }
 
-#cboxLoadedContent #md_reviews .anon #middle {
+#fancybox-content #md_reviews .anon #middle {
     background: transparent url(/images/sprites/callouts.gif?1313787470) no-repeat 320px -247px;
     padding: 30px 320px 15px 5px
 }
 
-#cboxLoadedContent .anon .bottom {
+#fancybox-content .anon .bottom {
     border-top: 1px solid #c9dfb6;
     background-color: #f3fdea;
     margin-top: 35px;
@@ -11454,17 +11455,17 @@ ul#attachedListings li {
     color: #64a4b2
 }
 
-#cboxLoadedContent #md_contacts .anon .bottom, #cboxLoadedContent #md_reviews .anon .bottom {
+#fancybox-content #md_contacts .anon .bottom, #fancybox-content #md_reviews .anon .bottom {
     margin-top: 10px
 }
 
-#cboxLoadedContent .anon .bottom a {
+#fancybox-content .anon .bottom a {
     font-size: 13px;
     font-weight: bold;
     color: #12435a
 }
 
-#cboxLoadedContent .anon .bottom .btnGreenLg a {
+#fancybox-content .anon .bottom .btnGreenLg a {
     color: #fff;
     font-size: 17px;
     height: 42px;
@@ -13089,11 +13090,11 @@ a#toggleSearchFilters {
     overflow: hidden
 }
 
-#cboxLoadedContent {
+#fancybox-content {
     overflow: auto
 }
 
-#cboxLoadedContent iframe {
+#fancybox-content iframe {
     display: block;
     width: 100%;
     height: 100%;
@@ -13167,7 +13168,7 @@ a#toggleSearchFilters {
     background: #fff
 }
 
-#cboxLoadedContent {
+#fancybox-content {
     margin-top: 0;
     font-size: 12px;
     font-family: arial;
