@@ -2,10 +2,12 @@
 <html>
 <head>
   <meta name="MSSmartTagsPreventParsing" content="true"/>
+  <meta name="DESCRIPTION" content="Недвижимость, продажа и аренда недвижимости, продажа квартир, аренда квартир, помещений, агентства недвижимости, жилье" >
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-  <title>Пандора - проект "Живая база недвижимости" Киев.</title>
+  <title>Пандора - проект "Живая база недвижимости" Киев. Продажа и аренда недвижимости, продажа квартир, аренда квартир, помещений, агентства недвижимости</title>
+
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
 
   <%= stylesheet_link_tag 'reset.css' %>
@@ -71,32 +73,32 @@
   <div id="overviewModalContainer">
     <div style="width:590px; height:300px" class="standard pad" id="md_home">
       <div class="anon">
-        <h1><a data-tagged-trac="sitewide-modal-overview-top|renter_signup" href="/renter/signup">Sign up</a> for your
-          personal overview page!</h1>
+        <h1><a data-tagged-trac="sitewide-modal-overview-top|renter_signup" href="/renter/signup">Регистрируйтесь</a> , что бы
+          видеть вашу стенку.</h1>
 
         <div class="clearfix" id="middle">
         <span class="block" id="one">
-          <strong>Messages</strong>
-          We'll notify you when brokers &amp; landlords send you messages.
+          <strong>Сообщения</strong>
+          Мы напомним вам, когда брокеры или арендаторы напишут сообщения для вас.
         </span>
 
         <span class="block" id="two">
-        <strong>Favorites</strong>
-        Quick access to apartments you've saved.
+        <strong>Закладки</strong>
+        Быстрый доступ к обьектам которые вы отложили.
         </span>
 
         <span class="block" id="three">
-          <strong>Suggestions</strong>
-          Apartments we think you'll like, based on your profile.
+          <strong>Предложения</strong>
+          Обьекты которые, как нам кажется, могли бы вам подойти.
         </span>
         </div>
 
         <div class="bottom curveBottom clearfix">
           <div class="block">
-            <a data-tagged-trac="sitewide-modal-overview-bottom|renter_signup" class="button  large" href="/renter/signup"><span>Sign Up (it's FREE!)</span></a>
+            <a data-tagged-trac="sitewide-modal-overview-bottom|renter_signup" class="button  large" href="/renter/signup"><span><%= t(:register) %> (она БЕСПЛАТНА!)</span></a>
 
             <div class="clear"></div>
-            <span class="block padTop5">Already have an account? <a href="/login">Log in</a></span>
+            <span class="block padTop5">Уже есть аккаунт? <a href="/login"><%= t(:login) %></a></span>
           </div>
         </div>
 
@@ -112,9 +114,9 @@
           favorite listings!</h1>
 
         <div class="clearfix" id="middle">
-          <strong>Your favorite listings in one place!</strong>
-          Click the heart, save the listing. Simple.
-          Unsave the listing by clicking the heart again. Still simple.
+          <strong>Ваши ваши закладки на одной странице!</strong>
+          Нажили на сердце - добавили взакладки. Все простою
+          Убрать из закладок нажатием на сердце еще раз. Снова просто.
         </div>
 
         <div class="bottom curveBottom clearfix">
@@ -122,7 +124,7 @@
             <a data-tagged-trac="sitewide-modal-faves-bottom|renter_signup" class="button  large" href="/renter/signup"><span>Sign Up (it's FREE!)</span></a>
 
             <div class="clear"></div>
-            <span class="block padTop5">Already have an account? <a href="/login">Log in</a></span>
+            <span class="block padTop5">Уже зарегистрированы? <a href="/login"><%= t(:login) %></a></span>
           </div>
 
         </div>
@@ -184,17 +186,17 @@
   </div>
   <div id="anonymousFavoriteListingModal">
     <div style="width: 400px;" class="standard padWide clearfix" id="anonFaves">
-      <div class="h1">Want to save this listing?</div>
-      <p>Take 30 seconds to sign up and save all the listings you want.</p>
+      <div class="h1">Хотите сохранить этот поиск?</div>
+      <p>30 секунд на регистрацию и сохраните все что захотите.</p>
 
       <div class="bordered light clearfix">
         <div class="block marginTop5">
           <a data-tagged-trac="modal-favorite-listing|renter_signup" class="button  large" href="/renter/signup"><span>Sign Up (it's FREE)</span></a>
         </div>
 
-        <a id="closeModal" class="bold block padTop20" href="#">No, thanks</a>
+        <a id="closeModal" class="bold block padTop20" href="#">Нет, спасибо</a>
       </div>
-      <a class="bold" href="/renter/how-it-works">Learn more</a> about Naked Apartments
+      <a class="bold" href="/renter/how-it-works">Learn more</a> О комильфо.
     </div>
   </div>
 </div>

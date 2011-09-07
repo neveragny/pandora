@@ -1,0 +1,6129 @@
+/*
+* Default CSS
+*/
+
+
+body.inactive {
+	background: #fff url(/images/bg/insidePage.jpg) repeat-x 0px 65px;}
+
+
+/* change to -52px when there's a global ad running */
+body.inactiveShort {
+	background: #fff url(/images/bg/insidePage.jpg) repeat-x 0px 0px;}
+
+/* Begin: Layout
+----------------------------*/
+#wrapper {
+	background:  url(/images/bg/clouds.gif) no-repeat 250px -3px;
+	width: 952px;
+	margin: 0 auto;
+	padding: 0px 0px 10px 0px;
+	position: relative;}
+
+#masthead {
+	position: relative;
+	margin-bottom: 2px;
+	padding-bottom: 3px;
+	padding-top: 10px;
+	height: 120px;
+	z-index: 1;}
+
+#logo {
+		/* background: url("/images/logo_inside.gif") no-repeat scroll 0 0 transparent;
+				text-indent: -4000px;
+						*/
+		display: block;
+		height: 40px;
+		margin-left: 0;
+		width: 285px;
+		margin-left: 0px;}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - -
+    new signed in admin bar
+- - - - - - - - - - - - - - - - - - - - - - - */
+		#adminBar {
+			line-height: 18px;
+			overflow:hidden;
+			position:absolute;
+			right:0;
+			top:0;}
+
+		#adminBar ul{
+			font-size: 13px;
+			padding-bottom: 10px;
+			color: #c9edf4;}
+
+		#adminBar ul li{
+			list-style-type: none;
+			float: left;
+			border-top: 2px solid #72becc;
+			border-left: 1px solid #72becc;
+			padding: 7px 5px 5px 5px}
+
+		#adminBar ul li.first{
+			border-left: 0px;}
+
+		#adminBar a.bold {
+			font-size: 12px;
+			font-weight: bold;}
+
+		#adminBar a.small {
+			font-weight: normal;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			border-radius: 3px;
+			padding:  4px 8px;
+			background-color: #d3eef3}
+
+		#adminBar a.active {
+			text-decoration: underline}
+
+		#adminBar .header{
+			text-transform: uppercase;
+			font-size: 9px;
+			letter-spacing: .5px;
+			line-height: 12px;
+			display: block;
+			font-family: arial;}
+
+		#adminBar .header em{
+			font-style: italic;}
+
+		#adminBar li.last{
+			padding-right: 0px}
+
+		#adminBar ul li a{
+				color: #1e626f;
+				padding: 3px 7px;}
+
+		#adminBar li a.active{
+				text-decoration: none;
+				-moz-border-radius: 3px;
+				-webkit-border-radius: 3px;
+				border-radius: 3px;
+				background-color: #d3eef3 }
+
+		#adminBar #inviteFriends a{
+			font-size: 11px;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			border-radius: 3px;
+			padding:  4px 8px;
+			color: #fff;
+			border: 1px solid #71b9c6;
+			background-color: #8cd2df}
+
+		#adminBar #inviteFriends a.active{
+			background-color: #77bcc9;
+			border-color: #d0f0f6}
+
+		#adminBar ul li.signup{
+			padding-left: 9px;}
+
+		#adminBar ul li a.signup{
+			border: 1px solid #64b023;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			border-radius: 3px;
+			padding:  4px 8px;
+			color: #fff;
+			font-size: 13px;
+			background-color: #7bd131}
+
+			#adminBar ul li a.signup.active{
+				background-color: #64b023;
+				border: 1px solid #fff;}
+
+			#adminBar ul li.fb{
+				margin-top: -1px; padding-top: 1px;}
+
+			#adminBar ul li.fb, #adminBar ul li.like{
+				border-left: 0px;
+				border-right: 0px;}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - -
+    MAIN NAVIGATION
+- - - - - - - - - - - - - - - - - - - - - - - */
+
+#siteNav {
+	margin-top: 42px;
+	float: left;
+	list-style: none;
+	width: 100%}
+
+  #siteNav li {
+  	float: left;
+  	margin-right: 3px;}
+
+  #siteNav li a {
+  	float: left;
+  	background: url(/images/sprites/buttons-general.gif) repeat-x 0 -984px;
+  	font-size: 15px;
+  	font-weight: bold;
+  	border-top: 1px solid #addfea;
+  	border-right: 1px solid #addfea;
+  	border-left: 1px solid #addfea;
+  	-moz-border-radius-topleft: 4px;
+  	-moz-border-radius-topright: 4px;
+  	-webkit-border-top-right-radius: 4px;
+  	-webkit-border-top-left-radius: 4px;
+  	border-radius-topright: 4px;
+  	border-radius-topleft: 4px;
+  	border-bottom: 0px;
+  	color: #0a5e72;
+  	padding: 9px 18px 7px 18px;
+  	text-decoration: none}
+
+  #siteNav li a.active {
+  	background: url(/images/sprites/buttons-general.gif) repeat-x 0px -1026px;}
+
+  #siteNav li.active a {
+  	background: url(/images/sprites/buttons-general.gif) repeat-x 0 -1073px;
+  	color: #fff;
+  	border-top: 1px solid #fff;
+  	border-right: 1px solid #fff;
+  	border-left: 1px solid #fff;}
+
+  #siteNav li#deals a {
+  		text-align: center;
+    	line-height: 12px;
+    	padding-top: 7px;
+    	font-size: 14px;}
+  	#siteNav li#deals{
+          float: right}
+       #siteNav li a .title {
+          display: block;
+          font-size: 10px;
+          color: #8bc0cc;
+          text-transform: uppercase;
+          font-weight: normal;
+          letter-spacing: 1px;}
+
+			/* BS - exclusive site */
+			#siteNav li#oneplace {
+      float: right}
+			#siteNav li#oneplace a {
+      background: url(/images/sprites/buttons-general.gif) repeat-x 0 -1713px;
+      border: 1px solid #fff;
+      border-bottom: 0px;
+      font-size: 13px;
+      margin-top: 10px;
+			padding: 5px 15px 4px 15px;
+      color: #fff;}
+  	#siteNav li#oneplace a.active {
+          background: url(/images/sprites/buttons-general.gif) repeat-x 0 -1760px;
+          color: #fff;}
+  	#siteNav li#oneplace.active a {
+          background: url(/images/sprites/buttons-general.gif) repeat-x 0 -1760px;
+          color: #fff;}
+
+
+	/* BS - offers */
+	#siteNav li#offers {
+		float: right}
+	#siteNav li#offers a {
+		border: 1px solid #fff;
+		border-bottom: 0px;
+		font-size: 13px;
+		margin-top: 10px;
+		padding: 5px 15px 4px 15px;}
+
+
+/* RS - faves */
+	#siteNav li#faves a {
+		background: url(/images/sprites/buttons-new.gif) repeat-x 0 -1812px;}
+	#siteNav li#faves a.active {
+		background: url(/images/sprites/buttons-new.gif) repeat-x -46px -1812px;}
+	#siteNav li#faves.active a {
+		background: url(/images/sprites/buttons-new.gif) repeat-x -93px -1812px;}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - -
+    SIGN UP STYLES
+- - - - - - - - - - - - - - - - - - - - - - - */
+
+body#renter_signup, body#broker_signup{
+    background: transparent url(/images/bg/pagebg_fade.jpg) repeat-x 0 0}
+
+ #broker_signup #masthead, #choosePlan #masthead{
+    height: 25px;
+    border-bottom: 0px;
+    background: none;}
+
+#renter_signup #masthead{
+    height: 25px;
+    margin-bottom:22px;
+    padding-bottom:3px;
+    border-bottom: 0px;
+    background: none;}
+
+#renter_signup #wrapper, #broker_signup #wrapper{
+    background: url(/images/bg/clouds.gif) no-repeat 200px 0px;}
+
+#renter_signup h2 span.small{
+     font-weight: normal;
+     font-style: italic;
+     font-size: 14px;}
+
+#renter_signup .oops{
+    font-size: 12px;
+    font-weight: normal;
+    color: #888;
+    letter-spacing: normal;}
+#renter_signup .oops a{
+    text-decoration: underline;
+    font-weight: bold;}
+    #login .oops {
+        margin: 20px auto 0px ;
+        clear: both;
+        text-shadow: none;
+        padding: 3px 10px;
+        text-align: center;
+        font-size: 12px;}
+        #login .oops a {
+            text-decoration: underline;
+            font-weight: bold;  }
+
+#renter_signup .messageMajor{
+    margin-top: 10px;}
+
+#renter_signup fieldset p{
+    margin-top: 5px;}
+
+.headMessage{
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    position: relative;
+    padding: 5px 0px ;
+    border-bottom: 10px solid #f5f5f5}
+
+    .headMessage h1{
+        font-size: 35px;
+        line-height: 32px;
+        letter-spacing: -1px;}
+
+    .headMessage h1.small{
+	    	border-bottom: 0px;
+        font-size: 25px;
+        color: #444;
+         text-shadow: 0 1px 1px #FFFFFF;
+        line-height: 28px;}
+
+    .headMessage h2{
+        font-size: 18px;
+        font-weight: normal;
+        padding: 0px 0px 5px 0px;
+        letter-spacing: 0px;
+        font-weight: normal;
+        color: #999}
+        #account .headMessage h2{
+            font-size: 15px;}
+
+    .headMessage h3{
+        font-size: 18px;}
+
+    #renter_signup .headMessage{
+        font-size: 13px;
+        line-height: 17px;
+        padding: 10px 0px;}
+
+    #renter_signup .headMessage.actions{
+        text-align: left;
+        padding: 20px;
+        border: 3px solid #ccc}
+
+    #renter_signup .headMessage.actions p{
+        margin-top: 15px;}
+
+    #renter_signup .headMessage.actions p a{
+        font-weight: bold}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - -
+    self-report styles
+- - - - - - - - - - - - - - - - - - - - - - - */
+
+    #selfReport{
+        padding: 20px;}
+
+    #selfReport p{
+        font-size: 13px;
+        line-height: 27px;
+        color: #999;
+        border-top: 1px solid #e5e5e5;
+        width: 300px;}
+
+    #selfReport  input{
+        margin-right: 10px;}
+
+    #selfReport strong{
+        color: #111}
+
+     #selfReport .note{
+        float: right;
+        width: 160px;
+        padding: 10px;}
+
+
+/* - - - - - -  ACTIVITY RATING- - - - - - - - */
+
+    .activityRating, .activityRatingSm, .activityRatingNA, .activityRatingSmNA{
+        color: #fff;
+        font-weight: bold;
+        float: right;
+        font-style: normal}
+
+
+    #renter_profile .activityRating, #renter_profile .activityRatingNA{
+        padding: 5px 0px;
+        margin: 10px 10px 0px 0px;
+        font-size: 18px;
+        -moz-border-radius:5px;
+        -webkit-border-radius: 5px;
+        border-radius:5px;
+        max-width: 40px;
+        width: 40px;   }
+
+    #renter_profile .activityRatingNA{
+        color: #333;   }
+
+    #home .activityRating, #home .activityRatingNA{
+        padding: 8px;
+        font-size: 18px;
+        -moz-border-radius:4px;
+        -webkit-border-radius: 4px;
+        border-radius:4px;   }
+
+    #home .activityRatingNA{
+        color: #333; }
+
+    .activityRatingSm {
+      width: 20px;
+      padding: 1px;
+      font-size: 12px;
+      -moz-border-radius: 4px;
+      -webkit-border-radius: 4px;
+      border-radius:4px;
+      float: none}
+
+    .activityRatingSmNA {
+      padding: 0;
+      font-size: 12px;
+      color: #333;}
+
+ /* - using generic centerSpan to center span in cell- - */
+
+    .centerSpan .activityRatingSm, .centerSpan .activityRatingSmNA {
+        left:-50%;
+        position:relative;}
+
+ .ar10{background-color: #1b4405}
+    .ar9{background-color: #286407}
+    .ar8{background-color: #307a08}
+    .ar7{background-color: #3e980d}
+    .ar6{background-color: #49af11}
+    .ar5{background-color: #5bc422}
+    .ar4{background-color: #6ed138}
+    .ar3{background-color: #8be05c}
+    .ar2{background-color: #abea88; color:#307a08}
+    .ar1{background-color: #d0f8ba; color:#307a08}
+    .arna {background-color: #fff}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - -
+    LOCATION TABS IN RENTER/BROKER SIGN UP
+- - - - - - - - - - - - - - - - - - - - - - - */
+
+
+#boroughNav {
+   margin-top: 5px;
+   margin-left: 172px;
+	list-style: none;}
+
+        #boroughNav li {
+        	float: left;
+        	margin-right: 1px;}
+
+        #boroughNav li a {
+        	float: left;
+					margin-bottom: 1px;
+        	font-size: 13px;
+        	background-color: #fff;
+        	border: 1px solid #e5e5e5;
+        	font-weight: bold;
+        	color: #333;
+        	text-decoration: none;
+          padding: 3px 9px;	}
+
+        #boroughNav li.active a {
+          background-color: #f5f5f5;
+          margin-bottom: 0px;
+        	color: #000;
+        	border: 1px solid #e5e5e5;}
+
+       /*
+        #manhattan .checkboxCont, #brooklyn .checkboxCont, #queens .checkboxCont, #bronx .checkboxCont, #staten .checkboxCont   {
+            width: 140px;
+            margin-right: 12px;
+            margin-bottom: 5px;}
+
+            */
+
+        .boroughs{
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+            background-color: #f5f5f5;
+            padding: 10px;}
+
+                .rowLine .boroughs label{
+                    display: inline;
+                    float: none;
+                    width: auto;
+                    font-size: 12px;}
+
+                .rowLine .boroughs .checkboxCont input{
+                    float: none;
+        	       margin: -2px 2px 0 0;}
+
+        .boroughs #filters{
+            padding: 4px 10px;
+            margin: 0px -4px 5px -9px;
+            border-top: 0px}
+
+        .boroughs .checkboxCont{
+            width: 150px;
+            margin-right: 12px;
+            margin-bottom: 5px;}
+
+        .boroughs .whiteBtn{
+            background: url(/images/buttons/white_left_ongrey.gif) no-repeat left top;}
+
+        .boroughs .whiteBtn a{
+            background: url(/images/buttons/white_right_ongrey.gif) no-repeat scroll right top;}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - -
+	LEFT AND RIGHT COLUMN STYLES
+ - - - - - - - - - - - - - - - - - - - - - - - */
+
+#leftCol {
+	float: left;
+	margin-top: 10px;
+	margin-right:20px;
+	_margin-right:17px;}
+
+#rightCol {
+	margin-top: 10px;
+	float:right;}
+
+#review #leftCol, #review #rightCol, #home #leftCol {
+	padding-top: 0px;
+	overflow:hidden;}
+
+
+#home #leftCol	{
+    width: 520px;
+    margin-top: 20px;
+    border-top:0px;
+    padding-top: 0px;}
+
+#home #rightCol	{
+    width: 410px;
+    margin-top: 20px;
+    border-top: 0;
+    padding-top: 0px;}
+
+#broker_profile #leftCol, #landlord_profile #leftCol , #review #leftCol  	{
+    width: 547px;}
+
+#broker_profile #rightCol, #landlord_profile #rightCol , #review #rightCol {
+    width: 385px;}
+
+
+/* new  signup styles sept 2010 */
+
+    #renter_signup #leftCol, #broker_signup #leftCol{
+        width: 600px;
+        margin-top: 0px;}
+
+    #renter_signup #rightCol, #broker_signup #rightCol  {
+        width: 280px;}
+
+
+/* - - - - - - - RS ACCOUNT  - - - - - - - - */
+
+        #renter_profile #leftCol   {
+        	margin-right: 0px;
+        	margin-top: 0px;
+        	width: 630px;
+        	background-color: #f5f5f5;}
+
+        #renter_profile #rightCol   {
+            float:right;
+        	width: 270px;
+        	margin-top: 0px;}
+
+        #renter_profile fieldset.main    {
+            padding: 5px 15px 15px 15px;
+            border:1px solid #CCCCCC;}
+
+        #renter_profile fieldset.main h2 {
+            padding:5px 10px;
+            margin: -3px -13px 10px -13px;
+            background-color: #eafafd;
+            text-shadow: 0px 1px 2px #fff}
+
+
+        #renter_profile .status .note{
+            background-color: #137299;
+            color: #e5f5fc;
+            padding: 6px 10px;}
+
+
+/* - - - - - - - deactivate/delete - - - - - - - - */
+
+			#deactivateAccount  a.big{
+				font-size: 12px;
+				font-weight: normal}
+
+			#deactivateAccount  strong{
+				display: inline;}
+
+			#renter_profile #deactivateAccount .block {
+				padding: 10px;
+				border-bottom: 1px solid #d7eac6;
+				border-top: 1px solid #fff;}
+
+			#deactivateAccount .block p{
+				padding: 0px}
+
+			#renter_profile #deactivateAccount .block:first-child {
+				border-top: 1px solid #d7eac6;}
+
+			#renter_profile #deactivateAccount .block:last-child {
+				border-bottom: 0px}
+
+			#renter_profile #deactivateAccount .blueBtn a, #renter_profile #deactivateAccount .deleteBtn a   {
+				min-width: 120px;
+				width: 120px;
+				text-align: center;
+				font-weight: bold;}
+
+			#renter_profile #reactivate {
+			font-size: 12px;}
+
+
+/* style changes when renter profile is displayed within the offer detail frame */
+
+
+  #renter_profile #public #leftCol    {
+      width: 560px;}
+
+  #renter_profile #public #rightCol    {
+      width: 300px;}
+
+  #renter_profile #public #leftCol   {
+      background-color: #fff;
+      padding: 20px;
+      border:1px solid #EAEAEA;}
+
+  #renter_profile #public  #leftCol fieldset   {
+     padding-left: 0px;
+     border-bottom: 5px solid #f4f4f4}
+
+
+#credit #rightCol{width: 352px;margin-top:0px;}
+
+#payment #rightCol 	{width: 300px;margin-top: 0px;}
+
+
+/* - - - - - - - BS account - - - - - - - - */
+
+			#account #leftCol {
+				margin-right: 0px;
+				margin-top: 0px;
+				width: 630px;
+				background-color: #f5f5f5;	}
+
+			#account #rightCol {
+				float:right;
+				width: 270px;
+				margin-top: 0px;}
+
+			#account fieldset.main    {
+				padding: 5px 15px 15px 15px;
+				border:1px solid #CCCCCC;}
+
+			#account fieldset.main h2 {
+				padding:5px 10px;
+				margin: -3px -13px 10px -13px;
+				background-color: #eafafd;
+				text-shadow: 0px 1px 2px #fff}
+
+			#accountContainer .whiteBtn {
+				float: right}
+
+			#reviewPublish #rightCol{
+				width:350px;
+				margin-top: 20px;}
+
+
+/* - - - - - - - BS offers - - - - - - - - */
+
+			#offers #leftCol {
+				margin-right: 0px;
+				margin-top: 0px;
+				width: 732px;}
+
+			#offers #rightCol {
+				float:right;
+				width: 190px;
+				margin-top: 0px;}
+
+			#offers #leftCol p {
+				margin-top: 15px;
+				font-size: 12px;
+				line-height: 18px;
+				color: #888}
+
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - -
+	broker-side listing pages, meaning:
+	   - create
+	   - edit
+	   -preview
+ - - - - - - - - - - - - - - - - - - - - - - - */
+
+		#listingEdit .head{
+			padding: 10px 0px 20px 0px;
+			margin-bottom:10px;
+			border-bottom: 15px solid #F5F5F5;}
+
+		#listingEdit .head h1{
+			 font-size: 24px;
+			 font-family: arial}
+
+		#listingEdit #rightCol    {
+			margin-left:350px;
+			padding: 0;
+			margin-top: 0px;
+			margin-bottom: 10px;
+			float: none;}
+
+		#listingEdit #leftCol     {
+			margin-top: 0px;}
+
+		#listingEdit  h2    {
+			padding-bottom: 10px;
+			color: #333;}
+
+		#listingEdit .message    {
+			display: inline;
+			text-transform: none}
+
+		#listingEdit .checkboxCont.wide, #listingEdit .checkboxCont.wide {
+			width: 80px; }
+
+		#listingEdit .checkboxCont input {
+			vertical-align: middle;
+			margin: 0px 5px 0 0;}
+
+		#listingPreview .formActions, #listingEdit .formActions{
+			margin-bottom: 10px;
+			padding: 20px;
+			border: 0px;
+			background-color: #f5f5f5;}
+		.formActions.bottom{
+			margin-top: 10px;}
+
+		#listingEdit #buttons, #listingPreview #buttons{
+			float: left;
+			padding-left:330px;}
+
+		#buttons a.button{
+			margin-right: 10px;}
+
+		#listingEdit a.back, #listingPreview a.back{
+			font-size: 14px;
+			font-weight: normal;}
+
+		#listingEdit .cancel, #listingPreview .cancel {
+			padding: 15px 0px 0px 10px;}
+
+		#listingPreview #rightCol    {
+			margin-left:342px;
+			padding: 0;
+			margin-top:0px;
+			float: none;}
+
+		#listingPreview #leftCol     {
+			margin-top: 0px;}
+
+
+/* - - - - - - STATIC PAGES - - - - - - - - - - */
+
+	#static #main {
+		width: 720px;
+		float: left }
+
+	#static #main.narrow {
+		width: 500px;
+		margin-right: 30px;
+		float: left }
+
+	#static #localNav {
+		width: 190px;
+		float: left;
+		margin:10px 40px 0px 0px }
+
+	#static #rightCol {
+		width: 180px;
+		float: left;}
+
+	#static h1.new{
+		padding-left: 230px;}
+
+	#static h4 {
+		margin-top: 20px;
+		font-style: italic;
+		color:#147898; }
+
+	#static  p {
+		margin-top: 10px;
+		font-size: 11.5px;
+		line-height: 18px;
+		color: #777}
+
+	#static .answer {
+	padding: 5px 10px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	background-color: #f6f6f6}
+
+	#static .answer p {
+	margin-top: 10px;
+	font-size: 11px;
+	line-height: 16px;
+	color: #555}
+
+	#static .answer p.first {
+	margin-top: 0px;}
+
+	#static .answer p strong {
+	color: #222}
+
+	#static .answer p a {
+	font-size: 11px}
+
+	#static #art           {
+		position: absolute;
+		bottom: 90px;
+		right: 0px}
+
+	#static .bio {
+		margin-bottom: 10px;
+		padding: 15px 0px 25px 0px;
+		border-bottom: 5px solid #f2f2f2;}
+
+	#static .bio img{
+	    margin: 0px 25px 30px 0px;
+	    padding: 1px;
+	    border: 5px solid #e5e5e5;}
+
+	#static blockquote     {
+	    padding: 5px 20px;}
+
+/* - - - - - - - static nav  - - - - - - - - - - */
+
+	ul#staticNav       {
+		float: left;
+		display: block;
+		list-style-type: none;}
+
+	ul#staticNav li{
+    padding: 10px;
+    border-bottom: 1px solid #f5f5f5;
+    font-size: 13px;}
+
+   ul#staticNav li a{
+    color: #888}
+
+	ul#staticNav li.active {
+			color: #222;
+	    background: #f5f5f5 url();}
+
+
+/* - - - - - - - privacy ul   - - - - - - - - - - */
+
+	ul.privacy li     {
+		list-style-type: none;}
+
+	ul.privacy li{
+		font-weight: bold;
+		padding-top: 20px;
+		font-size: 13px;}
+
+		#static #main  ul ul li{
+	    margin-bottom: 5px;
+	    font-size: 11px;
+	    padding-top: 5px;
+	    font-weight: normal;
+	   list-style-type: none}
+
+
+/* - - - - - - - local links for FAQ  - - - - - - - - - - */
+
+	#static #leftCol ul#localLinks{
+		margin: 0px;
+		margin-bottom: 20px;}
+
+	ul#localLinks li{
+		float: left;
+			list-style-type: none;
+		margin-right: 10px;
+		text-transform: uppercase;
+		font-weight: bold;
+		padding: 3px 5px;
+		border: 1px solid #eaeaea}
+
+	#static .floatRight{
+		padding-top: 15px}
+
+	#static h3{
+	    margin-top: 15px;
+	    font-weight: bold;
+	    border-top: 1px solid #f5f5f5;
+	    padding-top: 5px;
+	    font-size: 12px;
+	    margin-bottom: 5px;}
+
+	#static #rightCol h3{
+	    margin-bottom: 0px;}
+
+	#static h2{
+	    margin-top: 25px;
+	    margin-left: 0px;
+	    padding-left: 0px;
+	    margin-bottom: 2px;}
+
+	 #static .sideMod h2{
+	    margin-top: 0px;
+	    padding: 5px 10px}
+
+	 #static .sideMod.border h2{
+	    padding-left: 5px}
+
+		#static h2.big{
+			color: #777;
+			text-transform: uppercase;
+	    font-size: 16px;}
+
+	#static .bio h2{
+			font-size: 17px;
+			display: inline;
+	    background-color: transparent;
+	    margin-bottom: 2px;
+	    margin-top: 0px;}
+
+	#static .bio h3{
+	    padding-top: 0px;
+	    font-size: 17px;
+	    display: inline;
+	    font-weight: normal;
+	    border-top: 0px;
+	    color: #999;}
+
+	#static .question {
+		display: block;
+		color: #333;
+		margin-bottom: 5px;}
+
+	#static .question a {
+	    font-size: 12px;
+	    font-weight: normal}
+
+	#static .answer a {
+	    font-weight: bold}
+
+	#static .bg  {
+	    margin-top: 20px;
+	    display: block;
+	    font-size: 12px;
+	    padding: 5px 10px;}
+
+	#static h2.bg  {
+	    font-size: 15px;}
+
+	#static #leftCol ul {
+	    margin: 10px;
+	    font-size: 13px;
+	    font-weight: bold;
+	    list-style: none;}
+
+	.answer{
+	    margin-bottom: 10px;}
+
+	#home .answer{
+	    margin-bottom: 0px;
+	    color: #777;
+	    padding-top: 5px;}
+
+
+ /* testimonials */
+
+	.testimonial{
+		float: right;
+		font-family: Georgia, arial;
+		background-color: #eff8fa;
+		padding:  10px 20px;
+		font-size: 15px;
+		line-height: 20px;
+		color: #65A1AF;}
+
+	.testimonial.small{
+		float: right;
+		font-family: Georgia, arial;
+		background-color: #eff8fa;
+		padding:  15x 10px;
+		font-size: 13px;
+		line-height: 18px;
+		color: #65A1AF;
+		margin-left: 0px;}
+
+	.attribution .calm{
+		font-size: 12px;
+		line-height: 11px;
+		display: block;
+		color: #93c1cc;}
+
+	.testimonial p{
+		margin-top: 10px;}
+
+	.testimonial.first, .testimonialNew.first{
+		margin-top: 70px;}
+
+	.testimonial.dark{
+		background-color: #97c2cb;
+		color: #fff}
+
+	.testimonialNew{
+		font-family: arial;
+		font-size: 15px;
+		line-height: 22px;}
+
+	.testimonialNew .quote{
+		-moz-border-radius: 6px;
+		-webkit-border-radius: 6px;
+		border-radius: 6px;
+		background-color: #eff8fa;
+		padding:  15px;
+		color: #4e909f;
+		text-shadow: -1px 0px 1px #fff;}
+
+	.testimonialNew .quote .calm{
+		display: block;
+		font-size: 10px;
+		color: #8abeca;}
+
+	.testimonialNew .attribution{
+		padding: 10px 0px 0px 130px;
+		display: block;
+		color: #65A1AF;
+		margin-top: -2px;
+		background: transparent url(/images/sprites/icons.gif) no-repeat 90px -2096px}
+
+	.testimonialNew .attribution .role{
+		color: #93c1cc;
+		clear: left;
+		line-height: 12px;
+		font-size: 12px;}
+
+	.testimonialNew.small{
+		font-family: arial;
+		font-size: 12px;
+		line-height: 17px;}
+
+	.testimonialNew.small .attribution{
+		padding: 10px 0px 0px 60px;
+		background: transparent url(/images/sprites/icons.gif) no-repeat 20px -2096px}
+
+	.testimonialNew .attribution .role{
+		color: #93c1cc;
+		display: block;
+		font-size: 12px;}
+
+	.tweet{
+		border-top: 1px solid #f5f5f5;
+		margin-left: 10px;
+		background: transparent url(/images/sprites/social.gif) no-repeat  25px -810px;
+		padding: 10px 10px 5px 80px;
+		font-size: 11px;
+		line-height: 15px;
+		color: #f68b0e;
+		text-transform: uppercase}
+
+	.tweet.active{
+		background: transparent url(/images/sprites/social.gif) no-repeat -841px;}
+
+	.tweet a{
+		color: #da460c}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - -
+	SALES and DUMMY ACCOUNT PAGES
+ - - - - - - - - - - - - - - - - - - - - - - - */
+
+#feed_login #masthead{
+        border-bottom: none;
+        height: 60px;
+        margin-bottom: 10px;
+        background: url(/images/bg/clouds.gif) no-repeat 325px 0px;}
+
+    #sales #leftCol{
+        width: 575px;
+        margin-top: 20px;}
+
+    #sales .head{
+        background-color: #f7f7f7;
+        padding: 8px 20px;
+        font-size: 21px;
+        font-weight: bold;
+        color: #444;
+        margin-bottom: 15px;}
+
+    #feed_login #sales #leftCol .head{
+        margin-bottom: 0px;}
+
+    #sales #leftCol .box{
+        text-align: left;
+        border: 1px solid #e6e6e6;
+        padding: 10px;
+        margin-bottom: 10px;
+        min-height: 100px;
+        height: 100px;}
+
+    #feed_login #sales #leftCol .box{
+        text-align: left;
+        background: url(/images/dividers/h_ltgrey.gif) repeat-x 0 100%;
+        border: 0px;
+        padding: 20px;
+        margin-bottom: 0px;
+        height: auto;
+        min-height: 30px;}
+
+ #sales #leftCol .box .block{
+        max-width: 200px;
+        font-size: 12px;}
+
+    #feed_login #sales #leftCol .box .block{
+        max-width: 450px;
+        font-size: 12px;}
+
+    #sales #leftCol .box img{
+        padding: 0;}
+
+    #sales #leftCol .box .title, #feed_login #sales #rightCol .title{
+        color:#045565;
+        font-weight: bold;
+        font-size: 16px;
+        display: inline;
+        text-transform: none;}
+
+    #sales #rightCol{
+        margin-top: 20px;
+        width: 346px;}
+
+    #sales #rightCol .box{
+        text-align: left;
+        border: 1px solid #e6e6e6;
+        padding: 10px 15px;
+        margin-bottom: 5px;}
+
+    #sales #rightCol .title{
+        font-size: 19px;
+        color: #333;
+        text-transform: none;
+        margin-bottom: 10px;}
+
+    #sales #rightCol .row .title{
+        font-size: 13px;
+        color: #444;
+        font-weight: bold;
+        text-transform: none;
+        margin-bottom: 0px;}
+
+    #sales #rightCol .row{
+        background:url(/images/dividers/dotted.gif) repeat-x scroll 100% 0;
+        padding: 20px 0px;}
+
+     #sales #links{
+        border-top: 5px solid #f6f6f6;
+        border-bottom: 5px solid #f6f6f6;
+        padding: 16px 0px 5px 130px;
+        font-size: 25px;
+        text-align: center;
+        color:#808080;
+        margin: 30px 0px;}
+
+    #sales #links a{
+        text-transform: uppercase;
+        color:#fb6900;
+        font-weight: bold;
+        padding: 1px 4px;}
+
+    #sales #links a.link:hover{
+        background-color: #fb6900;
+        color: #fff;
+        text-decoration: none}
+
+ /* - - - - - - - - - - - - - - - - - - - - - - -
+	   feed-specific styles
+    - - - - - - - - - - - - - - - - - - - - - - - */
+
+			#sales .logo {
+				padding: 8px 10px 0px 0px;}
+
+			#feed_login #sales #rightCol .block {
+				padding-left: 20px;}
+
+			#feed_login #sales h2 {
+				color:#37adc7;
+				font-size: 23px;
+				line-height: 26px;
+				font-weight: normal}
+
+			#feed_login #sales #rightCol, #feed_login #sales #leftCol   {
+				margin: 0px;}
+
+			#feed_login #sales #rightCol .blockText {
+				float: left;
+				width: 260px;
+				font-size: 12px;}
+
+			#feed_login #sales #rightCol .clear {
+				padding: 13px 0px}
+
+			#feed_login #sales p.line {
+				background:url(/images/dividers/dotted.gif) repeat-x scroll 100% 0;
+				margin: 20px 0px 0px 0px;
+				padding:0px;}
+
+			#feed_login #login {
+				background-color:#d0edf3;
+				font-size: 13px;
+				padding: 10px 20px;
+				margin-top: 30px;}
+
+			#feed_login #login .title {
+				font-size: 18px;
+				font-weight: bold;
+				color:#3e93a3;
+				text-transform: lowercase;}
+
+			#feed_login #login .title strong{
+				color:#045565;}
+
+			#feed_login #login input{
+				background:#fff;
+				color: #6F6F6F;
+				border: solid 1px #76a7b1;
+				padding: 5px;
+				font-size: 13px;}
+
+			#feed_login #login .block{
+				padding: 25px 30px 20px 0px;}
+
+			#feed_login #btn_signin{
+				background: url(/images/buttons/signin_feed.gif) no-repeat 0 0;
+				height: 51px;
+				float: left;
+				margin-top: 24px;}
+
+			#feed_login #btn_signin:hover{
+				background: url(/images/buttons/signin_feed.gif) no-repeat 0 -51px;}
+
+
+
+     /* - - - - - - - - in-page FAQ (choose plan, etc..)- -  - - - - - - */
+
+       #faq{
+            margin-top: 30px;
+            padding-top: 10px;
+            font-size: 12px;
+            line-height: 18px;
+            color: #777}
+
+        #faq .column{
+            float: left;
+            width: 440px;
+            margin-right: 72px;}
+            #faq .column.last{
+                margin-right: 0px;}
+
+        #broker_signup #faq .column{
+            width: 415px;}
+
+        #faq .block{
+            padding-top: 10px;
+            border-top: 2px solid #f5f5f5;
+            margin-top: 5px;}
+
+        #faq p{
+            margin:5px 0px 10px;}
+
+        #faq h3{
+            font-size: 14px;
+            text-transform: none;
+            letter-spacing: 0px;
+            color: #333;
+            display: block;}
+
+        #faq #help{
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            color: #555}
+
+				#faq a{
+            font-weight: bold}
+
+        #faq a.yellow{
+            color: #333;
+            padding: 2px 4px;
+            background-color: #fdfbda}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - -
+	INBOX SUBNAV FOR RENTER AND BROKER
+- - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+#subnav {
+	margin-bottom: 10px;
+	padding: 0px 5px 0px 15px;
+	/* NA - Needed to add height/width for IE6 issues, also added overflow:hidden so tabs line up to the bottom. */
+	width:932px;
+	height:93px;
+	clear: both;
+	background-color: #1d4c61;
+	position:relative;
+    z-index:100;}
+
+#subnav h2{
+	color:#5E95AC;
+	text-transform: uppercase;
+	font-size:13px;
+	background-color: transparent;
+	padding-top: 15px}
+
+#subnav ul {
+	position:absolute;
+	top:64px;}
+
+#subnav li {
+	list-style-type: none;
+	background-color: #103545;
+	margin-right: 3px;
+	padding: 5px 15px 3px;
+	float: left;
+	font-size: 14px;
+	color: #fff;
+	display: block;
+   -moz-border-radius-topleft: 3px;
+	-moz-border-radius-topright: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-webkit-border-top-left-radius: 3px;
+	border-radius-topright: 3px;
+	border-radius-topleft: 3px; }
+
+#subnav li.active{
+	background-color: #07212c;}
+
+#subnav li a.active{
+	text-decoration: none;
+	color: #6b9fb6;}
+
+#subnav li a{
+	color:#5e95ac;}
+
+#subnav li.current{
+	background-color: #fff;
+	font-weight: bold;
+	color: #111;}
+
+#subnav a.back{
+		line-height: 34px;
+    color: #72a2c1;}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - -
+	 MODULE SUBNAV
+	 - used on RS suggested/favorites
+- - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+.modsub {
+	margin-bottom: 5px;
+	padding: 5px 5px 0px 15px;
+	/* NA - Needed to add height/width for IE6 issues, also added overflow:hidden so tabs line up to the bottom. */
+	height:33px;
+	clear: both;
+	background-color: #f6f6f6;
+	position:relative;
+    z-index:100;
+    border-bottom:1px solid #E5E5E5;
+    -moz-border-radius-topright:6px;
+    -moz-border-radius-topleft:6px;
+    -webkit-border-top-right-radius: 6px;
+    -webkit-border-top-left-radius: 6px;
+    border-radius-topleft:6px;
+    border-radius-topright:6px;    }
+
+
+.modsub ul {
+	position:absolute;
+	top:6px;}
+
+.modsub li {
+	list-style-type: none;
+	background-color: #e5e5e5;
+	margin-right: 3px;
+	padding: 6px 15px 3px;
+	float: left;
+	font-size: 15px;
+    font-weight: bold;
+	display: block;}
+
+.modsub li a{
+    color: #999;  }
+
+.modsub li a:hover{
+    text-decoration: none }
+
+.modsub li.active a{
+    color: #111;  }
+
+.modsub li a:hover{
+    text-decoration: none }
+
+.modsub li:hover{
+	background-color: #ededed;}
+
+.modsub li.active, .modsub li.active:hover {
+	background-color: #fff;
+	color: #111;
+	border: 1px solid #e5e5e5;
+	border-bottom: 1px solid #fff;
+	padding: 5px 15px 3px 15px;
+	z-index: 200}
+
+
+/* - - - - - - - - - - - - - - - - - - - -
+	MARKETING PAGES FOR ANON USERS
+ - - - - - - - - - - - - - - - - - - - - */
+
+#anon p{
+	margin-top: 15px;
+	padding-top: 10px;
+	border-top: 1px solid #999;}
+
+table.noBottom{
+    margin-bottom: 0px;}
+
+
+/* - - - - - - - - - - - - - - - - - - - -
+	PERSONAL HOME PAGES
+ - - - - - - - - - - - - - - - - - - - - */
+
+.viewAll{
+    float: right;
+    font-size: 11px;
+    padding: 2px 5px;}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - -
+	status module
+ - - - - - - - - - - - - - - - - - - - - - - - */
+
+    #home .status{
+        background-color: #fff;
+        padding: 10px ;
+        font-size: 11px;
+        font-weight: normal;
+        line-height: 15px;
+        color: #555;
+        margin-bottom: 20px;
+        border:1px solid #F2F2F2;
+        padding: 8px 10px 8px 8px;}
+
+    #home .status h2{
+        font-weight: 500;
+        color:#555;
+        font-size: 11px;
+        text-transform: uppercase;
+        display: inline;}
+
+    #home .status h1{
+        font-weight: bold;
+        font-size: 14px;
+        color: #111;
+        display: inline;}
+
+    #home .status a.link{
+        font-size: 12px;
+        text-decoration: underline;
+        float:right;
+        font-weight: bold}
+
+/* - - - - - BS LISTINGS INDEX   - - - - - - - -*/
+
+		#bs-listings{
+			margin-top: 20px;}
+
+		#bs-listings #head{
+			padding: 0px 0px 10px 0px}
+
+		#bs-listings input{
+			height: 18px;
+			width: 18px;}
+
+		#bs-listings td.title{
+			text-transform: none;
+			width: 170px;}
+
+
+/* - - - - - active/inactive	- - - - - - - -*/
+
+		#bs-listings tr.inactiveListing td, #bs-listings tr.inactiveListing td a{
+			color: #e1e1e1}
+
+		#bs-listings tr.inactiveListing td#share{
+			background: url(/images/sprites/buttons-new.gif) no-repeat 90px -1625px}
+
+		#bs-listings tr.inactiveListing td.thumbnail img{
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+			filter: alpha(opacity=30);
+			opacity: 0.30;}
+
+
+
+/* - - - - - featured listings- - - - - - - -*/
+
+		/*  on listing form */
+		#listingEdit .featureListing    {
+			background: #F3FDEA url(/images/sprites/icons.gif) no-repeat 10px -92px;
+			font-size: 12px;
+			margin: 0px 0px 10px 0px;
+			padding: 5px 5px 5px 45px;}
+
+		#listingEdit .featureListing.basic    {
+			background: #F3FDEA url(/images/sprites/icons.gif) no-repeat 10px -90px;}
+
+		#listingEdit .featureListing h3   {
+			font-size: 16px;
+			font-weight: bold;
+			display: inline}
+
+		#listingEdit fieldset.featureListing h3   {
+			font-size: 14px;}
+
+		#listingEdit fieldset.featureListing .count   {
+			font-size: 12px;
+			color: #7ead53;
+			padding-left: 20px;}
+
+		#bs-listings tr.featured td{
+			border-bottom:  3px solid #fff;
+			background-color: #F7FDED}
+
+		#bs-listings tr.active, #bs-listings tr.active td.flag{
+			background-color: #fafafa}
+
+		#bs-listings tr.featured a.flatButton  {
+			background-color: #edf7dc;
+			color: #869366;}
+
+		#bs-listings tr.featured a.flatButton.active {
+			background-color: #dcf1b8;}
+
+		#bs-listings tr.featured td.flag{
+			background: #F7FDED url(/images/sprites/icons.gif) no-repeat 10px -117px;
+			background-color: #F7FDED;}
+
+		.featuredNote .text{
+			text-shadow: 0px 1px 1px #fff;
+			text-transform: uppercase;
+			color: #999}
+
+		a.upgrade{
+			font-weight: bold;
+			color: #FCA44F;}
+
+	/* - - - - - checkboxes in head
+				- feature
+				- make active             */
+
+			#listingEdit .head .block    {
+				float:right;
+				padding:10px 15px;
+				margin-left: 15px;
+				background-color: #fafafa;
+				border: 1px solid #f4f4f4;}
+
+			#listingEdit .head .block  h3 {
+				font-size: 14px;}
+
+			#listingEdit .head .block  h4 {
+				padding-left: 20px;
+				font-size: 11px;
+				color: #777;}
+
+			#listingEdit ..head block input    {
+				height: 16px;
+				width:16px;}
+
+			#listingEdit .head .block.feature{
+	    	background-color: #F3FDEA;
+	    	border: 0px; }
+
+
+	    #listingEdit .head .block.feature h4{
+	    	color: #777;}
+
+
+
+		/* - - - - - deprecated?		- - - - - - - -*/
+
+			.success .featuredNote{
+				width: 240px;
+				float: right;
+				text-transform: uppercase;
+				font-size: 11px;
+				line-height: 15px;
+				color: #6BA936;}
+
+			.success .featuredNumber{
+				background-color: #6ba936;
+				-moz-border-radius: 4px;
+				-webkit-border-radius: 4px;
+				border-radius: 4px;
+				padding: 8px 12px;
+				margin-right: 10px;
+				font-size: 17px;}
+
+			.success a.upgrade{
+				text-decoration: underline;
+				color: #2a5507;
+				font-weight: bold}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - -
+ 	RIGHT and LEFT COLUMN MODULE/TABLE
+ - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+.contentMod{
+    margin: 0px 0px 20px 0px;}
+
+
+ #review .contentMod{
+    margin: 0px 0px 20px 0px;}
+
+  .contentMod h2{
+    padding: 10px 4px 5px 10px;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #f6f6f6;
+    text-shadow: 0px 1px #fff;}
+
+ .contentMod .date{
+ 	white-space: nowrap;
+ 	padding-right: 10px;}
+
+.contentMod table{
+    margin: 0px;}
+
+ .contentMod .offersMadePopup table{
+    margin-top: 5px;}
+
+.contentMod .unit, .contentMod  td{
+    border-bottom: 3px solid #f2f2f2;
+		padding: 10px 3px 10px 10px;}
+
+ .contentMod  td.actions{
+		padding: 10px;
+		width: 50px;}
+
+.contentMod  td.border{
+
+	padding: 10px 3px 6px 5px;}
+
+ .contentMod td.last{
+    background:none ;}
+
+ .unit img{
+    padding: 0px 10px 0px 0px;}
+
+ .activity img{
+    padding-right: 5px;}
+
+.contentMod .message{
+    display: inline;
+    font-size: 11px;
+    font-style: normal}
+
+
+/* - - - - - - MESSAGES MOD  - - - - - - - - - - - - */
+
+		#home div#messages .date {
+			text-align: right;
+			color: #666;
+			font-size: 11px}
+
+		.ad{
+			padding: 10px 5px 10px 10px;
+			margin-bottom: 5px;}
+
+		.ad h3{
+			font-size: 17px;
+			font-weight: bold;
+			display: block;}
+
+		.ad ul li strong{
+			font-size: 11px;
+			display: inline}
+
+		.ad .plug{
+			float: left}
+
+		.ad p{
+			float: left;
+			width: 300px;
+			line-height: 14px;}
+
+
+/* - - - - - - SUGGESTED RENTERS/LISTINGS  - - - - - - */
+
+     .contentMod .modBody th {
+        text-align: left;
+       padding: 10px 5px 6px 3px;
+        font-size: 10px;
+        border-bottom: 1px solid #eaeaea;
+        text-transform: uppercase;
+        color:#666;
+        font-weight: normal;
+        white-space: nowrap;}
+
+     .contentMod .modBody td {
+        text-align: left;
+        padding: 5px 3px 4px 3px;}
+
+    #suggestedListings .unit{
+        clear:left;}
+
+     .contentMod  table#suggestedListings td{
+        padding: 10px 3px 6px 5px;}
+
+        .rightMod, .leftMod{
+            border-top: 7px solid #f2f2f2;
+            padding-top: 7px;
+            margin-bottom: 20px;}
+
+        .rightMod h2{
+            padding-bottom: 5px;
+            border-bottom: 3px solid #F2F2F2;}
+
+        .leftMod h2, .rightMod h2{
+            padding-left: 10px;
+            font-size: 16px;}
+
+        .rightMod.noBorder{
+            border-top: 0px;
+            margin-bottom: 5px;}
+
+        #broker_profile .bio, #landlord_profile .bio {
+            background-color: #f7f7f7;
+            margin-bottom: 20px;
+            padding: 10px 20px 10px 10px;}
+            #broker_profile  .bio h2, #landlord_profile .bio h2{
+                padding-left: 0px;}
+            #broker_profile  .bio img, #landlord_profile .bio img {
+                border: 2px solid #fff;
+                margin: 5px 10px 15px 0px; }
+            #broker_profile  .bio p, #landlord_profile .bio  p{
+                font-size: 11px;
+                line-height: 17px;
+                color: #555}
+
+/* - - - - - - ACCOUNT PAGES - - - - - - - - -*/
+
+        #accountContainer{
+        	margin-top: 10px;
+        	width: 922px;
+        	padding:15px;
+        	background-color: #f6f6f6;	}
+
+        #accountContainer .tealBar{
+            float: none;
+            margin-top: 0px;
+            margin-right: 0px;}
+
+        #account .row{
+            padding: 2px 0px 5px 0px;}
+
+        #account #rightCol .summaryCont{
+            float: none;}
+
+        .big{
+            font-weight: bold;
+            font-size: 14px;}
+
+        .actions .big{
+            line-height: 14px;}
+
+
+ 			 /* purchase table */
+
+        table#purchases{
+            margin: 0px;
+            border-bottom: 1px solid #ccc}
+
+        table#purchases tr{
+            border-left: 1px solid #ccc}
+
+           table#purchases.newStyle th{
+                background-color: #e5e5e5;
+                border-top: 1px solid #ccc}
+
+            table#purchases.newStyle th:first-child{
+                border-left: 1px solid #ccc}
+             table#purchases.newStyle th:last-child{
+                border-right: 1px solid #ccc}
+
+            table#purchases tr.stripe td{
+                background-color: #f7f7f7}
+
+            table#purchases td.order{
+                border-left: 1px solid #ccc}
+
+            table#purchases td.total{
+                font-weight: bold;
+                text-align: center;
+                border-right: 1px solid #ccc}
+
+            table#purchases td{
+                background-color: #fff;
+                padding:10px 3px 10px 9px;
+                vertical-align:top;}
+
+
+ /* mysite sign up flow (including prefs)*/
+
+            .mySite.setup #accountContainer {
+                background: #d5e0e0 url(/images/me/bg-page.gif) repeat;
+                padding: 20px 0px 0px 35px;
+                border-right: 1px solid #ADC3C3;
+                border-bottom: 1px solid #ADC3C3;
+                width: 912px}
+                .mySite #main{
+                    padding-bottom: 20px;
+                    background: url(/images/me/hero.gif) no-repeat 460px 100px;}
+                .mySite .headMessage .plug {
+                    text-transform: uppercase;
+                    font-size: 11px;
+                    display: block;
+                    letter-spacing: 3px;
+                    color: #6A7B7B;}
+                .mySite .headMessage {
+                   border-bottom: 0px;}
+                .mySite .headMessage h2 {
+                    color: #3e5757;
+                    font-weight: bold;
+                    font-size: 45px;
+                    line-height: 45px;
+                    text-shadow: 0px 1px 2px #fff}
+                 .mySite #main ul{
+                    width: 410px;
+                    padding: 10px 0px;
+                    border-top: 1px solid #bccaca;
+                    margin: 10px 0px;}
+                .mySite #main ul li{
+                    color: #435656;
+                    list-style-type: none;
+                    font-size: 13px;
+                    line-height: 18px;
+                    background:  url(/images/sprites/icons.gif) no-repeat -22px -1319px;
+                    padding: 8px 0px 8px 30px }
+                    .mySite #main ul li.big{
+                        font-weight: bold; }
+
+                    .mySite #main a.link{
+                        background-color:#d5e0e0;
+                        padding: 3px 5px;
+                        display: block;
+                        color: #698585;
+                        text-transform: uppercase;
+                        text-shadow: 0px 1px 2px #fff;
+                        width: 410px;
+                        margin: 10px 0px 30px 0px;
+                        text-align: center;
+                        font-size:13px;}
+
+                    .mySite #main a.link.active{
+                        background-color:#c1d3d3;
+                        text-decoration: none}
+
+                    .mySite #main h3 .one{
+                        color: #cf3005;
+                        font-weight: bold;
+                        text-shadow:0 1px 2px #dfecec;}
+                        .mySite #main h3 .place{
+                            color: #ea840f;
+                            font-weight: bold;
+                            text-shadow:0 1px 2px #dfecec;}
+
+                .mySite .getStarted{
+                    font-size: 13px;
+                    color: ##6A7B7B;
+                    border: 1px solid #fff;
+                    background-color: #e3f0f0;
+                    width: 410px;
+                    color: #6A7B7B;
+                    padding: 0px;}
+                    .mySite .getStarted h3, .mySite .getStarted h4{
+                        display: block;
+                        padding:20px;
+                        color: #1F3737;
+                        text-align: center;
+                        font-family: arial, sans-serif;
+                        font-size: 17px;
+                        font-weight: normal;
+                        padding-bottom: 5px;}
+                    .mySite .getStarted h4{
+                        padding: 20px 8px;
+                        font-size: 15px;}
+                        .mySite .getStarted h4 .calm{
+                            font-size: 13px;
+                            display: block;
+                            font-weight: normal;
+                            color: #6A7B7B}
+                    .mySite .getStarted .formInput{
+                        padding: 0px 15px 20px 15px}
+                    .mySite .getStarted .formActions{
+                        border: 0px;
+                        padding: 10px 15px;
+                        margin: 0px;
+                        -moz-border-radius-bottomleft: 6px;
+                        -moz-border-radius-bottomright: 6px;
+                        -webkit-border-bottom-left-radius: 6px;
+                        -webkit-border-bottom-right-radius: 6px;
+                        border-radius-bottomright: 6px;
+                        border-radius-bottomleft: 6px;
+                        background-color: #c5dfdf;}
+                    .mySite .contactUs{
+                        display: block;
+                        width: 450px;
+                        text-align: center;
+                        margin-top: 10px;
+                        color: #92adad;
+                        font-size: 11px;}
+
+ /* - - - - - ignite address mod in rt column of prefs - - - - - -*/
+
+                    #account .sideMod.ignite{
+                        color: #fff;
+                        text-align: center;
+                        padding: 1px 1px 10px 1px;
+                        border: 1px solid #fff;
+                        -moz-box-shadow: none ; /* firefox 3.5+ */
+                        -webkit-box-shadow:none; /* webkit */
+                        box-shadow: none;
+                        background: #f5741c;}
+                        #account .sideMod.ignite h2{
+                            color: #feeac6;
+                            text-shadow: none;
+                            background-color:#cf3005 }
+                        #account .sideMod.ignite .idleField, #account .sideMod.ignite .focusField  {
+                            background-color:transparent;
+                            border: 1px solid #f6995a;
+                            font-size: 12px;
+                            -moz-border-radius: 2px;
+                            -webkit-border-radius: 2px;
+                            border-radius: 2px;
+                            padding: 6px 2px;
+                            color: #fff;}
+                        #account input#copyMiniSiteUrl{
+                            width: 220px;}
+                        #account .sideMod.ignite .focusField {
+                            border: 1px solid #f5d49f;}
+                        #account .sideMod.ignite p {
+                            color: #cf3005}
+                        #account .sideMod.ignite .linktosite {
+                            color: #feeac6;
+                            text-decoration: underline}
+
+
+/* - - - - - - MARKETING MODALS- - - - - -*/
+
+			#marketingModal .accountContainer{
+				background-color: #d8e0df;
+				border-bottom: 0px;
+				width: 630px;
+				padding: 10px 0 0px 20px;}
+
+			#marketingModal{
+				margin-top: 0px;
+				padding:0px;}
+
+			#marketingModal #cl{
+				background: url(/images/callouts/modal-cl.jpg) no-repeat 295px 50px;   }
+
+			#marketingModal #cl-templates{
+				height: 400px;
+				background: url(/images/callouts/cl-templates.gif) no-repeat 0px 130px;   }
+
+			#marketingModal .plug {
+        text-transform: uppercase;
+        font-size: 11px;
+        display: block;
+        letter-spacing: 3px;
+        color: #6A7B7B;}
+
+			#marketingModal #header {
+				width: 100%}
+
+			#marketingModal #cl #header {
+				width: 280px;}
+
+			#cboxLoadedContent #marketingModal h2{
+				font-size: 30px;
+				line-height: 33px;
+				font-weight: bold;
+				padding: 10px 0px 10px 0px;
+				color: #153737;}
+
+			#cboxLoadedContent #marketingModal h4{
+				font-size: 17px;
+				line-height: 23px;
+				color: #527a7a;}
+
+			#cboxLoadedContent #marketingModal #cl{
+				width: 250px;}
+
+			#marketingModal ul {
+				margin: 20px 0px;
+				width: 230px;}
+
+			#marketingModal ul li {
+				background-color: #f0f2f2;
+				padding: 5px;
+				margin-bottom: 5px;
+				font-size: 12px;}
+
+			#marketingModal ul li .bold {
+				padding-right: 5px;
+				color: #f77706}
+
+			#marketingModal p.bold {
+				font-size: 14px;
+				color: #153737}
+
+
+			/* for buttons to sit below the main content */
+
+			#marketingModal .actionBar{
+				position: absolute;
+				display: block;
+				width: 630px;
+				text-align: center;
+				font-size: 15px;
+				margin-left: -20px;
+				padding: 20px;
+				bottom: 10px;
+				color: #999;
+				background-color: #333;}
+
+			#marketingModal .actionBar a{
+				color: #ffcc00;
+				font-weight: bold}
+
+
+/* - - - - - - LISTINGS, SERP AND INBOXES - - - - - - - -*/
+
+/*      new styles for inboxes.
+        RS and BS pages can have body id = contacts.
+        Any differences in table styles can be handled by table ids
+
+*/
+
+
+        /*  explanation line in subnav space */
+        #contacts .subtitle{
+            position: absolute;
+            left: 250px;
+            bottom: 3px;
+            color:#9fc7e2;
+            font-size: 13px;
+            font-weight: normal;
+            font-style: normal}
+        #contacts .subtitle.broker { left: 350px; }
+        #contacts #subnav li {
+           padding-left: 30px;
+           padding-right: 30px;}
+
+
+        /*  #sub is the filters - all/connected/anonymous/unread */
+
+        #contacts ul#sub {
+           margin:-5px 0px 6px 28px; }
+
+
+        #contacts #sub li.highlightNew {
+            background-color: #fdfdec;
+            margin-top: -3px;}
+
+
+        #contacts #sub li {
+            font-size: 12px;
+        	list-style-type: none;
+        	margin-right: 35px;
+        	float: left;
+        	display: block;
+        	padding: 2px 10px;}
+
+        #contacts #sub li.active {
+            font-weight: bold}
+
+        #contacts #sub li.connected {
+           background: url(/images/icons/connected_sm.gif) no-repeat 0 0;
+           padding-left: 28px}
+
+        #contacts #sub li.anon {
+           background: url(/images/icons/anonymous_sm.gif) no-repeat 0 0;
+           padding-left: 28px}
+
+        #contacts #sub li img {
+            padding-right: 3px;}
+
+
+        /*
+        TH and TD styles for contacts tables
+        if diff styles are needed for diff tables, use table ids
+        */
+
+
+        #contacts th.read {
+            width: 110px;}
+
+        #contacts td{
+        	padding: 10px 15px 10px 7px;
+            vertical-align: top;
+        	border-bottom: 3px solid #f2f2f2;
+        	font-size: 11px;}
+
+        #contacts .details{
+        	font-weight: bold;
+        	width: 120px;
+        	font-size: 12px;}
+
+        #contacts table img{
+            margin-top: -6px;}
+
+        #contacts .details .btnGreen{
+        	font-weight: normal;
+        	font-size: 12px;}
+
+         #contacts .status{
+        	width: 60px;}
+
+        #contacts table tr.highlightNew td{
+            background-color: #fdfdec;}
+
+
+/*  Renter side styles */
+
+        #contacts  td.broker {
+            width: 95px;}
+
+        #contacts  td.date {
+            width: 90px;}
+
+        #contacts td .nomsg {
+            color: #666;
+            font-style: italic}
+
+        #contacts td.messages table.attached {
+            background-color: #fafafa;
+            border: 1px solid #fff;
+            padding: 2px 5px 5px 5px;}
+
+        #contacts td.messages table.attached th {
+            background-color: transparent;
+            color: #333;
+            padding: 3px 4px;}
+
+        #contacts td.messages table.attached td {
+            border-top:1px solid #e4e4e4;
+            background-color: transparent;
+            border-bottom:none;
+            padding:2px 4px;}
+
+        #contacts table tr.highlightNew td.messages table.attached {
+            border: 1px solid #ccc;}
+
+        #contacts td.messages table.attached .rate {
+            font-weight: bold}
+
+        #details .blockBroker{
+            position: absolute;
+            right:20px;
+            bottom: 5px;
+            color: #147898;
+            line-height: 13px;}
+
+        #details .blockBroker a{
+            text-decoration: underline;
+            color: #7eb9d5}
+
+
+        /*  Styles for offer details pages
+            - subnav is taller, tabs bigger
+
+            commented out 4/27
+
+
+        #details #subnav{
+            margin-bottom: 0px;}
+
+        #details #subnav ul{
+            top: 47px;}
+
+        #details #subnav li{
+            font-size: 16px;
+            padding: 7px 20px 5px;}
+
+        #details #subnav li.active{
+            background-color: #3a7299;}
+
+     #details #subnav li.connected{
+            background: url(/images/icons/connected.png) no-repeat 10px 1px #24597E;
+            padding-left: 60px;
+            color: #111;
+            font-weight: bold}
+
+
+        #details #subnav li.anon{
+            background: url(/images/icons/anonymous.gif) no-repeat 10px 0px #24597E;
+            padding-left: 60px;
+            color: #111;
+            font-weight: bold}
+*/
+
+        #details #container{
+            background-color: #f7f7f7;
+            padding: 15px;}
+
+        #details .small {
+            font-size: 12px;
+            color: #666;
+            padding-left: 5px;}
+
+        #details .head{
+            padding: 4px 0px 10px 8px;}
+
+        #details .head h2{
+            display: inline;}
+
+        #details .head .highlightNew {
+            font-weight: bold;
+            background-color: #fdfdec;
+            padding: 2px 5px;
+            margin-left: 20px;
+            font-size: 11px;}
+
+
+         /* review prompt  */
+                #details .head .reviewPrompt {
+                    float: right;
+                    font-style: italic;
+                    color: #399fb6}
+
+                #details .head .reviewPrompt .block {
+                    padding-top: 5px;}
+
+                #details .head .reviewPrompt .blueBtn {
+                    font-style: normal}
+
+
+
+ /* 1/10: MESSAGES MODULE  */
+     #details #messages{
+            background-color: #fff;
+            border: 3px solid #f2f2f2;
+            padding:  5px 15px 15px ;
+            margin-bottom: 10px;
+            width: 664px;
+            float: left}
+
+         #details #messages h2{
+            padding-left: 0px;}
+
+        #details .messageMod{
+            border: 2px solid #f3f3f3;
+						-moz-border-radius: 6px;
+						-webkit-border-radius: 6px;
+						border-radius: 6px;
+            padding: 10px;
+            font-size: 11px;
+            line-height: 14px;
+            color: #555;
+            margin-bottom: 15px;}
+
+        #details .messageMod.highlightNew{
+            background-color: #FDFDEC;;}
+
+        #details .messageMod .header{
+            padding-bottom: 5px;
+            font-size: 13px;
+            display: block;
+            color: #222;
+            font-weight: bold;}
+
+        #details .messageMod .source {
+          font-size: 10px;}
+
+        #details .messageMod .date{
+            font-weight: normal;
+            float: right;
+            color: #666;}
+
+        #details .messageMod .listings{
+            clear: left;
+            background-color: #f6f6f6;
+            border: 1px solid #fff;
+            margin-top: 10px;
+            padding:  10px;}
+
+        #details .messageMod .uploads {
+            border-top: 1px solid #EEEEEE;
+            margin-top: 10px;
+            padding: 0 10px;}
+
+        #details .messageMod .uploads legend {
+          font-size: 10px;
+          text-transform: none;
+          color: #555555;
+}
+
+        #details .messageMod .uploads li {
+            float: left;
+            list-style-type: none;
+            padding-right: 10px;
+            padding-top: 5px;}
+
+/* 1/10: LISTINGS ATTACHED TO MESSAGE  */
+
+        #details .messageMod .listings .block{
+            width: 120px;
+            margin-right: 25px;  }
+
+        #details .messageMod .listings a.toggleFade {
+            font-weight: bold}
+
+        #details .messageMod .listings .thumb {
+            height: 67px;
+            width: 90px;
+            position: relative;
+            z-index: 1;
+            border: 4px solid #e6e6e6;}
+
+        #details .messageMod .listings .thumb .rent{
+            background-color: #052276;
+            position: absolute;
+            bottom: 0px;
+            z-index: 2;
+            padding: 2px 3px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #fff;}
+
+        #details .messageMod .listings .aptDetails {
+            clear: left;
+            padding-top: 2px;
+            line-height: 14px;
+            position: relative;}
+
+        #details .messageMod .listings .fee {
+            position: absolute;
+            right: 24px;
+            background-color: #fff;
+            padding: 1px 3px;
+            font-size: 10px;
+            line-height: 10px;
+            font-weight: bold;
+            color: #413f2f}
+
+        #details .messageMod .listings  .noFee {
+            color: #f2850f;}
+
+
+
+/* 1/10: ATTACH LISTINGS MODULE  */
+        #attachListingsResults div.center {
+          padding: 20px;}
+
+
+        #attachListings{
+            margin-top: 10px;}
+
+
+        /* styles the tabs and search by web id  */
+
+
+        #attachListings ul#tabs li{
+            list-style-type: none;
+        	background-color: #cde3ba;
+        	margin-right: 2px;
+        	padding: 8px 20px 6px;
+        	border-top: 1px solid #bed8a7;
+            border-right: 1px solid #bed8a7;
+            border-left: 1px solid #bed8a7;
+        	float: left;
+        	font-size: 12px;
+        	color: #222;
+        	display: block;}
+
+        #attachListings ul#tabs li.active{
+            background-color: #fff;
+            border-top: 1px solid #cce4b8;
+            border-right: 1px solid #cce4b8;
+            border-left: 1px solid #cce4b8;}
+
+        #results{
+            background-color: #fff;
+            border-right: 1px solid #cce4b8;
+            border-left: 1px solid #cce4b8;
+            border-bottom: 1px solid #cce4b8;
+            padding: 10px;}
+
+        #attachListings .filter{
+            clear: both;
+            background-color: #f7f7f7;
+            padding: 6px 10px;
+            color: #111;
+            font-size: 11px;
+            margin-bottom: 5px;}
+
+        #attachListings .filter label{
+            display: inline}
+
+        #attachListings input.flat{
+            border: 1px solid #cce4b8;
+            padding: 2px;
+            background-color: #fff}
+
+        #attachListings #searchById{
+            float: right;
+            padding-right: 40px;
+            padding-top: 5px;}
+
+
+        /* modifies the drop downs  */
+        #attachListings ul.searchNav, #attachListings ul.searchMultipleNav {
+          border:1px solid #a4c688 ;}
+
+
+ /* attach listings table  */
+        #attachListings #attachListingsTable {
+            margin-bottom: 5px;}
+
+        #attachListings #attachListingsTable th {
+            padding-left: 0px; }
+
+
+        #attachListings #attachListingsTable td{
+            border-top: 1px solid #ededed;
+            font-size: 11px;
+            padding: 4px 0px;  }
+
+        #attachListings #attachListingsTable .attach{
+            width: 100px;}
+
+        #attachListings #attachListingsTable td a{
+            font-weight:normal;
+            text-decoration: none}
+
+        #attachListings #attachListingsTable .attachBtnSm a, #attachListings #attachListingsTable .removeBtn a{
+            width: 45px;}
+
+        #attachListings #attachListingsTable td.thumbs{
+            border-top: none;
+            text-align: right}
+
+        #attachListings #attachListingsTable td.thumbs img{
+           border: 3px solid #fff;
+           margin-left: 5px;}
+
+
+/* set rates table  */
+
+                #attachListings #setRates{
+                 background-color: #cce4b8;
+                 padding: 10px;
+                 color: #333;
+                 font-size: 11px;
+                 margin: 10px 0px;}
+
+                #attachListings #setRates{
+                 background-color: #fff;
+                border: 1px solid #cce4b8;
+                 padding: 10px;
+                 color: #333;
+                 font-size: 11px;
+                 margin: 10px 0px;}
+
+
+                 #setRates .big{
+                 padding: 0px 40px 5px 0px;}
+
+                #setRates table td{
+                border-top: 1px solid #EDEDED;
+                font-size: 11px;
+                padding: 3px 0px; }
+
+                #setRates td a{
+                    text-decoration: underline;
+                    font-weight:bold }
+
+               #setRates  table td.thumbs{
+                text-align: right}
+
+                #setRates table td.delete{
+                   padding-top: 4px;
+                   width: 30px;}
+
+                #setRates table td.input{
+                   width: 64px;}
+
+                #setRates table td.input .idleField{
+                   padding: 2px;}
+
+                #attachListings a.floatRight {
+                   font-weight: bold;
+                   text-decoration: underline;
+                   font-size: 12px;}
+
+
+
+
+        /************************************
+            styles for "action block"
+            - green space containing connect and send message buttons
+            - also used in renter signup
+            - and in renter public profile
+
+        *********************************/
+
+
+        .actionBlock{
+            background-color: #f3fdea;
+            padding: 10px;
+            margin-top: 10px;
+            color: #539e14;}
+
+        #buttonBlock{
+            margin-top: 10px;}
+
+        #buttonBlock .block{
+            padding: 5px 0px 0px 30px;
+            color: #6c8756;
+            line-height: 14px;
+            font-size: 11px;}
+
+        #buttonBlock .block .big{
+            font-weight: normal;
+            display: block;
+            color: #384b28;}
+
+
+/* 1/10: DETAIL PAGE RIGHT COLUMN  */
+
+        #details #right{
+            float: right;
+            width: 210px;}
+
+        #details #right .closeFade{
+            float: right;
+            font-size: 11px;
+            padding-left: 8px;}
+
+
+        #details #right .mod{
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #fff;
+            font-size: 12px;}
+
+        #details #right .mod strong{
+            line-height: 15px;}
+
+        #details #right .mod.connected{
+            background: transparent url(/images/icons/connected.gif) no-repeat 10px 5px;
+            padding-left: 60px;
+            line-height: 14px;}
+
+        #details #right .mod .close{
+        font-size: 10px;}
+
+        #details #right #connect{
+            margin-top: 0px;
+            font-size: 11px;
+            color: #385E18;
+            background-color:#F3FDEA;}
+
+            #details #right #connect a{
+            font-size: 13px;
+            font-weight: bold}
+
+        #vcard{
+            background:#fff url( /images/sprites/misc.gif) no-repeat bottom left;
+            color: #333;}
+
+            #details #right #vcard{
+                padding: 10px 10px 25px 10px;}
+
+            #vcard .name{
+                    font-size: 15px;
+                    font-weight: bold;
+                    display: block}
+
+            #vcard .small{
+                    font-size: 10px;
+                    padding: 0;
+                    display: block;
+                    margin-top: 5px;
+                    color: #377304}
+
+            #vcard a{
+                    text-decoration: underline;
+                    font-size: 11px;}
+
+
+/*     checkbox options above form button */
+
+        #details .checkbox{
+            background-color: #e2f3d4;
+            padding: 10px;
+            font-size: 12px;
+            color: #555;}
+
+        #details .checkboxRenter{
+            padding: 10px;
+            font-size: 12px;
+            color: #555;}
+
+         #details .checkboxRenter .small{
+            font-size: 11px;
+            display: block;
+            padding-left: 18px;}
+
+
+        #details  .big{
+            font-size: 13px;
+            font-weight: bold;
+            color: #111;}
+
+        #details .checkbox .small{
+            font-size: 11px;
+            color:#385e18;
+            display: block;
+            padding-left: 18px;}
+
+        #renter_profile .actionBlock {
+            float:none;
+            margin:0px 0px 10px 0px;}
+
+        #details form#new_message textarea{
+            border: 3px solid #c4e5a5;
+            padding: 5px;
+            font-size: 13px;}
+
+
+ /*  - - - - - - BROKER -SIDE TABLE STYLES- - - - - - - - - */
+
+    table#claims td:first-child{
+      padding-left: 20px;}
+
+    table#claims tr.odd{
+      background-color: #f9f9f9;}
+
+    table#claims th:first-child{
+      padding-left: 20px;}
+
+
+ /*  takes out the bottom margin on the main tabs for all pages with a subnav */
+
+		table#SERP{
+			margin-bottom: 0px;}
+
+		#SERP td,  #listingstable td{
+			padding: 7px 8px 6px 9px;
+			vertical-align: top;
+			border-bottom: 3px solid #ededed;}
+
+		#listingstable td#share{
+			padding-top: 10px;}
+
+		#listingstable td.listing{
+			max-width: 250px;}
+
+		#SERP .row{
+			background:url(/images/dividers/dotted.gif) repeat-x scroll 0 100%;
+			padding: 0px 0px 6px 0px;
+			margin-bottom: 3px;}
+
+		.viewDetails {
+			font-size: 12px;
+			font-weight: bold;
+			padding-left: 27;}
+
+
+ /*  - - - - - - RS SAVED SEARCH- - - - - - - - - */
+
+
+	body#savedApartmentSearches #leftCol {
+	    margin-right: 0;
+	    margin-top: 20px;
+	    width: 650px;}
+
+	body#savedApartmentSearches #rightCol {
+    margin-top: 20px;
+    width: 270px;}
+
+
+/* - - - - - - FILTER CONTROLS/SAVED SEARCH CONTROLS-- - - - - - - -*/
+
+		#filters{
+			clear: both;
+			padding: 7px 3px 4px 0px;
+			margin-top:5px;
+			border-top: 1px solid #f2f2f2;}
+
+		#filters .divider, #filtersBottom .divider{
+			float:left;
+			margin: 0px 20px;
+			width: 0px;
+			height: 25px;
+			border-left: 1px solid #e7e7e7;
+			border-right: 1px solid #fff}
+
+		#bs-listings #filters, #bs-listings #filtersBottom, #contacts #filters {
+			background: #f9f9f9 url(/images/sprites/icons.gif) no-repeat 10px 0px;
+			padding-left: 45px;
+			height: 34px;
+			margin-top: 10px;
+			border-top: none;
+			margin-bottom: -5px;}
+
+		#bs-listings #filtersBottom{
+			background: #f9f9f9 url(/images/sprites/icons.gif) no-repeat 10px -42px;
+			margin: -15px 0px 0px 0px;
+			padding: 7px 3px 4px 45px;}
+
+		#filtersBottom{
+			border-top: 0px;
+			border-bottom:none;
+			padding: 0px 3px 5px 0px;}
+
+		#filters .checkboxCont, #filtersBottom .checkboxCont{
+			width: auto;
+			margin:3px 12px 3px 5px; }
+
+
+		#filters .message, #filtersBottom .message{
+			padding: 5px 0px 4px 0px;
+			display: inline;}
+
+		#filters .plain{
+			background: url(/images/icons/listing_sm.gif) no-repeat 5px 5px ;
+			padding: 5px 10px 4px 25px;
+			display: inline;
+			background-color: #fefdec;}
+
+		#filters .plain{
+			padding: 6px 10px 5px 25px;
+			background: #fefdec url(/images/icons/note.gif) no-repeat 5px 5px ;}
+
+		#filters .plain a.close{
+			margin-left: 10px;
+			font-weight: bold;
+			text-decoration: underline;
+			padding: 2px 5px}
+
+		.suggested{
+			color:#00657b}
+
+		#filters .block, #filtersBottom .block{
+			padding-right: 4px;}
+
+		#SERP .bidCol .block{
+			margin-right: 2px;
+			padding-right: 2px;}
+
+		#listingDetail #filters, #renter_profile #filters{
+			border-top: 0px;
+			clear:both;
+			margin-top:0px;
+			padding:0px;}
+
+		#filters input, #filters select{
+		margin-right: 2px;}
+
+		#filters select{
+			font-size: 11px;}
+
+
+/*- - - - -  ATTACH LISTINGS  - - - - - - - -*/
+
+#attachListingsCont {
+	padding-bottom: 20px;}
+
+.broker			{
+    font-weight: bold}
+
+.thumb	{
+    float:left;
+    margin-right:7px;
+    width:110px;}
+
+.thumb img{
+    display: block;
+    padding-bottom: 3px;}
+
+.thumb a{
+    line-height: 12px;}
+
+.updated{
+	background-color: #d7ecfd;}
+
+
+
+/* - - - - - - - RENTER PUBLIC PROFILE  - - - - - - - - - -*/
+
+        #renter_profile #leftCol td{
+        	border-top: 1px solid #eaeaea;
+        	padding: 8px 0px 8px 5px;
+        	width: 50%;}
+
+        #renter_profile #leftCol td.first{
+        	border-top: none;
+        	padding-top: 4px;}
+
+        #renterProfile .floatRight{
+            display: inline-table;}
+
+        #renter_profile #leftCol .light{
+            color:#999;}
+
+        #renter_profile #rightCol h5{
+            color:#2b778c;
+            font-size: 12px;
+            font-weight: normal;
+            line-height: 18px;}
+
+        #renter_profile #emailNotificationsSurvery ul {
+          margin-top: 10px;}
+
+        #renter_profile #emailNotificationsSurvery li {
+          margin-top: 5px;
+          list-style: none;}
+
+        #renter_profile #emailNotificationsSurvery .radioCont {
+          margin-top: 5px;}
+
+        #renter_profile #emailNotificationsSurvery legend {
+          text-transform: none}
+
+        #renter_profile fieldset#renterStatus  p{
+            padding: 3px 0px;}
+
+        #renter_profile fieldset#renterStatus  strong{
+            font-size: 12px;}
+
+        #renter_profile .noteWhiteFull  h2{
+            margin-bottom: 0px;
+            display: block}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - -
+	renter status box
+- - - - - - - - - - - - - - - - - - - - - - - -*/
+
+    #renter_profile .status{
+        background-color: #006087;
+        padding: 10px 20px;
+        font-size: 13px;
+        font-weight: normal;
+        line-height: 20px;
+        color: #fff;
+        margin-bottom: 20px;}
+
+
+    #renter_profile .status h2{
+        font-weight: 500;
+        font-size: 13px;
+        color:#98dbe7;
+        text-transform: uppercase;}
+
+    #renter_profile .status h1{
+        font-weight: bold;
+        font-size: 22px;
+        color: #fff;}
+
+
+     #renter_profile .status p{
+            margin: 15px 0px;}
+
+    #renter_profile .status a.link{
+        color: #b7eef8;
+        font-size: 13px;
+        text-transform: uppercase}
+
+    #renter_profile .status a.linkSmall{
+        color: #fff;
+        font-size: 12px;}
+
+    #renter_profile .status #makeActive input{
+        background-color: #fff;
+        border: 0px;
+        margin: 4px 0px 10px 0px;}
+
+    #renter_profile .status #makeActive{
+        padding: 10px 0px;}
+
+
+.fieldset h2 {
+	border: 0;
+	background-color: #fff;
+	margin-top: -7px;
+	padding: 0 4px 17px 4px;
+	width: 132px;}
+
+.saveInfoCont {
+	margin: 15px 0px 10px 0px;
+	padding: 5px 10px;
+	font-size: 12px;
+	background-color: #f5f5f5;
+	}
+
+.saveInfoCont input {
+	margin: -2px 5px 0 0;
+	vertical-align: middle;}
+
+
+/*- - - - -
+used for single-unit listings like saved searches, saved listings, request review,
+- - - - - */
+
+.unitContainer {
+	clear: both;
+	border-bottom: 1px solid #e4e4e4;
+	padding: 7px 0px 7px 5px;}
+
+.unitContainer h3 {
+	font-size: 12px;
+    font-weight: bold;
+	padding-bottom: 3px;}
+
+.unitContainer img{
+	padding: 0px 10px 0px 0px;
+	float:left;}
+
+.reviewHead .starRatings .numRatings,.reviewColB .starRatings .numRatings {
+	margin-left: 85px;
+	background-position: 0 1px;}
+
+* html .reviewHead .starRatings .numRatings,* html .reviewColB .starRatings .numRatings
+	{
+	margin-left: 82px;}
+
+.reviewHead .reviewInnerHead {
+	background-color: #f5fbfc;
+	padding: 5px 5px 5px 10px;
+	margin: 0px;}
+
+.reviewInnerHead h3 {
+	font-weight: bold;
+	clear: left}
+
+
+.fauxRow {
+	clear: both;
+	padding: 6px 0px;}
+
+.fauxRow .label {
+	float: left;
+	font-size: 11px;}
+
+.fauxRow .data {
+	float: right;
+	font-weight: bold;
+	text-align: center;}
+
+	.sideContent {
+	float: right;
+	background-color: #d9d9d9;
+	margin: 10px 0 0 0;
+	padding: 5px;
+	width: 120px;}
+
+
+/* broker Profile Pages
+----------------------------*/
+
+.meta{
+    background: #4c8290;
+    margin-bottom: 2px;
+    font-size: 15px;
+    color: #ebf7fa;
+    padding: 10px 20px;}
+    .meta a{
+        font-weight: bold;
+        color: #fff;
+        text-decoration: underline}
+
+
+.profileMasthead {
+	background-color: #ebf7fa;
+	font-size: 14px;}
+
+            .profileMasthead .block {
+                padding: 20px 10px 20px 20px;
+                height: 35px;
+                border-right: 1px solid #daedef;
+                border-left: 1px solid #fff;}
+
+            .profileMasthead .block.last {
+                border-right: 0px;
+                float:right;
+                border-right: 0px;
+                border-left: 0px;
+                padding: 25px 30px 0px 0px}
+
+            .profileMasthead h1 {
+            	font-size: 20px;
+            	line-height: 20px;
+            	padding-bottom: 5px;}
+
+            .profileMasthead #name {
+                font-size: 12px;
+            	width: 310px;
+            	border-left: 0px}
+
+            .profileMasthead #rating {
+                width: 175px;}
+
+            .profileMasthead #brokerage {
+                width: 200px;}
+
+                .profileMasthead #rating .starsOff {
+                    padding: 0px;
+                    margin: 0px;
+                    height: 24px;
+                    width: 125px;
+                    background: url(/images/sprites/stars-big.gif) repeat-x 0 1px;	}
+                .profileMasthead #rating .starsOn{
+                 padding: 0px;
+                    margin: 0px;
+                    height: 24px;
+            	   background: url(/images/sprites/stars-big.gif) repeat-x 0 -49px;	}
+
+            .profileMasthead .title{
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                display: block;
+                color:#89A2AA;
+                font-size: 11px;
+                text-shadow: 0px 1px 1px #fff; }
+
+            .profileMasthead #rating .numRatings {
+            	margin-top: 5px;}
+
+            .reviewDetails {
+            	margin-bottom: 6px;
+            	margin-left: 12px;
+            	padding-bottom: 6px;}
+
+/* - - - - - - - - - - - - - - - - - - - -
+	NOTE MODULE & OTHER RIGHT COLUMN MODS
+- - - - - - - - - - - - - - - - - - - - - -*/
+
+.sideMod{
+    display: block;
+    position: relative;
+		margin-bottom: 20px;
+		-moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    padding: 1px;
+    -moz-box-shadow: 0 0 2px #e5e5e5; /* firefox 3.5+ */
+    -webkit-box-shadow: 0 0 2px #e5e5e5; /* webkit */
+    box-shadow: 0 0 2px #e5e5e5;
+    border-radius: 6px;
+    border: 1px solid #e4e4e4;
+    background-color: #fff;
+    padding-bottom: 10px; }
+
+    .sideMod.noHead{
+        padding: 10px;
+        text-align: center}
+    .sideMod.green{
+        background-color: #F3FDEA;
+        color: #444;}
+
+	.sideMod h2{
+      -moz-border-radius-topleft: 6px;
+      -moz-border-radius-topright: 6px;
+      -webkit-border-top-left-radius: 6px;
+      -webkit-border-top-right-radius: 6px;
+      border-radius-topright: 6px;
+      border-radius-topleft: 6px;
+      background-color: #f9f9f9;
+      font-size: 14px;
+      padding: 5px 10px;
+      text-shadow: 0px 1px 1px #fff;}
+      .sideMod.green h2{
+        background-color: #b1d88d;
+        color: #38581a;
+        text-shadow: 0px 1px 1px #fff;}
+      .sideMod.green .container{
+				border-bottom:  1px solid #dceecc;}
+    .sideMod p{
+        padding: 0px 10px;
+        color: #777;
+        line-height: 15px;
+        margin-top: 10px;}
+        .sideMod p.first{
+        	padding-bottom: 10px;}
+     .sideMod strong{
+        color: #555;
+        display: block;
+        line-height: 18px;
+        font-size: 12px;}
+    .sideMod a strong{
+        color: #147898;}
+    .sideMod.noHead .block{
+        padding: 10px 0px 0px 5px}
+
+    .sideMod ul{
+        margin: 10px 20px 10px 10px}
+
+    .sideMod p.list{
+    	padding: 7px 0px;
+    	margin: 2px 15px 0px 10px;
+    	border-bottom: 1px solid #f3f3f3}
+
+    .sideMod p.list.last{
+    	border-bottom: 0px}
+
+    /* calm style = no border, shadow; just text */
+
+	.sideMod.calm{
+		-moz-box-shadow: none; /* firefox 3.5+ */
+		-webkit-box-shadow: none; /* webkit */
+		box-shadow:none;
+		border-radius: 0px;
+		border: 0px;}
+
+	.sideMod.calm h2{
+		border-radius: 0px;
+		color: #777;
+		background-color: #fff;
+		font-size: 12px;
+		padding: 5px 10px;
+		text-shadow:none}
+	.sideMod.calm p{
+		color: #999;
+		margin-top: 0px;}
+
+	.sideMod.border {
+		-moz-border-radius: 6px;
+		-khtml-border-radius: 6px;
+		-webkit-border-radius: 6px;
+		border-radius: 6px;
+		padding: 5px 10px;
+		border: 1px solid #f5f5f5;
+		font-size: 13px;
+		margin-bottom: 20px;}
+
+	.sideMod.border  h2{
+		background-color: transparent;
+		padding-left: 0px;}
+
+
+
+    /* for the broker account section */
+		.sideMod p.email{
+    	padding-left: 25px;
+    	background: transparent url(/images/sprites/icons.gif)  no-repeat 0px -2012px;}
+
+    .sideMod p.phone{
+    	padding-left: 25px;
+    	background: transparent url(/images/sprites/icons.gif)  no-repeat 0px -1986px;}
+
+    .sideMod p.help{
+    	padding-left: 25px;
+    	background: transparent url(/images/sprites/icons.gif)  no-repeat 0px -2037px;}
+
+		.noteWhiteFull {
+				display: block;
+				background-color: #fff;
+				color: #555;
+				font-size: 11px;
+				margin-bottom: 20px;
+				border: 1px solid #eaeaea;
+				padding: 10px;
+				line-height: 15px;}
+
+        .noteWhiteFull h1{
+            font-size: 16px;
+            margin-bottom: 7px;}
+
+        .noteWhiteFull p {
+            margin-top: 10px;}
+
+         .noteWhiteFull p {
+            margin-top: 10px;}
+
+        .noteWhiteFull .note {
+            margin: 5px 0px;
+            font-size: 10px;
+            color: #999;
+            background-color: #f6f6f6}
+
+        .noteWhiteFull a.strong {
+            font-size: 12px;
+            font-weight: bold;}
+
+        .noteWhiteFull h2{
+            padding-left: 0px;
+            font-size: 13px;
+            line-height: 20px;}
+
+        .noteWhiteFull h2.noMargin{
+            margin-bottom: 0px}
+
+        .noteWhiteFull .buttons{
+            margin-top: 10px;}
+
+
+.scale {
+    margin-top: 10px;}
+
+.box{
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #eaeaea;}
+
+.box img{
+    padding: 0px 10px;}
+
+
+
+ /*  blue box in renter public profile  */
+
+
+.blue     {
+	background-color: #def0f5;
+	color: #555;
+	font-size: 11px;
+	line-height: 14px;}
+
+.sideMod.blue {
+    border: 1px solid #9ec9d3;}
+
+.sideMod.blue h2{
+    background-color:#C2E3EB }
+
+.sideMod.blue table{
+    margin: 10px;
+    width: 90%}
+
+.blue .info {font-weight: bold;}
+
+.blue th    {
+  border-bottom:1px solid #FFFFFF;
+  border-top:1px solid #FFFFFF;
+  color:#111111;
+  font-size:11px;
+  font-weight:bold;
+  padding:4px 8px 3px 9px;}
+
+
+.blue td    { border-bottom: 1px solid #e3f5fa; padding: 4px 12px 4px 3px;  }
+.blue td.noBorder    { border-top: 0px; }
+.blue .stat {font-weight: bold;}
+.blue a      {color: #147898;}
+
+
+/*  - - - - - FORMS - - - - - - - - - - - */
+
+		input [type="text"], textarea {
+			padding: 2px;}
+
+		input[type="radio"] {
+				margin: 0px 2px 0px 0px;
+				vertical-align: middle}
+
+		input.large{
+			padding: 4px;}
+
+		input.button{
+			margin-top: 5px;}
+
+		textarea{
+			margin-bottom: 10px;
+			border: solid 1px #b3b3b3;}
+
+		label{
+			color: #111;
+			display: block;}
+
+		.checkboxCont label, .checkboxContSm label,  .checkboxContWide label{
+			display: inline;}
+
+		.checkboxContSm.bg{
+			background-color:#f4faed;
+			margin: 0px 5px 5px 0px;
+			-moz-border-radius: 4px;
+			-webkit-border-radius: 4px;
+			border-radius: 4px;
+			max-width: 55px;
+			width: 55px;
+			padding: 15px 10px 10px 10px;}
+
+		.checkboxContSm.bg.active{
+			cursor: pointer;
+			background-color:#eaf9d9;}
+
+		.focusField{
+			border:solid 2px #7acf31;
+			color:#000;
+			padding: 2px;}
+
+		select {
+			padding:2px 0px;}
+
+		fieldset    {
+			margin:10px 0px 15px 0px;
+			padding: 5px 15px 5px 15px;
+			background-color: #fff;
+			border: 0px;}
+
+		fieldset.border{
+			border: 1px solid #cccccc;
+			padding-bottom: 15px;}
+
+		fieldset.main    {
+			padding: 5px 0px;
+			font-size: 12px;
+			border-top: 15px solid #f5f5f5;
+			border-bottom: 0px;
+			position: relative;
+			margin: 0px 0px 10px 0px}
+
+		fieldset.main.noBorder    {
+			border-top: 0px;}
+
+		fieldset.main h2    {
+			padding: 5px 4px}
+			fieldset.main h2  em  {
+				padding-left: 10px;
+				font-size: 12px;
+				font-weight: normal}
+
+		fieldset.main h2 a.active   {
+			text-decoration: none;
+			color: #08495e}
+
+		.message.inline{
+			display: inline;
+			font-size: 11px;
+			color: #888}
+
+		fieldset .minor, fieldset .minorlast, fieldset .minorNoLine {
+			margin-bottom: 8px;
+			background-color: #fff;
+			padding: 3px 0px;
+			margin-left:  5px;
+			border-top: 1  px solid #f3f3f3;
+			border-bottom: none;
+			border-left: none;
+			border-right: none;}
+
+/* new 2.0 input fields */
+
+		.idleField{
+			background-color:#fff;
+			color: #6F6F6F;
+			border: solid 1px #b3b3b3;
+			padding: 3px;}
+
+		#userActions .idleField{
+			background:#fff;
+			color: #6F6F6F;
+			border: solid 1px #9fd2dd;
+			padding: 3px;}
+
+		#userActions .focusField{
+			padding: 1px;	}
+
+
+ /* new minor fieldsets styles for sets within fieldset.main  nov 2010  */
+
+		fieldset.main fieldset.minor {
+			border-top: 1px solid #f3f3f3;
+			padding: 10px 4px;
+			margin: 0px;}
+
+		fieldset.main fieldset.minor strong{
+			font-size: 12px;
+			display: block}
+
+		fieldset .right{
+			margin-right: 0px;}
+
+		fieldset .minor .row, fieldset .minorlast .row{
+			padding-bottom: 2px;
+			padding-left: 0px;}
+
+		fieldset .minorlast{
+			margin-bottom: 0px;    }
+
+		fieldset.main .radioCont label{
+			font-weight: normal}
+
+
+
+/*- - - - -LISTS  - - - - - */
+
+		ul.plain{
+			list-style-type: none}
+
+		ul.lines{
+			list-style-type: none}
+
+		ul.lines li{
+			padding: 5px 0px;
+			border-bottom: 1px solid #f2f2f2}
+
+		#description ul {
+			margin-left: 20px;}
+
+		#description ul {
+			margin: 10px 0px 0px 25px;}
+
+		#description ul li{
+			color: #555;}
+
+
+/*- - - - - help spans - - - - - */
+
+		fieldset.main .help {
+			float: right;
+			font-size: 10px;
+			line-height: 11px;
+			color: #999;
+			width: 220px;
+			max-width: 220px;}
+			fieldset.main .help.narrow {
+				width: 180px;
+				max-width: 180px;}
+
+		fieldset.main .help.tall {
+			line-height: 14px;
+			margin-top: 20px;}
+
+		fieldset.main .help  strong{
+			color: #444;}
+
+		fieldset.main .block .title{
+			font-size: 11px;
+			margin-right: 20px;
+			display: block}
+
+		fieldset.main .checkboxCont input {
+			margin-top: 0px;}
+
+
+		legend .small{
+			font-weight: normal;
+			font-style: italic;
+			color: #666;}
+
+		legend {
+			font-weight: bold;
+			font-size: 12px;
+			padding: 0 4px;
+			color:#111;
+			text-transform: uppercase;}
+
+		.minor legend, .minorlast legend {
+			font-size: 11px;
+			padding: 0px 4px 0px 0px;
+			text-transform: none}
+
+		form .subtitle{
+			font-size: 12px;
+			color: #222;
+			font-weight: bold;
+			display: block;
+			font-style: normal;
+			padding: 0px 0px 5px 0px;}
+
+		.row, .rowTop {
+			clear: both;
+			padding-bottom: 10px;
+			padding-left: 5px;}
+
+		.row a {
+			display:block;}
+
+		#renter_signup .row a{
+			display:inline;    }
+
+		.rowRight, .rowLeft, .rowLeftWide{
+			float: left;
+			padding:0px 0px 10px 10px;}
+
+		.rowLeftWide {
+			padding:0px 5px 10px 5px;}
+
+		.rowLeft {
+			padding-left: 0px;}
+
+		.rowlast {
+			padding-top: 3px;
+			background: none;}
+
+		.more{
+			padding-left: 15px;
+			background: url(/images/sprites/icons.gif) no-repeat 0 -1278px}
+
+
+
+			.roommate		{
+				padding: 0px 0px 10px 0px;
+				margin-bottom: 5px;
+				border-top: 1px solid #f5f5f5}
+
+			.roommate .title		{
+					font-size: 9px;
+					padding: 3px 10px 3px 5px;
+					background-color: #f7f7f7;
+					color: #a4a4a4;}
+
+/* creates a row with a border and floats the input to the right of the label */
+
+		.rowLine{
+			padding: 10px 0px 10px 4px;
+			border-top: 1px solid #f6f6f6;}
+		.rowNoLine{
+			padding: 5px 4px;}
+
+		.rowLine.noLine{
+			border-top: none}
+
+		.rowLine label{
+			float: left;
+			font-size: 13px;
+			width: 170px;}
+
+		.rowLine label.wide{
+			width: auto;
+			padding-bottom: 10px;}
+
+		.rowLine input{
+			float: left;
+			margin-right: 2px;}
+
+
+/* for rows with multiple inputs stacked below the label/header */
+      .rowLine.multi input, .rowLine.multi select{
+          float: left;
+          margin: 3px 5px 0px 0px}
+
+         .rowFixed{
+          float:left;
+          width: 415px;}
+
+      .rowLine.multi .radioCont{
+          float: left;
+          clear: left;
+          padding: 5px 0px;}
+
+      .rowLine.multi label{
+          font-weight: bold;
+          width: auto;
+          padding-bottom: 5px;}
+
+      .rowSingle{
+          padding: 10px 4px;
+          font-size: 12px;
+          border-top: 1px solid #f6f6f6;}
+
+       h4.rowLine{
+          margin-top: 5px;
+          font-size: 13px;
+          font-weight: bold;
+          border-top: 4px solid #f6f6f6;
+          color: #444}
+
+        .inputRight {
+        	margin-left: 5px;}
+
+        option {
+        	padding-left: 5px;}
+
+        .checkboxCont,.checkboxContWrap,.checkboxContSm {
+        	float: left;
+        	margin: 0 10px 15px 0;
+        	width: 125px;}
+
+        .checkboxContSm {
+        	margin: 0 10px 10px 0;
+        	width: 65px;}
+
+        .checkboxContWide {
+        	margin: 0 10px 10px 0;
+        	width: 100%;}
+
+        .checkboxContWrap {
+        	float: none;
+        	margin-bottom: 0px;
+        	width: auto;}
+
+        .checkboxContWrap label {
+        	display: inline;}
+
+        .radioCont {
+        	margin-top: 10px;
+        	float: left;
+        	padding-bottom: 5px;
+        	margin-right: 20px;}
+
+        #renter_profile .radioCont, #renter_signup .radioCont {
+        	padding-bottom: 0px;
+        	margin-top: 2px;}
+
+        #renter_profile .radioCont label, #renter_signup .radioCont label {
+        	display: inline}
+
+        .checkboxCont input,.radioCont input {
+        	vertical-align: middle;
+        	margin: 0px 2px 0 0;}
+
+        	#broker_brokerage_firm_other{
+        	   margin-left: 10px;}
+
+
+
+/*  -  - - - - - TABLES - - - */
+
+			table.newStyle th {
+			background-color: #f2f2f2;
+			border-bottom: 1px solid #eaeaea;
+			padding: 9px 8px 5px 9px;
+			text-shadow: 0px 1px #fff;
+			white-space: nowrap;
+			color:#666;
+			font-size: 11px;
+			text-transform: uppercase }
+
+		table.newStyle th a {
+			color:#666;
+			background-color: #e7e7e7;
+			text-shadow: 0px 1px #f3f3f3;
+			padding: 2px 4px;
+			-moz-border-radius: 2px;
+			-webkit-border-radius: 2px;
+			border-radius: 2px;}
+
+		table.newStyle  th a.active{
+			color:#111;
+			background-color: #e2e2e2;}
+
+
+		/*  - - - data table
+								- eg, text table in modals    - - - */
+
+		table.data{
+			font-size: 12px;}
+
+		table.data th{
+			padding: 3px 5px}
+
+		table.data td{
+			padding: 5px;
+			border-top: 1px solid #f5f5f5;
+			border-left: 1px solid #f5f5f5}
+
+		 table.data th{
+			font-size: 13px;
+			border-left: 1px solid #f5f5f5;
+			color: #222;
+	    font-weight: bold;}
+
+		table.data tr.noBorder td, table.data tr.noBorder th, table.data td.noBorder, table.data th.noBorder{
+			border: 0px}
+
+		table.data td:first-child{
+			text-align: left;
+			border-left: 0px}
+
+
+				/*  - - - pricing table in modal  */
+
+				#listingLimitReached table {
+					width: 520px;
+					margin-bottom: 0px;
+					color: #444;}
+
+				#listingLimitReached table.data td:first-child{
+					text-align: left;}
+
+				#listingLimitReached table td , #listingLimitReached table th{
+					text-align: center}
+
+			  #listingLimitReached table.data th.selected{
+					background-color: #f1fada;
+					border-left: 0px;}
+
+				#listingLimitReached table.data th.flag{
+					color: #8ca745 ;
+					background-color: #f1fada;
+					border-top: 1px solid #fff;
+					text-transform: uppercase;
+					font-size: 10px;}
+
+				#listingLimitReached table.data td.selected{
+					background-color: #f1fada;
+					border-top: 1px solid #fff;
+					border-left: 0px}
+
+			  #listingLimitReached table.data th:first-child{
+					background-color: #fff;
+					border-left: 0px solid #e4e4e4;}
+
+
+/*  -  - - - - - - - - -
+	TOOLTIPS
+- - - - - - - - - - - - */
+
+        .tooltip {
+            font-size: inherit;
+            border-bottom:1px dotted #9e9e9e;
+            line-height: inherit;
+            font-family: inherit;
+            padding: 0px;
+            color: inherit}
+
+        .tooltip.active {
+            border-bottom:1px dotted #111;
+            background-color: inherit}
+
+        .tooltip.noBorder {
+            border-bottom:none}
+
+        .plain{
+            background: url() no-repeat scroll right top;
+            padding-right: 0px;}
+
+        label a.small{
+            font-size: 10px;
+            font-style: italic;}
+
+        .tipHolder{
+            padding-top: 5px;}
+
+        .plain:hover{
+            background: none;}
+
+        strong .tooltip {
+           font-weight: bold}
+
+
+    /* changes color of tooltip underline for text on a bg color */
+
+        table.newStyle th a .tooltip {
+            border-bottom:1px dotted #828282; }
+
+        #attachListings ul#tabs li .tooltip{
+            border-bottom:1px dotted #6f9251; }
+
+        .qtip p{
+          margin-top: 10px;}
+
+        .tooltipOpen {
+           position: absolute;
+           top: 0;
+           left: 0;
+           z-index: 1000;
+           display: none;
+           padding: 10px 13px;
+           color: #303030;
+           background-color: #f5f5b5;
+           border: 1px solid #DECA7E;
+           font-size: 12px;
+           line-height: 18px;
+           text-align: center;}
+
+        .tooltipOpen h3 {
+              margin: 0 0 5px;
+              text-align: left;}
+
+        .tooltipOpen.left {
+           text-align: center;}
+
+        .tooltipActive, .tooltipFixed {
+          position: absolute;}
+
+        .qtip{
+            font-size: 11px;
+            line-height: 15px;}
+
+        .qtip p{
+           margin-top: 10px;}
+
+        .qtip strong{
+            color: #222;}
+
+        .qtip h4{
+            color: #222;
+            font-weight: bold;
+            text-transform: none;
+            display: block;
+            line-height: 18px;
+            margin-bottom: 5px;
+            font-size: 15px;}
+
+
+/*  -  - - - - ERROR & SUCCESS STYLES - - */
+
+			#error{
+				padding: 5px 10px;
+				color: #fff;
+				text-shadow: none;
+				font-size: 13px;
+				margin:5px 0px;
+				background: #f33307}
+
+			#error .body{
+				margin-left: 10px;
+				color: #f9f1c2;
+				font-size: 12px;}
+
+			#error .detail, #success .detail {
+				font-size: 11px;}
+
+			#error #createAccountMessage{
+				background-color:#cf2c06;
+				text-align: center;
+				color:  #f8c157;
+				font-size: 12px;
+				margin-top: 10px;
+				padding: 2px 10px;}
+
+			#error #createAccountMessage a{
+				color: #faeab0;
+				font-weight: bold;
+				text-decoration: underline}
+
+        #error a{
+        	color:#f8c157;
+          text-decoration: underline;}
+
+        #errorExplanation{
+            background:  #f33307 url(/images/icons/error.gif) no-repeat 4px 2px;
+        	padding: 5px 10px 10px 30px;
+        	margin:5px;}
+
+        #broker_signup #errorExplanation, #renter_signup #errorExplanation {
+          clear: both;}
+
+        #errorExplanation H2{
+            color: #FFF;
+            font-size: 15px;
+            display: inline;}
+
+        #errorExplanation .body{
+            font-weight: normal;
+            color: #fbefec;
+            font-size: 12px;}
+
+        #errorExplanation .detail, #success .detail {
+            font-size: 11px;}
+
+        #errorExplanation a{
+            background-color:#971f04;
+            color: #f8c157;
+            padding: 2px 4px;}
+
+        #errorExplanation ul{
+            margin: 5px 0px 0px 20px;
+            color: #fbefec;
+            font-size: 12px;}
+
+        #errorExplanation li{
+            margin-top: 10px;}
+
+
+
+        /* error message on listing spage */
+
+        #bs-listings #error{
+          padding: 10px ;
+          color: #f33307;
+          margin:5px 0px;
+          border: 3px solid #fde4de;
+     		 	background: #fef6f4}
+
+         #error table#featuredError th {
+            font-size: 14px;
+            font-weight: bold;
+            padding: 0px 7px 5px 7px;
+            border-bottom: 1px solid #fff;
+            width: 50%}
+
+        #error table#featuredError td {
+            padding: 3px 7px;
+            color: #444;
+            border-bottom: 1px solid #fff;}
+
+         #error table#featuredError tr.active {
+            background-color: #fef6f4}
+
+        ul.error{
+            margin: 5px 0px 0px 20px;
+            color: #fff;
+            font-size: 12px;}
+
+        .error li{
+            margin-top: 10px;}
+
+        .fieldWithErrors input,
+        .fieldWithErrors textarea,
+        .fieldWithErrors select {
+          border: 1px solid #FF0000;
+          padding: 3px;}
+
+        .formError {
+          color: #FF0000;
+          font-weight: bold;
+          padding-top: 3px;}
+
+            fieldset.main .formError {
+            color: #ff0000;
+            font-size: 11px;
+            font-weight: normal;
+            padding: 0px;
+            clear: left;
+            margin-left: 170px;}
+
+            .success {
+                background:  #79ce30 url(/images/sprites/icons.gif) no-repeat -29px -256px;
+                padding: 5px 10px 5px 45px;
+                color: #fff;
+                font-size: 15px;
+                border: 3px solid #edfae2;
+                margin:5px 0px; }
+
+            .success a{
+                color: #eefcd2;
+                font-weight: bold;
+                text-decoration: underline}
+
+            #bs-listings .success {
+                font-size: 14px;
+                margin:5px 0px; }
+
+              #bs-listings .success strong {
+                font-size: 16px;
+                color:#fff }
+
+              #bs-listings .success .unfeatured, #bs-listings .success .featured {
+                color: #3c730d}
+
+            .success ul {
+                margin: 5px 0px;}
+
+            .success ul li {
+                float: left;
+                font-weight: normal;
+                list-style-type: none;
+                white-space: nowrap;
+                color: #346a07;
+                padding: 2px 4px;
+                -moz-border-radius: 3px;
+                -webkit-border-radius: 3px;
+                border-radius: 3px;
+                margin: 2px 4px 3px 0px;
+                background: #def3b9;
+                font-size: 11px;}
+
+             .success ul li .webID{
+             		color: #89c556;
+                font-size: 10px;}
+
+            #blueBox .success{
+                border: 3px solid #e2f5f9;
+                text-shadow: none}
+
+            #blueBox #error{
+                border: 3px solid #ffffff;}
+
+
+
+/*  -  - - - - IN-PAGE ERROR STYLES - - - - */
+
+                .error {
+                    font-weight: bold;
+                	color: #f33307;
+                	display: block;}
+
+                .error a{
+                    font-weight: normal;}
+
+                .rowLeft .error, .rowRight .error{
+                    width: 160px;}
+
+
+                .error label , .error legend {
+                    color: #f33307;
+                    font-weight: bold;}
+
+                #reviewForm textarea {
+                	margin-top: 5px;}
+
+
+/*- - - - - - - - - - - - - - - - - - - - - -
+	Action bar at form bottoms
+- - - - - - - - - - - - - - - - - - - - - - - */
+
+
+.formActions {
+    text-align: center;
+	background-color: #fff;
+	padding:20px;
+	/* NA - Need to add a height on this one.  IE6 will give problems if pad an element with no height/width defined. */
+	overflow:hidden;
+	border: 1px solid #ccc;}
+
+#reviewPublish .formActions{
+    margin-bottom: 10px;}
+
+#renter_signup .formActions, #broker_signup .formActions, #renter_profile .formActions, #account .formActions, #reviewPublish .formActions{
+            border: 4px solid #fff;
+            padding: 20px;
+            margin-top: 10px;
+            text-align: center;
+            background-color: #f3fdea;}
+
+#account .formActions{
+            text-align: left;}
+
+#broker_signup .formActions{
+            border: 0px}
+
+#renter_signup .formActions .btnGreen{
+            margin-right: 0px;          }
+
+.formActions .btnGreen, .formActions .copyBtn_lg, .formActions .button{
+    margin-right: 6px;}
+
+#thanksBoxWide .formActions{
+	margin: 10px 0px 0px 0px;}
+
+
+/* Begin: Image Viewer
+----------------------------*/
+.imageViewer {
+	position: absolute;
+	display: none;
+	background-color: #e5e5e5;
+	border: 2px solid #ccc;
+	padding: 7px 11px;
+	width: 328px;
+	height: 254px;}
+.img_renter {
+	height: 140px;}
+
+.imageViewer h3 {
+	font-size: 12px;
+	padding-top: 4px;}
+
+.imageViewer .viewerNav {
+	float: right;
+	background-color: #ccc;
+	padding: 3px;
+	/*	width:48px;*/
+	height: 20px;
+	width:56px; /* kosh for scroll nav for img viewer */}
+
+.viewerNav a:active,.viewerNav a:focus {
+	outline: none;}
+
+.imageViewer span {
+	margin-left: 5px;
+	margin-right: 0;
+	font-weight: bold;
+	float: left;
+	border: 1px solid #b3b3b3;
+	color: #808080;
+	padding: 0 4px;}
+
+#prevLink,#nextLink {
+	float: right;
+/* missing image (404)
+	background-image: url(/images/buttons/viewer_next.gif);
+*/	width: 24px;
+	height: 20px;
+	text-indent: -4000px;}
+
+#prevLink { /*	display:none;*/
+	float: left;
+	margin-right: 3px;
+/* missing image (404)
+	background-image: url(/images/buttons/viewer_prev.gif);
+*/}
+
+.viewerNav .disabledBtn {
+	background-position: 0 0;}
+
+.viewerNav .enabledBtn {
+	background-position: 0 -20px;}
+
+#imagesMask {
+	background-color: #ccc;
+	border: 1px solid #999;
+	margin: 15px 0 10px 0;
+	padding: 11px 10px;
+	width: 306px;
+	/*	height:77px;*/
+	overflow: hidden;}
+
+#images { /*	width:963px;*/
+	}
+
+#images .image {
+	float: left;
+	padding-right: 15px;}
+
+#images .image img {
+	border: 1px solid #fff;}
+
+.viewerData {
+	float: left;
+	width: 50%;}
+
+.viewerData p {
+	padding-bottom: 12px;}
+
+#imgUploadForm {
+	background: url(/images/dividers/dotted.gif) repeat-x 0 0;
+	margin-bottom: 10px;
+	padding-top: 10px;}
+
+#imgUploadForm label {
+	display: block;
+	padding-bottom: 3px;}
+
+.viewerActions {
+	clear: both;
+	background-color: #d4d4d4;
+	padding: 7px 11px;
+	font-size: 12px;}
+
+/* GENERIC CLASSES
+----------------------------*/
+
+.fancy{
+    font-family: Baskerville, georgia;
+    font-size: 12px;
+    line-height: 12px;
+    font-style: italic;}
+
+.calm{
+    color: #999}
+
+   .veryCalm{
+    color: #d2d2d2}
+
+a.calm{
+    color: #9ad1e3}
+
+.calmer{
+    color: #b3b3b3}
+
+.itals{
+    font-style: italic}
+
+.calmer strong{
+color: #999}
+
+.subtitle {
+	font-style: italic;}
+
+
+.dottedHdr,.dottedBorder {
+	background: url(/images/dividers/dotted.gif) repeat-x 0 0;}
+
+.dottedBorder {
+	clear: both;
+	width: 100%;
+	height: 5px;}
+
+.vDottedBorder {
+	background: url(/images/dividers/v_dotted.gif) repeat-y 0 0;}
+
+.title {
+	text-transform: uppercase;
+	color: #999;}
+
+th a.sort {
+	background:url(/images/icons/sort_arrow_down.gif) no-repeat 0 0;
+	padding-left: 10px;}
+
+th a:hover{
+    text-decoration: none;}
+
+
+
+.date {
+  color: #999;
+  font-size: 10px;
+  text-decoration: italic;}
+
+
+.centerSpan{
+    float:left;
+    position:relative;
+    left:50%;
+    text-align:left;}
+
+p.divider{
+    background: transparent url(/images/dividers/h_ltgrey.gif) repeat-x 0 0;
+    padding: 10px 0px;
+    clear: both;}
+
+td.center, th.center{
+	text-align: center;}
+
+
+
+td.right
+    {text-align: right;}
+
+.disclaimer{
+    margin-bottom: 10px;
+    font-size: 10px;
+    color:#9ab581 }
+
+.disclaimer a{
+    font-weight: bold;
+    text-decoration: underline;
+    color:#829f69 }
+
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - -
+	ALERTS AND MESSAGES
+
+    - messages are used in forms, above and below input fields
+	- also in empty modules (reviews, listings, etc..) to indicate what will go there
+	- legend is for footnotes at table bottoms, etc...
+
+ - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+.message, .messageSm{
+	font-weight: 500;
+	font-size: 10px;
+	font-style: italic;
+	color:#666;
+    display: block;}
+
+
+.legend{
+    color: #b5b5b5;
+    font-size: 10px;
+    line-height: 20px;
+    padding: 2px;
+    display: block;
+    border-bottom: 1px solid #f4f4f4;
+    margin-bottom: 5px;}
+
+.legend b{
+    color: #999;}
+
+.legend .block{
+    padding: 0 10px 0px 5px;
+    border-right: 1px solid #e2e2e2; }
+
+.legend .block img{
+    padding: 2px 2px 0px 0px;}
+
+
+.declined a, .declined{
+    color: #f33307}
+
+
+.messageSm{
+	font-size: 9px;
+	display: block;
+	color:#999;
+    font-style: normal;}
+
+.message .block{
+    margin-left: 15px;}
+
+
+.creditScore .messageSm{
+    padding-left: 17px;
+}
+
+.messageNoContent{
+    display: block;
+	font-size: 12px;
+	margin: 0 auto;
+	font-style: italic;
+	color:#777;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	max-width: 500px;}
+
+.messageNoContent a{
+    float: none;
+    padding: 1px 2px;}
+
+
+.messageNoContent strong{
+    color:#222;
+    font-weight: normal}
+
+fieldset .message{
+    display: block;
+    border: 0px;
+    padding-bottom:5px}
+
+fieldset label .message{
+    display: inline;
+    color: #888}
+
+fieldset legend .message{
+    display: inline;
+    text-transform: none;
+    border: 0px;}
+
+
+.red{
+    color: #d93c0b;}
+
+#bid .red{
+    color: #d93c0b;
+    font-size: 13px;
+    font-weight: normal}
+
+
+/*  used at the tops of pages to flag something important
+    that's not an error or success message */
+
+.messageMajor{
+    background-color: #86c4d3;
+    color: #fff;
+    padding: 5px 15px 10px 15px;
+    margin-bottom: 15px;}
+    .messageMajor h1{
+        display: inline;
+        font-size: 30px;
+        line-height: 26px;
+        padding: 0;}
+    .messageMajor h2{
+        color: #0A5E72;
+        display: inline;
+            font-size: 24px;}
+    .messageMajor a{
+        color: #fff;}
+    #home .messageMajor{
+        margin-top: 10px;
+        font-size: 13px;
+        padding:10px 15px 10px 15px;}
+        #home .messageMajor h1{
+            font-size: 35px;
+            color: #fff;
+            display: block;
+            font-family: Arial, sans-serif;
+            line-height: 35px;
+            padding-bottom: 20px;
+            letter-spacing: -1px;}
+        #home .messageMajor h2{
+            color: #247989;
+            display: inline;
+            font-size: 16px;
+            line-height: 30px;
+            padding: 0;
+            font-weight: normal}
+    .messageMajor .helpClose {
+        color: #d8ebeb;}
+
+.messageMajor a.block{
+    width: 220px;
+    padding: 20px;
+    text-align: center;
+    background-color: #a4d7e3;
+    margin-right: 30px;}
+    .messageMajor a.block.active{
+        text-decoration: none;
+        background-color: #bae2ec}
+    .messageMajor  a.block strong{
+        font-size: 17px;
+        color: #fff;
+        font-weight: bold;
+        display: block}
+
+
+.messageMajor .head {
+    padding: 10px 0px 0px 0px;}
+
+.messageMajor p{
+    margin-top: 12px;
+    font-size: 14px;}
+
+
+/*  message that appears on choosing closer or starter   */
+
+#home #closer.messageMajor{
+    background-color:#FEF8E3;
+    border:10px solid #FCEBAF;
+    color: #777;}
+
+#home #starter.messageMajor{
+    background-color: #f6f6f6;
+    border: 10px solid #f0f0f0;
+    color: #777;}
+
+#home #closer.messageMajor h1{
+    color:#f86129;}
+
+#home #closer.messageMajor h2{
+    color:#222;
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: 10px;
+    padding: 0;}
+
+#home #starter.messageMajor h2{
+    color:#222;}
+
+#home #closer.messageMajor p a{
+    font-weight: bold;
+    background-color: #f9f2d8;
+    padding: 2px 4px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;}
+
+/*  the credit styles are used on the renter home page after initial login to
+    highlight their credit score  */
+
+.tealBar{
+    background: #f2fcfd;
+    padding: 5px 10px;
+    font-size: 11px;
+    margin-left: 15px;
+    text-transform: uppercase;
+    color: #388393;
+    position: relative;
+    bottom: 5px;}
+
+.tealBar .small{
+    font-size: 11px;
+    text-transform: none;}
+
+.tealBar .small a{
+    text-decoration: underline;
+    font-weight: bold;}
+
+.tealBar .number{
+    color: #115f60;
+    font-size: 18px;
+    padding: 0px 5px;
+    font-family: Georgia, "times new roman";}
+
+.noScore{
+    text-transform: none;
+    font-size: 14px;
+    line-height: 25px;}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+     FLAGS
+     - .highlightNew for highliting rows
+     - .newFlag for new features
+     - .new creates orange text
+     - #tip for text tips below content
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+
+.highlightNew{
+    background-color: #fefce7;}
+
+.newFlag{
+	background-color:#f38809;
+	color: #fff;
+	font-size: 10px;
+	line-height: 13px;
+	padding: 1px 5px;
+	text-transform: uppercase;
+    -moz-border-radius-topright:4px;
+    -moz-border-radius-topleft:4px;
+    -webkit-border-top-right-radius: 4px;
+    -webkit-border-top-left-radius: 4px;
+     border-radius-topleft:4px;
+     border-radius-topright:4px;}
+
+    	#siteNav .newFlag{
+    	   right: 65px;
+    	   margin-top: -15px;
+    	   position: absolute}
+
+.new{
+	font-size: 12px;
+	color: #F38809;
+	padding: 2px 3px;
+	font-weight: bold;}
+
+td.commission .new{
+    clear: left;
+    font-size: 11px;  }
+
+.commission .new{
+    font-size: 14px;}
+
+
+    #tip, #tipBlock{
+        background: transparent url(/images/sprites/icons.gif) no-repeat 0px -346px;
+        padding: 5px 0px 5px 20px;
+        font-size: 11px;
+        color: #666;
+        margin-bottom: 5px;}
+
+    #tipBlock{
+        width: 200px}
+
+ #tip .title{
+        font-weight: bold;
+        text-transform: none;
+        color: #f97f08;
+        padding-right: 20px;}
+
+    #tip strong{
+        color: #111;}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    HELP and alert DIVS ON GRIDS AND PERSONAL HOME PAGES
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+
+            .alertCalm, .alertCalmLg{
+                background-color: #e4fbcf;
+                padding: 5px 10px;
+                color:#45503b;
+                font-size: 11px;
+                margin-bottom: 10px;
+                font-weight: normal;}
+
+            .alertCalm a, .alertCalmLg a{
+                text-decoration: underline}
+
+            #home .alertCalmLg a.close{
+            	color: #aedc85;}
+
+            .alertCalmLg{
+                font-size: 14px;
+                padding: 10px 15px 20px 15px;
+                margin-bottom: 20px;}
+
+             .pointer{
+                padding-left: 55px;
+                background: #e4fbcf url(/images/icons/pointer.gif) no-repeat 15px 18px;}
+
+            .alertCalm .title, .alertCalmLg .title{
+                font-size: 12px;
+                font-weight: bold;
+                color:#1c3904;
+                text-transform: none;
+                display: block}
+
+            .alertCalmLg .title{
+                font-size: 22px;}
+
+            .alertCalmLg .slug{
+                text-transform: uppercase;
+                color: #a7d77b;
+                font-size: 10px;
+                font-weight: bold;
+                display: block;
+                padding-top: 5px;}
+
+            .alertCalmLg .closeFade{
+                font-size: 12px;
+                color: #fff;
+                padding: 4px 8px;
+                background-color: #c0dfa4;
+            	font-weight: normal;
+                float: right;
+                margin: -3px -12px 0px 0px;}
+
+
+/* - - - grabber messages (subscription model)- - - - -  */
+
+            #pricingMsg, #pricingMsgSm{
+                background-color: #f98700;
+                color: #852a06;
+                font-size: 16px;
+                text-shadow:  0px 1px 2px #f9b96d;
+                margin-bottom: 10px;
+                padding: 10px 15px}
+
+            #pricingMsg a{
+                font-weight: bold;
+                text-decoration: underline;
+                text-shadow: none;
+                color: #fff;}
+
+            #pricingMsg .contact{
+                font-size: 13px;
+                margin-top: 20px;
+                width: 270px;
+                text-align: center;
+                padding: 2px 10px;
+                background-color:#fa9925; }
+
+
+/* - - - GLOBAL HEADER MESSAGES
+            - account inactive
+            - CC problem
+            - IGNITE ad */
+
+            #msgHeader{
+                width:100%;
+                border-bottom: 2px solid #fff;}
+                #msgHeader.cc{
+                    background-color: #D93C0B; }
+                #msgHeader.igniteAd{
+                    background-color: #2f4444}
+
+            #msgHeader #Inner{
+                margin: 0 auto;
+                padding: 5px 0px;
+                font-size: 15px;
+                width: 952px;
+                text-align: center;}
+                #msgHeader.cc #Inner{
+                    height: 55px;
+                    color: #fff;}
+                #msgHeader a.helpClose 	{
+                	color: #85A5A5;
+                	font-weight: bold;
+                	background-color: #091f1f;
+                	padding: 1px 8px;
+                    line-height: 12px;
+                    margin: 2px 0px;}
+
+                #msgHeader.cc strong{
+                    color: #fff; }
+
+                #msgHeader.cc a{
+                    text-shadow: none;
+                    color: #fcc33b;
+                    font-weight: bold;
+                    text-decoration: underline}
+
+                #msgHeader.cc .help{
+                   font-size: 12px;
+                    text-shadow: none;
+                   display: block;
+                   color: #8d2707; }
+
+                #msgHeader.cc .help strong, #msgHeader.cc .help a{
+                    color: #8d2707;}
+
+
+/* ignite-specific banner styles*/
+
+
+                .igniteAd #Inner{
+                    background: #2f4444 url(/images/me/ad.jpg) no-repeat 0px 0px;
+                    font-size: 12px;
+                    padding: 0px;
+                    text-transform: uppercase;
+                    color: #9bbdbd;
+                    text-shadow: 1px 0px 1px #182626;
+                    font-family: arial;
+                    text-align: left;
+                    height: 50px;}
+                .igniteAd #Inner .block a.link {
+                    color: #febe10;
+                    padding: 0px;
+                    font-weight: bold;
+                    clear: left}
+                .igniteAd #Inner .block.first strong {
+                      font-size: 16px;
+                      line-height: 15px;}
+               .igniteAd #Inner .block {
+                    width: 105px;
+                    color: #9bbdbd;
+                    font-size: 10px;
+                    padding: 12px 10px 3px 7px;
+                    border-left: 1px solid #435c5c;
+                    line-height: 13px;}
+                .igniteAd #Inner .block.first {
+                    font-size: 14px;
+                    padding: 12px 0px 3px 190px;
+                    border-left: 0px;
+                    width: 110px;}
+                .igniteAd #Inner .block.calm {
+                    text-transform: lowercase;
+                    font-size: 11px;
+                    font-weight: normal;
+                    font-style: italic;}
+                .igniteAd #Inner .block.last {
+                    padding: 10px 0px 0px 0px;
+                    border-left: 0px}
+                .igniteAd #Inner .plug{
+                    letter-spacing: 1px;
+                    font-size: 11px;
+                    line-height: 12px;
+                    text-transform: uppercase}
+                .igniteAd #Inner a{
+                    white-space: nowrap;
+                    line-height: 18px;}
+
+/* - - - STYLES FOR NEW FEATURES MESSAGE- - - - -  */
+
+        #hp_feature{
+            background: #e4fbcf url(/images/callouts/rentstat1.jpg) no-repeat right 5px;}
+
+        #hp_feature .block{
+            width: 270px;
+            margin-right: 15px;
+            font-size: 13px;
+            line-height: 17px;}
+
+        #hp_feature .title{
+            font-size: 24px;
+            line-height: 28px;}
+
+        #hp_feature .small{
+            display: block;
+            margin-top: 6px;
+            font-size: 10px;
+            padding: 1px 4px;
+            background-color: #d2eeb9}
+
+         #hp_feature a.link{
+            padding: 3px 6px;
+            margin-top: 10px;
+            color: #498016;
+            text-decoration: none;
+            background-color: #cfebb5}
+            #hp_feature a.link.active{
+                color: #fff;
+                background-color: #b4d596}
+
+        #hp_feature p{
+            padding-right: 470px;
+            margin-bottom: 15px;
+            font-size: 17px;
+            color: #5a9524;
+            line-height: 21px;}
+
+#feed_login .alertCalmLg .title{
+    font-size: 17px;}
+
+#renterBids .alertCalmLg {
+    margin-bottom: 0px;}
+
+#home .alertCalm {
+    height: 58px;
+    margin-bottom: 20px;}
+
+
+/* - - - message close links - - */
+
+    .helpClose	{
+    	font-size: 10px;
+    	font-weight: bold;
+    	text-transform: uppercase;
+        padding: 4px 8px;
+        text-decoration: none;
+        float: right;
+        margin: -8px -12px 0px 0px;}
+
+    .alertCalmLg a.helpClose{
+        color: #498016;
+        text-decoration: none;}
+
+		.verify{
+    	background: transparent url(/images/icons/bid_check.gif) no-repeat 93% 10px;}
+
+		.highlight{
+    	background-color: #fff;}
+
+    .twoHundred{
+        width: 200px;}
+
+/* - - - NOTES - - */
+
+    .note{
+        background-color: #FEFDEC;
+        line-height: 14px;
+        font-size: 11px;
+        margin-top: 0px;
+        padding: 4px;}
+
+    	.anon #benefits .note {
+        background-color: #c9ecf4;
+        display: block;
+        font-style: italic;
+        color: #5d929e}
+
+       .anon .plug {
+        color: #64A4B2;
+        display: block;
+        font-family: arial;
+        font-size: 9.5px;
+        letter-spacing: 0.5px;
+        line-height: 25px;
+        text-shadow: 0 1px 1px #FFFFFF;
+        text-transform: uppercase;}
+
+    #account .note p{
+        margin-top: 10px;}
+
+    #details #right .note{
+        background-color:#e8e8e8;
+        color: #555}
+
+    #details #right .note p{
+        font-size: 11px;
+        margin-top: 10px;}
+
+    #details #right .note blockquote{
+        font-size: 10px;
+        color: #999;
+        margin-top: 5px;
+        text-align: center;}
+
+    #details .actionBlock .note input {
+        margin:-1px 2px 0 0;
+        vertical-align:middle;}
+
+			h4 .note{
+				text-transform: none;
+				font-weight: normal}
+
+			.note.right{
+				float: right;
+				padding-right: 10px;
+				background-color: transparent;
+				color: #999}
+
+			.note.right a{
+				color: #444}
+
+  /* - - - - - BS BILLING PAGE STYLES - - - - - - - - - */
+
+            #step3  .next {
+            margin-left: 0px;}
+
+            #cardInfo #verisign{
+            float: right}
+
+            .offerPaymentOption{
+            padding-left: 45px;}
+
+            a.offerPaymentOption:hover{
+            text-decoration: none;}
+
+
+
+ /* - - - - - COUPON/DISCOUNT STYLES- - - - - - - - - */
+
+    fieldset .discount{
+        background: #bbe697 url(/images/sprites/icons.gif) no-repeat 156px -180px;
+        float:left;
+        margin-right: 20px;
+        margin-bottom: 10px;
+        padding: 10px;
+        width: 140px;
+        color: #37690c;
+        font-size: 11px;}
+
+    fieldset .discount .title{
+        font-size: 12px;
+        line-height: 14px;
+         color: #37690c;
+        display: block;
+        text-transform: none;
+        font-weight: bold}
+
+    fieldset .discount .name{
+        font-size: 10px;
+        font-style: normal;
+        color: #7eb350;}
+
+    fieldset .discount .code{
+        display: block;}
+
+    fieldset .discount .expiry{
+        font-size: 10px;
+        display: block}
+
+    fieldset .discount .notes{
+        font-size: 10px;
+        display: block;
+        font-style: italic}
+
+    #newCoupon{
+        padding-left: 4px;
+        clear: left;}
+
+
+ /* - - - - -  plan details section- - - - - - - - - */
+
+       fieldset#planDetails{
+            font-size: 13px;}
+
+        fieldset#planDetails .block{
+            margin-right: 30px;}
+
+/* - - - - - PLAN DETAILS ON SIGNUP/ACCT PAGES - - - - - - - - - */
+
+
+			/* creates the green divs for payment frequency */
+			#planFreq .checkboxCont{
+				margin-right: 3px;
+				background-color:#f4faed;
+				-moz-border-radius: 6px;
+				-webkit-border-radius: 6px;
+				border-radius: 6px;
+				padding: 10px 4px 0px 15px;
+				width:120px;
+				min-height: 65px;}
+
+			fieldset#switch #planFreq .checkboxCont{
+				background-color:#a8d089;}
+
+			#planFreq .checkboxContSm.active{
+				background-color:#eaf9d9;}
+
+			#planFreq   .savings{
+				padding-left: 17px;
+				font-size: 15px;
+				color: #7db240;}
+
+			fieldset#switch #planFreq  .savings{
+				color: #fff;}
+
+
+			/* changes the highlight in the plan switch block */
+
+			fieldset#switch .highlightYellow {
+    		background-color: #aad18c;}
+
+			fieldset#switch #planFreq p.note .highlightYellow {
+   	 		color: #fff;}
+
+   	 	fieldset#switch #planFreq p.note  {
+   	 		color: #497329;}
+
+			#planFreq  .percent{
+				font-size: 10px;
+				text-transform: uppercase;
+				font-weight: bold;
+				display: block;
+				padding-left: 17px;
+				font-style: italic;
+				color: #435a08}
+
+			#planFreq p.note{
+				background-color: transparent;
+				padding: 0px;
+				color: #777;
+				margin-bottom: 10px;}
+
+			#planFreq p.note .highlightYellow{
+				color: #555}
+
+			fieldset#switch #planFreq .note{
+				font-size: 11px;}
+
+	    #account fieldset#switch{
+        color: #fff;
+        font-size: 13px;
+        padding: 10px 20px;
+        background-color: #B9DE9C;
+        border: 3px solid #fff}
+
+     #account fieldset#switch #switchHead{
+        background-color: #a6cd87;
+        border-bottom: 1px solid #9dc47e;
+        margin: -10px -20px;
+        padding: 20px;}
+
+    fieldset#switch #planFreq .checkboxCont{
+        background-color:#a8d089;}
+
+     fieldset#switch .block{
+        background: url(/images/sprites/icons.gif) no-repeat 175px -728px;
+        margin-right: 10px;
+        width: 210px;}
+
+     fieldset#switch .block.last{
+        background-image: none;
+        width: 170px;}
+
+     fieldset#switch .planName{
+        font-size: 23px;
+        font-weight: bold;
+        padding-top: 5px;
+        display: block;
+        line-height: 20px;
+        color:#fff;
+        text-shadow:0 1px 1px #5f873e;
+        background-color: transparent}
+
+     fieldset#switch h3{
+        font-size: 11px;
+        text-transform: uppercase;
+        color:#467221;
+        text-shadow:0 1px #C9E6B1;
+        line-height: 20px;}
+
+     fieldset#switch .planPrice{
+        font-size: 17px;
+        color:#709c4b;}
+
+     fieldset#switch .note{
+        margin-top: 10px;
+        padding: 4px 10px;
+        font-size: 12px;
+        line-height: 16px;}
+				fieldset#switch .note.small{
+	        width: 130px;
+	        background-color:#759f53;}
+
+    fieldset#switch .rowLine{
+        margin-top: 10px;
+        border-top: 0px;
+        padding: 5px;}
+
+
+
+
+ /* - - - - - PREFERENCE CLASSES- - - - - - - - - */
+
+            #preferences fieldset{
+            margin-top: 0px;
+                font-size: 12px;}
+
+            #account .on, #account .off{
+                font-size: 14px;
+                width: 200px;
+                float: none;
+                font-weight: bold;
+                padding: 10px 30px 10px 45px;
+                background: transparent url(/images/icons/bid_check.gif) no-repeat 10px 8px;}
+
+            #account .off{
+                background: transparent url(/images/icons/x.gif) no-repeat 10px 12px;}
+
+            #preferences .checkboxCont {
+            	width: 240px;
+            	display: block;
+            	float: none;
+            	margin: 5px 0px}
+
+        	#preferences h3 {
+                font-size: 13px;
+                font-weight: bold}
+
+
+
+ /* - - - - - RENTER NO EMAIL SURVEY- - - - - - - - - */
+
+    #accountContainer.notProfile #emailNotificationsSurvery fieldset {
+        border:0px;
+        background-color: #f4f4f4;
+        padding: 10px;}
+
+    #emailNotificationsSurvery .message {
+       display: inline}
+
+    #emailNotificationsSurvery li {
+       list-style-type: none;
+       border-top: 1px solid #fff;
+       padding-top: 15px;
+       margin-top: 5px;}
+
+    #emailNotificationsSurvery li .radioCont{
+       margin-top: 0px;
+       float: right}
+
+
+
+/* - - - - - - - ERROR PAGE  STYLES- - - - -  - - - - - - */
+
+        body#oops{
+            background: #fff url(/images/bg/fade_tall.jpg) repeat-x 0 0;}
+
+        #oops #masthead{
+            border-bottom: 0px;
+            width: 540px;
+            height: 90px;
+            margin-bottom: 0px;}
+
+        #oops #wrapper{
+            width: 540px;}
+
+         body#oops #blueBox{
+           font-size: 15px;}
+
+				#oops #blueBox h1{
+            margin-bottom: 10px;}
+
+         #oops #blueBox p{
+            margin-bottom: 10px;}
+
+         #oops #blueBox a{
+            text-decoration: underline}
+
+
+/* - - - - - - - VIDEO STYLES -  - - - - - - */
+
+
+        .video{
+            background: #e6f5fb url(/images/icons/video.gif) no-repeat 10px 7px;
+            border: 1px solid #fff;
+            padding: 10px;
+            font-size: 12px;
+            color: #75a0b3;}
+
+        .video .content{
+            padding-left: 54px;}
+
+        .video a.hide{
+            float: left;
+            display: block;
+            height: 29px;
+            width: 43px;}
+
+        .video a.hide:hover{
+            text-decoration: none}
+
+        .videoSmall{
+            background:url(/images/icons/video_sm.gif) no-repeat top left;
+            padding: 2px 0px 0px 40px;
+            height: 28px;
+            margin-top: 10px;}
+
+        .video .slug{
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 9px;
+            display: block}
+
+        #home .video{
+            float: left;
+            width: 165px;}
+
+        #home .video.wide{
+            float: none;
+            width: auto;
+            margin-bottom: 20px;}
+
+
+        #faq .video.floatRight{
+                float: right;
+                width: 165px;
+                margin-left: 20px;}
+
+
+
+/* - - - - - - - SIGN IN PAGE AND ANONYMOUS PAGE STYLES  - - - - - */
+
+			body#login{
+				background: #fff url(/images/bg/fade_tall.jpg) repeat-x 0 0;}
+
+			#login #masthead{
+				background: none;
+				border-bottom: 0px;
+				width: 560px;
+				height: 60px;
+				margin-bottom: 20px;}
+
+			#login #wrapper{width: 560px;}
+
+			#anon #masthead{
+				margin-bottom: 0px;}
+
+			#login #logo{
+				margin-left: 40px;}
+
+			#blueBox {
+				background-color: #cef0f8;
+				padding: 20px;
+				margin: 0 auto;
+				-moz-border-radius: 20px;
+				-webkit-border-radius: 20px;
+				border-radius: 20px;
+				color: #3d9aac;
+				text-shadow: #e4f5f9 1px 1px;
+				font-size: 13px;
+				-moz-box-shadow: 0 0 6px #8cbcc7;
+				-webkit-box-shadow: 0 0 6px #8cbcc7;
+				box-shadow: 0 0 6px #709ca6;}
+
+			#blueBox h1 {
+				color: #063139;
+				margin-bottom: 20px;
+				padding-left: 20px;
+				font-size: 22px;
+				text-shadow: 1px 1px #e4f5f9 }
+
+			#blueBox h1.shortBottom {
+				margin-bottom: 5px;}
+
+			#blueBox h2 {
+				font-weight: normal;
+				font-size: 17px;
+				padding-left: 0px;}
+
+			#blueBox .row{
+				clear: none;
+				padding-bottom: 25px;
+				padding-left: 0px;}
+
+			#blueBox .row label{
+				display: block}
+
+			#blueBox input.idleField{
+				background-color: #fff ;
+				font-size: 12px;
+				padding: 5px;}
+
+			#blueBox input.focusField{
+				font-size: 12px;
+				padding: 4px;}
+
+			#blueBox .checkboxCont {
+				width: 220px;
+				margin-top: -10px;}
+
+			#blueBox .checkboxCont label{
+				font-size: 11px;
+				color: #268496;}
+
+			#blueBox .title {
+				display: block;
+				padding-bottom: 3px;
+				text-transform: uppercase;
+				color: #3d9aac;
+				text-align: center;
+				font-size: 11px;}
+
+			#blueBox .small {
+				font-size: 12px;}
+
+			/* right-side sign up/log in */
+			#blueBox .admin {
+				float: right;
+				font-size: 12px;
+				padding-top: 10px;
+				color: #3d9aac;
+				text-shadow: 0px 1px 1px #e1f4f9; }
+
+			/* col styles */
+
+			#blueBox .block{
+				width: 220px;
+				padding: 20px 10px 20px 20px;
+				margin-right: 0px;}
+
+			#blueBox .block.fb{
+				padding: 20px 10px 20px 17px;}
+
+			#blueBox .or{
+				padding: 0px;
+				width: 20px;
+				text-transform: uppercase;
+		    font-size: 14px;
+		    font-family: Arial;
+		    color: #73afbb;
+		    display: block;
+		    padding-top: 30px;
+				text-align: center;}
+
+			#blueBox .or.wide{
+				width: 200px;}
+
+			#blueBox .or.med{
+				width: 30px;}
+
+			#blueBox .col{
+				float: left;}
+
+			#blueBox .col p{
+				clear:left;
+				text-align: center;
+				padding-top: 20px;}
+
+			/* left col styles */
+			#blueBox #left{
+				width: 230px;}
+
+			#blueBox #left.wide{
+				width: 250px;}
+
+			#blueBox #signup #left{
+				padding-top: 11px;}
+
+			#blueBox  .btnGreenLg a, .btnGreenLg input{
+				padding-right: 25px;
+				padding-left: 0px; }
+
+			/* right col styles */
+			#blueBox #right{
+				width: 225px;
+				padding-top: 11px;}
+
+			#blueBox #right.narrow{
+				padding-top: 0px;
+				font-size: 11px;
+				width: 180px;}
+
+			#blueBox #right a{
+		    text-shadow: none}
+
+			/* right col styles */
+			#blueBox #completeFB .block  p{
+				text-align: left;
+				padding-top: 5px}
+
+			#blueBox #completeFB .block  strong{
+				font-size: 12px;}
+
+			#blueBox .note{
+				background-color: #b9e3ed;
+				padding: 5px;
+				color: #111;
+				font-size: 12px;
+				margin-top: 10px;}
+
+			#blueBox .help {
+				float: left;
+				color: #59a7b6;
+				margin-top: 10px;
+				font-size: 11px;}
+
+			#blueBox .help a {
+				font-weight: bold;
+				text-decoration: underline;}
+
+			#blueBox .unsubscribe h4{
+				display: inline;}
+
+			#blueBox .unsubscribe .block input{
+				padding-top: 4px}
+
+			.unsubscribe{
+				font-size: 13px;}
+
+/* - - - - - - - Call the illustration used on the home page
+	               - eg on the seo landing page
+	- - - - - - - - - - - - - - - - - - - - - -  - - - - - - */
+
+        #illo{
+        background: transparent url(/images/home/illo.jpg?20100113) no-repeat 0 0;
+        height: 309px;}
+
+
+/* - - - - - - - EMAIL VERIFICATION/CHOOSE CREDIT PAGES - - - - - */
+
+        #verification {
+          font-size: 12px;}
+
+        #verification a.big{
+          padding-top: 10px;
+          font-size: 14px;
+          text-decoration: underline}
+
+
+/* - - - - - - - - - - -- - - RESET PASSWORD MODAL - - - - -*/
+
+        #cboxLoadedContent #resetPassword H1{
+            color:#0C5F6F;
+            font-size:20px;
+            line-height: 14px;
+            margin-bottom:10px;
+            text-align: left;}
+
+
+        #cboxLoadedContent #resetPassword {
+            font-size:13px;
+            line-height: 18px;}
+
+
+        #cboxLoadedContent #resetPassword label{
+          color: #0C5F6F;}
+
+
+/* - - - - - - - TERMS OF SERVICE/PRIVACY POLICY MODALS - -  - - - - - - */
+
+    #broker_signup #cboxLoadedContent .bg, #renter_signup #cboxLoadedContent .bg{
+        background-color: transparent;}
+
+    #broker_signup #cboxLoadedContent h1, #renter_signup #cboxLoadedContent h1{
+       text-align: left;}
+
+    #broker_signup #cboxLoadedContent h3,  #renter_signup #cboxLoadedContent h3{
+        margin: 15px 0px 0px;}
+
+    #broker_signup #cboxLoadedContent h2, #renter_signup #cboxLoadedContent h2 {
+    	font-style: normal;
+    	color: #111;
+    	margin-top: 15px;
+        padding-left: 0px;
+        font-weight: bold;}
+
+    #broker_signup #cboxLoadedContent p, #renter_signup #cboxLoadedContent p{
+    margin-top: 8px;}
+
+    #broker_signup #cboxLoadedContent ul, #renter_signup #cboxLoadedContent ul {
+      margin: 10px 0px 10px 20px;
+      font-size: 13px;
+      font-weight: bold;
+      list-style: none;}
+
+    #broker_signup #cboxLoadedContent  ul ul li, #renter_signup #cboxLoadedContent  ul ul li{
+      margin-bottom: 5px;
+      font-size: 11px;
+      font-weight: normal;
+      list-style: disc;}
+
+
+
+/* - - - - - - - VIDEO STYLES- - - - - - - - -  - - - - - - */
+
+        .videoOuter{
+            background-color:  #e7f6f9;
+            padding: 10px;}
+
+        .videoInner{
+            background-color:  #fff;
+            padding: 2px;}
+
+
+/* - - - - - - - RENTER AND BROKER TOUR/HOW IT WORKS STYLES - - - - -  - - - - - - */
+
+
+		#tour #leftCol {
+			float: left;
+			margin: 0px 40px 0px 0px;
+			width: 200px;
+			padding:0px;   }
+
+		#tour #rightCol {
+			float: left;
+			min-height: 500px;
+			margin-top:10px;
+			width: 712px;
+			font-size: 13px;
+			color: #333;}
+
+		#tour #topline{
+			margin-top: 1px;
+			border-top: 8px solid #378696;}
+
+      #tour .tout{
+      color: #b2b2b2;
+        font-family: arial;
+        font-size: 10px;
+        line-height: 25px;
+        letter-spacing: .2px;
+        text-transform: uppercase;}
+
+			#tour h2 , #tour h3 {
+		    font-family: Arial,"lucida grande";
+		    font-size: 28px;
+		    line-height: 21px;
+		    padding: 0 40px 10px 0;
+		    white-space: nowrap;}
+
+	   #tour h3 {
+	   		color: #888;
+	   		font-weight: normal;
+	   		font-size: 17px;
+	   		line-height: 17px;}
+
+			#tour  ul#nav{
+				margin-top: 130px;
+				list-style-type: none;}
+
+			#tour  ul#nav li{
+				padding: 12px 10px 12px 40px ;
+				border-top: 1px solid #f4f4f4;
+				line-height: 23px;}
+				#tour  ul#nav li a{
+					color: #a3c6cd;
+					font-size: 13px}
+
+			#tour ul#nav li.active a{
+					color: #147898;
+					text-decoration: none}
+
+			#tour ul#nav li.search{
+				background: transparent url(/images/sprites/icons.gif) no-repeat 0px -1390px}
+				#tour ul#nav li.search.active{
+					background: transparent url(/images/sprites/icons.gif) no-repeat 0px -1436px;}
+
+			#tour ul#nav li.noFee{
+				background: transparent url(/images/sprites/icons.gif) no-repeat 0px -1802px}
+				#tour ul#nav li.noFee.active{
+					background: transparent url(/images/sprites/icons.gif) no-repeat 0px -1843px;}
+
+			#tour ul#nav li.quality{
+				background: transparent url(/images/sprites/icons.gif) no-repeat 0px -1724px}
+				#tour ul#nav li.quality.active{
+					background: transparent url(/images/sprites/icons.gif) no-repeat 0px -1761px;}
+
+			#tour ul#nav li.reviews{
+				background: transparent url(/images/sprites/icons.gif) no-repeat 0px -1570px}
+				#tour ul#nav li.reviews.active{
+					background: transparent url(/images/sprites/icons.gif) no-repeat 0px -1611px;}
+
+			#tour ul#nav li.privacy{
+				background: transparent url(/images/sprites/icons.gif) no-repeat 0px -1485px}
+				#tour ul#nav li.privacy.active{
+					background: transparent url(/images/sprites/icons.gif) no-repeat 0px -1529px;}
+
+			#tour ul#nav li.email{
+				background: transparent url(/images/sprites/icons.gif) no-repeat 0px -1653px}
+				#tour ul#nav li.email.active{
+				background: transparent url(/images/sprites/icons.gif) no-repeat 0px -1690px}
+
+				#tour #rightCol .button.green  {
+					margin-top: 25px;}
+
+
+/* cartoons */
+
+			#tour ul.cartoons{
+				margin: 40px 0px 40px 0px ;
+				width: 712px;
+				list-style-type: none}
+
+				#tour ul.cartoons li{
+					float: left;
+					-moz-border-radius-bottomright: 6px;
+					-moz-border-radius-topleft: 6px;
+					-webkit-border-top-left-radius: 6px;
+					-webkit-border-bottom-right-radius: 6px;
+					border-radius-bottomright: 6px;
+					border-radius-topleft: 6px;
+					margin-right: 2px;
+					border: 1px solid #daeaee;
+					color: #666;
+					width: 234px;
+					height: 230px;
+					position: relative }
+					#tour ul.cartoons li.last{
+						margin-right: 0px;}
+
+					#tour ul.cartoons li.medium{
+						width: 350px;}
+					#tour ul.cartoons li.wide{
+						width: 712px;}
+
+
+				/* search */
+				#tour #step1 ul.cartoons li.one{
+					background: transparent url(/images/sprites/tour.gif) no-repeat 80px 20px}
+				#tour #step1 ul.cartoons li.two{
+					background: transparent url(/images/sprites/tour.gif) no-repeat 65px -120px}
+				#tour #step1 ul.cartoons li.three{
+					background: transparent url(/images/sprites/tour.gif) no-repeat 85px -252px}
+
+				/* no fee */
+				#tour #step2 ul.cartoons li{
+					width: 712px;
+					background: transparent url(/images/tour/montage.jpg) no-repeat 50px 0px}
+
+				/* quality */
+				#tour #step3 ul.cartoons li.one{
+					background: transparent url(/images/sprites/tour.gif) no-repeat  90px -435px}
+				#tour #step3 ul.cartoons li.two{
+					background: transparent url(/images/sprites/tour.gif) no-repeat  40px -600px}
+
+					/* reviews */
+				#tour #step4 ul.cartoons li.one{
+					background: transparent 	url(/images/sprites/tour.gif) no-repeat scroll 95px -755px}
+				#tour #step4 ul.cartoons li.two{
+					background: transparent 	url(/images//sprites/tour.gif) no-repeat scroll 50px -900px}
+
+					/* privacy */
+				#tour #step5 ul.cartoons li.one{
+					background: transparent 	url(/images/sprites/tour.gif) no-repeat scroll 85px -1035px}
+				#tour #step5 ul.cartoons li.two{
+					background: transparent 	url(/images//sprites/tour.gif) no-repeat scroll 70px -1175px}
+
+					/* email */
+				#tour #step6 ul.cartoons li.one{
+					background: transparent 	url(/images/tour/email.gif) no-repeat scroll 70px 10px}
+
+				#tour ul.cartoons li .number{
+					position: absolute;
+					background-color: #daeaee;
+					color: #378696;
+					-moz-border-radius-topleft: 6px;
+					-webkit-border-top-left-radius: 6px;
+					border-radius-topleft: 6px;
+					-moz-border-radius-bottomright: 6px;
+					-webkit-border-bottom-right-radius: 6px;
+					border-radius-bottomright: 6px;
+					font-size: 12px;
+					text-align: center;
+					width: 20px;
+					height: 20px;
+					top: 2px;
+					left: 2px;}
+				#tour ul.cartoons li .text{
+					-moz-border-radius-bottomright: 6px;
+					-webkit-border-bottom-right-radius: 6px;
+					border-radius-bottomright: 6px;
+					text-align: center;
+					position: absolute;
+					line-height: 19px;
+					font-size: 15px;
+					font-family: Arial;
+					bottom: 0px;
+					background-color: #378696;
+					color: #daeaee;
+					padding: 20px 12px;}
+					#tour ul.cartoons li.wide .text{
+						width: 688px;
+						font-size: 16px;
+						border-top: 1px solid #fff}
+					#tour ul.cartoons li.medium .text{
+						border-top: 1px solid #fff;
+						width: 326px;
+						font-size: 15px;}
+
+					#tour .statement{
+						border-bottom: 1px solid #f5f5f5;
+						font-family: Arial;
+						padding-bottom: 10px;
+						font-size: 15px;}
+						#tour .statement strong{
+							color: #555;}
+
+					#tour #video{
+						margin: 30px 0px;}
+
+/* THANK YOU PAGES STYLES
+-------------------------------------------------------------- */
+        /* *image 404'in*
+				#signup, #signin {
+                	background-image: url(/images/home/bg.gif);}*/
+
+        #thanksBox, #thanksBoxWide {
+        	width: 400px;
+        	padding: 20px;
+        	border: 10px solid #f3f3f3;
+        	font-size: 120%;
+        	margin-top:20px;}
+
+        #thanksBoxWide{
+        	width:500px;
+        	font-size: 100%;
+        	padding: 15px;}
+
+/* - - - - - - - - - - -- - - - -
+ broker review form
+- - - - - - - - - - - - - - -*/
+
+        #thanksBoxWide .row, #thanksBoxWide .first {
+        	clear: none;
+        	border-top: 2px solid#f2f2f2;
+        	padding: 13px 5px 10px 0;
+        	width: 100%;}
+
+        #thanksBoxWide.new_review{
+        	   font-size: 12px;
+        	   color: #999}
+
+        #reviewPublish #head {
+        	background-color: #F5FBFC;
+        	padding: 20px 10px 20px 17px;
+        	margin: -14px;
+        	margin-bottom: 10px;}
+
+        #reviewPublish #head H1{
+        	margin-bottom: 0px;}
+
+        #reviewPublish #head H3{
+        	font-size: 12px;
+        	color: #F33307;
+        	font-style: italic;
+        	font-weight: normal}
+
+        #thanksBoxWide.new_review label{
+            font-size: 13px;
+            font-weight: bold;
+            color: #555}
+            #thanksBoxWide.new_review label.calm{
+            font-weight: normal;}
+
+        #thanksBoxWide .first {
+        	background: none;
+        	padding-top: 0;}
+
+        #thanksBoxWide .floatLeft {
+        	margin-top: 5px;}
+
+        #thanksBoxWide p{
+        	margin-top: 10px;}
+
+        #thanksBox p{
+        	margin-top: 20px;}
+
+        #signin  #loginBtn {
+        	border: 0 none;
+        	background-color: #fff}
+
+        #reviewPublish .floatRight .radioCont{
+            margin-top: 0px;}
+            #reviewPublish .floatRight .radioCont label{
+                font-size: 12px;
+                display: inline;
+                font-weight: normal}
+
+
+
+
+/* FOOTER STYLES
+-------------------------------------------------------------- */
+#footerWrapper {
+	clear: both;
+	height: 48px;
+	margin-top: 10px;
+	padding-left:5px;
+	width:947px;
+		background-color:#cdecf2;
+	margin-top: 20px;}
+
+#footer {
+    padding: 18px 0 0 13px;
+	width: 934px;
+	height: 30px;
+	text-align: center}
+
+#footer span,#footer a {
+	margin-right: 30px;}
+
+
+#footer a.active {
+	text-decoration: underline}
+
+.copyright {
+	display: block;
+	color: #999;
+	margin: 10px;
+	text-align: center}
+
+.copyright .hud {
+	text-align: center;
+	padding: 2px;
+	color: #999;
+	padding-left: 23px;
+	background: url(/images/sprites/icons.gif) no-repeat 5px -1352px}
+
+.copyright .madeinNYC {
+	color: #999;
+	font-size: 9px;
+	text-transform: uppercase;
+	padding-left: 16px;
+	background: url(/images/sprites/icons.gif) no-repeat 10px -2142px}
+
+	#mysite .copyright .hud{
+		color: #95A5A5}
+
+	#footer li {
+		margin-right: 10px;}
+
+	.bottom{
+	    padding-bottom: 0px;}
+
+	td.right{
+		text-align: right;}
+
+	.noFloat{
+		float: none;}
+
+.colhead {
+	text-align: right;}
+
+
+/* ----- dates fields size ----- */
+#wrapper input.small, #wrapper select.small{
+	width: 25px;}
+
+
+/* Renter Signup / Credit Check */
+#renter_signup #dob .floatLeft {
+  margin-right: 3px;}
+
+#renter_signup #ssn .floatLeft {
+  margin-right: 4px;}
+
+
+/* - - - - - deprecated?- - - - - - - - - -*/
+
+		.gap{
+			float: left;
+			padding: 6px 12px 1px;}
+
+
+
+
+/* Broker > Offers > Attach Listings
+-------------------------------------------------------------- */
+		ul#attachedListings {
+			margin: 0;
+			padding: 0;}
+
+		ul#attachedListings li {
+			margin: 0;
+			list-style: none;
+			float: left;
+			width: 265px;
+			padding: 0;}
+
+		#bidDetails  ul#attachedListings li {
+			float: none;}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - -
+  Popup Window for showing Offers Made by other brokers
+  - on renter SEREP
+- - - - - - - - - - - - - - - - - - -- - - - - - - - - */
+    .offersMadePopup {
+      border-style: none solid solid;
+      border-color: -moz-use-text-color rgb(156, 203, 213) rgb(156, 203, 213);
+      border: 3px solid #9ccbd5;
+      border-width: 3px;
+      padding: 10px;
+      position: absolute;
+      margin-top: 2px;
+      margin-left: 0px;
+      font-size: 10px;
+      background-color: rgb(225, 243, 247);
+      width: 220px;}
+
+    #SERP .offersMadePopup th, #home .offersMadePopup th{
+        background-color: rgb(194, 227, 235);
+        border-bottom:1px solid #fff;
+        border-top:1px solid #fff;
+        padding:4px 8px 3px 9px;
+        color: #111;
+        font-weight: bold;
+        font-size: 11px;
+        text-transform: none}
+
+    #SERP .offersMadePopup td,  #home .offersMadePopup td {
+        border-bottom:1px solid #fff;
+        padding:4px 0px 5px 9px;
+        vertical-align:top;
+        font-size: 11px;}
+
+    #SERP .offersMadePopup li, #home .offersMadePopup li{
+        list-style: none}
+
+     .modBody .offersMadePopup td{
+        background: none;}
+
+    #SERP .offersMadePopup .block, #home .offersMadePopup .block{
+        padding-right: 3px;}
+
+    #SERP .offersMadePopup .blockWide, #home .offersMadePopup .blockWide{
+        padding-right: 15px;
+        float: left;}
+
+    .offersMadePopup .close{
+      float: right;
+      background-color: #9ccbd5;
+      padding: 2px 4px; }
+
+    .offersMadePopup a.close {
+      color: #fff;}
+
+
+/*  - - - - - - - - - - - - - - - - - - - - - - - - -
+	LITTLE BLUE POPUP WINDOW
+	- on renter SERP (offer info)
+	- on grids (received offer info)
+- - - - - - - - - - - - - - - - - - -- - - - - - - - - */
+
+        #SERP .offerPopup {
+          border-style: none solid solid;
+          border-color: -moz-use-text-color rgb(156, 203, 213) rgb(156, 203, 213);
+          border: 3px solid #9ccbd5;
+          border-width: 3px;
+          padding: 10px;
+          position: absolute;
+          margin-top: -40px;
+          margin-left: 85px;
+          font-size: 10px;
+          background-color: rgb(225, 243, 247);
+          width: 300px;}
+
+
+        #SERP .offerPopup .close{
+            float: right;
+            background-color: #9ccbd5;
+            padding: 2px 4px; }
+
+        #SERP .offerPopup a.close {
+            color: #fff;}
+
+				#partners{
+				    margin: 0 auto;
+				    width: auto;
+				    text-align: center;
+				    max-width: 500px;}
+
+				#partners td{
+				    border: none}
+
+				#partners #verisign{
+				    margin: 0 auto;
+				    width: 140px;}
+
+
+/*  - - - - - - - TWO-COL PAGE W/SHADOWED RIGHT COL- - - - - - - - - - */
+
+        .shadowInner{
+            background: transparent url(/images/sprites/col-backgrounds.gif) no-repeat left top;
+            padding-left: 30px;
+            min-height: 140px; }
+
+        .shadowOuter{
+            background: transparent url(/images/sprites/col-backgrounds.gif) repeat-y left -700px;
+            min-height: 300px;}
+
+        .shadowInnerWhite{
+            background: transparent url(/images/shades/top-white.gif) no-repeat left top;
+            padding-left: 30px;
+            margin-bottom: 80px;}
+
+        .shadowOuterWhite{
+            background: transparent url(/images/shades/bot-white.gif) no-repeat left bottom;}
+
+
+ /*  - - - - - - - RIGHT COLUMN MODULES- - - - - - - - - - */
+
+        .shadowInner  h2{
+            border-bottom: 0px;
+            background-color: #E6F5FB;
+            padding: 5px 2px 5px 15px;
+            font-size: 13px;
+            color: #62a1ba;
+            text-shadow: 0px 1px #fff;}
+
+        .shadowInner  h3{
+            font-size: 14px;
+            color: #333;
+            text-shadow: 0px 1px #fff;}
+
+ /*  - - - - - - - infographics- - - - - - - - - - */
+
+    .infographics .head{
+        font-family: arial;
+        font-size: 17px;
+        font-weight: normal;
+        margin: 15px 0px;
+        color: #ccc;}
+        .infographics .block{
+            padding-right: 20px;
+            margin-left: 20px;
+            border-right: 2px solid #e2e2e2;}
+        .infographics .block.first{
+            margin-left: 0px;
+            color: #bbb;}
+        .infographics .block.last{
+            padding-right: 0px;
+            border: 0px;}
+
+
+ /*  - - - - - - - naked deals styles- - - - - - - - - - */
+
+    #nakedDeals .headMessage{
+        padding: 30px 0px;
+        border-bottom: 0px;}
+
+    #nakedDeals .col{
+        float: left;
+        padding: 0px;
+        width: 220px;
+        margin-right: 20px;}
+        #nakedDeals .col.last{
+            margin-right: 0px;}
+
+    #nakedDeals .head{
+        background-color: #c4e843;
+        padding: 5px 10px;
+        margin-bottom: 15px;
+        color: #fff;
+        font-size: 17px;
+        font-weight: bold}
+
+        #nakedDeals .head.movers{
+            background: #c4e843 url(/images/sprites/deal-logos.gif) no-repeat 170px -850px;}
+        #nakedDeals .head.laundry{
+            background: #c4e843 url(/images/sprites/deal-logos.gif) no-repeat 170px -1145px;}
+        #nakedDeals .head.boxes{
+            background: #c4e843 url(/images/sprites/deal-logos.gif) no-repeat 170px -950px;}
+        #nakedDeals .head.credit{
+            background: #c4e843 url(/images/sprites/deal-logos.gif) no-repeat 170px -1002px;}
+        #nakedDeals .insurance{
+            background: #c4e843 url(/images/sprites/deal-logos.gif) no-repeat 170px -1047px;}
+        #nakedDeals .maids{
+            background: #c4e843 url(/images/sprites/deal-logos.gif) no-repeat 170px -1093px;}
+        #nakedDeals .dogWalker{
+            background: #c4e843 url(/images/sprites/deal-logos.gif) no-repeat 170px -1205px;}
+
+    #nakedDeals .deal{
+        margin-bottom: 15px;
+        -moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+        -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+        box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+        min-height: 110px;
+        color: #999;
+        font-size: 11px;
+        line-height: 15px;
+        padding: 2px}
+        #nakedDeals .deal a.curveTop{
+            color: #333;
+            font-weight: bold;
+            font-size: 15px;
+            background-color: #f7f7f7;
+            margin-bottom: 10px;
+            display: block;
+            padding: 7px;}
+            #nakedDeals .deal a.curveTop.active{
+                text-decoration: none;
+                background: #ebebeb url(/images/sprites/deal-logos.gif) no-repeat 145px -804px;
+                color: #111;}
+        #nakedDeals .deal p{
+            padding: 0px 10px 10px 10px;
+            min-height: 50px;
+            height: 50px;}
+            #nakedDeals .deal p img{
+            padding-right: 10px;}
+            #nakedDeals .deal p a{
+            float: left;
+            width: 62px;
+            height: 50px;
+            margin-right: 10px;}
+            #nakedDeals .deal p a.active{
+            text-decoration: none}
+
+        #nakedDeals .deal.redline p{
+            background: transparent url(/images/sprites/deal-logos.gif) no-repeat 10px 5px;}
+        #nakedDeals .deal.shleppers p{
+            background: transparent url(/images/sprites/deal-logos.gif) no-repeat 10px -60px;}
+        #nakedDeals .deal.nycclean p{
+            background: transparent url(/images/sprites/deal-logos.gif) no-repeat 10px -120px;}
+        #nakedDeals .deal.madyQueen p{
+            background: transparent url(/images/sprites/deal-logos.gif) no-repeat 10px -180px;}
+        #nakedDeals .deal.urbanMaid p{
+            background: transparent url(/images/sprites/deal-logos.gif) no-repeat 10px -240px;}
+        #nakedDeals .deal.oxfordMaids p{
+            background: transparent url(/images/sprites/deal-logos.gif) no-repeat 10px -300px;}
+        #nakedDeals .deal.moveOut p{
+            background: transparent url(/images/sprites/deal-logos.gif) no-repeat 10px -360px;}
+        #nakedDeals .deal.freeCreditScore p{
+            background: transparent url(/images/sprites/deal-logos.gif) no-repeat 10px -420px;}
+        #nakedDeals .care p{
+            background: transparent url(/images/sprites/deal-logos.gif) no-repeat 10px -480px;}
+        #nakedDeals .insAgents p{
+            background: transparent url(/images/sprites/deal-logos.gif) no-repeat 10px -540px;}
+
+
+ /*  - - - - - - - broker offers - - - - - - - - - - */
+
+    #offers .headMessage{
+    	margin-bottom: 20px;
+			padding: 30px 0px 5px 0px;}
+
+
+
+
+
+
+/* SAFARI-ONLY CODE
+	(has to be in main css - no way to target w/sep css)
+-------------------------------------------------------------- */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+
+		#pricingTable #best{
+			top: -28px !important;}
+
+		.acceptBtn a, .acceptBtn input {
+			padding-top: 5px;}
+
+		#searchWrapper .fancyDropdownOptions li input{
+			height: 10px;}
+
+		#neighborhoodDropdown ul li input{
+			padding:1px;
+			height: 10px;
+			background-image: none;}
+
+		#siteNav {
+			margin-top: 43px;}
+
+		.modsub li, .modsub li.active, .modsub li.active:hover {
+			padding-bottom: 4px;}
+
+		#masthead  {
+			height: 119px}
+
+		#excludeRenters {
+			margin-bottom:2px;}
+
+		table#requestReviews .blueActBtn a {
+			padding: 4px;}
+
+		#step3 #purchaseBids .block,  #step3 #purchaseBids .noBorder{
+			padding: 10px 0px 4px 5px;}
+
+		#searchWrapper fieldset.searchFilters{
+			width: 936px;}}
+
