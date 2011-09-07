@@ -35,7 +35,7 @@ class RenterController < ApplicationController
   # }
   def search
     @page = params[:page].to_i
-    @rents, amount = Rent.get_rents(@page, params[:dist_code], params[:rooms], params[:pattern])
+    @rents, amount = Rent.get_rents(@page, params[:dist_code], params[:rooms], params[:pattern], params[:min_rent], params[:max_rent])
     @pages = amount.to_i ? amount.to_i+1 : amount.to_i
     @last_page = amount/ITEMS_PER_PAGE + 1
     Rails.logger.debug ">>>>>>>>>> amount:    #{amount}"

@@ -18,13 +18,23 @@ class Rent < ActiveRecord::Base
 
   def enrich; img_length; end
 
-  def Rent.get_rents(page, dist_code=nil, rooms=nil, search_string=nil)
+  def Rent.get_rents(page, dist_code=nil, rooms=nil, search_string=nil, min_rent=nil, max_rent=nil)
+
+Rails.logger.debug "MIN, MAX: #{min_rent}, #{max_rent}" 
+
+    max_rent = max_rent.nil? || max_rent.empty?? 1000000000 : max_rent #subselect or hardcoded, hm...
+    min_rent = min_rent.nil? || min_rent.empty?? 0 : min_rent
     logger.debug("Rent#get_rents:    " + dist_code.to_s + "  " + rooms.to_s + "  " + page.to_s)
-    prepared_statement = where("dist_code  like ? and rooms like ? and (adress like ? or info like ?)",
-                               "%#{dist_code}%",
-                               "%#{rooms}%",
-                               "%#{search_string}%",
-                               "%#{search_string}%")
+
+    prepared_statement = where(
+                "dist_code LIKE ? #{rooms.nil? || rooms.empty? ? '' : "AND rooms IN (#{rooms})"} 
+                AND (price BETWEEN ? AND ?)  AND (adress LIKE ? or info LIKE ?) ", 
+                "%#{dist_code}%", 
+                min_rent, 
+                max_rent,
+                "%#{search_string}%", 
+                "%#{search_string}%"
+              )
     result_rents =  prepared_statement.offset((page.to_i*10)-10).limit(10).order("date DESC").all
     condition_amount = prepared_statement.count
     return result_rents, condition_amount
