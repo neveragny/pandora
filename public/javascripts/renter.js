@@ -274,7 +274,7 @@ var AnonymousRenter = {
     init: function(open_modal) {
       var self = this;
       if(open_modal && $.cookie('anon_renter_suggestions') != '1') {
-        $.fn.colorbox({
+        $.fn.fancybox({
           inline: true,
           open: true,
           href: '#anonymousSuggestionsContainer',
@@ -286,7 +286,7 @@ var AnonymousRenter = {
         });
       }
       
-      $('#renterSearchAlert').colorbox({
+      $('#renterSearchAlert').fancybox({
         inline: true,
         href: '#anonymousSuggestionsContainer',
         onComplete: function(){
@@ -298,20 +298,20 @@ var AnonymousRenter = {
     form: function(remove_serp_button) {
       var self = this;
       $('#noThanks').click(function() {
-        $.colorbox.close();
+        $.fancybox.close();
         ga_track_event('Listing Search', 'Click', 'listings alert: no thanks');
       });
-      rollover_button('#cboxLoadedContent .btnGreen');
+      rollover_button('#fancybox-content .btnGreen');
       
       // AJAX form
       var options = {
         'success': function(response) {
-          $("#cboxLoadedContent").html(response);
-          $.colorbox.resize();
+          $("#fancybox-content").html(response);
+          $.fancybox.resize();
           
           if($('#errorExplanation').length > 0) {
             self.form();
-            submit_button('#cboxLoadedContent .submitButton');
+            submit_button('#fancybox-content .submitButton');
           } else {
             if(remove_serp_button)
               $('#renterSearchAlert').hide();
