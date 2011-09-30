@@ -30,8 +30,7 @@ gem 'oauth2'
 gem "s3"
 
 # Use unicorn as the web server
- gem 'unicorn'
-
+# gem 'unicorn'
 gem 'rails3-jquery-autocomplete'
 
 # Deploy with Capistrano
