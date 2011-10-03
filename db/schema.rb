@@ -10,12 +10,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110826232547) do
+ActiveRecord::Schema.define(:version => 20111001225620) do
 
   create_table "albums", :force => true do |t|
     t.integer  "user_id",         :default => 0,                     :null => false
     t.string   "cover",           :default => "/images/missing.png"
-    t.string           :default => "",                    :null => false
+    t.string   "title",           :default => "",                    :null => false
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(:version => 20110826232547) do
     t.string   "type",       :null => false
     t.string   "ref_id",     :null => false
     t.integer  "user_id",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "feedbacks", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -73,22 +81,16 @@ ActiveRecord::Schema.define(:version => 20110826232547) do
     t.datetime "updated_at"
   end
 
-  create_table "rails_admin_histories", :force => true do |t|
-    t.string   "message"
-    t.string   "username"
-    t.integer  "item"
-    t.string   "table"
-    t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 5
+  create_table "rentbookmarks", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "rent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_histories_on_item_and_table_and_month_and_year"
-
-  create_table "rentbookmarks", :force => true do |t|
+  create_table "rentfavorites", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "rent_id"
+    t.string   "rent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

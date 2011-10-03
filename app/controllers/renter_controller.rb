@@ -2,6 +2,7 @@ class RenterController < ApplicationController
 
   skip_before_filter :existent_user
   before_filter :enrich_class
+  before_filter :require_user, :only => [:add_favorite, :delete_favorite, :favorites]
 #  before_filter :validate_request, :only => :create
 
   ITEMS_PER_PAGE = 10
@@ -48,9 +49,38 @@ class RenterController < ApplicationController
     Rails.logger.debug "search goes Here!"
   end
 
+  #Parameters
+  #  rentId
+  def add_favorite
+    rentfavorite = User.find(@current_user).rentfavorites.build(:rent_id => params[:id])
+    respond_to do |f|
+      if rentfavorite.save
+        f.json { render :json => {:success => :true}}
+      else
+        f.json { render :json => {:success => :false}}
+      end
+    end
+  end
+
+  def delete_favorite
+    rentfavorite = User.find(@current_user).rentfavorites.where(:rent_id => params[:id]).first
+    respond_to do |f|
+      if rentfavorite.destroy
+        f.json { render :json => {:success => :true}}
+      else
+        f.json { render :json => {:success => :false}}
+      end
+    end
+  end
+
+  def favorites
+
+  end
+
   private
   def enrich_class
     @class = params[:action]
   end
+
 
 end

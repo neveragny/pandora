@@ -47,7 +47,7 @@ var SearchListings = {
     $('#saveSearchButton').fancybox({
       'onComplete': function() {
         $(this).hide();
-        ga_track_event('Listing Search', 'Click', 'Saved search');
+//        ga_track_event('Listing Search', 'Click', 'Saved search');
       }
     });
   },
@@ -280,7 +280,7 @@ var AnonymousRenter = {
           href: '#anonymousSuggestionsContainer',
           onComplete: function(){
             self.form();
-            ga_track_event('Listing Search', 'Open', 'listings alert: signup form');
+//            ga_track_event('Listing Search', 'Open', 'listings alert: signup form');
           },
           onClosed: self.disable
         });
@@ -291,7 +291,7 @@ var AnonymousRenter = {
         href: '#anonymousSuggestionsContainer',
         onComplete: function(){
           self.form(true);
-          ga_track_event('Listing Search', 'Click', 'listings alert: signup form');
+//          ga_track_event('Listing Search', 'Click', 'listings alert: signup form');
         }
       });
     }, 
@@ -299,7 +299,7 @@ var AnonymousRenter = {
       var self = this;
       $('#noThanks').click(function() {
         $.fancybox.close();
-        ga_track_event('Listing Search', 'Click', 'listings alert: no thanks');
+//        ga_track_event('Listing Search', 'Click', 'listings alert: no thanks');
       });
       rollover_button('#fancybox-content .btnGreen');
       
@@ -375,7 +375,7 @@ var RenterPagination = {
         else
           $(elm).addClass('favorited');
 
-				ga_track_event('Site Wide', 'Click', 'listing: add favorite');
+//				ga_track_event('Site Wide', 'Click', 'listing: add favorite');
       } else {
         $(elm).attr('href', $(elm).attr('href').replace('delete_', 'add_'));
         if(is_span)

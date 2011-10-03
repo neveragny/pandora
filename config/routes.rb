@@ -86,6 +86,9 @@ Licemerov::Application.routes.draw do
     collection do
       match :search
       match :dashboard
+      match 'add_favorite/:id' => 'renter#add_favorite'
+      match 'delete_favorite/:id' => 'renter#delete_favorite'
+      match :favorites
     end
   end
 
