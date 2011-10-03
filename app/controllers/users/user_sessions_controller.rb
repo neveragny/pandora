@@ -37,7 +37,7 @@ class UserSessionsController < ApplicationController
 
   def to_vk
       options = {
-        :redirect_uri => 'http://nomoveton.co.ua/from_vk',
+        :redirect_uri => 'http://comilffo.com/from_vk',
         :scope => "wall,notify,friends,photos,groups" # whatever you want to do
       }
       @client = client
@@ -48,7 +48,7 @@ class UserSessionsController < ApplicationController
   def from_vk
       @client = client
 #      Rails.logger.debug "@client" + client
-      access_token = client.auth_code.get_token(params[:code], :redirect_uri => 'http://nomoveton.co.ua/from_vk')
+      access_token = client.auth_code.get_token(params[:code], :redirect_uri => 'http://comilffo.com/from_vk')
       access_token.options[:param_name] = 'access_token'
       access_token.options[:mode] = :query
       Rails.logger.debug "access_token :  #{access_token}"

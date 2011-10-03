@@ -9,7 +9,8 @@ class RenterController < ApplicationController
 
   def dashboard
     @body_id = 'home'
-
+    #rent_ids = User.find(@current_user).rentfavorites
+    @fav_rents = Rent.find(User.find(@current_user).rentfavorites.map{ |fav| fav.rent_id})
   end
 
   def listings

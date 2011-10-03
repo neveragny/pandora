@@ -127,7 +127,7 @@ class ApplicationController < ActionController::Base
   end
 
   def home_page
-    current_user && user_profile_url(current_user)
+    current_user && dashboard_renter_index_path #user_profile_url(current_user)
   end
 
   def profile_owner?

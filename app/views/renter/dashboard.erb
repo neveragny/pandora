@@ -14,13 +14,60 @@
 
 
         <tbody>
-        <tr>
-          <td colspan="3">
+        <% if @fav_rents.any? %>
+            <% @fav_rents.each do |fav| %>
+
+                <tr id="listing_favorite_<%= fav %>">
+                  <td class="thumbnail narrow">
+                    <%= link_to fav do %>
+                        <!--<img src="http://s3.amazonaws.com/nakedapartments/images/4505761/thumb.jpg?1309203580" alt="Thumb">-->
+                        <% if fav.rentphotos.blank? %>
+                            <%= image_tag '/images/no_available.png' %>
+                        <% else %>
+                            <%= image_tag fav.rentphotos[0].photo.url(:thumb) %>
+                        <% end %>
+                    <% end %>
+                  </td>
+
+                  <td class="">
+            <span class="listingTitle">
+             <a class="bold" href="http://www.comilffo.com/rentall/<%= fav.id %>"><%= fav.rooms %>к, <%= fav.adress %> <%= fav.price %> грн</a>
+            </span>
+
+                    <div class="newCell listingDate">
+                      <% if Date.today == fav.date %>
+                          <%= t('renter.todays_object') %>
+                      <% else %>
+                          <%= (Date.today - fav.date).to_i %> <%= t(:days) %>
+                          <span class="calm"><%= t(:onsite) %></span>
+                      <% end %>
+                    </div>
+
+
+                    <div class="newCell brokerCont">
+                      <a href="http://www.nakedapartments.com/a/profile/maggie-nieves/45e" class=" "><%= fav.name %></a>
+                      <span class="noRating"><span>пока не оценено</span></span>
+                      <span class="duplicates"> </span>
+                    </div>
+
+                    <div class="newCell amenities">
+                    </div>
+                  </td>
+
+                  <td class="alignRight">
+                    <span data-id="428985" class="faveBtn favorited delete favorite favorite"><a title="Save to favorites" data-id="428985" href="/renter/listings/delete_favorite/428985"></a></span>
+                  </td>
+                </tr>
+            <% end %>
+        <% else %>
+            <tr>
+              <td colspan="3">
               <span class="messageNoContent">
                  <%= t('renter.no_favorites') %>
               </span>
-          </td>
-        </tr>
+              </td>
+            </tr>
+        <% end %>
 
         </tbody>
       </table>
