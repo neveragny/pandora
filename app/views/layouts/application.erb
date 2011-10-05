@@ -2,11 +2,12 @@
 <html>
 <head>
   <meta name="MSSmartTagsPreventParsing" content="true"/>
-  <meta name="DESCRIPTION" content="Недвижимость, продажа и аренда недвижимости, продажа квартир, аренда квартир, помещений, агентства недвижимости, жилье" >
+  <meta name="DESCRIPTION" content="Недвижимость, продажа и аренда недвижимости, продажа квартир, аренда квартир, помещений, агентства недвижимости, жилье">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-  <title>Пандора - проект "Живая база недвижимости" Киев. Продажа и аренда недвижимости, продажа квартир, аренда квартир, помещений, агентства недвижимости</title>
+  <title>Пандора - проект "Живая база недвижимости" Киев. Продажа и аренда недвижимости, продажа квартир, аренда
+    квартир, помещений, агентства недвижимости</title>
 
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
 
@@ -22,23 +23,31 @@
   <%= csrf_meta_tag %>
 
   <script type="text/javascript">
-    //<![CDATA[
-    var NA_CONFIG = {"user_type":"renter"};
-//]]>
-</script>
-<script type="text/javascript">
+      //<![CDATA[
+      var NA_CONFIG = {"user_type":"renter"};
+      //]]>
+  </script>
+  <!--<script src="" type="text/javascript"></script>-->
+  <script type="text/javascript">
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-12535593-3']);
-  _gaq.push(['_trackPageview']);
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-12535593-3']);
+      _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+      (function() {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
 
-</script>
+  </script>
+  <!--<script type="text/javascript"-->
+      <!--src="http://maps.googleapis.com/maps/api/js?sensor=true">-->
+  <!--</script>-->
+
 </head>
 <body id="<%= @body_id %>" class="<%= @body_class %>">
 <div id="wrapper" data-user="">
@@ -50,7 +59,7 @@
       </a>
     </div>
     <%#= fb_connect_async_js %>
-    <%= render :partial => "/layouts/head" if (controller_name == 'renter' || controller_name == 'rentall' ||controller_name == 'users')  %>
+    <%= render :partial => "/layouts/head" if (controller_name == 'renter' || controller_name == 'rentall' ||controller_name == 'users') %>
 
   </div>
   <%= yield %>
@@ -67,11 +76,14 @@
   <%# end %>
 </div>
 
+
+
 <div class="hidden"><!-- - - - OVERVIEW  - - - - - -->
   <div id="overviewModalContainer">
     <div style="width:590px;" class="standard pad" id="md_home">
       <div class="anon">
-        <h1><a data-tagged-trac="sitewide-modal-overview-top|renter_signup" href="/renter/signup">Регистрируйтесь</a> , что бы
+        <h1><a data-tagged-trac="sitewide-modal-overview-top|renter_signup" href="/renter/signup">Регистрируйтесь</a> ,
+          что бы
           видеть вашу стенку.</h1>
 
         <div class="clearfix" id="middle">
@@ -93,7 +105,8 @@
 
         <div class="bottom curveBottom clearfix">
           <div class="block">
-            <a data-tagged-trac="sitewide-modal-overview-bottom|renter_signup" class="button  large" href="/renter/signup"><span><%= t(:register) %> (it's FREE!)</span></a>
+            <a data-tagged-trac="sitewide-modal-overview-bottom|renter_signup" class="button  large" href="/renter/signup"><span><%= t(:register) %>
+              (it's FREE!)</span></a>
 
             <div class="clear"></div>
             <span class="block padTop5">Уже есть аккаунт? <a href="/login"><%= t(:login) %></a></span>
@@ -108,7 +121,8 @@
   <div id="favoritesModalContainer">
     <div style="width:590px; height:400pxs" class="standard pad" id="md_faves">
       <div class="anon">
-        <h1><a data-tagged-trac="sitewide-modal-faves-top|renter_signup" href="/renter/signup">Регистрируйтеся</a> и сохраняйте
+        <h1><a data-tagged-trac="sitewide-modal-faves-top|renter_signup" href="/renter/signup">Регистрируйтеся</a> и
+          сохраняйте
           ваши закладки!</h1>
 
         <div class="clearfix" id="middle">
@@ -119,7 +133,8 @@
 
         <div class="bottom curveBottom clearfix">
           <div class="block">
-            <a data-tagged-trac="sitewide-modal-faves-bottom|renter_signup" class="button  large" href="/renter/signup"><span><%= t(:register) %>(it's FREE!)</span></a>
+            <a data-tagged-trac="sitewide-modal-faves-bottom|renter_signup" class="button  large" href="/renter/signup"><span><%= t(:register) %>
+              (it's FREE!)</span></a>
 
             <div class="clear"></div>
             <span class="block padTop5">Уже зарегистрированы? <a href="/login"><%= t(:login) %></a></span>
@@ -134,7 +149,9 @@
   <div id="savedSearchesModalContainer">
     <div style="width:590px; " class="standard pad" id="md_saved_searches">
       <div class="anon">
-        <h1><a data-tagged-trac="sitewide-modal-saved-searches-top|renter_signup" href="/renter/signup">Регистрируйтесь</a> и
+        <h1>
+          <a data-tagged-trac="sitewide-modal-saved-searches-top|renter_signup" href="/renter/signup">Регистрируйтесь</a>
+          и
           получите доступ к истории поиска !</h1>
 
         <div class="clearfix" id="middle">
@@ -146,7 +163,8 @@
 
         <div class="bottom curveBottom clearfix">
           <div class="block">
-            <a data-tagged-trac="sitewide-modal-saved-searches-bottom|renter_signup" class="button  large" href="/renter/signup"><span><%= t(:register) %> (it's FREE!)</span></a>
+            <a data-tagged-trac="sitewide-modal-saved-searches-bottom|renter_signup" class="button  large" href="/renter/signup"><span><%= t(:register) %>
+              (it's FREE!)</span></a>
 
             <div class="clear"></div>
             <span class="block padTop5">Уже зарегистрированы? <a href="/login"><%= t(:login) %></a></span>
@@ -165,14 +183,16 @@
 
         <div class="clearfix" id="middle">
           <strong>Узнайте с кем вы работатет</strong>
-          Получите самый свежий отзыв от других пользователей до того как вы начнете сотрудничать с брокером или сами напишите отзыв,
+          Получите самый свежий отзыв от других пользователей до того как вы начнете сотрудничать с брокером или сами
+          напишите отзыв,
 
         </div>
 
 
         <div class="bottom curveBottom clearfix">
           <div class="block">
-            <a data-tagged-trac="sitewide-modal-saved-searches-bottom|renter_signup" class="button  large" href="/renter/signup"><span><%= t(:register) %> (it's FREE!)</span></a>
+            <a data-tagged-trac="sitewide-modal-saved-searches-bottom|renter_signup" class="button  large" href="/renter/signup"><span><%= t(:register) %>
+              (it's FREE!)</span></a>
 
             <div class="clear"></div>
             <span class="block padTop5">Уже есть аккаунт? <a href="/login"><%= t(:login) %></a></span>

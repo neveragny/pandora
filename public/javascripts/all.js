@@ -2279,6 +2279,7 @@ na.maps = {
 			}
 		},
 		serp: function() {
+            alert("this.serp MAP")
 			var self = this;
 
 			var myOptions = {
@@ -2372,7 +2373,7 @@ na.maps = {
 				}
 			}
 
-			var map = new google.maps.Map(document.getElementById("listingMap"), myOptions);
+			var map = new google.maps.Map(document.getElementById("listingsMap"), myOptions);
 
 			// listing marker
 			this.marker(map, latlng);
@@ -2439,11 +2440,12 @@ na.maps = {
 		}
 	},
 	loadScript: function() {
-//        alert(document.location.protocol)
+        alert(document.location.protocol);
 	  var script = document.createElement("script");
 	  script.type = "text/javascript";
-	  script.src = document.location.protocol + '//maps.google.com/maps/api/js?sensor=false&callback=initialize_maps';
-	  document.body.appendChild(script);
+	  script.src = document.location.protocol + '//maps.googleapis.com/maps/api/js?sensor=true&callback=initialize_maps'; // '//maps.google.com/maps?file=api&v=&sensor=true_or_false&key=ABQIAAAAUFQ-ooWR8BHGiKQkaRipTxQglpr7Yjy3kjZLiEDS-gu-C85tDRQ1NMvlmFWok31gpbksKtog9SY-5w';
+	  document.body.appendChild(script);                                ////maps.google.com/maps/api/js?sensor=false&callback=initialize_maps
+      alert(script);
 	}
 };
 
@@ -2454,7 +2456,7 @@ function initialize_maps() {
 
 $(document).ready(function() {
 	if($('#listingMap,#listingsMap').length > 0){
-//        alert('going loadScript now');
+        //alert('going loadScript now');
         na.maps.loadScript();
 	}
 });
