@@ -2279,12 +2279,11 @@ na.maps = {
 			}
 		},
 		serp: function() {
-            alert("this.serp MAP")
 			var self = this;
 
 			var myOptions = {
 			  zoom: 11,
-			  center: new google.maps.LatLng(40.77, -73.98),
+			  center: new google.maps.LatLng(50.45, 30.52),
 				streetViewControl: false,
 				panControl: true,
 				maxZoom: 15,
@@ -2440,12 +2439,10 @@ na.maps = {
 		}
 	},
 	loadScript: function() {
-        alert(document.location.protocol);
 	  var script = document.createElement("script");
 	  script.type = "text/javascript";
 	  script.src = document.location.protocol + '//maps.googleapis.com/maps/api/js?sensor=true&callback=initialize_maps'; // '//maps.google.com/maps?file=api&v=&sensor=true_or_false&key=ABQIAAAAUFQ-ooWR8BHGiKQkaRipTxQglpr7Yjy3kjZLiEDS-gu-C85tDRQ1NMvlmFWok31gpbksKtog9SY-5w';
 	  document.body.appendChild(script);                                ////maps.google.com/maps/api/js?sensor=false&callback=initialize_maps
-      alert(script);
 	}
 };
 
@@ -2456,7 +2453,6 @@ function initialize_maps() {
 
 $(document).ready(function() {
 	if($('#listingMap,#listingsMap').length > 0){
-        //alert('going loadScript now');
         na.maps.loadScript();
 	}
 });

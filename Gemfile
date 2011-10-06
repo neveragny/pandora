@@ -32,7 +32,7 @@ gem "s3"
 # Use unicorn as the web server
 # gem 'unicorn'
 gem 'rails3-jquery-autocomplete'
-
+gem 'geocoder'
 # Deploy with Capistrano
 # gem 'capistrano'
 
