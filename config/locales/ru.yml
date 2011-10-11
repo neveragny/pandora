@@ -202,20 +202,20 @@ ru:
   all: Все
   object:  обьектов
   to: до
-  no_fee_only: без коммисии
-  my_favorites: из изранного
+  no_fee_only: без комиссии
+  my_favorites: из избранного
   must_have_photo: только с фото
   pets: животные
   cats: кот
   dogs: собака
 
   sort_by: сортировать по
-  time_on_site: времени
+  time_on_site: дате
   quality: качеству
   by_rooms: комнатам
   by_price: цене
 
-  explain_quality: "Показатель качества является метрикой, что отражает уровень брокера, например объявление имеет фотографии или как много пользователей добавили его обекты в избранное."
+  explain_quality: "Показатель качества является метрикой, которая отражает уровень брокера. Например, объявление имеет фотографии или количество пользователей которые добавили его объекты в избранное."
   #Quality score is a metric that reflects the broker' responsiveness, whether the listing has photos and how 'favorited' it is.
 
 # RENTER

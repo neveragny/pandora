@@ -5,15 +5,15 @@
 <div id="main">
 <div class="headMessage">
         <span class="contactUs">
-        <h5>Questions?</h5>
-        <a href="/about/feedback_form" class="feedbackBox cboxElement">Send us an email</a>
+        <h5>Есть вопросы?</h5>
+        <a href="/about/feedback_form" class="feedbackBox cboxElement">Пожалуйста, напишите нам!</a>
         </span>
 
-  <h1 class="arial">Create your free account
-    <span class="oops"><a href="/broker/choose-plan" class=" ">Landlords, Brokers &amp; Agents: Sign Up Here</a></span>
+  <h1 class="arial">Создайте ваш бесплатный аккаунт
+    <!--<span class="oops"><a href="/broker/choose-plan" class=" ">Landlords, Brokers &amp; Agents: Sign Up Here</a></span>-->
   </h1>
 
-  <h2 class="arial">Tell us a bit about yourself, and what you're looking for. </h2>
+  <h2 class="arial">Раскажие нам немного о себе, и о том что вы ищете. </h2>
 </div>
 
 <div id="leftCol">
@@ -21,18 +21,18 @@
 
 <form method="post" id="new_renter" class="new_renter" action="/renter/create-profile">
 <fieldset class="main noBorder">
-  <h2 class=" ">Personal Information</h2>
+  <h2 class=" ">Личные данные</h2>
 
 
   <div class="rowLine" id="name">
-    <label for="user_first_name">First Name</label>
+    <label for="user_first_name">Имя</label>
     <input type="text" size="25" name="user[first_name]" id="user_first_name" class="text idleField">
 
     <div class="clear"></div>
   </div>
 
   <div class="rowLine">
-    <label for="user_last_name">Last Name</label>
+    <label for="user_last_name">Фамилия</label>
     <input type="text" size="25" name="user[last_name]" id="user_last_name" class="text idleField">
 
     <div class="clear"></div>
@@ -40,10 +40,10 @@
 
   <div class="rowLine" id="email">
 				    <span style="display:none" class="help">
-				     <strong>Your email is private.</strong> <br>You decide whom to share it with.
+				     <strong>Ваш email скрыт.</strong> <br>Вы сами решаете с кем им поделиться.
 				    </span>
 
-    <label for="user_email">Email</label>
+    <label for="user_email">email</label>
     <input type="text" size="25" name="user[email]" id="user_email" class="text idleField">
 
     <div class="clear"></div>
@@ -51,7 +51,7 @@
 
 
   <div class="rowLine">
-    <label for="user_email_confirmation">Confirm Email</label>
+    <label for="user_email_confirmation">Подтвердите email</label>
     <input type="text" size="25" name="user[email_confirmation]" id="user_email_confirmation" class="text idleField">
 
     <div class="clear"></div>
@@ -62,9 +62,9 @@
 
   <div class="rowLine" id="phone">
 				 <span style="display:none" class="help">
-				   <strong>Your phone number is private</strong> <br>You decide whom to share it with.
+				   <strong>Ваш номер скрыт</strong> <br>Вы сами решаете с кем им поделиться.
 				 </span>
-    <label for="user_phone_number">Phone Number</label>
+    <label for="user_phone_number">Мобильные</label>
     <input type="text" size="3" name="user[phone_area]" maxlength="3" id="user_phone_area" class="text idleField">
     <input type="text" size="3" name="user[phone_prefix]" maxlength="3" id="user_phone_prefix" class="text idleField">
     <input type="text" size="4" name="user[phone_sufix]" maxlength="4" id="user_phone_sufix" class="text idleField">
@@ -74,17 +74,17 @@
 </fieldset>
 
 <fieldset class="main">
-  <h2 class=" ">Choose a password <span class="message inline">(Min. 4 characters)</span></h2>
+  <h2 class=" ">Укажите пароль <span class="message inline">(минимально. 4 символа)</span></h2>
 
   <div class="rowLine">
-    <label for="user_enter_a_password">Enter a password</label>
+    <label for="user_enter_a_password">Укажите пароль</label>
     <input type="password" size="20" name="user[password]" id="user_password" class="text idleField">
 
     <div class="clear"></div>
   </div>
 
   <div class="rowLine">
-    <label for="user_password_confirmation">Confirm Password</label>
+    <label for="user_password_confirmation">Подтвердите пароль</label>
     <input type="password" size="20" name="user[password_confirmation]" id="user_password_confirmation" class="text idleField">
 
     <div class="clear"></div>
@@ -93,88 +93,7 @@
 </fieldset>
 
 
-<fieldset class="main">
-  <h2 class=" ">What kind of apartment are you looking for?</h2>
 
-  <!--RENT  -->
-  <div class="rowLine">
-    <label>Maximum Rent</label>
-    <input type="text" size="10" name="renter[maximum_rent]" id="renter_maximum_rent" default="$" class="text idleField">
-
-    <div class="clear"></div>
-  </div>
-
-  <!--  APT SIZE  -->
-  <div class="rowLine">
-    <label>Размер квартиры <br><span class="message inline">(выберить все подходящие)</span></label>
-
-    <div id="selectApartmentSize" class="rowFixed">
-
-      <div class="checkboxContSm bg clearfix">
-        <input type="checkbox" value="1" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
-        Studio
-      </div>
-
-      <div class="checkboxContSm bg clearfix">
-        <input type="checkbox" value="2" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
-        Loft
-      </div>
-
-      <div class="checkboxContSm bg clearfix">
-        <input type="checkbox" value="3" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
-        1br
-      </div>
-
-      <div class="checkboxContSm bg clearfix">
-        <input type="checkbox" value="4" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
-        2br
-      </div>
-
-      <div class="checkboxContSm bg clearfix">
-        <input type="checkbox" value="5" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
-        3br
-      </div>
-
-      <div class="checkboxContSm bg clearfix">
-        <input type="checkbox" value="6" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
-        4br
-      </div>
-
-      <div class="checkboxContSm bg clearfix">
-        <input type="checkbox" value="7" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
-        5br
-      </div>
-
-      <div class="checkboxContSm bg clearfix">
-        <input type="checkbox" value="8" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
-        6br
-      </div>
-
-      <div class="checkboxContSm bg clearfix">
-        <input type="checkbox" value="9" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
-        7br
-      </div>
-
-      <div class="checkboxContSm bg clearfix">
-        <input type="checkbox" value="10" name="renter[apartment_size_ids][]" id="renter_apartment_size_ids_">
-        8br
-      </div>
-
-    </div>
-    <div class="clear"></div>
-
-  </div>
-
-  <div class="clear"></div>
-  <div class="rowLine">
-    <label>Where are you looking? <br><span class="message inline">(Choose up to 10 'hoods)</span> </label>
-
-    <div class="clear"></div>
-
-
-  </div>
-
-</fieldset>
 
 
 
@@ -197,10 +116,10 @@
 
 <div class="formActions">
   <div class="buttonContainer">
-    <a id="renterSignupSelfReport" class="button  submitButton large" href="#"><span>Create Profile</span></a>
+    <a id="renterSignupSelfReport" class="button  submitButton large" href="#"><span>СОЗДАТЬ АККАУНТ</span></a>
   </div>
   <div class="clear"></div>
-  <a class="cancel" href="/">cancel</a>
+  <a class="cancel" href="/">отмена</a>
 </div>
 
 </form>
@@ -214,40 +133,37 @@
 
       <div class="testimonialNew first marginBottom20">
         <div class="quote">
-          It's better than Craigslist. Better apartments, better search.
+          Это лучше чем Aviso. Поиск лучше, удобная карта.
         </div>
-        <div class="attribution">Brittany</div>
+        <div class="attribution">Вера</div>
       </div>
 
 
       <div class="testimonialNew marginBottom20">
-        <div class="quote">Naked Apartments did an amazing job helping me find a new apartment!</div>
-        <div class="attribution">Sarah</div>
+        <div class="quote">comilffo помогли мне найти квартиру!</div>
+        <div class="attribution">Лида</div>
       </div>
 
       <div class="testimonialNew marginBottom20">
-        <div class="quote">Naked Apartments is the only reason why I have an awesome one-bedroom in Murray Hill for the
-          price of a studio.
+        <div class="quote"> я сняла 1к квартиру на Оболони и нашла её на Comilffo.com
         </div>
-        <div class="attribution">Stephanie</div>
+        <div class="attribution">Ира</div>
       </div>
 
       <div class="testimonialNew marginBottom20">
-        <div class="quote">Unlike online classifieds, Naked Apartments doesn't tolerate spam or scams.</div>
-        <div class="attribution">Mark</div>
+        <div class="quote">В отличии от других, похожих сайтов, на comilfo нет спама в сообщениях.</div>
+        <div class="attribution">Миша</div>
       </div>
 
 
       <div class="clear"></div>
 
       <div class="sideMod">
-        <h2>Your information is secure</h2>
+        <h2>Ваша информация защищена</h2>
 
-        <p class="calm">Your information will be kept anonymous until you explicitly decide to release it to a broker of
-          your choice.</p>
+        <p class="calm">Ваши данные будут скрыты до тех пор пока вы сами не решите передать её брокеру.</p>
 
-        <p class="calm">Additionally, we use a <em>secure encryption</em> process to protect all of your sensitive
-          information.</p>
+        <p class="calm">И кстати, мы испльзуем <em>шифрование</em> что бы защитить ваши личные данные</p>
       </div>
 
 
