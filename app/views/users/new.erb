@@ -18,23 +18,15 @@
 
 <div id="leftCol">
 
-
-<form method="post" id="new_renter" class="new_renter" action="/renter/create-profile">
+<%= render :partial => 'shared/errors', :locals => {:target => @user} %>
+<%= form_for @user do |f| -%>
+<!--<form method="post" id="new_renter" class="new_renter" action="/renter/create-profile"> -->
 <fieldset class="main noBorder">
   <h2 class=" ">Личные данные</h2>
 
-
-  <div class="rowLine" id="name">
-    <label for="user_first_name">Имя</label>
-    <input type="text" size="25" name="user[first_name]" id="user_first_name" class="text idleField">
-
-    <div class="clear"></div>
-  </div>
-
-  <div class="rowLine">
-    <label for="user_last_name">Фамилия</label>
-    <input type="text" size="25" name="user[last_name]" id="user_last_name" class="text idleField">
-
+  <div class="rowLine" id="login">
+    <%= f.label "Логин" %>
+    <%= f.text_field :login %>
     <div class="clear"></div>
   </div>
 
@@ -42,34 +34,22 @@
 				    <span style="display:none" class="help">
 				     <strong>Ваш email скрыт.</strong> <br>Вы сами решаете с кем им поделиться.
 				    </span>
-
-    <label for="user_email">email</label>
-    <input type="text" size="25" name="user[email]" id="user_email" class="text idleField">
-
-    <div class="clear"></div>
-  </div>
-
-
-  <div class="rowLine">
-    <label for="user_email_confirmation">Подтвердите email</label>
-    <input type="text" size="25" name="user[email_confirmation]" id="user_email_confirmation" class="text idleField">
+    
+    <%= f.label :email %>
+    <%= f.text_field :email, :class => "text idleField" %>
 
     <div class="clear"></div>
   </div>
+
+  <div class="rowLine" id="gender">
+    <%= f.label "Пол" %>
+    <div>мужчина<%= f.radio_button :sex, 1, :checked => true %></div>
+    
+    <div>женщина<%= f.radio_button :sex, 0 %></div>
+  </div>
+
 
   <div class="clear"></div>
-
-
-  <div class="rowLine" id="phone">
-				 <span style="display:none" class="help">
-				   <strong>Ваш номер скрыт</strong> <br>Вы сами решаете с кем им поделиться.
-				 </span>
-    <label for="user_phone_number">Мобильные</label>
-    <input type="text" size="3" name="user[phone_area]" maxlength="3" id="user_phone_area" class="text idleField">
-    <input type="text" size="3" name="user[phone_prefix]" maxlength="3" id="user_phone_prefix" class="text idleField">
-    <input type="text" size="4" name="user[phone_sufix]" maxlength="4" id="user_phone_sufix" class="text idleField">
-
-  </div>
 
 </fieldset>
 
@@ -77,15 +57,14 @@
   <h2 class=" ">Укажите пароль <span class="message inline">(минимально. 4 символа)</span></h2>
 
   <div class="rowLine">
-    <label for="user_enter_a_password">Укажите пароль</label>
-    <input type="password" size="20" name="user[password]" id="user_password" class="text idleField">
-
+    <%= f.label "Укажите пароль" %>
+    <%= f.password_field :password, :class=>"text idleField"  %>
     <div class="clear"></div>
   </div>
 
   <div class="rowLine">
-    <label for="user_password_confirmation">Подтвердите пароль</label>
-    <input type="password" size="20" name="user[password_confirmation]" id="user_password_confirmation" class="text idleField">
+    <%= f.label "Подтвердите пароль" %>
+    <%= f.password_field :password_confirmation, :class=> "text idleField" %>
 
     <div class="clear"></div>
   </div>
@@ -97,7 +76,7 @@
 
 
 
-<fieldset class="main">
+<!--<fieldset class="main">
   <h2>Terms of Service</h2>
 
   <div class="row">
@@ -111,7 +90,7 @@
       </label>
     </span>
   </div>
-</fieldset>
+</fieldset>  -->
 
 
 <div class="formActions">
@@ -122,7 +101,7 @@
   <a class="cancel" href="/">отмена</a>
 </div>
 
-</form>
+<% end %>
 
 </div>
 
@@ -172,28 +151,3 @@
 </div>
 <div class="clear"></div>
 </div>
-
-
-<%= render :partial => 'shared/errors', :locals => {:target => @user} %>
-
-<%= form_for @user do |f| -%>
-
-    <div class="field">
-      <%= f.label "логин" %><%= f.text_field :login %>
-    </div>
-    <div class="field">
-      <%= f.label "почтовый ящик" %><%= f.text_field :email %>
-    </div>
-    <div class="radio">
-      <%= f.label "пол" %>пацанчик<%= f.radio_button :sex, 1, :checked => true %>
-      деваха<%= f.radio_button :sex, 0 %>
-    </div>
-    <div class="field">
-      <%= f.label "пароль" %><%= f.password_field :password %>
-    </div>
-    <div class="field">
-      <%= f.label "еще разок пароль" %><%= f.password_field :password_confirmation %>
-    </div>
-    <%= f.submit t(:register), :class => "button", :id => "submitup", :disable_with => t(:please_wait) %>
-    <!--<a class="button" href="#submit">Sign up</a>-->
-<% end %>

@@ -1,13 +1,13 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '3.1.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
-gem 'mysql2', '< 0.3'
+gem 'mysql2'
 
 # Authlogic for authentication
 gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git',
@@ -27,12 +27,14 @@ gem 'jquery-rails'
 gem 'oauth'
 gem 'oauth2'
 
-gem "s3"
+#gem "s3"
+gem 'aws-s3', :require => 'aws/s3'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+ gem 'unicorn'
 gem 'rails3-jquery-autocomplete'
 gem 'geocoder'
+
 # Deploy with Capistrano
 # gem 'capistrano'
 
@@ -50,5 +52,5 @@ gem 'geocoder'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
  group :development do
-   gem 'sinatra'
-end
+  gem "capistrano" 
+ end

@@ -165,6 +165,8 @@ ru:
               too_short: Слишком короткий пароль
             login:
               invalid: Пожалуйста, используйте латинские буквы цифры и (. _ -)
+            email:
+              taken: Позьзователь с таким email-ом уже зарегистрирован.
         album:
           attributes:
             description:
@@ -251,8 +253,6 @@ ru:
   contact_us: Пишите нам
   term_conditions: Условия пользования
   policy: Политики
-
-
 
 
 

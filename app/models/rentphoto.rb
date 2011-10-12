@@ -8,7 +8,7 @@ class Rentphoto < ActiveRecord::Base
           :small => "150x150"
       },
       :storage => :s3,
-      :s3_credentials => "#{Rails.root}/config/s3.yml",
+      :s3_credentials => "#{Rails.root}/config/s3_credentials.yml",
       :path => ":attachment/:id/:style.:extension",
       :url => ':s3_domain_url'
   #attr_accessor :photo_file_name, :photo_content_type, :photo_size

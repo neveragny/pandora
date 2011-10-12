@@ -2,7 +2,9 @@
 <div id="adminBar">
   <% if @current_user %>
       <ul class="curveBottom clearfix">
-        <li id="inviteFriends"><a class="infoModal cboxElement" href="#inviteFriendsModal"><%= t(:share) %></a></li>
+        <li id="inviteFriends">
+			<g:plusone></g:plusone>
+        </li>
         <li class="view">
         <%= link_to t(:profile), home_page %>
         </li>
@@ -40,7 +42,10 @@
       <li>
         <a href="/renter/saved-searches" class=" "><%= t(:renter_saved_searches) %></a>
       </li>
-      <li id="faves"><a href="/renter/favorites">&nbsp;</a></li>
+      <li id="faves">
+        <%= link_to '', favorites_renter_index_path %>
+        <!--<a href="/renter/favorites">&nbsp;</a>-->
+      </li>
       <li id="searchOpen" class="<%= 'active' if params[:action] == 'listings' %>">
         <%= link_to t(:renter_search), renter_index_path, :title => t(:renter_search), :class => "" %>
       </li>

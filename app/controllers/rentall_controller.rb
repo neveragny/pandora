@@ -5,13 +5,13 @@ class RentallController < ApplicationController
 
   def show
     @body_id = "listingDetail"
-    @rentall = Rent.find(params[:id])
     if @current_user && User.find(@current_user).rentfavorites.where(:rent_id => params[:id]).any?
       @favorited = true
     else
       @favorited = false
     end
-    
+    Rails.logger.debug "current user: #{@current_user}, favorited #{@favorited}"
+    @rentall = Rent.find(params[:id])
   end
 
   def new

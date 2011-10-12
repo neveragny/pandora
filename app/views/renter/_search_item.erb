@@ -8,7 +8,7 @@
           <% if item.rentphotos.blank?  %>
             <%= image_tag '/images/no_available.png' %>
           <% else %>
-            <%= image_tag item.rentphotos[0].photo.url(:thumb) %>
+			<%= image_tag item.rentphotos[0].photo.url(:thumb) %>
           <% end %>
         <% end %>
       </td>
@@ -63,3 +63,4 @@
     </tr>
 
 <% end %>
+
