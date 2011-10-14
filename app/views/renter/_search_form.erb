@@ -1,6 +1,6 @@
 <div class="curveBottom" id="searchWrapperOuter">
 
-<div class="curveBottom" id="searchWrapper">
+  <div class="curveBottom" id="searchWrapper">
 <%= form_tag search_renter_index_path, :class => :renter, :remote => true do |f| %>
 <%= hidden_field_tag 'broker_id', '', :id => "broker_id" %>
 <%= hidden_field_tag 'page', '1' %>
@@ -69,14 +69,6 @@
   <div class="searchBox wide">
     <label>&nbsp;</label>
     <input type="text" size="6" name="max_rent" id="maxRent" default="$" class="idleField">
-  </div>
-
-  <div class="searchBox wide">
-    <label><%= t(:renter_move_by) %></label>
-
-    <div style="width: 125px;">
-      <input type="text" size="13" name="move_date" id="dateAvailable" default="" class="w16em dateformat-m-sl-d-sl-Y text idleField hasDatepicker">
-    </div>
   </div>
 
   <div class="searchBox wide">
@@ -195,16 +187,11 @@
   </div>
 
 
-  <!--
-  <span class="checkboxCont">
-    <input class="field text" id="exclusive" name="exclusive" type="checkbox" value="1" />
-    exclusive listings
-  </span>
-  -->
+
 
 </fieldset>
 <div class="clear"></div>
 <% end %>
 </div>
 </div>
-<div class="clear"></div>
+

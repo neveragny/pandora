@@ -19,6 +19,7 @@ class RenterController < ApplicationController
     @rents, amount = Rent.get_rents(@page )
     @pages = amount.to_i ? amount.to_i+1 : amount.to_i
     @last_page = amount/ITEMS_PER_PAGE + 1
+    @fav = @current_user.rentfavorites.map{ |i| i.rent_id } if @current_user && @current_user.rentfavorites
     render :action => 'index'
   end
 
@@ -43,7 +44,7 @@ class RenterController < ApplicationController
     Rails.logger.debug ">>>>>>>>>> amount:    #{amount}"
     Rails.logger.debug ">>>>>>>>>> @last_page:    #{@last_page}"
     Rails.logger.debug ">>>>>>>>>> @page:    #{@page}"
-
+#    @fav = @current_user.rentfavorites.map{ |i| i.rent_id } if @current_user && @current_user.rentfavorites
     respond_to do|f|
       f.js {render :layout => false}
     end
@@ -75,7 +76,12 @@ class RenterController < ApplicationController
   end
 
   def favorites
-
+    @body_id = 'favorites'
+    @page =  1
+    @rents = Rent.find(User.find(@current_user).rentfavorites.map{ |fav| fav.rent_id})
+    amount = @rents.size
+    @pages = amount.to_i ? amount.to_i+1 : amount.to_i
+    @last_page = amount/ITEMS_PER_PAGE + 1
   end
 
   private

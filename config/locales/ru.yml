@@ -152,8 +152,7 @@ ru:
   time:
     formats:
       default: "%d %B %Y в %H:%M"
-
-    
+   
   activerecord:
     errors:
       messages:
@@ -219,6 +218,7 @@ ru:
 
   explain_quality: "Показатель качества является метрикой, которая отражает уровень брокера. Например, объявление имеет фотографии или количество пользователей которые добавили его объекты в избранное."
   #Quality score is a metric that reflects the broker' responsiveness, whether the listing has photos and how 'favorited' it is.
+  add_rentfavorite: "Добавить в закладки"
 
 # RENTER
 
@@ -252,8 +252,15 @@ ru:
   faq: Помощь
   contact_us: Пишите нам
   term_conditions: Условия пользования
-  policy: Политики
+  policy: Правила
 
-
+  less_than_one_minutes: 'только что'
+  two_four_minutes: '%{count} минуты'
+  x_minutes: '%{count} минут'
+  about_one_hour: 'около часа'
+  about_x_hours: '%{count} часа'
+  x_hours_chasov: '%{count} часов'
+  x_day: '1 день'
+  x_days: '%{count} дней'
 
 #<%= t() %>

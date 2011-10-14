@@ -43,7 +43,7 @@
         <a href="/renter/saved-searches" class=" "><%= t(:renter_saved_searches) %></a>
       </li>
       <li id="faves">
-        <%= link_to '', favorites_renter_index_path %>
+        <%=h link_to raw('&nbsp;'), favorites_renter_index_path %>
         <!--<a href="/renter/favorites">&nbsp;</a>-->
       </li>
       <li id="searchOpen" class="<%= 'active' if params[:action] == 'listings' %>">

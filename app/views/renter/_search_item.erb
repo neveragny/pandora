@@ -22,20 +22,25 @@
         </span>
 
         <div class="newCell listingDate">
-        <% if Date.today == item.date %>
-          <%= t('renter.todays_object') %>
-        <% else %>  
-          <%=(Date.today - item.date).to_i %> <%= t(:days) %>
+          <%= time_ago(item.updated_at) %>
           <span class="calm"><%= t(:onsite) %></span>
-        <% end %>
         </div>
 
 
         <div class="newCell brokerCont">
 
           <a href="#userpath"><%= item.name %></a>
+          
+          <%# if favorited? item  %>
+<!--          <span class="isFavorited">
+            <span><%#= raw('&nbsp;') %></span>
+          </span> -->
+          <%# else %>
+          <span class="">
+          <%= link_to_favorite item %>
 
-          <span class="noRating"><span><%= t(:rent_not_yet_rated) %></span></span>
+          </span>
+          <%# end %>
         </div>
 
 

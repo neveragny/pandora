@@ -3,9 +3,11 @@
   <tr>
     <td colspan="2" class="head">
 
+      <% unless @body_id == 'favorites'  %>
       <h1 class="estates_result_count">16445</h1>
 
-      <h1><%= t(:object) %></h1>
+      <h1><%= t(:object)  %></h1>
+      <% end  %>
 
       <div class="block">
 
@@ -13,7 +15,7 @@
 
 
       <div class="resultsPagination">
-        <%= render :partial => 'paging' %>
+        <%= render :partial => 'paging' unless @body_id == 'favorites' %>
       </div>
       <div class="clear"></div>
     </td>
@@ -63,7 +65,7 @@
 </table>
 
 <div class="resultsPagination">
-  <%= render :partial => 'paging' %>
+  <%= render :partial => 'paging' unless @body_id == 'favorites' %>
 </div>
 
 <div class="clear"></div>
