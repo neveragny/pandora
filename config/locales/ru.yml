@@ -201,7 +201,9 @@ ru:
   price: Цена
   rooms: Комнат
   all: Все
-  object:  обьектов
+  nothing_found: ничего не найдено
+  object:  обьекто
+  objects:  обьектов  
   to: до
   no_fee_only: без комиссии
   my_favorites: из избранного

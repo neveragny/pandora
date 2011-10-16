@@ -4,9 +4,9 @@
     <td colspan="2" class="head">
 
       <% unless @body_id == 'favorites'  %>
-      <h1 class="estates_result_count">16445</h1>
+      <h1 class="estates_result_count"><%= @amount if @amount > 0%></h1>
 
-      <h1><%= t(:object)  %></h1>
+      <h1><%= search_amount @amount  %></h1>
       <% end  %>
 
       <div class="block">
@@ -28,19 +28,24 @@
       <table cellspacing="0" cellpadding="0" border="0" class="newStyle" id="listingSERPTable">
         <thead>
         <tr>
-          <th colspan="2">
+          <th colspan="2" id="sortable">
             <span class="small"><%= t(:sort_by) %></span>
             <ul>
               <li>
-                <a href="/renter/listings/search?page=1&amp;sort=listing_date&amp;order=desc" class="bold"> <%= t(:time_on_site) %> </a>
+                <a href="#" class="bold" data-sort="updated_at"> 
+					<%= t(:time_on_site) %>
+					<%= image_tag "/images/icons/sort_arrow_up.gif" if @sort == 'updated_at'%>
+				</a>
               </li>
               <li>
-                <a href="/renter/listings/search?page=1&amp;sort=quality&amp;order=desc" class="bold"> <%= t(:quality) %>
-                  <span title="<%= t(:explain_quality) %>" class="tooltip grey mouseover">?</span></a>
-              </li>
-              <!--<li><a href="/renter/listings/search?page=1&amp;sort=neighborhood&amp;order=asc"> Neighborhood </a></li>-->
-              <li><a href="/renter/listings/search?page=1&amp;sort=size&amp;order=asc"> <%= t(:by_rooms) %> </a></li>
-              <li><a href="/renter/listings/search?page=1&amp;sort=rent&amp;order=asc"> <%= t(:by_price) %> </a></li>
+				<a href="#" data-sort="rooms"> <%= t(:by_rooms) %> 
+					<%= image_tag "/images/icons/sort_arrow_up.gif" if @sort == 'rooms'%>
+				</a></li>
+              <li>
+				<a href="#" data-sort="price"> 
+					<%= t(:by_price) %>
+					<%= image_tag "/images/icons/sort_arrow_up.gif" if @sort == 'price'%>
+				</a></li>
             </ul>
           </th>
         </tr>

@@ -391,6 +391,19 @@ var RenterPagination = {
 })(jQuery);
 
 
+var RenterSortListings = {
+  setup: function (){
+    $("th#sortable a").each(function(i, val) {
+        $(this).click(function(event){
+            event.preventDefault();
+            $('input[name="sort"]').val($(this).attr("data-sort"));
+            $('form.renter').submit();
+        });
+    });
+}
+};
+
+
 /* AJAX HELPER FUNCTIONS EXTENDED ************************************ */
 Ajax = $.extend(Ajax, {
   get_broker_profile: function(url, elm) {
@@ -416,6 +429,7 @@ $(document).ready(function() {
   RenterProfile.setup();
   RenterHomepage.setup();
   RenterPagination.setup();
+	RenterSortListings.setup();
 
   $("a.gal").fancybox();
 

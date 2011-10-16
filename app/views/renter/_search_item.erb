@@ -17,7 +17,8 @@
 
         <span class="listingTitle">
           <%= link_to item do %>
-            <%= item.rooms %>к, <%= item.adress %> <%= item.price %> грн
+            <%= item.rooms %>к, <%= item.adress %> 
+			<div><%= item.price > 0 ? "#{item.price} грн" : "договорная"  %></div>
           <% end %>
         </span>
 

@@ -9,50 +9,32 @@ class RenterController < ApplicationController
 
   def dashboard
     @body_id = 'home'
-    #rent_ids = User.find(@current_user).rentfavorites
     @fav_rents = Rent.find(User.find(@current_user).rentfavorites.map{ |fav| fav.rent_id})
   end
 
   def listings
 #    @renter = Rent.new
-    @page =  1
-    @rents, amount = Rent.get_rents(@page )
-    @pages = amount.to_i ? amount.to_i+1 : amount.to_i
-    @last_page = amount/ITEMS_PER_PAGE + 1
+    @page =  1 
+    @sort = 'updated_at'
+    @rents, @amount = Rent.get_rents(@page, params )
+    @pages = @amount.to_i ? @amount.to_i+1 : @amount.to_i
+    @last_page = @amount/ITEMS_PER_PAGE + 1
     @fav = @current_user.rentfavorites.map{ |i| i.rent_id } if @current_user && @current_user.rentfavorites
     render :action => 'index'
   end
 
-
-  #Parameters: {
-  #   "utf8"=>"✓",
-  #   "authenticity_token"=>"bEphDxK7o5kIilwarnAjwJew2g4l29tebstwxrf8G7U=",
-  #   "broker_id"=>"",
-  #   "dist_code"=>"0",
-  #   "aids"=>"0",
-  #   "min_rent"=>"",
-  #   "max_rent"=>"", "
-  #   "move_date"=>"",
-  #   "amids"=>"0",
-  #   "pets"=>""
-  # }
   def search
     @page = params[:page].to_i
-    @rents, amount = Rent.get_rents(@page, params[:dist_code], params[:rooms], params[:pattern], params[:min_rent], params[:max_rent])
-    @pages = amount.to_i ? amount.to_i+1 : amount.to_i
-    @last_page = amount/ITEMS_PER_PAGE + 1
-    Rails.logger.debug ">>>>>>>>>> amount:    #{amount}"
-    Rails.logger.debug ">>>>>>>>>> @last_page:    #{@last_page}"
-    Rails.logger.debug ">>>>>>>>>> @page:    #{@page}"
-#    @fav = @current_user.rentfavorites.map{ |i| i.rent_id } if @current_user && @current_user.rentfavorites
+    @sort = params[:sort]
+    @rents, @amount = Rent.get_rents(@page, params)
+    @pages = @amount.to_i ? amount.to_i+1 : amount.to_i
+    @last_page = @amount/ITEMS_PER_PAGE + 1
     respond_to do|f|
       f.js {render :layout => false}
     end
     Rails.logger.debug "search goes Here!"
   end
 
-  #Parameters
-  #  rentId
   def add_favorite
     rentfavorite = User.find(@current_user).rentfavorites.build(:rent_id => params[:id])
     respond_to do |f|

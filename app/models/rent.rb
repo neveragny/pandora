@@ -21,9 +21,17 @@ class Rent < ActiveRecord::Base
 
   def enrich; img_length; end
 
-  def Rent.get_rents(page, dist_code=nil, rooms=nil, search_string=nil, min_rent=nil, max_rent=nil, sort=nil)
+  def Rent.get_rents(page, options = {}) #dist_code=nil, rooms=nil, search_string=nil, min_rent=nil, max_rent=nil, sort=nil)
+    return if page.nil?
+    logger.debug "MODEL RENT: #{options}"
+    dist_code = options[:dist_code]
+    rooms = options[:rooms] || nil
+    search_string = options[:search_string] || nil
+    min_rent = options[:min_rent] || nil
+    max_rent = options[:max_rent] || nil
+    sort = options[:sort] || 'updated_at'
 
-    Rails.logger.debug "MIN, MAX: #{min_rent}, #{max_rent}" 
+    Rails.logger.debug "MIN, MAX: #{min_rent}, #{max_rent}" if min_rent || max_rent 
 
     max_rent = max_rent.nil? || max_rent.empty?? 1000000000 : max_rent #subselect or hardcoded, hm...
     min_rent = min_rent.nil? || min_rent.empty?? 0 : min_rent
@@ -37,10 +45,13 @@ class Rent < ActiveRecord::Base
                 max_rent,
                 "%#{search_string}%", 
                 "%#{search_string}%"               
-              ).order('updated_at DESC')#.order('price')
+              ).order("#{sort == 'updated_at' ? sort + " DESC" : sort + " ASC, updated_at DESC"}")#.order('price')
     result_rents =  prepared_statement.offset((page.to_i*10)-10).limit(10).all
     condition_amount = prepared_statement.count
     return result_rents, condition_amount
+    # price rooms ASC
+    # updated_at DESC
+    
   end
 
   def user_fav_in

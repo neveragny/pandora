@@ -44,5 +44,14 @@ module ApplicationHelper
       end
    end
 end
+
+  def search_amount(amount)
+    case amount
+    when 0 then t(:nothing_found)
+    when 1 then t(:object)
+    when 2..9999999 then t(:objects)
+    else
+    end    
+  end  
 end
 
